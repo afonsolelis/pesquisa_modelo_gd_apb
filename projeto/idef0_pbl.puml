@@ -1,0 +1,59 @@
+@startuml
+!define IDEF0_ARROW --->
+
+' IDEF0 Diagram for PBL Process
+title IDEF0: Processo de Aprendizagem Baseada em Projetos (PBL)
+
+' Main process box
+rectangle "**Executar Módulo PBL**\n(5 Sprints de 2 semanas)" as MainProcess #LightBlue
+
+' Inputs (left side)
+note left of MainProcess
+**ENTRADAS (Inputs)**
+• TAPI (Termo de Abertura)
+• Problema Autêntico do Parceiro
+• Estudantes (Equipes)
+• Calendário Acadêmico
+• Recursos Tecnológicos
+• Infraestrutura de Desenvolvimento
+end note
+
+' Controls (top)
+note top of MainProcess
+**CONTROLES (Controls)**
+• Metodologia Scrum
+• Rubricas de Avaliação
+• Objetivos de Aprendizagem
+• Critérios do Parceiro
+• Políticas Institucionais
+• Framework 40/35/20/5
+end note
+
+' Mechanisms (bottom)
+note bottom of MainProcess
+**MECANISMOS (Mechanisms)**
+• Professor Orientador
+• Docentes de Eixo (Prog, UX, Negócios, Liderança)
+• Parceiro Externo
+• Plataformas: Git, Gestão de Tarefas
+• Gêmeo Digital (Coleta e Análise)
+• Infraestrutura Tecnológica
+end note
+
+' Outputs (right side)
+note right of MainProcess
+**SAÍDAS (Outputs)**
+• MVP/Produto Funcional
+• Artefatos Técnicos
+• Competências Desenvolvidas
+• Avaliações Multidimensionais
+• Métricas de Processo
+• Dados para Gêmeo Digital
+• Feedback do Parceiro
+• Evidências de Aprendizagem
+end note
+
+' IDEF0 Style arrows
+MainProcess IDEF0_ARROW [hidden]
+
+@enduml
