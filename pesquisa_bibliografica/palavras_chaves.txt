@@ -1,5 +1,0 @@
-complex event processing
-modelos de markov
-modelagem de eventos
-modelagem de sistemas
-project based learning

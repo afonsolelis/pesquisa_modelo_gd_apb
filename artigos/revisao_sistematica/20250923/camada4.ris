@@ -1,0 +1,38 @@
+﻿TY  - JOUR
+AU  - Rennick, C
+AU  - Hulls, CCW
+AU  - Mckay, KN
+TI  - Introductory Engineering Decision-Making: Guiding First-Year Students to Relativism in Software Design
+T2  - IEEE TRANSACTIONS ON EDUCATION
+AB  - Contribution: A semester-long, open-ended design project was implemented to promote intellectual development of first-year students while reinforcing event-driven/procedural programming principles. This paper describes this approach, and an evaluation strategy using Perry's model for intellectual development. The results show that students can reach the relativism stage of Perry's model in their first year of studies.
+   Background: Students must move beyond a dualistic worldview to be engineers. Felder and Brent provided a list of recommendations to promote this type of intellectual development in students; active learning strategies strongly align with these recommendations. While active learning is common in programming courses (sometimes taking the form of project-based learning), they are typically tightly controlled by the instructor, and limited in scope (both in time and complexity), potentially reducing their impact on students.
+   Intended Outcomes: This course and term-long project provided students a supportive environment in which to develop their decision-making skills, and promoted their intellectual development through Perry's stages related to software design.
+   Application Design: Aligned with Felder and Brent's recommendations and Kuh's High Impact Practices, a course was built to: 1) teach students procedural programming, with 2) a focus on software design and open-ended problem solving, while maintaining 3) a supportive environment for skill acquisition.
+   Findings: A mixed methods study showed the majority of students align themselves with the relativism stage of intellectual development at the end of the course. This study also illuminated the decision-making processes of teams of students in a first-year software design course.
+SN  - 0018-9359
+SN  - 1557-9638
+DA  - AUG
+PY  - 2019
+VL  - 62
+IS  - 3
+SP  - 199
+EP  - 208
+DO  - 10.1109/TE.2019.2921273
+AN  - WOS:000480307400006
+ER  -
+
+TY  - JOUR
+AU  - Popescu, E
+AU  - Leon, F
+TI  - Predicting Academic Performance Based on Learner Traces in a Social Learning Environment
+T2  - IEEE ACCESS
+AB  - Predictive modeling is an important part of learning analytics, whose main objective is to estimate student success, in terms of performance, knowledge, score, or grade. The data used for the predictive model can be either state-based data (e.g., demographics, psychological traits, and past performance) or event-driven data (i.e., based on student activity). The latter can be derived from students' interactions with educational systems and resources; learning management systems are a widely analyzed data source, while social media-based learning environments are scarcely explored. In this paper, our objective is to predict students' performance based on their social media traces. Data is collected from a Web Applications Design course, in which students use wild, blog, and microblogging tools, for communication and collaboration activities in a project-based learning scenario. A total of 343 students, from six consecutive course installments, are included in the study. In addition to the novel settings and performance indicators, an innovative regression algorithm is used for grade prediction. Very good correlation coefficients are obtained and 85% of predictions are within one point of the actual grade, outperforming classic regression algorithms. From a pedagogical perspective, results indicate that, as a general rule, a higher engagement with social media tools correlates with a higher final grade.
+SN  - 2169-3536
+PY  - 2018
+VL  - 6
+SP  - 72774
+EP  - 72785
+DO  - 10.1109/ACCESS.2018.2882297
+AN  - WOS:000453716200001
+ER  -
+

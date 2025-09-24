@@ -1,0 +1,481 @@
+TY  - JOUR
+AU  - Sajadi, S
+AU  - Huerta, M
+AU  - Ryan, O
+AU  - Drinkwater, K
+TI  - Harnessing Generative AI to Enhance Feedback Quality in Peer Evaluations within Project-Based Learning Contexts
+AB  - This paper explores using generative artificial intelligence (AI) large language models (LLMs) to augment traditional peer feedback processes within project-based learning (PBL) environments where students work in teams. Our study contributes to the expanding digital educational frontier by harnessing the power of LLMs for summarizing and enhancing self and peer feedback. We present a novel educational innovation that utilizes GPT-4 to effectively summarize self and peer comments for student teams in PBL courses. Our research involved the development of a specific prompt grounded in relevant educational theories and the analysis of 118 AI-summarized Performance Feedback Reports that were generated for students. The findings reveal that the LLM significantly improves the quality of peer feedback by making it more constructive and actionable, addresses off-topic or inappropriate comments, and provides a meaningful comparison between a student's self-evaluation and peer comments. Our paper underscores the importance of peer feedback systems as valuable pedagogical tools in PBL classes and demonstrates how AI tools can enhance these systems. The outcomes of this research serve as a foundational guide for faculty, especially those teaching in PBL environments with student teams, who are considering using AI to enhance teaching and learning. We demonstrate the potential of integrating these innovative practices in PBL classrooms to support students' development of teamwork skills, marking a significant step towards a new digital frontier in engineering education.
+PY  - 2024
+VL  - 40
+IS  - 5
+SP  - 998
+EP  - 1012
+SN  - 0949-149X
+AN  - WOS:001385273300001
+ER  -
+AU  - Wang, XM
+AU  - Yu, XH
+AU  - Hwang, GJ
+AU  - Hu, QN
+TI  - An online progressive peer assessment approach to project-based learning: a constructivist perspective
+AB  - How to improve students' problem-solving skills and creativity and adapt them to the new situation of the twenty-first century is a rather important educational objective at present, and is expected to be for a long time to come. Project-based learning (PBL) is considered to be an approach that can develop students' higher-order thinking skills, while peer assessment is a strategy that helps students to interact and reflect. To improve the quality of peer assessment in PBL and to further promote learning by using the feedback of peer assessment, this study proposes an online progressive peer assessment (OPPA)-based PBL approach using constructivism as the theoretical framework for instructional design. The aim of the proposed approach is to organise progressive peer-assessment activities for students as they complete the project, thereby promoting high-quality peer evaluations and continuous reflective improvement of the project. To test the effect of the OPPA-based PBL approach, a quasi-experiment was carried out in an educational game development course with 49 university students from two classes. Students in the experimental group used the OPPA-based PBL approach to develop their game projects, while students in the control group used the conventional PBL approach to develop their game projects. The findings show that the OPPA-based PBL approach significantly improved students' learning achievement, self-efficacy, collective efficacy, problem-solving, and creativity awareness, while also reducing their anxiety levels compared to the conventional PBL approach. The results of this study provide a reference for improving project-based learning, and further demonstrate the importance and validity of constructivist learning theory.
+PY  - 2023
+DA  - OCT
+VL  - 71
+IS  - 5
+SP  - 2073
+EP  - 2101
+SN  - 1042-1629
+SN  - 1556-6501
+DO  - 10.1007/s11423-023-10257-6
+AN  - WOS:001014475600001
+ER  -
+TY  - CPAPER
+AU  - Karstina, S
+TI  - The Role of Group Project-Based Learning in Engineering Training
+AB  - Reforming education, changing its role and priorities, stimulating scientific research and innovation has led to the need to find new models of engineering training. In these conditions group project-based learning for both students and engineering teachers seems to be promising. With this in mind, the purpose of this paper is to analyze the specifics of group project-based learning in engineering training and to develop a toolkit for building a graduate profile based on assessments of various key stakeholders. The paper analyzes the opinion of experts, the results of questionnaire survey and interviewing of teachers and students of engineering specialties of universities and colleges in different regions of Kazakhstan about the role of group project-based learning in the integration of engineering educational programs with industry, the results of students' self-assessment of their competencies and skills formed in the process of learning. The results of students' self-assessment and expert assessment ranking allowed to identify five main groups of competencies. Groups 1 and 2 contain interdisciplinary competences, group 3 - organizational competences, self-reflection and control competences, professional and didactic competences, group 4 includes mainly communication and teamwork competences, group 5 - information and analytical competences. The approach used in the work allows highlighting those competences and skills which are underdeveloped within the educational program. The good correlation between the results of students' self-assessment of their formed competences and skills in the process of group project-based learning and the results of expert assessment allows us to consider the method of group project-based learning effective and reliable in maintaining educational goals and achieving the best results in engineers' training. The application of the organizational forms, methods, and tools of group project-based learning proposed in the article allowed us to propose a model of graduate profile creation adapted to the constantly changing requirements for specialists' qualifications and gradation of their skills.
+PY  - 2023
+VL  - 634
+SP  - 239
+EP  - 245
+SN  - 2367-3370
+SN  - 2367-3389
+SN  - 978-3-031-26189-3
+SN  - 978-3-031-26190-9
+DO  - 10.1007/978-3-031-26190-9_24
+AN  - WOS:001463123800024
+ED  - Auer, ME
+ED  - Pachatz, W
+ED  - Ruutmann, T
+CP  - 25th International Conference on Interactive Collaborative Learning
+ER  -
+TY  - CPAPER
+AU  - Quesada-López, C
+AU  - Martínez, A
+TI  - Implementation of Project Based Learning: Lessons Learned
+AB  - Project Based Learning (PBL) is a teaching and learning methodology where students develop projects under real conditions to acquire the knowledge and develop the skills required for their profession. In this article we discuss the lessons learned from two teachers who implemented different PBL approaches in three courses from the Bachelor in Computer and Informatics at the University of Costa Rica, during three semesters. We discuss the main considerations and decisions associated to project design elements and teaching practices. Among the main benefits identified by teachers when using PBL are the high motivation of students and the natural development of soft skills. Among the greatest challenges are (1) the design of learning assessment, considering technical aspects, soft skills, self- and peer- evaluations; (2) continuous feedback to students on their progress in the project and in team dynamics (and its consequent time investment); and (3) the necessary balance between designing a challenging and realistic project that enables the achievement of the course's learning objectives. We recommend the use of agile methodologies such as Scrum, which align very well with PBL principles, as well as the use of hybrid PBL methodologies, which include complementary didactic strategies to achieve the learning objectives of the course.
+PY  - 2019
+SN  - 978-1-7281-5574-6
+DO  - 10.1109/CLEI47609.2019.235066
+AN  - WOS:000926106200038
+CP  - 45th Latin American Computing Conference (CLEI)
+ER  -
+TY  - JOUR
+AU  - Sangpom, N
+AU  - Sangpom, W
+TI  - Project-Based Learning Combined with Inquiry-Based Learning Using Solver Tools to Promote Computational Thinking Among Undergraduate Students
+AB  - This research aims to 1) Study the management of learning units on linear programming for undergraduate students, 2) Develop and verify the quality of the learning model, and 3) Examine the effects of the model on 24 undergraduate students at the Rajamangala University of Technology Suvarnabhumi using purposive sampling. This research was a research and development study. The research tools included the learning management model, lesson plans, classroom observation forms, and computational thinking assessment tools. Data were analyzed using percentage, mean, standard deviation, and t-test. The research findings were as follows: 1) The learning management was characterized by collaborative learning, studying, planning, practicing, expanding students' concepts to summarize mathematical concepts, and assessing the results. The instructor guided, stimulated learning, supported, facilitated, and reinforced learning. 2) The combined Project-Based Learning and Inquiry-Based Learning model using Solver tools included principles, objectives, learning management processes, measurement and evaluation, and essential conditions for successful implementation. The model was of high quality with an effectiveness index of 0.561; 3) Implementing the model significantly increased students' computational thinking skills in all five areas with a statistical significance level of 0.001.
+PY  - 2025
+DA  - FEB
+VL  - 14
+IS  - 1
+SP  - 602
+EP  - 611
+SN  - 2217-8309
+SN  - 2217-8333
+DO  - 10.18421/TEM141-53
+AN  - WOS:001439813900049
+ER  -
+TY  - CPAPER
+AU  - Brown, N
+TI  - Assessing individuals within teams in project-based learning courses - Strategies, evaluation and lessons learnt
+AB  - Teamwork is an important professional skill for engineers. To ensure that skills like teamwork are a key focus a series of project-based learning courses were introduced throughout the Bachelor of Engineering programme at Massey University. These project-based courses start in first year and continue each year until the final year where they complete a capstone design project. One difficulty identified was how to effectively assess an individual's contribution to a team-based assessment. This paper reports on the strategies used, evaluation of our approach and a reflection on lessons learnt after 5 years of team-based assessment. An example of the strategies used in a first-year course is given as a case study. Data was gathered from final year students over a three-year period to assess their opinions on teamwork and assessment within project-based learning courses. Students reported both positive and negative aspects of working in teams. Over the 3-year period being studied, the number of negative impacts reduced. This may be due to changes to the courses and/or staff becoming more effective facilitators. Half the students felt peer evaluation fairly distributed grades and half felt it did not. The most frequent comment was that marks were not adjusted enough. Success of individual teams often relies on a combination of careful course design, monitoring by staff, early intervention when needed and creating an environment where students feel they can ask for advice.
+PY  - 2021
+SP  - 852
+EP  - 856
+SN  - 2165-9567
+SN  - 978-1-7281-8478-4
+DO  - 10.1109/EDUCON46332.2021.9453881
+AN  - WOS:000689064100124
+ED  - Klinger, T
+ED  - Kollmitzer, C
+ED  - Pester, A
+CP  - IEEE Global Engineering Education Conference (IEEE EDUCON)
+ER  -
+TY  - JOUR
+AU  - Ortega-Cortez, A
+AU  - Espinoza-Navarro, O
+AU  - Ortega, A
+AU  - Brito-Hernández, L
+TI  - Academic Performance in University Students in Morphological Science Courses: Use of Active Problem-Based Learning (PBL)
+AB  - University education seeks to develop professional skills and capacities for autonomous learning. Active learning methodologies, centered on students, such as problem-based learning (PBL), could be very useful in improving academic performance in Basic Sciences courses in health and medical students. The objective of this study was to determine the impact of the use of the active problem-based learning methodology on the academic performance of university students who take morpho-biological courses in the Kinesiology and Obstetrics degree programs. From a total of 500 students who entered the first years of health degrees at the University of Tarapaca (academic year 2018), 100 students (over 18 years of age) were selected, separating as a control or non-intervened group (n = 50) to Obstetrics students and intervened group, with application of ABP (n = 50), students of the Kinesiology degree program. The study lasted 24 school weeks. The results show that the intervened group significantly improved academic performance, with 98 % approval and a final evaluation of 5.9. The control group achieved 84 % approval and a final evaluation of 4.8. It is concluded that the use of the active PBL methodology significantly improves the academic performance of health sciences students who take morpho-biological subjects and that activities with direct participation through questionnaires and group and individual scientific presentations, allow the student be their own agent of change in the educational assessment processes. It is suggested to implement this type of active methodologies in regular courses, also considering the psychological factors of learning.
+PY  - 2021
+DA  - APR
+VL  - 39
+IS  - 2
+SP  - 401
+EP  - 406
+SN  - 0717-9502
+SN  - 0717-9502
+SN  - 0717-9367
+DO  - 10.4067/s0717-95022021000200401
+AN  - SCIELO:S0717-95022021000200401
+ER  -
+TY  - JOUR
+AU  - Chanpet, P
+AU  - Chomsuwan, K
+AU  - Murphy, E
+TI  - Online Project-Based Learning and Formative Assessment
+AB  - Project-based learning (PBL) involves a highly complex and learner-centered approach. It relies on formative assessment (FA) with ongoing feedback to help learners move through the PBL process to the eventual co-construction of a shared artefact. Conversation and discussion are central to the process. However, in a face-to-face context of learning, they are difficult to capture for later review or reflection as part of FA. This study investigates the role that technology might play in addressing this limitation using online PBL and FA in a media-creation course in a Thai university. Participants were undergraduate, pre-service teachers preparing to teach English as a foreign language. Objectives included the local design and implementation of online PBL and FA; identification of pre-service teachers' (n = 28) post-implementation perceptions of the convenience, benefits and barriers of this form of learning; perceptions of their PBL skills and; post-implementation measures of PBL knowledge and skills compared with learners participating in a face-to-face section of the course (n = 30). Results revealed that the technology provided a foundational scaffold to support both the learners' and the instructor's activity and interaction. The design of a simple learning management system with communication and file-sharing tools supported not only the learners, but the instructor, not only the assessment, but the learning. Learners' perceptions were positive and post-implementation measures of PBL knowledge and skill were significantly higher for the online section.
+PY  - 2020
+DA  - SEP
+VL  - 25
+IS  - 3
+SP  - 685
+EP  - 705
+SN  - 2211-1662
+SN  - 2211-1670
+DO  - 10.1007/s10758-018-9363-2
+AN  - WOS:000551941100012
+ER  -
+TY  - JOUR
+AU  - Cifrian, E
+AU  - Andrés, A
+AU  - Galán, B
+AU  - Viguri, JR
+TI  - Integration of different assessment approaches: application to a project-based learning engineering course
+AB  - Formative assessment and self-, peer- and co-evaluation strategies for assessing students' learning have been developed and applied, over two academic years, to 75 students on a project-based learning course in the Chemical Engineering Degree at Cantabria University (Spain). The project proposed for teamwork learning in the Process Design course was the preliminary design of a second-generation bioethanol plant. Rubrics of formative assessment and evaluation generated positive reinforcement for the student advancing through the consecutive learning stages. The negotiated co-evaluation process has proved to be an effective tool for reflecting the distinctive contributions of each working group member, which are then successfully incorporated in the final individual mark set by the teachers. Students' perceptions regarding the proposed assessment approaches have been obtained by creating and applying an anonymous and voluntary survey instrument. The active participation of the students in the design and application of rubrics using specific criteria is proposed for peer-assessment processes in learning activities with high qualitative content and more susceptible to subjective capabilities such as oral presentations. We consider that the assessment, learning methodology and the experience gained with the survey results contribute to enhanced achievement of the learning outcomes, and to enhanced quality in the teaching-learning process. (C) 2020 Institution of Chemical Engineers. Published by Elsevier B.V. All rights reserved.
+PY  - 2020
+DA  - APR
+VL  - 31
+SP  - 62
+EP  - 75
+SN  - 1749-7728
+DO  - 10.1016/j.ece.2020.04.006
+AN  - WOS:000541822100008
+ER  -
+TY  - CPAPER
+AU  - Sari, MS
+AU  - Sunarmi
+AU  - Sulasmi, ES
+AU  - Mawaddah, K
+TI  - Formative Assessment in Project-based Learning: Supporting Alternative on the Learning Outcome of Biology Students in University
+AB  - The learning process in higher education is defined as active learning. Nonetheless, there are many learning practices that are oriented only toward mastering the cognitive aspect and only assess the cognitive aspect via paper and pencil test. The objective of this study was to investigate the influence of formative assessment in project-based learning on the learning outcome of Biology Students. This study adopted a quasi-experimental pre-test and post-test control group design to examine the effect of formative assessment on the learning outcome. The samples were 120 Biology Education students from Universitas Negeri Malang and divided into two learning groups. The first learning group as control class and the second as experiment class. The instruments used to measure cognitive learning outcomes were 15 multiple choice questions and 5 essay questions. Data analyses were descriptive analysis and Covariate analysis. The results of the Covariate Analysis test calculations can be seen that F count is 17.456 and the probability value of the learning model is 0,000 or less than 0.05. Formative assessment such as information literacy rubric is needed by students in helping the learning process of Biology students in higher education.
+PY  - 2019
+VL  - 2120
+SN  - 0094-243X
+SN  - 978-0-7354-1860-8
+DO  - 10.1063/1.5115709
+AN  - WOS:000507519000108
+ED  - Romaidi
+ED  - Wahyudi, D
+ED  - Daryono, RNH
+ED  - Yusnawan, E
+ED  - Kikuchi, A
+CP  - International Conference on Biology and Applied Science (ICOBAS)
+ER  -
+TY  - JOUR
+AU  - Huang, CY
+AU  - Wang, YH
+TI  - Toward an Integrative Nursing Curriculum: Combining Team-Based and Problem-Based Learning with Emergency-Care Scenario Simulation
+AB  - Objective: The study intended to combine team-oriented, problem-based learning (PBL) with emergency-care simulation to investigate whether an integrative intervention could positively impact the core nursing competencies and teacher performance of nursing students. Methods: The study belonged to the domain of action research, which aimed to address the weaknesses of traditional teacher-led, lecture-based learning. An 18-week, single-case experimental design, in which 58 senior nursing students at a medical university in central Taiwan participated, was conducted to test the possible benefits of the intervention. The measures included the Scale of Core Nursing Competencies and the Teacher Performance Evaluation Scale. Results: The research results showed that nursing students who received integrative training that combined team-based PBL with emergency-care scenario simulation had stronger mastery over core nursing competencies. At the same time, they also evaluated both the "Emergency Care" course for which the curriculum was used and the teachers' performance in that course more highly. Conclusions: The findings suggest that an integrative curriculum combining team-based PBL with scenario simulation is worth pursuing. Compared with traditional teacher-led, lecture-based teaching, this curriculum may be more effective in helping nursing students develop core competencies in their field.
+PY  - 2020
+DA  - JUN
+VL  - 17
+IS  - 12
+SN  - 1660-4601
+DO  - 10.3390/ijerph17124612
+AN  - WOS:000549292100001
+ER  -
+TY  - JOUR
+AU  - Zhu, Y
+AU  - Zhang, JJ
+AU  - Fei, J
+AU  - Fang, HB
+AU  - Zhang, ZG
+TI  - Problem-Based Learning and Case-Based Learning in Clinical Practical Teaching for Gynecology Residents: A Narrative Review
+AB  - Background: Gynecology residency training necessitates a robust educational framework to cultivate clinical competency, critical thinking, and problem-solving skills. Traditional lecture-based teaching methods are deficient in fostering active learning and clinical decision-making. Problem-based learning (PBL) and case-based learning (CBL) have emerged as learner-centered approaches that enhance medical education by integrating theoretical knowledge with clinical practice. This review aims to explain the efficacy, implementation frameworks, challenges, and comparative value of PBL and CBL in gynecology residency education, and explores the role of instructional technology integration. Methods: A systematic literature search was conducted across PubMed, ERIC, Scopus, Embase, and EBSCO (January 2010- Inclusion criteria encompassed studies on PBL/CBL interventions in gynecology residency with qualitative/quantitative outcomes. Ten articles met the criteria after screening. Results: Both PBL and CBL significantly outperform in enhancing clinical decision-making, differential diagnosis, knowledge retention, procedural planning, and long-term knowledge application. PBL utilizes open-ended problems to cultivate self-directed learning, critical thinking, and collaborative problem-solving (eg, managing complex AUB etiologies). CBL employs structured clinical cases to bridge theoretical knowledge with practical application, improving diagnostic reasoning and patient management skills. Key implementation frameworks involve careful pre-session preparation, facilitator-guided discussions on authentic cases, and structured feedback. Challenges include significant faculty time for case design/facilitation, resource intensity, and competency assessment. PBL fosters deep theoretical understanding, while CBL excels in clinical skill translation. Integrating both approaches creates a balanced curriculum. Augmenting PBL/CBL with simulation, flipped classrooms, mobile learning, and AI enhances accessibility, personalization, and procedural skill practice. Conclusion: PBL and CBL are transformative pedagogical strategies for gynecology residency training, effectively developing competencies needed for complex clinical practice. Successful implementation requires rigorously designed cases, faculty trained in facilitative guidance, and strategic technology integration. These approaches prepare residents not only as skilled technicians but as adaptable, patient-centered practitioners capable of navigating evolving healthcare challenges. Investment in faculty development and technology-enhanced PBL/CBL models is crucial for advancing gynecologic education globally.
+PY  - 2025
+VL  - 16
+SP  - 1269
+EP  - 1279
+SN  - 1179-7258
+DO  - 10.2147/AMEP.S534053
+AN  - WOS:001536445300001
+ER  -
+TY  - JOUR
+AU  - Fazilla, S
+AU  - Sriadhi, S
+AU  - Bunawan, W
+TI  - ASSESSING CREATIVE THINKING COMPETENCIES OF PRE-SERVICE TEACHERS VIA PROJECT-BASED LEARNING MODELS
+AB  - This study examines the impact of project-based learning (pbl) models on assessing and enhancing the creative thinking competencies of pre-service teachers. recognizing creativity as a crucial skill for educators in the 21st century, the research addresses the gap in teacher education programs regarding effective methods for fostering and evaluating creative abilities. a mixed-methods research design was implemented, involving 150 pre-service teachers from various universities who participated in a pbl intervention over one academic semester. data were collected using standardized creative thinking assessments, observational checklists, and reflective journals. quantitative results indicated a significant improvement in creative thinking scores post-intervention, while qualitative findings revealed increased engagement and innovative problem-solving skills among participants. the study concludes that integrating pbl models into teacher education curricula can effectively enhance creative competencies, preparing future educators to foster creativity in their own classrooms. these findings have important implications for curriculum developers and policymakers aiming to modernize teacher training programs.
+PY  - 2024
+DA  - OCT-DEC
+VL  - 16
+IS  - 44
+SP  - 363
+EP  - 387
+SN  - 1983-3695
+SN  - 2237-8049
+AN  - WOS:001409695800015
+ER  -
+TY  - JOUR
+AU  - Crawford, LK
+AU  - Carmona, KA
+AU  - Kumar, R
+TI  - Examining the Impact of Project-Based Learning on Students' Self-Reported and Actual Learning Outcomes
+AB  - Active, collaborative, and project-based learning strategies have become increasingly popular in college classrooms due to their effectiveness in cultivating student-centered learning. Compared to conventional teaching methods, active and project-based learning engages students in the learning process by fostering collaborative approaches to addressing real-world problems. To better prepare students for future careers in health promotion, we evaluated the effectiveness of a collaborative project-based health promotion assignment on self-perceived and actual learning among a sample of underrepresented students (N = 33). In order to assess learning, students completed both a self-reported and actual learning assessment designed to assess competency of the core learning outcomes of the health promotion course. Results demonstrated approximately similar increases in self-reported and actual learning over the semester. Although the results were unexpectedly parallel, students consistently underestimated their knowledge on both the pre- and post-learning assessments. In all, survey results demonstrated the group-based project served as a valuable tool for undergraduate learning, with the majority of students evaluating the project positively across all measures.
+PY  - 2024
+DA  - DEC
+VL  - 10
+IS  - 4
+SP  - 241
+EP  - 249
+SN  - 2373-3799
+SN  - 2373-3802
+DO  - 10.1177/23733799241234065
+AN  - WOS:001184098500001
+ER  -
+TY  - CPAPER
+AU  - Browning, JW
+AU  - Bustard, J
+TI  - Data Science Course Design for a Large-Scale Cohort using Individual Project-Based Learning
+AB  - Being an effective data scientist includes mastering many skills, both technical and analytical. There are many great teaching resources for learning technical skills. However, the analytical skills of understanding customer values, proposing causal relationships and gathering datasets are less common. This paper describes a new data science course designed to emphasize these analytical skills using individual project-based learning (PBL). PBL is considered to be a valuable teaching approach in computer science education. However, such courses typically have large-scale cohorts, resulting in PBL being used as group work. Our approach using individual PBL, circumvents issues concerning team dynamics and individual student assessment within group work. This course is designed to work for a large-scale (75+) postgraduate cohort of both full- and part-time students. To facilitate the large-scale cohort the course makes use of a virtual learning environment (VLE) and recorded lectures. Students were able to choose the subject of their project and what software they would use to create visualizations. This paper provides details of a novel approach to teaching data science using individual PBL for a large-scale cohort while maintaining education quality.
+PY  - 2023
+SP  - 17
+EP  - 20
+SN  - 978-1-4503-9821-3
+DO  - 10.1145/3573260.3573265
+AN  - WOS:001108946300005
+CP  - 7th Conference on Computing Education Practice (CEP)
+ER  -
+TY  - JOUR
+AU  - Lopez-Gazpio, I
+TI  - Gaining Student Engagement Through Project-Based Learning: A Competitive 2D Game Construction Case Study
+AB  - In this work we consider an open artificial intelligence game as a matter of study within the lectures of artificial intelligence to combat lack of motivation and increase engagement within the classroom. During formation, students in computer science can deal with moderately complex projects, nevertheless, dealing with such problems is relegated to the Degree Final Project. In this investigation we show the procedural steps of how project-based learning combined with game construction can effectively be used to promote engagement in informatic lectures at university. For the task, we build a 2D game engine and propose students to enroll in factitious research teams with the aim of programming intelligent agents that play the game employing artificial intelligence techniques. The intended principal outcome is to show evidence of the application of project-based learning in artificial intelligence within the lectures, and how it can be combined with game construction to increase motivation in the classroom. Project-based learning has the students learn, organize, and solve challenges while students themselves remain their own responsible for the investigation and process of work. We propose to follow a series of sequential phases that conform a set of milestones that incorporate a project-based learning approach to the lectures. Through this work we show that the use of project-based learning combined with game construction provides reliable evidence that a much deeper understanding about artificial intelligence is attained by students participating in the challenge. Student evaluation questionnaires and final grade results attained by students indicate that students remained more engaged during the semester in comparison to previous semesters in which lack of motivation was reported.
+PY  - 2022
+VL  - 10
+SP  - 1881
+EP  - 1892
+SN  - 2169-3536
+DO  - 10.1109/ACCESS.2021.3139764
+AN  - WOS:000739991900001
+ER  -
+TY  - JOUR
+AU  - Leavy, JE
+AU  - Bona, MD
+AU  - Nelson, B
+AU  - Leaversuch, F
+TI  - A comparison of face-to-face and fully online problem-based learning: Student results and staff experiences, 2014-2020
+AB  - Issue addressed Problem-based learning (PBL) is a student-directed pedagogy that promotes critical thinking, self-directed learning and communication skills essential for health promotion students and practitioners. This paper reports on student results, student evaluation and staff experience of PBL in the face-to-face and fully online environment in an undergraduate health sciences unit in an Australian university. Methods A single time-point study using quantitative and qualitative administrative student data (2014-2020) and narrative reflection from teaching academics (n = 5) was undertaken. Descriptive, independent t test and bivariate analyses for student results data were conducted; an inductive approach was used to analyse qualitative data and create codes. Results Student sample (n = 472) consisted face-to-face (n = 358, 75.8%) and online (n = 114, 24.2%) enrolments. Final Unit Mark was significantly higher for fully online students compared with face-to-face students in 2018 (P = .007) and 2019 (P = .001). Final Unit Achievement was significantly higher for fully online students compared with face-to-face students in 2018 (P = .017) and 2019 (P = .043). Three themes emerged: The PBL approach; Evolution of PBLs; Student skills and competencies. Discussion PBL allows students to learn through facilitated problem solving and strong collaborative skills. The face-to-face and fully online PBLs improved the student and academic staff experience, while supporting the development of critical thinking and self-directed research. Further, it supported students to develop their core health promotion competencies; and enhanced the online student learning experience. So what? Vital for contemporary, global graduates, the fully online PBL approach allows students to build critical academic and professional skills utilising current information technology relevant for collaborative professional practice.
+PY  - 2022
+DA  - OCT
+VL  - 33
+SP  - 57
+EP  - 66
+SN  - 1036-1073
+SN  - 2201-1617
+DO  - 10.1002/hpja.636
+AN  - WOS:000827666100001
+ER  -
+TY  - CPAPER
+AU  - Pérez, B
+AU  - Rubio, AL
+TI  - A Project-Based Learning Approach for Enhancing Learning Skills and Motivation in Software Engineering
+AB  - Software engineers must be able to manage complex projects, so that skills such as teamwork, leadership or initiative are critical to their successful development. Because of this, it is fundamental that the learning of software engineering as an academic discipline provides solid links between theory and practice. Educational frameworks such as those derived from the European Higher Education Area state that student-centered approaches are a useful tool for achieving these objectives. In this context, we present a project-based learning (PBL) experience report in a software engineering program of a Spanish university. The experience is based on the formation of small heterogeneous teams, which face the initial phases of a software methodology during the development of a project close to a real one. Through a strategy of role rotation and documentation transfer, all students perform different tasks and face different challenges throughout the project. Summative assessment is also adopted, considering not only teacher ratings but also students' peer assessment. The results prove the positive effect of using PBL to improve the training of students in acquiring different skills as future software engineers.
+PY  - 2020
+SP  - 309
+EP  - 315
+SN  - 978-1-4503-6793-6
+DO  - 10.1145/3328778.3366891
+AN  - WOS:000810169400050
+CP  - 51st ACM SIGCSE Technical Symposium on Computer Science Education (SIGCSE)
+ER  -
+TY  - JOUR
+AU  - Moreno-Ruiz, L
+AU  - Castellanos-Nieves, D
+AU  - Braileanu, BP
+AU  - González-González, EJ
+AU  - Sánchez-De La Rosa, JL
+AU  - Groenwald, CLO
+AU  - González-González, CS
+TI  - Combining Flipped Classroom, Project-Based Learning, and Formative Assessment Strategies in Engineering Studies
+AB  - This paper presents a methodology that encourages and fosters proactive student participation in individual and collaborative learning. The methodology combines Flipped Classroom, Formative Assessment and Continuous Assessment, Project-Based Learning, and Problem Solving using Simulators strategies, with an integrated teaching and learning system (ITLS), called SIENA. The tool serves to automate some of the processes inherent in the methodology and serves as a bridge across all of the educational process involved. The methodology has been tested in both undergraduate and postgraduate degrees in Computer Engineering studies, the former in a blended learning subject and the last in an online subject findings to date have proven positive. In addition, we have applied a unified theory of acceptance and use of technology model to ITLS and it has proven to be a useful tool in the learning process.
+PY  - 2019
+VL  - 35
+IS  - 6
+SP  - 1673
+EP  - 1683
+SN  - 0949-149X
+AN  - CCC:000496764400011
+CP  - Capstone Design Conference
+ER  -
+TY  - JOUR
+AU  - Zhan, Y
+TI  - Beyond technology: factors influencing the effects of teachers' audio feedback on students' project-based learning
+AB  - The effects of teachers' audio feedback on students' project-based learning and its influencing factors have seldom been empirically explored in the higher education context. To address this research gap, a group of Hong Kong freshmen (18-23 years old) and their teachers were involved in this study. Data were collected from students' retrospective journals, post-journal interviews and teacher interviews after the participants experienced audio feedback during their group projects in a General Education course. The findings demonstrated that teachers' audio feedback enhanced students' learning engagement, critical thinking and project output. The students also reported that audio feedback provided convenience, timeliness, rich information, asynchronous discussion and social presence. Other factors including the features of audio feedback, communication between student and teacher on the received feedback and their learning motivation were also crucial in determining the effects of audio feedback on student project-based learning.
+PY  - 2023
+DA  - JAN 1
+VL  - 32
+IS  - 1
+SP  - 91
+EP  - 103
+SN  - 1475-939X
+SN  - 1747-5139
+DO  - 10.1080/1475939X.2022.2093965
+AN  - WOS:000821449500001
+ER  -
+TY  - JOUR
+AU  - Sari, EDP
+AU  - Trisnawati, RK
+AU  - Agustina, MF
+AU  - Adiarti, D
+AU  - Noorashid, N
+TI  - Assessment of Students' Creative Thinking Skill on the Implementation of Project-Based Learning
+AB  - The implementation of Merdeka Belajar - Kampus Merdeka (Freedom to Learn) in Indonesia urges universities to adapt and set changes in learning activities. One of the changes is the implementation of Project-Based Learning to increase students' activeness and creativity. This research aims to assess students' creative thinking skills on the implementation of Project-Based Learning. This research is a descriptive qualitative case study. Purposive sampling is chosen in this research because the sample is chosen on purpose, i.e., those who join literary criticism class. There are thirty-six students who played as the subject of the research. It uses observation sheets and questionnaires to obtain the data. The data are then analyzed to get reliable results of students' creative thinking assessment. The result shows that half of the students (50%) agree that they face some difficulties in developing their creative thinking. Most of their problems are developing ideas into coherence text, structuring or organizing a good text, and choosing appropriate vocabulary to avoid repetition in the text. Students also find that project-based learning allows them to develop their creative thinking. It can be seen from four main rubrics of creative thinking assessment in form of originality, fluency, flexibility, and elaboration. Regarding the result, it can be concluded that project-based learning is proven to be beneficial in developing students' creative thinking skills, though they find some obstacles during the process.
+PY  - 2023
+VL  - 7
+IS  - 3
+SP  - 414
+EP  - 428
+SN  - 2548-8457
+SN  - 2548-8465
+DO  - 10.26858/ijole.v7i3.38462
+AN  - WOS:001083541000004
+ER  -
+TY  - JOUR
+AU  - Lucena, L
+AU  - Robeson, A
+AU  - Falcao, CJLM
+AU  - Paulina, L
+AU  - Santana, AC
+AU  - Hakamada, R
+TI  - Innovating forest science education through problem-based learning: Insights from a public university in Brazil
+AB  - The evolving market's demand for forest science professionals with dynamic skills and interdisciplinary knowledge calls for an urgent and renewed look at forest science education methods to produce professionals ready to tackle 'real world' challenges and climate change issues. Integrating problem-based learning (PBL) in forest science education offers a promising avenue to align the current demand for dynamic forest science professionals and teaching approaches in forest science programs. However, while PBL has been extensively studied in various educational settings, limited research studies document its application in forest sciences education, particularly in the context of Brazilian public universities. This study explores the perceived learning outcomes of a group of forest engineering students exposed to PBL and the challenges associated with implementing it in a public university in Brazil. We developed a survey to assess the perceived learning outcomes of 32 students exposed to the PBL methodology. The survey instrument comprised nine questions designed to measure students' self-assessment of learning outcomes. Overall, we found that students reported the development of skills in field experience, technical knowledge, teamwork, communication, interpersonal relationship, and more. The findings from this study highlight the potential of PBL in forest science education and provide insights into how this approach can better prepare students to become dynamic forest science professionals.
+PY  - 2025
+DA  - MAY
+VL  - 174
+SN  - 1389-9341
+SN  - 1872-7050
+DO  - 10.1016/j.forpol.2025.103476
+AN  - WOS:001461132900001
+ER  -
+TY  - JOUR
+AU  - Chen, HF
+AU  - Ho, LH
+AU  - Lee, HC
+AU  - Chiu, HF
+AU  - Tsai, YF
+TI  - Comparison of learning outcomes: Team-based vs. problem-based learning with high-Fidelity simulation in a critical care nursing course-a mixed-methods design
+AB  - Background: Few studies have evaluated the comparative effectiveness of team-based learning (TBL) and problem-based learning (PBL) combined with simulation in nursing education. Objective: This study aimed to compare the learning outcomes of TBL versus PBL, incorporating high-fidelity simulation (HFS) in a critical care nursing course. Methods: This study used a mixed-methods design with convenience sampling. Senior baccalaureate nursing students from a university of science and technology were recruited. Participants were randomly assigned to the TBL or PBL group by class, each receiving their respective teaching strategies combined with HFS. Course outcomes were assessed using a variety of instruments, including a learning assessment (shock knowledge, Advanced Cardiovascular Life Support knowledge, and a final test), the Satisfaction with Simulation Experience Scale (SSES), the Confidence Scale, the Emergency Preparedness Simulation Learning Experience Scale (EPSLES), the Learning Experience Questionnaire, and a demographic questionnaire. Results: A total of 173 senior nursing students were included. A One-way ANCOVA was utilized to control for pretest and midterm test scores when comparing the learning effects. The analysis revealed a statistically significant difference in post-test shock knowledge scores between the two groups (F = 4.51, p = 0.04). The TBL group achieved significantly higher post-test scores compared to the PBL group. In contrast, following the HFS program, the PBL group showed significantly higher mean scores on the SSES and EPSLES than the TBL group (t = 2.09, p = 0.04; t = 2.59, p = 0.01, respectively). Conclusion: Our study evaluated the effectiveness of mixed teaching strategies in a critical care nursing course. Findings indicate that both TBL and PBL enhance learning outcomes. The TBL group demonstrated superior performance on the learning outcomes test, while the PBL group excelled in simulation satisfaction and emergency simulation learning experiences. These results provide insights for selecting appropriate teaching strategies in intensive care education for nursing students.
+PY  - 2025
+DA  - SEP
+VL  - 152
+SN  - 0260-6917
+SN  - 1532-2793
+DO  - 10.1016/j.nedt.2025.106766
+AN  - WOS:001509840800001
+ER  -
+TY  - CPAPER
+AU  - Sugie, S
+TI  - Enhancing Chinese Language Education Through AI-Assisted Project-Based Learning: A Qualitative Study on Learning Values and Multimedia Skills Development
+AB  - The purpose of this study is to explore the value of AI-assisted project-based learning design in Chinese language education. Through instructional design that integrates foreign language, cross-cultural understanding, and multimedia expression, we aim to enhance learners' proactive attitudes and improve learning outcomes using AI and ICT. Conducted the tourism Chinese course at a Japanese university, the research employed mixed methods to assess the effectiveness of integrated PBL. The course utilized AI and ICT tools such as an online whiteboard, a pronunciation practice tool, generative AI for writing assistance, and a video editing application. Data from student surveys, feedback, and teacher observations indicated that approximately half of the students found the AI-supported PBL effective for their learning needs, especially in pronunciation practice and video editing, though it didn't fully address speaking skill inaccuracies. AI and ICT tools were effective in supporting cultural knowledge and intercultural communication skills, but student evaluation of AI's impact on learning were polarized. The value of the CFL approach using AI and ICT was discovered in creating immersive, adaptive learning environments-a value that had gone unnoticed in traditional teaching and learning methods-while also underscoring the need for proper support and training from teachers. Future challenges include integrating AI literacy into language courses and addressing varying technological proficiency levels among students.
+PY  - 2024
+SP  - 615
+EP  - 620
+SN  - 3078-4360
+SN  - 978-626-968-904-0
+AN  - WOS:001460297100095
+ED  - Kashihara, A
+ED  - Jiang, B
+ED  - Rodrigo, MM
+ED  - Sugay, JO
+CP  - 32nd International Conference on Computers in Education
+ER  -
+TY  - JOUR
+AU  - Moreira, JD
+AU  - Dos Santos, DMB
+TI  - DILEMMS IN EVALUATIVE PRACTICES AND TRAINING NEEDS FOR TUTORS IN THE PROBLEM-BASED LEARNING (PBL) METHOD
+AB  - This article presents research results whose goal is identified and discuss professional dilemmas in the field of learning assessment and formative needs of teachers-tutors who work on the Problem Based Learning (PBL) method of the Computer Engineering course at a public university in the State of Bahia. In fact, the following guiding question subsidized the development of the investigative process: what professional dilemmas, in terms of assessment processes, and formative needs of teachers-tutors of a public university can be evidenced through the teaching case methods? We are supported theoretically in reflections of Shulman (2014); Mizukami (2004); Zabalza (1994); Cunha (2015), among others. Methodologically, it is characterized by being a descriptive-analytical study, with a qualitative approach. The data were collected through the application of a teaching case, whose analysis was based on assumptions of the technique of content analysis, involving the three stages signaled by Bardin (1977). The data indicate that the participants' formative needs are concentrated in the pedagogical dimension, thus showing weaknesses in of these professionals' knowledge base of teaching. Regarding to the dilemmas, the tutors' testimonies emphasized the complex conduct of evaluative practices with the students in the context of the tutorial sessions and the students' unethical posture in the evaluative practices, especially, self-evaluation. Based on these aspects, we point out the need to design a proposal for ongoing training for research subjects, aiming their professional development.
+PY  - 2021
+DA  - MAY-AUG
+VL  - 28
+IS  - 2
+SP  - 157
+EP  - 179
+SN  - 0104-8481
+SN  - 2238-121X
+DO  - 10.15600/2238-121X/comunicacoes.v28n2p157-179
+AN  - WOS:000733964200011
+ER  -
+TY  - JOUR
+AU  - Pérez-Losada, M
+AU  - Crandall, KM
+AU  - Crandall, KA
+TI  - Testing the "Grandma Hypothesis": Characterizing Skin Microbiome Diversity as a Project-Based Learning Approach to Genomics
+AB  - The constantly evolving nature of genomics provides new challenges for students in Public Health as they try to understand how genomic information relates to health and disease. As Public Health curricula attempt to keep pace with the most recent advances in genomics, students should gain experience with analyzing genomic data and applying genomic tools to the study of health-related issues. To advance undergraduate and graduate student education and provide a more comprehensive view of genomics, we developed an educational project including both pedagogic and research components to characterize skin microbial communities (microbiomes) using targeted amplicon sequencing of their genomes (metataxonomy). All students completed the lab procedures, analyzed 16S rRNA genomic data (formative assessments), and wrote a five-page scientific report summarizing and discussing their results (summative assessment). Student grades for the summative assessment ranged from 31.5 to 40 (out of 40) points. They also successfully completed two practicums (problem sets) focused on microbiome sequence data and responded to 12 minute-papers related to genomic topics covered in class. In all these exercises the 2019 students outperformed 2018 students, who did not participate in this educational lab project. By fulfilling all the requirements of this project-based learning experience, students better understood the complexity of genomics and acquired a valuable set of marketable experience and skills in molecular technologies, bioinformatics and statistics (quantitative skills). Additionally, students were able to generate new valuable microbial 16S rRNA genomic data and test hypotheses about the composition and diversity of the microbes living on our skin (microbiota).
+PY  - 2020
+DA  - FEB
+VL  - 21
+IS  - 1
+SN  - 1935-7877
+SN  - 1935-7885
+DO  - 10.1128/jmbe.v21i1.2019
+AN  - WOS:000582667700007
+ER  -
+TY  - CPAPER
+AU  - Apostolatos, A
+AU  - Gross, S
+TI  - Teaching Advanced Topics in Numerical Engineering Using Project-Based Learning
+AB  - This case study discusses the use of computational platforms and resources for the organization and delivery of lectures in Numerical Engineering using Project-Based Learning (PBL). Additionally, this paper introduces elements of Flipped Classroom. The goal is to demonstrate how modern teaching techniques can enhance the quality of education for students and provide lecturers with an efficient method to set and evaluate Learning Objectives using Bloom's Taxonomy. The evaluation of Learning Outcomes, with a focus on Formative Assessment, is herein extensively discussed. The methods and results presented herein are based on the preparation and delivery of the master-level courses Advanced Finite Element Methods (AFEM) and Advanced Finite Element Methods Lab (AFEM-Lab) that took place in Summer Semester 2023 and Winter Semester 2023-24, respectively, at the Technical University of Munich (TUM). The results presented herein clearly show the effectiveness of using computational platforms and formative assessment both for PBL and Flipped Classroom in the context of advanced academic teaching.
+PY  - 2024
+SN  - 2165-9559
+SN  - 979-8-3503-9402-3
+SN  - 979-8-3503-9403-0
+DO  - 10.1109/EDUCON60312.2024.10578612
+AN  - WOS:001289091100055
+CP  - 15th IEEE Global Engineering Education Conference (IEEE EDUCON)
+ER  -
+TY  - JOUR
+AU  - Torres, A
+AU  - Hu, J
+AU  - Sriraman, V
+AU  - Martínez-Ortiz, A
+AU  - Membrillo-Hernández, J
+TI  - Assessing the Effectiveness of Problem-Based Learning Across Two Concrete Construction Courses
+AB  - The goal of this study is to assess the effectiveness of a Problem-Based Learning (PBL) pedagogy that was implemented in two different concrete construction courses. Both courses are a part of an industry focused four-year undergraduate concrete degree program. One of the classes focused on concrete problems, diagnosis, and repair of existing concrete, while the other class focused on handling and management methods of various concrete mixtures. In both courses, a PBL pedagogy was implemented such that students were self-learning and discovering the knowledge through an action-research case study. The action-research case study was specific to the course outcomes relevant to each course, but were assessed similarly. A total of eight different assessment methods were implemented across both courses' multiple times from 2012 - 2019. The results showed that the students are highly benefiting from the PBL pedagogy, which was indicated across all assessment methods. Each assessment technique provided a unique insight into student comprehension or benefits of the PBL pedagogy. The most beneficial assessment techniques were; pre- and post-student assessment, level of understanding and confidence, pre- and post-objective student assessment, and report assessment. These four assessment techniques provide both direct (objective) and indirect (subjective) assessment, while only requiring four total surveys.
+PY  - 2022
+DA  - OCT
+VL  - 15
+IS  - 4
+SP  - 473
+EP  - 496
+SN  - 1694-609X
+SN  - 1308-1470
+AN  - WOS:000836321000026
+ER  -
+TY  - CPAPER
+AU  - Brown, WL
+AU  - Dabipi, I
+AU  - Sharma, D
+AU  - Zhang, L
+AU  - Zhu-Stone, W
+AU  - Mei, LJ
+AU  - Wiggins, UT
+AU  - Cornelius, TT
+AU  - Jones, S
+AU  - Wescott, R
+AU  - Sharp, JA
+AU  - Glenn, F
+TI  - The Investigation of Logistic Regression Methods Applied to Engineering Education using Project Based Learning for Airport Systems Design
+AB  - This is a work in progress on the research-to-practice to advance engineering development using logistic regression design methods in engineering education through project-based learning (PBL) activities. The aviation community has witnessed a growing concern with safety and security issues due to system vulnerability of manned and unmanned aircrafts. The implementation PBL in engineering education with major airports identified the benefits of this investigation as a multi-disciplinary approach to address system vulnerabilities and analysis design approaches. This investigation includes defined methods and the factors to assess undergoing efforts of environment threats associated with complex networked systems in aviation through analysis design activities with machine learning. The ability to examine the analysis design allows learners in engineering education to deploy methods that will assess the combination of techniques and security consideration through machine learning. This project comprised of a collected dataset of network traces and malicious traffic that requires a solution and strategic model based on various scenarios to improve the software architecture design. Aviation safety and security standards are critical to the degree in which threats are constituted as each node within the network determined specific case studies for evaluation. This approach will feature a dataset that assess the spam detection categorization from a human behavior perspective and the factors to formulate data mining techniques and models in R programming language. The framework adopts the use of logistic regression and proposed techniques of the performance baseline to explore a systematic approach in the engineering design process. PBL in engineering education revealed a viewpoint from interdisciplinary approach as this study will have a wide range of features in the design analysis (e.g., revealing unwanted electronic information spread causing concerns and environmental threats to the aviation community). This study is developed to examine a common framework for processing and structuring a model using logistic regression analysis to classify key elements in the engineering process and PBL activities.
+PY  - 2021
+SN  - 978-1-6654-3851-3
+DO  - 10.1109/FIE49875.2021.9637205
+AN  - WOS:000821947700094
+CP  - IEEE Frontiers in Education Conference (FIE)
+ER  -
+TY  - JOUR
+AU  - Ngereja, B
+AU  - Hussein, B
+AU  - Andersen, B
+TI  - Does Project-Based Learning (PBL) Promote Student Learning? A Performance Evaluation
+AB  - The purpose of the study on which this paper is based was to conduct a performance evaluation of student learning for an introductory course in project management in a higher educational institution in Norway. This was done by utilizing performance measurement philosophy to evaluate perceived student learning after a project-based assignment was applied as an instructional tool. The evaluation was conducted at the end of the semester to determine whether it facilitated learning effectiveness by providing an authentic learning experience. Relevant learning criteria were identified from existing literature and were measured by means of a questionnaire survey. Ten measurement scales were established using a 5-point Likert scale. The survey was then rolled out for the same subject for two consecutive semesters for just over 100 project management students. The results indicated that the incorporation of project-based assignments has a positive impact on student learning, motivation, and performance both in the short and long term. The study finally revealed that the incorporation of project-based assignments enables the creation of real-life experiences, which further stimulates the creation and development of real-life competencies.
+PY  - 2020
+DA  - NOV
+VL  - 10
+IS  - 11
+SN  - 2227-7102
+DO  - 10.3390/educsci10110330
+AN  - WOS:000593667700001
+ER  -

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="416" height="360">
+<style>text{font-family:Arial, sans-serif; font-size:14px;} .lbl{font-size:13px;} .title{font-size:16px; font-weight:bold;}</style>
+<text class="title" x="208.0" y="32" text-anchor="middle">Artigos (n=301) por camada (interseção)</text>
+<line x1="80" y1="270" x2="376" y2="270" stroke="#333"/>
+<line x1="80" y1="270" x2="80" y2="68" stroke="#333"/>
+<line x1="75" y1="270.0" x2="80" y2="270.0" stroke="#333"/>
+<text x="70" y="275.0" text-anchor="end">0</text>
+<line x1="75" y1="236.33333333333334" x2="80" y2="236.33333333333334" stroke="#333"/>
+<text x="70" y="241.33333333333334" text-anchor="end">44</text>
+<line x1="75" y1="202.66666666666669" x2="80" y2="202.66666666666669" stroke="#333"/>
+<text x="70" y="207.66666666666669" text-anchor="end">87</text>
+<line x1="75" y1="169.0" x2="80" y2="169.0" stroke="#333"/>
+<text x="70" y="174.0" text-anchor="end">130</text>
+<line x1="75" y1="135.33333333333334" x2="80" y2="135.33333333333334" stroke="#333"/>
+<text x="70" y="140.33333333333334" text-anchor="end">174</text>
+<line x1="75" y1="101.66666666666666" x2="80" y2="101.66666666666666" stroke="#333"/>
+<text x="70" y="106.66666666666666" text-anchor="end">218</text>
+<line x1="75" y1="68.0" x2="80" y2="68.0" stroke="#333"/>
+<text x="70" y="73.0" text-anchor="end">261</text>
+<rect x="80" y="108.24521072796935" width="40" height="161.75478927203065" fill="#4e79a7"/>
+<text x="100.0" y="100.24521072796935" text-anchor="middle">209</text>
+<text class="lbl" x="100.0" y="294" text-anchor="middle">Camada 1</text>
+<rect x="144" y="68.0" width="40" height="202.0" fill="#4e79a7"/>
+<text x="164.0" y="60.0" text-anchor="middle">261</text>
+<text class="lbl" x="164.0" y="294" text-anchor="middle">Camada 2</text>
+<rect x="208" y="198.02298850574712" width="40" height="71.97701149425288" fill="#4e79a7"/>
+<text x="228.0" y="190.02298850574712" text-anchor="middle">93</text>
+<text class="lbl" x="228.0" y="294" text-anchor="middle">Camada 3</text>
+<rect x="272" y="269.2260536398467" width="40" height="0.7739463601532567" fill="#4e79a7"/>
+<text x="292.0" y="261.2260536398467" text-anchor="middle">1</text>
+<text class="lbl" x="292.0" y="294" text-anchor="middle">Camada 4</text>
+<rect x="336" y="148.4904214559387" width="40" height="121.5095785440613" fill="#4e79a7"/>
+<text x="356.0" y="140.4904214559387" text-anchor="middle">157</text>
+<text class="lbl" x="356.0" y="294" text-anchor="middle">Camada 5</text>
+</svg>

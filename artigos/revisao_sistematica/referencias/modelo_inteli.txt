@@ -1,0 +1,2685 @@
+Revista Brasileira de Informática na Educação – RBIE
+Brazilian Journal of Computers in Education
+(ISSN online: 2317-6121; print: 1414-5685)
+http://br-ie.org/pub/index.php/rbie
+Submission: 28/Apr/2024;
+Camera ready: 26/Dec/2024;
+
+1st round notif.: 20/Aug/2024;
+Edition review: 05/Feb/2025;
+
+New version: 02/Dec/2024;
+2nd round notif.: 06/Dec/2024;
+Available online: 15/May/2025; Published: 15/Jun/2025;
+
+O Ensino Superior de Computação Baseado em Projetos: o
+Inteli no caminho da inovação
+Title: Higher Education in Project-Based Computing: Inteli on the path to innovation
+Título: La Educación Superior en Computación Basada en Proyectos: Inteli en el camino de
+la innovación
+José Armando Valente
+Universidade Estadual de Campinas ― Unicamp
+ORCID: 0000-0002-1347-186X
+jvalente@unicamp.br
+
+Ig Ibert Bittencourt
+Universidade Federal de Alagoas – UFAL
+Harvard Graduate School of Education - HGSE
+ORCID: 0000-0001-5676-2280
+ig_bittencourt@gse.harvard.edu
+
+Flávia Maria Santoro
+Instituto de Tecnologia e Liderança ― Inteli
+ORCID: 0000-0003-3421-1984
+flavia@inteli.edu.br
+
+Maurício Garcia
+Instituto de Tecnologia e Liderança ― Inteli
+ORCID: 0000-0001-5078-2387
+mauricio@inteli.edu.br
+
+Seiji Isotani
+Universidade de São Paulo - USP
+Harvard Graduate School of Education - HGSE
+ORCID: 0000-0003-1574-0784
+seiji_isotani@gse.harvard.edu
+
+Ana Garcia
+Instituto de Tecnologia e Liderança ― Inteli
+ana@inteli.edu.br
+
+Maíra Habimorad
+Instituto de Tecnologia e Liderança ― Inteli
+maira@inteli.edu.br
+
+Resumo
+A informatização da sociedade tem demandado um número crescente de profissionais de tecnologias para dar conta
+do desenvolvimento dos recursos computacionais necessários. Contudo, a qualidade dos concluintes dos cursos de
+computação tradicionais não está atendendo às necessidades do mercado e do país. Com a finalidade de formar
+futuras lideranças em tecnologia, o objetivo deste artigo é apresentar a implementação de uma abordagem
+pedagógica baseada em projetos dos cursos de Computação, bem como a seleção dos docentes envolvidos, a criação
+de parcerias, as infraestruturas física e tecnológica, e as atividades que evidenciam a aprendizagem dos alunos.
+Trata-se de um relato de experiência cuja metodologia para o desenvolvimento do artigo foi baseada na abordagem
+documental e bibliográfica. A proposta educacional foi testada em um bootcamp e os resultados indicaram como os
+docentes, a infraestrutura tecnológica e a parceria devem estar articulados para possibilitar a implantação das
+metodologias de ensino e de aprendizagem baseada em projetos. O resultado deste trabalho é a operacionalização
+e instanciação de uma abordagem pedagógica baseada em projetos que oportunize a comunidade a pensar e
+repensar os passos concretos para realização da transformação curricular dos cursos de Computação do país.
+Palavras-Chave: Currículo; Ciência da computação; Metodologias ativas; Aprendizagem baseada em projeto;
+Tecnologias educacionais.
+
+Abstract
+Cite as: Valente, J. A., Bittencourt, I. I., Santoro, F. M., Garcia, M., Isotani, S., Garcia, A. & Habimorad, M. (2025).
+O Ensino Superior de Computação Baseado em Projetos: o Inteli no caminho da inovação. Revista
+Brasileira de Informática na Educação, vol. 33, 605-642. https://doi.org/10.5753/rbie.2025.4320
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+The digitization of society has demanded an increasing number of technology professionals to keep up with the
+development of necessary computing resources. However, the quality of graduates from traditional computing
+courses is not meeting the market and country's needs. With the goal of training future technology leaders, the
+purpose of this article is to present the implementation of a project-based pedagogical approach in Computing
+courses, as well as the selection of the involved faculty, the creation of partnerships, the physical and technological
+infrastructures, and the activities that demonstrate students’ learning. This is an experience report whose
+methodology for developing the article was based on documentary and bibliographic approach. The educational
+proposal was tested in a bootcamp, and the results indicated how faculty, technological infrastructure, and
+partnership should be articulated to enable the implementation of a project-based teaching and learning
+methodologies. The result of this work is the operationalization and instantiation of a project-based pedagogical
+approach that allows the community to think and rethink the concrete steps for the curricular transformation of the
+country's Computing courses.
+Keywords: Curriculum; Computer science; Active methodologies; Project-based learning; Educational technologies.
+
+Resumen
+La informatización de la sociedad ha demandado un número creciente de profesionales en tecnologías para hacer
+frente al desarrollo de los recursos computacionales necesarios. Sin embargo, la calidad de los egresados de los
+cursos tradicionales de computación no está cumpliendo con las necesidades del mercado y del país. Con el fin de
+formar futuras liderazgos en tecnología, el objetivo de este artículo es presentar la implementación de un enfoque
+pedagógico basado en proyectos en los cursos de Computación, así como la selección de los docentes involucrados,
+la creación de alianzas, las infraestructuras física y tecnológica, y las actividades que evidencian el aprendizaje de
+los estudiantes. Se trata de un relato de experiencia cuya metodología para el desarrollo del artículo se basó en el
+enfoque documental y bibliográfico. La propuesta educativa fue probada en un bootcamp y los resultados indicaron
+cómo los docentes, la infraestructura tecnológica y las alianzas deben estar articulados para posibilitar la
+implementación de las metodologías de enseñanza y aprendizaje basadas en proyectos. El resultado de este trabajo
+es la operacionalización e instancia de un enfoque pedagógico basado en proyectos que permita a la comunidad
+pensar y repensar los pasos concretos para la transformación curricular de los cursos de Computación del país.
+Palabras clave: Currículo; Ciencias de la computación; Metodologías activas; Aprendizaje basado en proyectos;
+Tecnologías educativas.
+
+606
+
+Valente et al.
+
+1
+
+RBIE v.33 – 2025
+
+Introdução
+
+As tecnologias digitais de informação e comunicação (TDIC) ocupam cada vez mais um papel de
+destaque na maioria das atividades que realizamos hoje, o que implica abrangência, diversidade e
+sofisticação de aplicações dessas tecnologias transformando praticamente todos os segmentos da
+sociedade. A transformação está relacionada com as novas formas “figitais” (Meira, 2021) e a
+importância que elas têm em nossa vida, seja no âmbito pessoal ou profissional. Plataformas
+figitais evoluem o conceito de plataformas digitais, considerando uma integração entre os
+ambientes físico, digital e social, criando assim um ecossistema figital. As figitais se tornaram
+transparentes, estão integradas e praticamente modificando o modo como pensamos e fazemos as
+coisas. A transformação do fazer acontece na maioria dos segmentos da sociedade, como o sistema
+produtivo de bens e serviços, o econômico, o entretenimento, o comércio etc. Cada um desses
+setores ainda preserva as funções e seus objetivos, porém os procedimentos e os processos que
+empregam atualmente são totalmente diferentes do que era feito há 20 anos. As tecnologias
+digitais estão no centro dessas transformações, no entanto elas não estão sendo utilizadas para
+simplesmente automatizar velhos processos. Foi necessário alterar estruturas e procedimentos, de
+modo que as figitais pudessem efetivamente trazer contribuições significativas. As figitais fazem
+parte da maneira como agimos e pensamos e são estruturantes de nosso pensamento, como o papel
+que elas desempenham no desenvolvimento do pensamento computacional (Papert, 1980; Wing,
+2006).
+De fato, a importância da integração de tecnologias no ensino está diretamente relacionada
+ao potencial dessas ferramentas em enriquecer a experiência de aprendizagem, mas desafios
+significativos permanecem em traduzir essa promessa em impacto concreto. Estudos revelam que,
+embora tecnologias como sistemas inteligentes de tutoria e plataformas de microensino
+demonstrem resultados promissores, o efeito médio das intervenções tecnológicas no desempenho
+dos alunos permanece modesto. Isso destaca a necessidade de implementação criteriosa e foco na
+qualidade pedagógica ao invés do meio utilizado (Hamilton & Hattie, 2021). Para dar conta da
+produção de soluções tecnológicos com características e funções transformadoras, é necessária a
+formação de profissionais qualificados nas diferentes áreas relacionadas à computação, como
+ciência da computação, engenharia de software, engenharia de computação e sistemas de
+informação. Além de suprir a demanda do mercado, é preciso preparar profissionais criativos que
+possam fazer as transformações mencionadas. No entanto, com o aumento significativo na procura
+por serviços de tecnologia, a quantidade de profissionais formados e qualificados disponíveis no
+mercado nessas áreas não é suficiente para atender a devida demanda.
+Um artigo publicado na revista Exame trata esse cenário de baixa oferta e alta demanda
+como o “apagão tecnológico” (Junqueira, 2021). De acordo com o relatório do World Economic
+Forum (2020), há um hiato de competências no mercado de trabalho de cerca de 55,4%, e a
+tendência pela procura de especialistas na área deve crescer até 2025. Com relação ao Brasil, o
+número de formandos nas áreas tecnológicas ainda é ínfimo, se comparado com outros países que
+estão despontando no panorama tecnológico, conforme se pode observar na Tabela 1, indicando
+o número de cursos de bacharelado existentes em ciência da computação, engenharia da
+computação, engenharia de software e sistemas de informação, presencial ou a distância de
+universidades públicas e privadas, bem como o número de alunos matriculados e concluintes em
+2020. De acordo com a Tabela 1, a maior parte dos cursos relacionados à área de computação
+ainda é presencial e se encontra nas instituições privadas. A relação entre número de alunos
+matriculados e número de alunos concluintes, em geral, é de 10%, e em algumas circunstâncias
+essa porcentagem é ainda menor, como nos casos de Engenharia de Computação e Engenharia de
+Software (Inep, 2022).
+
+607
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+Tabela 1: Cursos de computação existentes no Brasil.
+Fonte: Censo Superior – Inep (2022)
+
+Instituições públicas
+Presencial
+A distância
+Ciência da
+Computação
+Engenharia da
+Computação
+Engenharia de
+Software
+Sistemas de
+Informação
+
+Instituições privadas
+Presencial
+A distância
+
+N.
+Cur
+
+N.
+Mat
+
+N.
+Con
+
+N.
+Cur
+
+N.
+Mat
+
+N.
+Con
+
+N.
+Cur
+
+N.
+Mat
+
+N.
+Con
+
+N.
+Cur
+
+N.
+Mat
+
+N.
+Con
+
+158
+
+28.783
+
+2.179
+
+0
+
+0
+
+0
+
+266
+
+35.554
+
+4.504
+
+26
+
+5.491
+
+0
+
+24
+
+5.767
+
+340
+
+0
+
+0
+
+0
+
+71
+
+6.648
+
+747
+
+4
+
+166
+
+53
+
+22
+
+3.824
+
+272
+
+0
+
+0
+
+0
+
+48
+
+3.848
+
+171
+
+21
+
+5.066
+
+168
+
+296
+
+47.765
+
+4.039
+
+7
+
+2.218
+
+414
+
+785
+
+66.616
+
+13.046
+
+179
+
+92.583
+
+11.119
+
+N. Cursos, N. Matrículas, N. Concluintes
+
+O número total de concluintes nos quatro cursos em 2020 foi de 37.042, e as pesquisas
+realizadas pela BRASSCOM indicam que a demanda por profissionais de TI no País pode chegar
+a mais de 791 mil no período de 2021 a 2025, conforme Figura 1. Equiparando o número de
+concluintes nos quatro cursos e as demandas de novos profissionais nessas áreas, a possibilidade
+de atender as necessidades futuras do mercado é muito baixa. O número de matriculados nesses
+cursos é relativamente grande se comparado com os concluintes. Os dados indicam que são
+fundamentais mudanças drásticas de estratégias em matéria de formação desses profissionais.
+
+Figura 1: Demanda por novos profissionais na área de computação para o período de 2021-2025.
+Fonte: Brasscom (2021)
+
+Para mitigar esse problema, algumas empresas têm adotado a solução de criar cursos
+próprios para formação desses profissionais e, assim, suprir suas demandas. Por exemplo a
+Magalu (2024), oferece, por intermédio da plataforma “A Educação que conecta pessoas com o
+futuro do trabalho”, uma série de cursos e trilhas de estudos para formações assíncronas de forma
+gratuita sobre programação como HTML, CSS e Javascript. Outra iniciativa de bastante sucesso
+na França e que tem se disseminado no Brasil é a École 42, que ensina programação para qualquer
+608
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+um que queira aprender e que tem por objetivo formar profissionais para atender a demanda de
+tecnologia do País (42São Paulo, 2024). O modelo de educação da École 42 não possui
+professores nem uma estrutura fixa de currículo, tampouco horários e avaliações somativas.
+Embora essas iniciativas sejam importantes, elas tentam minimizar a problemática do
+apagão tecnológico oferecendo uma formação pontual, especialmente em programação, com o
+objetivo de suprir uma demanda da própria empresa. Além disso, essa formação não consegue
+preparar profissionais que sejam capazes de criar e implantar soluções inovadoras na área e que
+tenham uma proposta mais transformadora, tanto pessoal quanto na produção de recursos
+tecnológicos. Para atingir esse objetivo, é necessário um programa de formação mais amplo e com
+propósitos mais abrangentes do que atender ao mercado, considerando tanto as competências de
+computação, mas também de liderança e negócios.
+Por outro lado, a análise da maioria dos cursos universitários ou técnicos que formam
+profissionais para a área de tecnologia indica que tanto as propostas curriculares quanto os
+métodos de ensino estão desatualizados (ACM, 2020). A abordagem pedagógica ainda é
+instrucional e os currículos são verticalizados, sendo os conteúdos organizados de modo
+sequencial e em ordem crescente de complexidade. O professor ainda detém o controle dos
+processos de ensino e de aprendizagem, definindo os temas a serem desenvolvidos, a sequência
+em que são apresentados e como a informação é transmitida. A necessidade de inovação é urgente.
+O Instituto de Tecnologia e Liderança (Inteli) foi criado para atuar no ensino superior com
+a missão de formar as futuras lideranças em tecnologia que podem fazer as transformações que a
+sociedade necessita. Para tanto, foram criados os bacharelados em Ciência da Computação,
+Engenharia da Computação, Engenharia de Software e Sistemas de Informação. O objetivo não é
+ser mais uma instituição de ensino superior, mas proporcionar uma formação que aproxime o
+estudante de problemas reais por meio de parcerias com empresas e organizações sociais,
+constituindo um ecossistema de inovação e de novos ambientes de tecnologia no Brasil. O Inteli
+inova na gestão administrativa e acadêmica, na infraestrutura física e tecnológica e,
+principalmente, na abordagem pedagógica de cada um dos quatro cursos, utilizando a
+aprendizagem baseada em projetos (Hernández, 2007; Hernández & Ventura, 2017). O
+ecossistema de inovação é constituído de quatro componentes: a concepção pedagógica baseada
+em projetos, os docentes engajados, a parceria com empresas e a infraestrutura física e tecnológica
+de ponta.
+Ao longo de sua idealização, iniciada em meados de 2019, até a implantação da primeira
+turma de alunos em fevereiro de 2022, foram realizados três bootcamps para avaliar algumas das
+soluções inovadoras a serem implementadas. O primeiro bootcamp (cujo nome foi Tech Lab)
+tinha como meta analisar a concepção pedagógica por projeto e algumas ferramentas tecnológicas
+como suporte ao desenvolvimento das atividades de ensino e de aprendizagem; o segundo foi
+oferecido para alunos do ensino médio com o objetivo principal de avaliar o próprio processo
+seletivo; e o terceiro teve foco no piloto do primeiro módulo dos cursos, na capacitação de
+professores e na ferramenta de suporte desenvolvida pela própria equipe do Inteli.
+O objetivo deste artigo é descrever a operacionalização e instanciação de metodologias de
+ensino e de aprendizagem baseada em projetos realizado no período de setembro a novembro de
+2020. Os processos de ensino e de aprendizagem foram fundamentados em projetos e a partir
+deles foram trabalhados conteúdos específicos que auxiliaram os alunos no desenvolvimento do
+trabalho, fugindo do modelo curricular tradicionalmente utilizado e centrado em conteúdo. Além
+disso, foi estabelecida a parceria com empresas cujo objetivo foi prover temas de projetos
+relacionados com o mercado de trabalho.
+
+609
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+O artigo está organizado em seis seções, incluindo essa introdução. As próximas duas
+abordam, respectivamente, a fundamentação teórica sobre os principais tópicos relacionados à
+aprendizagem baseada em projeto; e o percurso metodológico adotado para a elaboração do artigo.
+Na seção quatro é descrita a proposta do ensino de computação baseada em projetos ser
+implantada no Inteli. A seção 5 descreve o bootcamp e os resultados obtidos e, por último, as
+considerações finais. No Apêndice consta o detalhamento do metaprojeto trabalhado no bootcamp
+com as respectivas atividades desenvolvidas.
+
+2
+
+Fundamentação Teórica Sobre Aprendizagem Baseada em Projetos
+
+Nesta seção, são discutidos os principais temas relacionados aos objetivos do artigo, como a
+aprendizagem baseada em projeto, o ensino tradicional de computação e algumas propostas de
+implantação do ensino de computação embasada no desenvolvimento de projetos
+2.1
+
+Aprendizagem Baseada em Projetos (ABPj)
+
+Dewey (1959) propôs a educação baseada no fazer, no desenvolvimento de atividades práticas,
+idealizadas como projetos, que fazem parte da concepção da escola progressiva. No Brasil, o
+método de projetos foi divulgado como modalidade de ensino a partir do trabalho de Bordenave
+e Pereira, publicado em 1982 (apud Berbel, 2011). No final dos anos 1990, a proposta de projeto
+como estratégia pedagógica foi novamente incentivada, principalmente por pesquisadores
+espanhóis (Hernández, 2007; Hernández & Ventura, 2017).
+O trabalho com projetos pode ser entendido como a tentativa de juntar a vida com a escola,
+criando situações concretas e oportunidades para o aluno “aplicar conteúdos” e não “ser ensinado
+sobre conteúdos”. É uma maneira de contextualizar o processo de construção e uso de
+conhecimentos e propiciar ao aprendiz a chance de poder desenvolver habilidades sobre como
+resolver problemas, sobre estratégias, competências emocionais e, por conseguinte, atribuir
+significado ao conceito que está sendo trabalhado. Assim, ele, no período de sua formação, tem a
+oportunidade de criar e desenvolver autonomia para definir e implementar projetos, como deverá
+acontecer em sua vida profissional.
+A revisão da pesquisa sobre ABPj realizada por Thomas (2000) descreve as limitações
+bem como os benefícios dessa abordagem comparada com o ensino tradicional. Como parte das
+conclusões o autor menciona ampla evidência de que a ABPj é um método eficaz para ensinar aos
+alunos processos e procedimentos complexos, como planejamento, comunicação, resolução de
+problemas e tomada de decisão e que aprender habilidades cognitivas de nível superior via ABPj
+está associado a maior capacidade por parte dos alunos de aplicar esses aprendizados em novos
+contextos de resolução de problemas. O impacto positivo também foi constatado por Zhou (2023),
+indicando que a ABPj pode melhorar o pensamento ativo, a prática e a capacidade cooperativa de
+trabalho em equipe dos alunos. O estudo de Biazus e Mahtari (2022) conclui que a proposta da
+ABPj impacta significativamente as habilidades do pensamento crítico dos alunos do ensino
+médio. Almulla (2020) identificou uma relação significativa entre a ABPj e a aprendizagem
+colaborativa, aprendizagem de assunto disciplinar, aprendizagem iterativa e aprendizagem
+autêntica, que, por sua vez, produziram engajamento do aluno.
+Destaca-se ainda que há várias revisões sistemáticas da literatura e meta-análises que
+buscam identificar trabalhos e análises evidências de impacto da aplicação da ABPj, tanto no
+Ensino Básico quanto no Ensino Superior.
+O artigo de Balemen e Keskin (2018), intitulado The Effectiveness of Project-Based
+Learning on Science Education: A Meta-Analysis Search, explora, por meio de uma meta-análise,
+610
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+a eficácia da ABPj na educação científica, focando no desempenho acadêmico. A análise abrangeu
+48 estudos com um tamanho de efeito médio de 1,063, indicando que estudantes submetidos à
+ABPj tiveram um desempenho 86,6% superior ao ensino tradicional. O impacto foi consistente
+em várias disciplinas (como biologia, física e química) e níveis de ensino (primário, secundário e
+superior), sendo mais proeminente no ensino secundário (d=1,7677). No ensino superior, o
+tamanho do efeito também foi significativo (d=0,9089), confirmando a relevância dessa
+abordagem. Contudo, o estudo identificou limitações, como a predominância de pesquisas em
+níveis de ensino fundamental e a escassez de análises comparando a ABPj combinada com outros
+métodos inovadores. Os autores ainda destacam que não foram observadas diferenças
+significativas entre tipos de publicação ou tamanhos de amostra, sugerindo robustez nos
+resultados
+Zhang e Ma (2023) fizeram uma meta-análise contendo 66 estudos experimentais ou
+quase-experimentais realizados entre 2003 e 2023 para avaliar os efeitos da ABPj nos resultados
+educacionais dos alunos. Os resultados mostram que a ABPj tem impacto positivo moderado nos
+resultados de aprendizagem (SMD = 0.441), melhorando o desempenho acadêmico (SMD =
+0.650), habilidades de pensamento (SMD = 0.386) e atitudes afetivas (SMD = 0.389). A eficácia
+varia conforme variáveis moderadoras, como o nível educacional, com impacto mais forte no
+ensino médio (SMD = 0.720), seguido pelo ensino fundamental e menor no ensino superior (SMD
+= 0.116). A ABPj é mais eficaz em disciplinas de engenharia e tecnologia (SMD = 0.619) e em
+aulas experimentais (SMD = 0.498). Limitações incluem a escassez de dados sobre o ensino
+superior e de estudos sobre integração tecnológica na ABPj, indicando a necessidade de pesquisas
+adicionais para expandir sua aplicação e compreensão em contextos mais amplos.
+Guo et al (2020) analisou 76 estudos empíricos sobre a ABPj no ensino superior, focando
+em resultados cognitivos, afetivos, comportamentais e no desempenho em artefatos. Os resultados
+cognitivos foram investigados em 17 estudos, os afetivos em 37 estudos (percepção de benefícios)
+e 31 (experiência), enquanto as habilidades foram analisadas em 9 estudos e o engajamento em 4.
+Artefatos criados pelos alunos foram avaliados em 10 estudos, todos utilizando rubricas.
+Questionários foram o instrumento de medição mais usado, refletindo uma predominância de
+abordagens autorrelatadas. Mais de 70% dos estudos focaram na graduação, com a maioria
+utilizando estudos de caso e 54 limitados a um único grupo, evidenciando limitações
+metodológicas para inferir causalidade. Os achados indicam que a ABPj promove conhecimentos,
+habilidades e engajamento, mas há necessidade de maior rigor metodológico para fortalecer as
+conclusões.
+O artigo de Kokotsaki, Menzies e Wiggins (2016) revisa a literatura sobre ABPj,
+destacando sua eficácia no engajamento estudantil, no desenvolvimento de habilidades críticas e
+na aplicação prática do aprendizado, especialmente no ensino superior. Estudos em países como
+Reino Unido, Espanha, Portugal, Austrália e Irlanda investigaram a ABPj em áreas como
+engenharia e línguas, evidenciando benefícios como maior conexão entre teoria e prática e
+desenvolvimento da autonomia dos estudantes. Apesar de seus resultados promissores, a maioria
+das pesquisas utilizou métodos quase-experimentais, limitando conclusões causais. Fatores como
+suporte tecnológico, qualidade do trabalho em grupo e orientação eficaz dos professores foram
+identificados como cruciais para o sucesso da ABPj, enquanto limitações incluem amostras
+pequenas e falta de controle rigoroso nos desenhos experimentais.
+Já De Los Ríos et al. (2010) analisaram duas décadas de implementação da ABPj no ensino
+superior de engenharia, com foco na Universidade Técnica de Madrid. O objetivo do estudo foi
+avaliar como a metodologia contribuiu para o desenvolvimento de competências técnicas,
+pessoais e contextuais, integrando ensino, pesquisa e resolução de problemas reais. Os resultados
+mostram que a ABPj promove aprendizagem ativa, colaboração e uma ligação mais forte com
+611
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+demandas profissionais. Entre 1987 e 2010, foram realizados 115 projetos envolvendo cerca de
+900 estudantes, abrangendo temas como infraestrutura rural e conservação ambiental. As
+principais limitações incluem desafios técnicos iniciais, resistência institucional e adaptação
+curricular ao Espaço Europeu de Educação Superior (EHEA). No contexto do ensino superior, o
+estudo destaca o papel da ABPj em formar profissionais preparados para gerenciar projetos
+complexos e certificados pela Associação Internacional de Gestão de Projetos (IPMA).
+O artigo de Tafakur, Retnawati e Shukri (2023) investigou a eficácia da ABPj no
+desenvolvimento do pensamento crítico dos alunos, comparando-a a outras abordagens
+pedagógicas. A meta-análise considerou 29 estudos publicados entre 2012 e 2022, abrangendo
+3.503 estudantes de diferentes níveis educacionais. Os resultados indicaram que a ABPj tem um
+efeito significativo no aprimoramento do pensamento crítico, com tamanho de efeito médio de
+0,743 no modelo de efeitos aleatórios. No ensino superior, a ABPj também demonstrou melhorias
+substanciais, embora os resultados sejam mais variados em comparação aos níveis básicos de
+educação. Limitações incluem a heterogeneidade entre estudos e o desempenho da ABPj em
+relação a métodos como Aprendizagem Baseada em Problemas, que mostrou eficácia semelhante.
+Apesar disso, a ABPj supera consistentemente métodos tradicionais, como aprendizagem direta e
+convencional. Inovações tecnológicas e integração com outras estratégias pedagógicas são
+recomendadas para maximizar os benefícios da ABPj.
+O artigo de Chen e Yang (2018) apresenta uma meta-análise sobre os efeitos da ABPj no
+desempenho acadêmico de estudantes, comparando-a ao ensino tradicional (ET). Foram
+analisados 30 estudos, abrangendo 12.585 alunos de 189 escolas em nove países, resultando em
+um tamanho de efeito médio ponderado (d+) de 0,71, indicando um impacto positivo moderado a
+alto da ABPj. No ensino superior, o efeito foi menor (d+ = 0,57), mas ainda significativo. A análise
+identificou fatores moderadores como área de conhecimento (efeitos maiores em ciências sociais),
+localização (maior impacto na Europa e América do Norte), tempo de instrução (acima de duas
+horas semanais), e uso de tecnologia. Limitações incluem a restrição a estudos em inglês e chinês,
+além de desafios na generalização para outros métodos baseados em investigação e contextos
+culturais diversos. A pesquisa sugere a ABPj como uma alternativa eficaz ao ET, com
+recomendações para aprimorar sua implementação com tecnologia e maior duração de aplicação.
+No entanto, é preciso notar que o fato de o aluno estar aprendendo via projeto não
+necessariamente implica que ele está construindo conhecimentos sobre os conteúdos disciplinares
+envolvidos nesse fazer. Os estudos conduzidos por Piaget (1978) sobre o fazer e o compreender
+indicam que a compreensão de conceitos envolvidos nas tarefas executadas está diretamente
+relacionada com o grau de interação que o aprendiz tem com esses conceitos. O fato de os alunos
+estarem desenvolvendo projetos não significa que eles estão construindo conhecimento ou
+compreendendo o que estão fazendo (Valente, 2002). Como observou Piaget (1978), desenvolver
+o projeto e atingir resultados satisfatórios não garante a aquisição de conceitos contidos no projeto.
+A solução para uma educação que prioriza a compreensão é a interação com objetos e a realização
+de projetos ou de atividades que sejam estimulantes para que o aprendiz possa estar empenhado
+no que faz.
+Para auxiliar o aluno na construção de novos conhecimentos, a ideia não é ministrar aulas,
+mas trabalhar determinado conceito quando ele for necessário para que o aluno possa avançar ou
+ser desafiado a pensar em novas alternativas – just in time learning. Em certo momento, é
+importante o professor apresentar temas relativos ao desenvolvimento de projeto, em outro,
+questões relativas aos conceitos disciplinares e assim por diante. Essas inserções e interações do
+professor acontecem quando o aluno enfrenta alguma dificuldade e necessita da ajuda do professor
+ou mesmo de um colega mais experiente (Valente, 2008).
+
+612
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+Assim, o desenvolvimento do projeto serve como pano de fundo para o professor poder
+lidar com diferentes tipos de conhecimentos que estão naquele imbricados. No caso do Inteli, a
+intenção é que os projetos possam criar condições para o estudo de conceitos de computação,
+competências de negócios e liderança. Para tanto, os professores que dão suporte às atividades
+com projetos devem trabalhar com o aluno de modo que as competências possam ser aprimoradas
+como uma dança que eles realizam, transitando e atuando em cada um desses três eixos. Em
+determinado momento, o professor e o aluno trabalham temas relativos à competência de
+computação; em outro, questões concernentes às competências de negócio, e assim por diante.
+2.2
+
+A Graduação em Computação
+
+De acordo com o relatório sobre cursos de graduação relacionados ao ensino de computação,
+produzido conjuntamente pela The Association for Computing Machinery (ACM) e The IEEE
+Computer Society (IEEE-CS), os programas e disciplinas começaram a surgir na década de 1960
+em diversos países (ACM, 2006), inclusive no Brasil (Fang et al, 2015). Em geral, havia apenas
+três tipos de programas de graduação associados à computação: ciência da computação,
+engenharia elétrica e sistema de informação. Cada um deles tinha sua própria área de atuação e
+especificidade, sendo ciência da computação dedicado ao desenvolvimento de software e aspectos
+teóricos da computação; engenharia elétrica destinado ao desenvolvimento de hardware; e
+sistemas de informação voltado à resolução de problemas de negócios usando hardware e software
+(ACM, 2006).
+Durante os anos de 1990, com a invenção dos microprocessadores baseados em chips,
+avanços significativos aconteceram nos programas de graduação relacionados à computação. A
+engenharia da computação, que fazia parte do programa de engenharia elétrica, emergiu para se
+tornar um programa independente. O mesmo ocorreu com a engenharia de software, que era parte
+do programa de ciência da computação e passou a ser um programa independente. Finalmente, o
+programa de sistemas de informação foi desmembrado em sistema de informação e tecnologia da
+informação (ACM, 2006).
+Assim, a partir de 1990, o relatório sobre currículo de computação da ACM (2006)
+menciona que os programas de graduação relacionados ao ensino de computação se estabeleceram
+como:
+• A ciência da computação cresceu rapidamente e passou a ser aceita como uma família de
+disciplinas acadêmicas. Ela aparece pela primeira vez como uma disciplina na década de 1970,
+embora tenha sido questionada sua legitimidade como uma disciplina acadêmica. Na década de
+1990, a ciência da computação desenvolveu um corpo considerável de pesquisa, conhecimento
+e inovação que abrangeu desde a teoria até a prática, e a controvérsia sobre sua legitimidade
+deixou de existir.
+• A engenharia da computação concretizou seu surgimento da engenharia elétrica durante o
+final dos anos 1970 e os anos 1980. No entanto, o advento dos chips de computador na década
+de 1990 contribuiu para solidificar a engenharia de computação como um campo relevante e
+forte.
+• A engenharia de software surgiu como uma área dentro da ciência da computação. No entanto,
+à medida que os problemas se tornaram mais complexos, demandando programas cada vez mais
+confiáveis, a engenharia de software é desmembrada da ciência da computação. Como uma
+disciplina de engenharia, a preocupação é a criação de métodos rigorosos para projetar e
+construir softwares ainda mais robustos.
+• Os sistemas de informação tiveram que enfrentar uma esfera crescente de desafios,
+especialmente após os anos 1990. Com a disseminação dos computadores nas empresas, a
+613
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+quantidade de informação expandiu e as organizações passaram a ter mais informações
+disponíveis, tornando os problemas de gestão da informação cada vez mais complexos. Por
+conseguinte, os sistemas de informação, como campo de estudo, começaram a dar mais atenção
+ao uso da computação como meio de comunicação e tomada de decisão colaborativa nas
+organizações. Outra vertente, como os programas de tecnologia da informação, foca a
+adequação da infraestrutura tecnológica da organização, de modo que possa funcionar de forma
+confiável e que atenda às necessidades relacionadas ao uso das tecnologias disponíveis.
+As abordagens metodológicas de ensino e de aprendizagem adotadas nesses cursos
+seguiram, inicialmente, as sugestões apresentadas em um artigo que estabeleceu a computação
+como área de conhecimento. Esse documento sugere a organização dos cursos em disciplinas,
+prevendo “aulas expositivas e uma estreita coordenação com laboratório semanal. As aulas devem
+enfatizar fundamentos; os laboratórios, a tecnologia e o know-how” (Denning, 1989, p. 13). O
+artigo recomenda que os cursos não só dêem destaque a programação, algoritmo e estrutura de
+dados, mas também contemplem material de outras áreas, como matemática e física.
+No tocante ao conteúdo a ser ministrado nos quatro cursos, a ACM tem produzido desde
+2001 uma série de guias curriculares, e o de 2013 ainda está centrado em um currículo baseado
+em disciplinas, embora já apontasse para a necessidade de o aluno se envolver “em pelo menos
+um projeto substancial”, por exemplo, projeto de desenvolvimento de software (ACM, 2013, p.
+24). O documento menciona também que algumas instituições já desenvolvem disciplinas
+embasadas em projetos, como no Wofford College e na Quinnipiac University, ambas nos EUA.
+2.3
+
+Cursos de Computação Cuja Metodologia É Baseada em Projetos
+
+A mudança curricular é sugerida no guia de 2020 da ACM, que apresenta um novo paradigma
+para o ensino de computação, abrangendo os cinco cursos mencionados (ciência da computação,
+engenharia da computação, engenharia de software, sistemas de informação e tecnologia da
+informação), além de cibersegurança (ACM, 2020). A recomendação é que o foco dos processos
+de ensino e de aprendizagem seja em competências e que haja a transição da aprendizagem
+baseada em conteúdo para a baseada em competência, entendida como conhecimento (knowwhat), habilidades (know-how) e atitude (know-why). O documento não fornece conteúdos
+específicos para cada disciplina, mas sugere e oferece muitas oportunidades, incluindo a
+recomendação de engajar os alunos de graduação para explorar os benefícios das competências
+do mercado como parte da formação. Além disso, sugere, por exemplo, que o desenvolvimento
+de competências pode ser feito com parte de uma disciplina ou mediante a integração de múltiplas
+disciplinas, por meio de uma disciplina baseada em projetos, ou de estágios.
+O documento reconhece que “quase todas as universidades em todo o mundo produzem
+graduados por meio da aprendizagem baseada no conhecimento” (ACM, 2020, p. 36), embora
+esse tipo de ensino possa ser insuficiente para o graduando enfrentar todos os desafios no futuro.
+Pautadas por essas recomendações, diversas instituições de ensino superior têm adaptado seus
+currículos para incorporar essas sugestões, especialmente a ABPj.
+Alguns cursos têm introduzido a ABPj como parte da primeira disciplina sobre
+programação, como a Universidade de Lugano (Jazayeri, 2015); como parte da disciplina de
+arquitetura de computadores, no segundo semestre (Correia, Rodrigues & Carrondo, 2019); ou
+após algumas disciplinas introdutórias. Por exemplo, o Departamento de Ciência da Computação
+da Norwegian University of Science and Technology (NTNU) implantou a aprendizagem baseada
+em projetos como parte do curso de bacharelado em computação. As disciplinas baseadas em
+projetos são incluídas a partir do terceiro semestre, e no sexto semestre os alunos trabalham em
+grupo para desenvolver um software para um cliente real (Sindre et al, 2018). Na Universidade
+
+614
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+de Bremen, o ABPj é inserido como parte do trabalho em equipe nos 3º e 4º anos do curso de
+engenharia de software (Breiter, Fey, & Drechsler, 2005).
+O curso de ciência da computação da Universidade de Ciências Aplicadas, Technikum
+Wien, na Áustria, tem implantado a ABPj do primeiro ao sexto semestre respectivamente nas
+disciplinas: desenvolvimento Web, desenvolvimento Web no que diz respeito à gestão de projetos,
+programação e gerenciamento de projetos, gerenciamento de projetos ágil e clássico, grande
+projeto de software e estágio (empresa ou universidade). Os alunos geralmente trabalham em
+equipes de quatro a seis membros e cada equipe é supervisionada por um professor. Os projetos,
+em geral, são de quatro tipos: trazidos pelos próprios alunos, oferecidos pela universidade,
+software para as necessidades do corpo docente, e projetos para uma empresa (Pucher & Lehner,
+2011; Pucher, 2014).
+No Brasil, como em outras universidades mencionadas, o curso de ciência da computação
+do Insper mistura disciplinas básicas e práticas até o quarto semestre, a partir do qual são previstos
+o desenvolvimento de projetos e os estágios (Insper, 2024). O curso de engenharia de computação
+da Universidade Tecnológica Federal do Paraná (UTFPR), campus de Curitiba, com duração de
+dez semestres, incorpora ABPj a seu currículo por meio de disciplinas denominadas Oficinas de
+Integração (OI), inseridas no terceiro, no sexto e no oitavo semestres. Os projetos desenvolvidos
+nas OI demandam os conteúdos abordados nas disciplinas anteriores e os temas dos projetos são
+propostos pelos estudantes, sendo as equipes montadas por eles próprios (Borba et al, 2011).
+A análise da literatura indica que a maioria dos cursos de computação está inserindo a
+ABPj como parte de disciplinas ou como disciplinas de projetos, como as OI. Cursos cuja
+abordagem pedagógica seja totalmente baseada em projetos ainda são raros, como está sendo
+proposto pelo Inteli. Um dos pioneiros no Brasil é a Uniamérica, sendo que a partir de 2021 passou
+a ser parte da Descomplica (Uniamérica, 2024).
+
+3
+
+Percurso Metodológico
+
+O artigo busca descrever o processo de construção da proposta curricular, a realização de
+atividades piloto como um bootcamp para identificar o perfil dos estudantes e professores, e a
+análise das condições necessárias, incluindo infraestrutura tecnológica e parcerias institucionais,
+para o sucesso da iniciativa. A experiência relatada pretende contribuir para o debate sobre a
+viabilidade e os desafios da adoção do ensino baseado em projetos como abordagem pedagógica
+inovadora, além de oferecer subsídios para futuras implementações em contextos similares.
+O artigo foi desenvolvido a partir da abordagem qualitativa com predomínio da análise
+documental e bibliográfica (Gil, 2008, 2002). Esta abrange o levantamento de registros e a
+verificação de relevância das informações com o objetivo de fundamentar as análises e os
+resultados da pesquisa. Conforme destacado por Bittencourt e Isotani (2018), a transparência e a
+utilização de métodos bem definidos possibilitam que os resultados contribuam de forma
+incremental para a construção de conhecimento na área da educação e suas tecnologias aplicadas.
+Destaca-se ainda que os desafios de uma pesquisa qualitativa são evidentes na necessidade
+de formulação clara e relevante de problemas de pesquisa, considerando a abrangência adequada,
+viabilidade, concisão e consistência metodológica. A clareza na delimitação dos problemas e o
+controle das decisões metodológicas são cruciais para garantir que os resultados atendam às
+exigências científicas e sociais, promovendo um conhecimento relevante e aplicável (De Luca et
+al., 2022). Nesse sentido, o artigo faz uma análise de documentos sobre as atividades que foram
+desenvolvidas para a criação da proposta curricular a ser implantada no Inteli, a realização de um
+bootcamp para verificar as condições do tipo de aluno, o perfil dos professores, a infraestrutura
+615
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+tecnológica para dar suporte às atividades curriculares e o papel das parcerias com empresas no
+auxílio no desenvolvimento das atividades acadêmicas.
+
+4
+
+Proposta de Computação Baseada em Projetos a Ser Implantada no Inteli
+
+Esta seção apresenta um panorama abrangente para a concepção de um ambiente educacional
+eficiente e inovador. Na subseção 4.1, será explorado o papel do Inteli e a articulação de uma
+proposta curricular alinhada a metodologias modernas de ensino e aprendizagem. Em 4.2, discutese a pedagogia baseada em projetos como ferramenta central para promover o protagonismo
+estudantil e a interdisciplinaridade. A subseção 4.3 examina a organização docente, destacando
+estratégias de formação contínua, colaboração e autonomia profissional. Na sequência, em 4.4,
+aborda-se a criação de parcerias estratégicas com instituições externas para fortalecer recursos e
+ampliar oportunidades. As subseções 4.5 e 4.6 tratam, respectivamente, da infraestrutura física,
+com foco em ambientes que promovam acessibilidade e inovação, e da infraestrutura tecnológica,
+essencial para apoiar práticas pedagógicas contemporâneas e a integração digital no processo
+educativo.
+4.1
+
+O Inteli e a Proposta Curricular de Ensino e de Aprendizagem
+
+O Inteli foi criado a partir da intenção de solucionar o hiato existente no Brasil relativo à formação
+de profissionais de tecnologia, capazes de pensar e criar tecnologia como potencializadora de
+soluções e de negócios que resolvam problemas não só do Brasil, como de outros países. A ideia
+nasceu de dois filantropos1 que, a partir das constatações oriundas de conversas com grandes
+fundos de investimentos em startups e em conferências sobre o tema, como a Brazil at Silicon
+Valley (BSV19, 2021), decidiram que seria importante deixar um legado relacionado à educação,
+principalmente no campo tecnológico.
+A concepção para criação do Inteli iniciou em meados de 2019, com a contratação de Ana
+Garcia e logo após, Ig Ibert Bittencourt e Seiji Isotani, e a primeira turma de estudantes foi
+matriculada no primeiro semestre de 2022. Durante os anos de 2019 e 2020, ainda com a
+denominação de uTech, foram executadas diversas ações como análise do mercado e elaboração
+do plano de negócio, design do modelo de ensino, contratação de gestores e professores, primeiro
+bootcamp e preparação de documentos para o regulatório no MEC. Em 2021, foram realizados o
+design e a construção do espaço físico, o desenvolvimento de ferramentas tecnológicas, o segundo
+e terceiro bootcamps e o reconhecimento dos cursos no MEC (Habimorad, Santoro & Valente,
+2022).
+O Inteli foi criado como uma faculdade de Computação com uma camada ampliada de
+negócios, liderança, empreendedorismo e conexão com o mercado. Assim, o Inteli é capaz de unir
+potência acadêmica, capacidade de inovar e aplicação prática – Excelência Transformadora – para
+preparar um profissional com uma formação analítica robusta e conhecimento em tecnologia,
+além de competências de liderança e de negócio.
+Os aspectos que merecem ser tratados com destaque no contexto deste artigo são os
+componentes do ecossistema que sustenta a proposta do Inteli, especialmente até o final de 2020,
+quando as concepções para o Inteli estavam sendo gestadas: a concepção pedagógica totalmente
+baseada em projetos; os docentes envolvidos e como eles se organizam; a parceria com a empresa
+como participante no desenvolvimento das atividades pedagógicas; e a infraestrutura tecnológica.
+
+1
+
+André Esteves e Roberto Sallouti
+
+616
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+Apesar de esses componentes serem bastante conhecidos e discutidos largamente por educadores
+há muitos anos, a questão é como implementá-los.
+4.2
+
+Pedagogia Baseada em Projetos
+
+A proposta pedagógica adotada pelo Inteli foi 100% baseada em projetos. Cada um dos cursos –
+ciência da computação, engenharia da computação, engenharia de software e sistemas de
+informação – foi concebido com 16 módulos, sendo quatro módulos por ano. Em cada módulo foi
+desenvolvido um projeto, incorporando competências de computação, de negócios e liderança.
+Essas três competências foram integradas no desenvolvimento do projeto e com o objetivo de
+contribuir com a formação dos profissionais do futuro, especialmente na área da computação.
+Todos os projetos devem ser desenvolvidos com parceiros de mercado que trazem
+problemas reais para serem analisados pelos estudantes. Desde o primeiro dia de aula no Inteli, o
+estudante é desafiado a lidar com cenários complexos e propor soluções com visão crítica e
+inovadora. A metodologia por projetos, nesse formato, proporciona aprendizagem por meio da
+experiência prática, aproximação da academia com o mercado e currículo sempre atualizado.
+A matriz curricular foi organizada no âmbito de metaprojetos, que é um framework – ou
+seja, uma estrutura básica –, em que são definidos os conceitos, os artefatos a serem construídos
+e a metodologia a ser seguida pelos grupos de estudantes. O currículo foi então composto por um
+conjunto de metaprojetos que garantem que todo o conteúdo importante para a formação
+profissional seja abordado de forma teórica e prática nos quatro cursos. Cada metaprojeto deverá
+ser instanciado de acordo com o problema real trazido pelo parceiro de mercado. Ao todo, são 16
+metaprojetos que o estudante deve cumprir ao longo dos quatro anos do curso, em módulos com
+10 semanas de duração cada. Essa estrutura permite integralizar uma carga horária de 4.000 horas.
+Foram concebidos quatro metaprojetos por ano, e os quatro primeiros são comuns aos quatro
+cursos, como mostra a Figura 2.
+
+Figura 2: Estrutura curricular baseada em metaprojetos implantada no Inteli.
+
+Por exemplo, o primeiro metaprojeto está relacionado com o desenvolvimento de jogos;
+o segundo, com aplicações web. Como parte do metaprojeto, além do desenvolvimento de
+artefatos computacionais, o aluno deve executar uma série de atividades, como autoestudo de
+temas referentes ao projeto, encontros com professores especialistas para resolução de dúvidas
+sobre o material de autoestudo, avaliações a respeito da aprendizagem e atividades
+617
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+complementares, como participação em eventos, realização de estágios e envolvimento em
+atividades de cunho social. Com relação ao desenvolvimento do projeto, as atividades são
+planejadas de modo que os grupos de estudantes façam entregas parciais do projeto, sempre
+seguidas de interação e validação com o parceiro de mercado envolvido. No autoestudo, o
+estudante acessa material pertinente aos assuntos necessários para a construção dos artefatos do
+projeto. Dessa forma, adquire background teórico para sustentar e fundamentar a prática. O
+estudo se torna contextualizado e situado, fazendo muito mais sentido para o aprendiz. Nos
+momentos de encontros com os professores especialistas, os alunos devem abordar questões de
+resolução de problemas ou dúvidas encontradas. Assim, as aulas tradicionais expositivas dão
+lugar a atividades práticas e dinâmicas de metodologias ativas.
+4.3
+
+Docentes e Sua Organização
+
+O trabalho com o projeto inclui o desenvolvimento de três tipos de competências: computação,
+negócio e liderança. No entanto, como mencionado anteriormente, o fato de ser capaz de executar
+um projeto com sucesso não significa que o estudante construiu os conhecimentos envolvidos na
+realização dele (Piaget, 1978). Assim, é essencial o desenvolvimento de outras atividades, como
+afirmam Brown, Roediger e McDaniel (2014), tais como elaboração, o processo de encontrar
+camadas adicionais de significado em novos materiais; generalização, a tentativa de responder
+questões e resolver problemas antes que seja apresentada a resposta ou a solução; reflexão, o ato
+de rever o que foi apreendido em determinada experiência; calibração, o alinhamento do
+julgamento do que o estudante sabe e não sabe sobre um específico conceito.
+Para dar conta do desenvolvimento dessas atividades, o Inteli conta com basicamente dois
+tipos de professores: o orientador de projeto e os instrutores especialistas em conteúdos
+específicos. O orientador de projetos é um professor em tempo integral responsável por uma turma
+de estudantes que desempenha papel de Product Owner, facilitando também a interação com o
+parceiro de mercado. Ele realiza o planejamento do projeto, mapeando todas as competências a
+serem desenvolvidas, e faz o alinhamento das entregas com o parceiro de mercado. Ele avalia se
+as entregas refletem o aprendizado esperado e faz um acompanhamento individual dos estudantes.
+Os professores instrutores especialistas têm tempo integral ou parcial e são responsáveis
+pelas competências técnicas envolvidas no projeto. Portanto, cada professor é um expert
+acadêmico e/ou possui muita experiência de mercado em determinada área, bem como entende os
+requisitos técnicos de cada projeto.
+Embora com funções diferentes, o modelo pedagógico pressupõe a colaboração entre os
+docentes como fundamental em seu funcionamento. Em uma turma, os professores atuam de fato
+como um time muito próximos aos estudantes, no qual todos compreendem que a construção de
+conhecimento é feita de forma integrada, e não isolada em disciplinas. Em determinado momento,
+o professor especialista e o estudante trabalham temas relativos à competência de computação;
+em outro, questões concernentes às competências de negócio, e assim por diante. A ideia não é
+ministrar aulas sobre as competências, mas trabalhar cada qual quando necessário para que o
+estudante possa avançar ou ser desafiado a pensar em novas alternativas – just in time learning.
+De acordo com essa proposta pedagógica, a avaliação do desempenho do estudante deve
+ser pautada por: conhecimento construído sobre cada uma das competências, que podem ser
+avaliadas com base no portfólio do estudante, entrevistas ou apresentações que o estudante
+executa2 entregáveis, como entregas contínuas que o estudante realiza com base no projeto em
+desenvolvimento; e liderança, como o estudante se comporta nas diferentes atividades que
+2
+
+Provas são ministradas como parte do treinamento de como realizar provas, e não como processo de avaliação de
+construção de conhecimento.
+
+618
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+desenvolve, por exemplo, trabalho em grupo, colaboração com colegas e liderança. Se o
+desempenho do estudante em um módulo não for favorável, de acordo com padrões
+preestabelecidos, ele poderá passar por processos de remediação ou ser reprovado e ter que fazer
+o módulo novamente.
+Para que essa dinâmica pedagógica possa funcionar, é necessário que o orientador e os
+professores especialistas se reúnam regularmente para discutirem estratégias e apoiarem uns aos
+outros. Nesse sentido, a organização administrativa do Inteli deverá contar com duas estruturas
+de apoio para potencializar o desenvolvimento do estudante: escritório de projetos e centro de
+desenvolvimento de lideranças. Além desses suportes acadêmicos, outro componente do
+ecossistema é a parceria com empresas do setor público ou privado, ou mesmo ONG.
+4.4
+
+Criação de Parcerias
+
+As parcerias têm um papel importante no Inteli, desempenhando diferentes funções. Primeiro,
+parcerias com empresas mais inovadoras para compor uma oferta diversificada de projetos para
+estudantes. Segundo, parcerias com empresas e universidades reconhecidas na área de
+computação e business para disponibilizar acesso a conteúdo e, futuramente, microcertificações,
+para reforçar projetos e currículos de estudantes. Terceiro, parcerias com instituições que já fazem
+parte do IPT Open Experience no sentido de tomar parte do ecossistema de inovação e de novos
+ambientes de tecnologia aí instalados. Finalmente, parcerias com fundações e doadores para
+financiamento e doações de bolsas de estudos.
+4.5
+
+Infraestrutura Física
+
+As instalações físicas do Inteli foram construídas de acordo com as necessidades e os objetivos
+educacionais. No final de 2020, surgiu a possibilidade de construção de um espaço de ensino e de
+aprendizagem no Instituto de Pesquisas Tecnológicas (IPT), no Butantã, em São Paulo. O local,
+simbólico por ter sido âncora para a industrialização paulista no século XIX, está sendo
+revitalizado e vai reunir empresas, startups, pesquisadores e estudantes em um único local. A ideia
+é criar nesse local o Vale do Silício da América Latina. Ao aderir ao IPT Open Experience o Inteli
+se insere em um ecossistema que reúne centros de inovação e abre portas para parcerias e trabalho
+conjunto com instituições de ponta, como o próprio IPT.
+Em uma arquitetura inteiramente voltada para colaboração, não há espaço para salas de
+aula tradicionais com “carteiras” enfileiradas. Dessa forma, as instalações foram modeladas para
+acomodar salas de trabalho dos estudantes, denominadas Ateliês, com mesas projetadas
+especialmente para os estudantes acomodarem seus equipamentos e estarem frente a frente com
+seu grupo e com seus professores.
+4.6
+
+Infraestrutura Tecnológica
+
+A infraestrutura tecnológica oferece primordialmente o suporte ao acompanhamento dos
+processos de aprendizagem de cada estudante. Uma vez que o modelo acadêmico do Inteli é
+bastante diferente do padrão de outras instituições, optou-se por desenvolver uma plataforma
+própria – a ADALOVE. Nela, são configurados todos os metaprojetos com seus assuntos e criados
+os projetos específicos de cada turma. A plataforma permite a coleta de dados do processo de
+aprendizagem de cada um dos estudantes, incluindo, por exemplo, as atividades realizadas, o
+conteúdo que estudaram e como foram avaliados. Esses dados são insumo para melhoria do
+processo, apontamento e predição de situações de dificuldades dos estudantes. O modelo
+acadêmico torna-se vivo e em constante renovação.
+
+619
+
+Valente et al.
+
+5
+
+RBIE v.33 – 2025
+
+Descrição e Avaliação do Bootcamp
+
+Esta seção tem como objetivo relatar a experiência preliminar de implementação do primeiro
+bootcamp, estruturado com base na metodologia de ensino baseado em projetos, bem como os
+resultados obtidos.
+5.1
+
+O Primeiro Bootcamp
+
+O primeiro bootcamp (inicialmente denominado Tech Lab) foi realizado no período de dez
+semanas, de 14 de setembro a 20 de novembro de 2020. O objetivo foi testar os elementos dos
+processos de ensino e de aprendizagem relativos ao segundo módulo do modelo pedagógico, no
+qual o aluno teve que elaborar um projeto de desenvolvimento de uma aplicação Web. No
+Apêndice constam os exemplos de backlogs e de atividades que os alunos desenvolveram.
+5.1.1. Base Metodológica do Bootcamp
+A metodologia utilizada no desenvolvimento do bootcamp foi o design research (Faste & Faste,
+2012) com uma abordagem iterativa e incremental para a gestão do desenvolvimento do projeto,
+i.e. Scrum. A adoção de métodos ágeis no desenvolvimento de projetos de ensino e de
+aprendizagem desempenha um papel fundamental na eficiência, flexibilidade e sucesso do
+processo educacional. Os métodos ágeis, como Scrum ou Kanban, proporcionam uma abordagem
+iterativa e colaborativa, permitindo que as equipes de desenvolvimento e instrutores respondam
+de forma ágil às mudanças nas necessidades educacionais e às demandas dos alunos. A ênfase na
+entrega contínua de incrementos funcionais possibilita a rápida implementação de melhorias e
+ajustes ao longo do desenvolvimento do projeto, garantindo que o conteúdo e as estratégias de
+ensino estejam alinhados com as expectativas e requisitos em constante evolução. Além disso, a
+promoção da comunicação aberta e da colaboração interdisciplinar, características centrais dos
+métodos ágeis, contribui para um ambiente de aprendizado mais dinâmico e participativo,
+proporcionando aos alunos uma experiência educacional mais envolvente e adaptativa. Assim, a
+aplicação de métodos ágeis no contexto educacional não apenas acelera o desenvolvimento de
+projetos, mas também fortalece a qualidade e a relevância do ensino e da aprendizagem. Ao longo
+desta seção, descrevemos como os papéis de Scrum Master, Product Owner e time foram
+adaptados, bem como suas cerimônias. A intenção do bootcamp não era testar hipóteses ou
+confirmar os planos iniciais, mas proporcionar uma experiência na qual fosse possível entender
+melhor como as atividades computacionais pudessem ser desenvolvidas a partir dos projetos que
+os alunos realizam, bem como o papel dos docentes, da parceria e das tecnologias usadas. Para
+tanto, o objetivo era poder ouvir e observar as pessoas envolvidas, alunos, professores e pessoal
+de apoio e implementar correções sistemáticas e documentadas à medida que os problemas e
+novas ideias surgiam. O produto do bootcamp foi o entendimento conceitual, fundamentado em
+evidências, dos diferentes componentes do sistema educacional a ser implantado no Inteli. Por
+outro lado, o design research proporciona uma coerência metodológica com design thinking, o
+qual foi a base para os procedimentos adotados na seleção dos alunos participantes e no
+desenvolvimento dos projetos pelos alunos.
+5.1.2
+
+Desenvolvimento do Bootcamp
+
+O bootcamp foi desenvolvido totalmente online, contando com momentos síncronos e
+assíncronos. Nos momentos síncronos, de duração de duas horas por dia (17 às 19 horas), durante
+as dez semanas em que foram realizados encontros com o orientador de projetos, com o Scrum
+Master e com instrutores, execução de avaliações, encontros com o cliente e atividades
+complementares. Nos momentos assíncronos, eram efetuados trabalhos em grupo no
+desenvolvimento do projeto e autoestudo. O Time Bootcamp foi formado pela diretora-geral,
+620
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+diretora de operações, conselheiro acadêmico, consultores acadêmicos, secretária acadêmica e um
+auxiliar-geral, que também atuou como host das sessões realizadas no Zoom.
+5.1.3
+
+Processo de Recrutamento dos Alunos
+
+Iniciaram no bootcamp 28 estudantes que interagiram com dois professores especialistas, o
+professor orientador, que também atuou como Product Owner (PO), o Scrum Master e seis
+instrutores, sendo três responsáveis pelas competências de computação, dois pelas competências
+de negócio e um pelas competências de liderança. Além dos professores e dos instrutores, o
+bootcamp contou com o Time Bootcamp de apoio às atividades.
+O processo de recrutamento e seleção dos alunos pautou-se por quatro princípios: os
+participantes devem estar o mais próximo possível do perfil do aluno a fazer parte do Inteli; todos
+os participantes têm que aprender alguma coisa nova que eles possam aplicar em outros contextos;
+o bootcamp deve oferecer uma experiência marcante e de acolhimento para todos os participantes,
+de modo que eles se tornem possíveis embaixadores do Inteli; e o processo seletivo não deve ter
+um caráter de competição para os participantes.
+O recrutamento de jovens foi realizado por meio de buscas ativas em empresas juniores
+relacionadas à área de computação e contatos via empresa Cia. de Talentos. A seleção foi dividida
+em três etapas, iniciada no dia 24 de julho e encerrada no dia 29 de agosto, envolvendo as fases
+de inscrição, desafio bootcamp e encontro com o Time Bootcamp. A fase de inscrição consistiu
+no preenchimento e envio de um formulário sobre dados como: perfil acadêmico, conhecimento
+sobre computação, dados sociodemográficos e motivação para participar da experiência.
+A fase do desafio consistiu na preparação e envio do mapa de empatia do design thinking,
+(Osterwalder & Pigneur, 2010), sendo necessário responder as perguntas sobre: o que sente e
+pensa, o que ouve, o que vê e o que fala e faz, além das dores, oportunidades e a definição de um
+problema e como ele pode ser solucionado.
+O material enviado foi avaliado de acordo com os seguintes critérios: capacidade de
+identificação e resolução de problema, como avaliação do problema identificado e de como a
+solução proposta teria capacidade de resolvê-lo; execução, analisando se todos os requisitos foram
+atendidos e se as informações foram apresentadas de forma estruturada; criatividade e inovação,
+identificando a criatividade e a efetividade da solução proposta; e referências, como a avaliação
+do empenho em trazer referências do universo dos candidatos para o desafio.
+A terceira fase consistiu em uma atividade em grupo entre os candidatos, facilitada pelo
+Time Bootcamp. O foco dessa atividade foi verificar como os jovens trabalham em grupo, a partir
+de um objetivo comum, como o de escolher uma solução entre as apresentadas por cada um deles
+na etapa anterior e como escolher uma nova solução que represente o grupo. Em seguida, os
+observadores dessa dinâmica avaliaram cada participante com base em quatro competências:
+aprendizagem autodirigida, resolução criativa de problemas, cooperação e comunicação. Dessa
+avaliação foram selecionados 28 estudantes com vivências e experiências diversas, de 13 estados
+brasileiros, sendo 39,3% de mulheres, 57,1% de estudantes somente de escola pública, e 40,7%
+não brancos.
+O bootcamp trouxe resultados significativos, especialmente ao evidenciar a diversidade
+de níveis de conhecimento em programação (algoritmos) entre os participantes. Essa variação foi
+uma oportunidade para o grupo crescer coletivamente, mas também demonstrou que o perfil
+inicial dos selecionados não correspondia exatamente ao público-alvo ideal para o Módulo 2,
+apontando possíveis ajustes para futuras edições. Apesar dessas diferenças, a experiência se
+mostrou altamente enriquecedora para todos os envolvidos.
+Um dos destaques foi o engajamento dos participantes. Todos os 28 estudantes
+621
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+selecionados demonstraram grande dedicação ao longo do programa, com uma evasão mínima de
+apenas três alunos, sendo que nenhuma desistência ocorreu por falta de interesse. Esse
+engajamento reflete o impacto positivo do modelo inovador do bootcamp, que foi percebido pelos
+participantes como uma abordagem diferenciada em relação ao ensino tradicional. Os relatos
+indicaram que o aprendizado começou já no processo seletivo, mostrando a força do design
+centrado no aprendizado ativo e acolhedor.
+Além disso, os participantes relataram que a experiência proporcionou uma visão prática
+e colaborativa, destacando competências não apenas técnicas, mas também interpessoais. A
+metodologia aplicada no bootcamp e o acolhimento oferecido criaram uma experiência marcante,
+reafirmando o potencial desse formato para atrair e formar futuros embaixadores do programa. A
+avaliação geral, tanto do desempenho técnico quanto do impacto humano, reforça que o bootcamp
+está no caminho certo para atingir seus objetivos e transformar a experiência educacional.
+5.1.4
+
+Seleção de Professores
+
+Oito professores foram selecionados para atuarem no bootcamp, sendo cinco da área de
+Computação, um da área de UX (Experiência do Usuário), dois da área de Negócios e um da área
+de Humanas, para trabalharem com os alunos competências de liderança. Foi criado um comitê
+de seleção formado pelos dirigentes do Inteli.
+A seleção foi realizada por meio dos seguintes passos: (i) identificação de professores com
+perfil técnico aderente às competências a serem desenvolvidas no projeto (desenvolvimento de
+uma aplicação web, com requisitos de processamento de imagens, seguindo metodologia ágil,
+particularmente o framework Scrum); (ii) entrevistas com os candidatos; (iii) apresentação de
+aulas-teste pelos candidatos; (iv) escolha dos professores pelo comitê de seleção.
+5.1.5
+
+Parceria com a Empresa Exame
+
+A empresa Exame foi a parceira de mercado que trouxe o problema para ser tratado pelos grupos
+de alunos. A revista Exame, desde 2019, posiciona-se como uma mediatech (união conteúdo e
+tecnologia) de economia, negócios e investimentos. A empresa atua em diversas verticais, entre
+elas educação, negócios e PME.
+Dois representantes da empresa atuaram como stakeholders no projeto: o CTO e um
+analista desenvolvedor de software. No auge da pandemia da Covid-19, a empresa, assim como
+várias outras, estava com dificuldades de planejar a volta ao trabalho presencial por conta das
+possíveis aglomerações de pessoas nos ambientes fechados, tais como salas de reuniões, e a
+obrigatoriedade do uso de máscaras faciais. O problema apresentado foi como monitorar a
+quantidade de pessoas nas diversas salas e controlar o uso de máscaras. Os grupos de alunos teriam
+que propor e desenvolver uma solução Web que permitisse que esses controles fossem feitos pelos
+gestores na empresa.
+A interação dos alunos com a empresa foi estruturada para maximizar o alinhamento entre
+as necessidades da organização e o aprendizado dos participantes. Para facilitar esse processo, a
+empresa designou o CTO como ponto de contato direto com os grupos, reforçando a relevância
+do projeto para a organização. O CTO demonstrou grande interesse na solução que estava sendo
+desenvolvida, participando ativamente de momentos-chave do projeto. Logo no início, foi
+entrevistado pelo Scrum Master dos grupos e pela professora orientadora, permitindo uma
+delimitação precisa do escopo do projeto e garantindo que os esforços fossem direcionados para
+atender às demandas específicas da empresa.
+Ao longo do desenvolvimento, o CTO manteve um papel central no acompanhamento do
+progresso, participando de reuniões ao final de cada sprint. Nessas ocasiões, os grupos
+622
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+apresentavam os avanços e recebiam feedback detalhado, o que ajudava a refinar e melhorar a
+solução continuamente. O projeto culminou com apresentações finais feitas pelos grupos para
+uma banca avaliadora composta por representantes da empresa, incluindo o CTO, e convidados
+externos. Esse formato de interação proporcionou uma experiência prática e desafiadora para os
+alunos, enquanto a empresa obteve propostas bem fundamentadas para o problema apresentado.
+5.1.6
+
+Infraestrutura Digital
+
+A realização do bootcamp teve como suporte diversos recursos digitais como Slack para
+comunicação assíncrona, Zoom para os encontros, Trello para alocação de tarefas, Github para
+repositório dos produtos gerados, e outros sistemas que os alunos adotaram (Discord e
+WhatsApp). Foi desenvolvido um website para disponibilizar material de autoestudo e calendários
+dos encontros, bem como outras informações importantes para os alunos. As ferramentas foram
+escolhidas através de reuniões internas da equipe de acordo com a adequação das ferramentas aos
+métodos a serem utilizados, bem como pela experiência da equipe com tais ferramentas. Por esta
+razão, as ferramentas de Trello, Zoom, Slack e Github, que já eram consolidadas no ecossistema
+de desenvolvimento de software, foram selecionadas.
+O Trello desempenhou um papel central na alocação de tarefas, organizando o fluxo de
+trabalho por meio de quadros, listas e cartões que refletiam as diferentes etapas dos projetos. Cada
+tarefa era detalhada com descrições, prazos e responsáveis, permitindo aos participantes
+acompanhar o progresso e priorizar suas atividades de forma clara e eficiente. A divisão do
+trabalho em etapas visuais também fomentou a colaboração e o alinhamento entre os membros,
+garantindo que todos soubessem exatamente onde focar seus esforços.
+Os encontros virtuais, realizados via Zoom, foram essenciais para o andamento do
+bootcamp. Essas reuniões promoveram discussões ao vivo, sessões de feedback e apresentações
+de projetos. Com recursos como compartilhamento de tela e salas de espera para trabalhos em
+grupo, o Zoom facilitou a interação entre participantes e mentores, simulando um ambiente
+colaborativo mesmo à distância. Além disso, o uso de Slack foi imprescindível para a
+comunicação assíncrona, funcionando como um canal aberto para troca de mensagens, envio de
+atualizações e esclarecimento de dúvidas ao longo do programa. A ferramenta foi organizada em
+canais temáticos que centralizavam discussões específicas, ajudando a manter o foco e a
+produtividade.
+O GitHub foi utilizado como repositório para os produtos gerados, servindo tanto para
+armazenar o código quanto para controlar versões e facilitar colaborações em tempo real. Com
+práticas de versionamento e integração contínua, os participantes puderam revisar contribuições,
+resolver conflitos e compartilhar aprendizados em um ambiente prático e seguro. Por fim, o
+TechLab, um website desenvolvido exclusivamente para o bootcamp, concentrou materiais de
+autoestudo, como vídeos, leituras complementares e exercícios, além de um calendário com os
+encontros programados. Este recurso se mostrou crucial para a autonomia dos alunos, permitindo
+que se preparassem de maneira estruturada e no seu próprio ritmo.
+5.2
+
+Resultados e Discussão Sobre as Atividades do Bootcamp
+
+Os resultados serão apresentados e discutidos no âmbito das questões que nortearam o bootcamp.
+O bootcamp foi idealizado no sentido de avaliar alguns dos componentes do ecossistema,
+procurando responder às seguintes perguntas:
+● Como criar uma concepção pedagógica para o ensino de computação totalmente baseado em
+projetos?
+
+623
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+● Quais competências os docentes devem ter para fazer parte das atividades pedagógicas e como
+eles devem se organizar em relação à interação com os alunos e outros docentes?
+● Como a parceria com a empresa pode auxiliar na especificação e desenvolvimento de projetos?
+● Quais ferramentas digitais de comunicação e de suporte ao desenvolvimento de projetos podem
+ser utilizadas na realização das atividades pedagógicas?
+● Quais competências, além das de computação, devem ser desenvolvidas nos projetos?
+● Quais atividades evidenciam a aprendizagem dos alunos?
+● Quais foram as observações dos pesquisadores sobre as percepções de professores e alunos
+acerca da sua atuação nesse modelo de ensino?
+5.2.1
+
+Concepção Pedagógica
+
+Para o desenvolvimento do bootcamp foi escolhido o metaprojeto sobre a aplicação web. A ideia
+de apresentar um framework com a complementação das características da situação-problema pela
+empresa parceira foi bem avaliada. Ela permitiu que a intencionalidade pedagógica do professor
+e as limitações da empresa pudessem ser instanciadas em diferentes projetos que os quatro grupos
+de alunos desenvolveram, de acordo com seus interesses e conhecimentos. Todos os quatro
+projetos apresentaram os requisitos e padrões previamente definidos.
+O material de autoestudo contemplou do nível básico ao intermediário e funcionou muito
+bem como norteador de estudo, mas com o progresso do projeto foi necessário o acesso a material
+mais avançado, o qual foi buscado em fóruns e blogs, principalmente sobre erros de programação
+(bugs).
+A aprendizagem baseada em projeto permitiu a valorização da prática e o fato de poder
+aplicar o autoestudo, e o “colocar a mão na massa” contribuiu efetivamente para o
+desenvolvimento das competências de computação, de negócio e liderança. A experiência do
+bootcamp foi avaliada no tocante a sua operacionalização, ao desenvolvimento das atividades, às
+competências de computação, ao negócio e aos aspectos de liderança. Dessas avaliações prévias
+foram identificados pontos positivos e negativos que devem ser aprimorados considerando o
+modelo pedagógico e como ele pode ser implantado.
+Os alunos foram avaliados por meio de um sistema que combinou avaliações qualitativas
+e quantitativas realizadas por diferentes atores do bootcamp. A avaliação foi estruturada para
+refletir não apenas o desempenho técnico, mas também a capacidade de trabalhar em equipe, de
+liderar e de refletir sobre o próprio aprendizado. A orientadora teve um papel central no processo,
+avaliando tanto o grupo como um todo quanto os indivíduos, considerando o cumprimento dos
+objetivos pedagógicos e a aplicação prática do conhecimento. Adicionalmente, o Scrum Master,
+responsável pela gestão ágil, também realizou avaliações complementares, tanto do grupo quanto
+de cada integrante, destacando a contribuição de cada um para o desenvolvimento do projeto.
+Além das avaliações externas, o modelo incorporou autoavaliações, permitindo que os
+alunos analisassem criticamente seu desempenho individual e coletivo. Isso promoveu a
+autorreflexão e incentiva melhorias contínuas. Provas objetivas e dissertativas individuais
+complementaram a avaliação, garantindo que o conhecimento técnico e a capacidade de
+comunicação fossem considerados. Assim, o processo de avaliação foi equilibrado, incentivando
+o desenvolvimento de competências técnicas, comportamentais e de liderança. A Tabela 2 de itens
+de avaliação reflete a abordagem multidimensional adotada no bootcamp, atribuindo pesos
+específicos a diferentes critérios, como avaliações externas (orientadora e Scrum Master),
+autoavaliações individuais e em grupo, e provas objetivas e dissertativas. Com um peso maior
+para avaliações qualitativas realizadas pela orientadora (37% somando grupo e individual) e um
+624
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+equilíbrio entre demais itens, o modelo assegura que tanto o desempenho técnico quanto as
+habilidades interpessoais e de reflexão crítica sejam considerados, incentivando uma formação
+mais abrangente.
+Tabela 2: Tabela de Itens de Avaliação e Pesos
+
+Item de Avaliação
+
+Peso
+
+Avaliação do grupo pela orientadora
+
+22
+
+Avaliação individual pela orientadora
+
+15
+
+Avaliação do grupo pelo Scrum Master
+
+10
+
+Avaliação individual pelo Scrum Master
+
+11
+
+Autoavaliação do grupo pelo próprio grupo
+
+8
+
+Autoavaliação individual pelo próprio grupo
+
+10
+
+Prova objetiva individual #1
+
+3.3
+
+Prova objetiva individual #2
+
+3.3
+
+Prova objetiva individual #3
+
+3.3
+
+Prova dissertativa individual #1
+
+15
+
+Total
+
+100
+
+Essa estrutura garante uma abordagem multidimensional da avaliação, com pesos
+equilibrados entre desempenho técnico, habilidades interpessoais e autoanálise.
+O grupo focal trouxe reflexões importantes sobre o processo de aprendizagem no
+bootcamp. Um dos pontos levantados foi a diferença entre simplesmente mover os cards no
+quadro Kanban e realmente aprender e aplicar os conceitos em uma sprint. Muitos alunos
+relataram que, em alguns momentos, priorizaram a conclusão dos burndown charts, baseados no
+progresso dos cards de autoestudo, em vez de focar na real assimilação e aplicação do conteúdo.
+Apesar disso, reconheceram que os assuntos apresentados eram bem direcionados, o que facilitava
+entender o que deveria ser feito em cada etapa. Houve consenso de que os materiais de autoestudo
+foram úteis para cobrir os níveis básico e intermediário, mas a necessidade de explorar conteúdos
+mais avançados os levou a buscar referências externas, como fóruns e blogs, principalmente para
+resolver problemas práticos, como bugs de programação.
+Outro aspecto destacado foi a importância da prática para consolidar o aprendizado. Os
+alunos valorizam a oportunidade de aplicar o autoestudo diretamente em atividades práticas,
+afirmando que o "colocar a mão na massa" foi essencial para o desenvolvimento das
+competências. Alguns mencionaram que a realização do bootcamp no modelo presencial poderia
+ter potencializado a experiência, proporcionando mais interação entre os grupos e facilitando o
+aprendizado colaborativo. Apesar disso, enfatizaram que aprender teoria e prática
+simultaneamente, sem uma ordem fixa, funcionou melhor para a maioria. Essa abordagem
+"aprender enquanto faz" foi unanimemente considerada mais eficiente e motivadora. Além disso,
+a diversidade de formatos nos materiais de autoestudo, como vídeos, textos e áudios, foi bem
+recebida, sendo sugerido que o uso de mídias diferentes seja ampliado no futuro.
+5.2.2
+
+Atuação dos Docentes
+
+Com relação ao envolvimento dos docentes, foi possível observar o papel que eles
+desempenharam.
+
+625
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+● Orientadores (Product Owner): O orientador acumulou o papel de Product Owner e foi
+responsável pela integração com o time de professores instrutores. Os encontros com o
+orientador deveriam ser de planejamento e acompanhamento do projeto. No entanto, foi
+percebido que muitos encontros com o orientador foram voltados para atividades técnicas ou
+não previstas (exemplo: aula de requisitos, aula de modelagem de dados; dinâmica de
+comunicação; tempo para os alunos trabalharem). Outra questão que nos chamou a atenção foi
+que houve poucos momentos de reflexão sobre aprendizagem dos conteúdos técnicos, as
+interações individuais com os alunos foram insuficientes para isso.
+● Scrum Master: O professor que atuou como Scrum Master do projeto realizava a condução
+diária dos rituais Scrum com os alunos. No entanto, diferente de um modelo ágil tradicional,
+ele não era parte efetiva do time de desenvolvimento. Dessa forma, constatamos que muitas
+adaptações deveriam ser feitas nos rituais, principalmente nas reuniões diárias, para acomodar
+questões dos grupos no projeto. Foi muito relevante o acompanhamento das atividades por meio
+da ferramenta e gráficos burndown (papel do gerente de projeto e do próprio time) e o
+atendimento de questões técnicas do projeto (objetivo principal de garantir que a abordagem
+seja praticada da melhor forma pelo time de Dev).
+● Professores Instrutores: Os professores instrutores tinham excelente conhecimento técnico dos
+assuntos envolvidos no projeto. Foram muito atenciosos com nossas orientações. De maneira
+geral, experimentaram formas diferentes de interação nos encontros, explorando a plataforma.
+O planejamento dos encontros foi repassado diariamente com o orientador para discutir a
+aplicação de metodologias ativas. Nem sempre os instrutores tinham facilidade para fazê-lo e
+cumprir os planos. Uma atividade muito efetiva foi o incentivo aos alunos na prática de ensinar.
+A Figura 3 apresentada demonstra a frequência e a avaliação atribuída a diferentes tipos
+de encontros com instrutores, refletindo tanto a adesão dos participantes quanto a percepção de
+valor de cada abordagem. A categoria Expositiva-Prática destaca-se com a maior frequência (14
+encontros) e uma nota média de 9,43, sugerindo que a combinação de teoria e prática atrai maior
+participação e é altamente valorizada. Em contrapartida, a categoria Expositiva, embora teórica e
+importante, apresentou a menor nota média (9,04), indicando que a exposição pura pode ser menos
+envolvente ou eficaz na percepção dos participantes.
+
+Figura 3. Descrição de encontros síncronos com notas.
+
+626
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+Curiosamente, a nota mais alta (9,90) foi atribuída aos encontros de Alinhamento, apesar
+de sua baixa frequência, o que sugere que momentos focados em alinhamento estratégico ou
+inicial são considerados críticos para a qualidade do programa. Já a categoria Prática, que combina
+aplicação direta de conhecimentos, obteve alta frequência e uma avaliação média expressiva
+(9,47), reafirmando a preferência por metodologias interativas. Os relatos dos alunos indicaram
+uma avaliação positiva das atividades conduzidas pelo Orientador/Scrum Master, com destaque
+para a apresentação clara da agenda e dos requisitos, descrita como bem estruturada e produtiva.
+Um aluno mencionou que “rever os requisitos com o grupo depois da aula foi bastante produtivo”
+e ajudou a adiantar tarefas importantes. Além disso, o feedback sobre os requisitos foi valorizado,
+com a sugestão de que ele seja oferecido antes das aulas para maximizar os resultados.
+Por outro lado, alguns pontos de melhoria foram levantados. Um aluno comentou que
+“sentiu falta da daily”, evidenciando a relevância dessa prática para o alinhamento diário. Houve
+também uma sugestão para focar mais na validação de requisitos e menos nas atividades de
+comunicação. No geral, os alunos reforçaram a necessidade de dias mais estruturados como o
+relatado, que ajudam a alinhar a equipe e definir as próximas ações.
+Os alunos também elogiaram o trabalho de outros docentes, destacando aspectos como
+organização, clareza e dedicação. Um dos professores foi descrito como "muito bacana e
+didático", com destaque para a capacidade de explicar e selecionar bem o material. Além disso, a
+organização do encontro foi considerada eficaz, criando um ambiente propício para tirar dúvidas
+e interagir com o docente de maneira produtiva.
+Outro docente foi elogiado por seu vasto conhecimento e pela forma como organizou o
+tempo para as explicações. Um aluno relatou que “o professor conseguiu fazer a parte técnica
+ficar simples” e apresentou o conteúdo no ritmo certo, o que facilitou o acompanhamento da
+turma. Houve ainda o desejo de mais encontros como esse, reforçando a relevância da didática e
+do entusiasmo do professor para o aprendizado coletivo.
+5.2.3
+
+Parceria com a Empresa
+
+A parceria com a Exame foi fundamental para criar uma situação de aprendizagem real e dar um
+sentido concreto ao projeto em elaboração. O desafio/projeto que foi trabalhado pelos alunos veio
+da demanda da própria empresa parceira. Para o estabelecimento dos desafios, vários encontros
+prévios foram feitos com gestores e equipe do departamento de TI da Exame. Os participantes da
+empresa tiveram um envolvimento direto com os projetos e oportunidades de trabalhar com os
+alunos na avaliação e depuração das soluções em desenvolvimento. Assim, a parceria
+desempenhou um papel importante na criação de soluções inovadoras e diversificadas de projetos.
+É importante destacar que como o objetivo foi testar o modelo no bootcamp, não foi acordado
+com a empresa nenhuma contratação, bem como garantia de uso das soluções posteriormente pela
+empresa. Entretanto, a parceira teve a liberdade de uso da solução posteriormente.
+5.2.4
+
+Infraestrutura Tecnológica
+
+O sistema computacional a ser implementado deve ser capaz de auxiliar processos de ensino e de
+aprendizagem, como ambientes virtuais de aprendizagem que possibilitem a combinação de
+atividades presenciais e online. Além disso, devem ajudar no acompanhamento dos processos de
+aprendizagem de cada aluno. Por exemplo, durante o bootcamp, o Trello se mostrou importante
+para gerenciar as atividades executadas, porém não forneceu os dados necessários a respeito da
+aprendizagem do aluno ao completar uma atividade. Nesse sentido, será importante criar sistemas
+computacionais que possam acompanhar o andamento das atividades e trilhas personalizadas de
+conteúdo e meios para avaliar a aprendizagem dos alunos.
+Alunos precisam de espaços privados em seus grupos. Entretanto, os professores observam
+627
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+as atividades e a interação dos alunos no ambiente de comunicação como fonte para avaliar o
+aprendizado. Sentimos a necessidade de que as ferramentas tivessem um local para algum tipo de
+registro da reflexão sobre a aprendizagem: ao mover um card no Trello, os alunos poderiam fazer
+um breve registro do que realizaram, dar e receber um feedback.
+Seria interessante também um controle de versão dos artefatos com inclusão de
+comentários dos professores e alunos (por exemplo, em formato de fórum): processo e storytelling
+dos artefatos. Como instituição cujo foco é a formação de profissionais na área tecnológica, será
+fundamental que, primeiro, esses recursos possam ser integrados de modo que a comunicação e o
+desenvolvimento dos projetos possam ser executados mais eficientemente.
+5.2.5
+
+Avaliação da Aprendizagem
+
+O foco desta subseção é descrever sobre o processo de aprendizagem, apresentando resultados
+sobre as competências de computação, negócios e de liderança. Desta forma, esta subseção
+buscará destacar os principais resultados obtidos e as lições aprendidas que contribuíram para o
+aprimoramento do conhecimento e das práticas envolvidas.
+A Figura 4 exibe um gráfico de barras que representa a distribuição das médias finais dos
+alunos em três intervalos distintos: 7,0-8,0; 8,1-9,0; e 9,1-10. A maioria dos alunos obteve médias
+no intervalo de 8,1-9,0, com cerca de 20 alunos nesta faixa, destacando-se como o grupo
+predominante. Apenas uma pequena quantidade de alunos apresentou médias nos intervalos de
+7,0-8,0 e 9,1-10, sugerindo que as notas estão concentradas em torno da faixa intermediária de
+desempenho, o que reflete um nível de aprendizado geral relativamente uniforme entre a maioria
+dos estudantes.
+
+Figura 4. Distribuição das notas gerais dos alunos.
+
+O gráfico da Figura 5 compara as notas atribuídas pelos diferentes avaliadores
+(orientadora, Scrum Master e autoavaliação) para os grupos Cybertech, Hidden_code Village,
+Tecnoria e Walkers. É possível observar que o grupo Hidden_code Village obteve as notas mais
+altas entre todos os avaliadores, com destaque para a avaliação do Scrum Master, que foi a maior
+de todas. O grupo Walkers também teve uma avaliação consistente e alta em todas as categorias,
+com o Scrum Master atribuindo a nota máxima. O grupo Tecnoria apresentou as menores notas
+nas três avaliações, com uma discrepância maior entre as notas da orientadora e do Scrum Master
+em relação à autoavaliação. Já o grupo Cybertech apresentou avaliações próximas entre
+orientadora e Scrum Master, enquanto a autoavaliação ficou um pouco abaixo. Esses resultados
+evidenciam diferenças de percepção entre os avaliadores e os próprios grupos sobre o desempenho
+apresentado.
+
+628
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+Figura 5. Comparação das notas dos grupos pela avaliação da orientadora, scrum master e autoavaliação.
+
+O gráfico da Figura 6 compara os resultados de três provas objetivas, distribuídos em
+intervalos de notas. A Prova 1 apresenta uma concentração maior de notas no intervalo de 4,5 a
+6,5, indicando um desempenho inicial mais baixo para muitos estudantes. Já na Prova 2, há um
+deslocamento para o intervalo de 7,1 a 8,0, que possui a maior concentração de notas, sugerindo
+uma melhora significativa no desempenho. A Prova 3 segue um padrão semelhante ao da Prova
+2, com a maior parte das notas também no intervalo de 7,1 a 8,0, mas apresenta uma quantidade
+maior de alunos com desempenho nos intervalos superiores, especialmente em 8,6 a 10,
+evidenciando um progresso contínuo e um número maior de alunos alcançando notas mais altas
+ao longo das avaliações.
+
+Comparação entre as Provas Objetivas
+14
+12
+10
+8
+6
+4
+2
+0
+
+4,5 - 6,5
+
+6,6 - 7,0
+
+7,1 - 8,0
+
+8,1 - 8,5
+
+Prova 1
+
+Prova 2
+
+Prova 3
+
+8,6 - 10,0
+
+Figura 6. Comparação das notas das 3 provas objetivas.
+
+Na Figura 7, o gráfico em formato de pizza apresenta a distribuição das notas obtidas na
+prova dissertativa, organizada em intervalos. A maioria dos alunos concentrou suas notas nos
+intervalos de 8,1 a 8,5 e 8,6 a 10,0, com cada intervalo representando 32% das avaliações, o que
+demonstra um alto desempenho geral na prova. O intervalo de 7,1 a 8,0 corresponde a 24% das
+notas, indicando que uma parte significativa dos alunos também atingiu um bom desempenho.
+Por outro lado, apenas 8% dos alunos obtiveram notas entre 6,6 e 7,0, enquanto 4% ficaram na
+faixa mais baixa, de 4,5 a 6,5, o que sugere que poucos alunos apresentaram dificuldades
+629
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+significativas nessa avaliação. Esses resultados reforçam um desempenho predominante elevado
+entre os estudantes.
+
+Distribuição das Notas - Prova Dissertativa
+4,0% 8,0%
+32,0%
+
+24,0%
+
+32,0%
+
+4,5 - 6,5
+
+6,6 - 7,0
+
+7,1 - 8,0
+
+8,1 - 8,5
+
+8,6 - 10,0
+
+Figura 7. Resultado da prova dissertativa.
+
+Os relatos relacionados à comunicação destacam tanto os desafios quanto os avanços
+pessoais dos participantes. Um exemplo disso é o relato que menciona: “Comunicação
+definitivamente não é o meu ponto forte, mas acredito que tenha melhorado consideravelmente”,
+evidenciando uma percepção de evolução através da prática em contextos de grupo. Outro relato
+ressalta a capacidade de adaptação ao público, afirmando: “Meu pai tem só a quarta série. Quando
+chego em casa [...] consigo fazê-lo entender a pesquisa que faço na faculdade”, o que demonstra
+a habilidade de simplificar conceitos complexos e torná-los compreensíveis. Esses depoimentos
+refletem o esforço em desenvolver habilidades interpessoais para colaborar e transmitir ideias com
+clareza.
+No campo do autoconhecimento, os relatos evidenciam a importância de reconhecer
+limites pessoais e encontrar formas de superá-los. Um participante compartilhou que “uma das
+maiores lições que o tech lab [bootcamp] me proporcionou foi o autoconhecimento em relação à
+quantidade de atividades que eu consigo conciliar ao mesmo tempo”, mostrando como
+experiências desafiadoras podem levar a um crescimento pessoal significativo. Outro relato
+aponta a busca por melhorias constantes: “Em cada atividade do grupo que eu fico encarregada,
+procuro demais feedbacks de todos os integrantes”, ressaltando a autorreflexão como uma
+ferramenta para a melhoria contínua. Esses relatos revelam como o processo de autoavaliação
+ajuda os participantes a identificar pontos fortes e fracos, promovendo maior equilíbrio e
+organização no desenvolvimento de suas competências.
+Os resultados do Grupo Focal #1 destacam a relevância da aprendizagem em grupo,
+apontando que essa dinâmica contribui para uma melhor compreensão dos conteúdos e para o
+fortalecimento das relações entre os alunos. Um dos participantes mencionou que "aprendizagem
+é diferente em grupo. Se fosse individual seria complicado", ressaltando como o trabalho em
+equipe proporciona um suporte mútuo e torna o processo menos sobrecarregado. Outro relato
+complementa que "um colega ajuda o outro e, assim, não fica pesado", evidenciando o papel
+colaborativo no esclarecimento de dúvidas e na adaptação da linguagem para algo mais acessível,
+promovendo inclusão e entendimento.
+Além disso, os relatos do Grupo Focal #1 reforçam a importância da autoavaliação como
+parte fundamental do processo de aprendizagem em grupo. Foi mencionado que "se não consegue
+630
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+absorver, reveem e se ajudam", demonstrando que a prática de refletir sobre os próprios desafios
+e buscar apoio dos colegas é essencial para o progresso coletivo. Essa abordagem incentiva uma
+comunicação constante e transparente, como destacado por outro participante, que pode ser crucial
+para manter a harmonia e o engajamento dentro dos grupos.
+Por outro lado, os resultados do Focus Group #2 revelam o desafio da priorização de
+atividades, especialmente no contexto de múltiplas demandas. Uma das principais dificuldades
+apontadas foi que "houve uma priorização para algumas atividades, sendo a principal área a ser
+deixada em segundo plano a de 'Negócios'". Isso demonstra como o excesso de tarefas pode levar
+ao comprometimento de áreas importantes, resultando em um menor aproveitamento de
+conteúdos específicos, como os de Business, conforme relatado. Esse cenário reflete a necessidade
+de um planejamento mais equilibrado que permita explorar integralmente todos os temas
+abordados.
+Por fim, as principais limitações identificadas nos grupos foram relacionadas à dificuldade
+de manter um equilíbrio entre diferentes prioridades e à necessidade de adaptação às dinâmicas
+de trabalho em grupo. No Grupo Focal #1, foi mencionado que "alguns não gostam do trabalho
+em grupo, mas vão à luta", sugerindo que a adaptação nem sempre ocorre de forma natural e que
+a instituição precisa trabalhar para promover o engajamento nessa dinâmica. No Focus Group #2,
+o relato sobre a priorização de conteúdos também evidencia uma limitação no tempo e na estrutura
+para explorar todas as áreas com a devida profundidade. Esses pontos refletem a importância de
+um suporte institucional para minimizar tais barreiras e promover um aprendizado mais inclusivo
+e equilibrado.
+A Tabela 3 apresenta os relatos dos alunos sobre o processo de autoavaliação,
+considerando 3 categorias: comunicação, autoconhecimento e aprendizado dirigido. Na categoria
+Comunicação, os relatos evidenciam tanto os desafios iniciais quanto as melhorias alcançadas ao
+longo do tempo. Um exemplo é o relato que diz: “Comunicação definitivamente não é o meu
+ponto forte, mas acredito que tenha melhorado consideravelmente. Um exemplo é em uma reunião
+com o time [...] e creio que consegui fazer isso e me expressar de forma clara.” Isso mostra que,
+com a prática e a interação constante em grupo, os participantes começaram a adquirir mais
+confiança e clareza na transmissão de suas ideias, seja em ambientes técnicos ou ao explicar
+conceitos para públicos com diferentes níveis de conhecimento, como ilustrado na interação com
+colegas e familiares.
+Quando o foco é o Autoconhecimento, os participantes relataram aprendizados profundos
+sobre suas capacidades e limites. Um relato marcante destaca: “Acho que uma das maiores lições
+que o tech lab [bootcamp] me proporcionou foi o autoconhecimento em relação à quantidade de
+atividades que eu consigo conciliar ao mesmo tempo [...]. Admirei a minha força e fiquei até
+orgulhosa de mim mesma.” Isso demonstra como o autoconhecimento foi aprimorado ao lidar
+com uma rotina exigente, permitindo que os participantes identificassem não apenas seus limites,
+mas também sua capacidade de superação, levando a uma maior autoconfiança e organização
+pessoal.
+Tabela 3: Relatos dos alunos sobre o processo de autoavaliação, considerando 3 categorias: comunicação,
+autoconhecimento e aprendizado dirigido
+
+Categoria
+Comunicação
+
+Relato dos alunos
+Eu sempre tive um pouco de preocupação quando explico algo e as pessoas
+entenderem o que estou tentando dizer, mas acho que agora estou tendo mais
+facilidade [...] As interações com os próprios membros do tech lab são ótimas pra
+isso.
+
+631
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+Categoria
+
+Relato dos alunos
+
+Comunicação
+
+Comunicação definitivamente não é o meu ponto forte, mas acredito que tenha
+melhorado consideravelmente. Um exemplo é em uma reunião com o time [...] e
+creio que consegui fazer isso e me expressar de forma clara.
+
+Comunicação
+Comunicação
+Comunicação
+
+Em uma reunião no meet fui capaz de explicar minha ideia para adicionar uma
+função no código.
+Meu pai tem só a quarta série. Quando chego em casa, em Afonso Cláudio - ES,
+consigo fazê-lo entender a pesquisa que faço na faculdade com Emulsões (mistura
+de fluídos imiscíveis).
+Ao explicar coisas abstratas demonstrando exemplos simples de entender,
+relacionando com o assunto, nas reuniões de grupo.
+
+Autoconhecimento
+
+Em cada atividade do grupo que eu fico encarregada, procuro demais feedbacks de
+todos os integrantes [...] e para progredir estou seguindo todas as técnicas da
+professora Carol e treinando com frequência!
+
+Autoconhecimento
+
+Não consigo me recordar de uma situação, mas meu autoconhecimento melhorou,
+consigo manter um autocontrole melhor e controlo meu nervosismo.
+
+Autoconhecimento
+
+Acho que uma das maiores lições que o tech lab me proporcionou foi o
+autoconhecimento em relação à quantidade de atividades que eu consigo conciliar
+ao mesmo tempo [...]. Admirei a minha força e fiquei até orgulhosa de mim mesma.
+
+Autoconhecimento
+
+Essa competência é um pouco difícil para mim, principalmente no quesito objetivos
+pessoais [...] no início do projeto ficava me cobrando e comparando com os colegas
+do grupo o que me deixava apenas frustrada, tenho me policiado mais nisso.
+
+Aprendizado
+Autodirigido
+
+Eu constantemente preciso aprender sobre temas da igreja. A competência de
+aprendizagem auto dirigida fez com que eu fosse mais assertivo no estabelecimento
+de metas e de processos para a aprendizagem.
+
+Aprendizado
+Autodirigido
+
+Nessa última sprint, eu fiquei com a tarefa de modelar e implementar o sistema de
+alertas na nossa interface [...]. Saber se eu preciso mesmo procurar ajuda, ou se,
+com um pouco mais de estudo/trabalho, eu consigo resolver sozinha foram
+habilidades bastante exercidas e senti progresso :)
+
+Aprendizado
+Autodirigido
+
+Essa foi a competência que mais pequei, acredito que por motivos pessoais.
+
+Aprendizado
+Autodirigido
+
+Consegui perceber uma deficiência do meu conhecimento com relação ao Vue.js e
+como já entendia melhor forma pra mim aprender, consegui buscar conteúdos que
+melhor se encaixassem no meu modo de aprendizagem e consegui entender alguns
+conceitos.
+
+Aprendizado
+Autodirigido
+
+Eu acho que fui mal nessa competência, em um determinado momento eu desisti de
+dar prioridade ao autoestudo para focar no desenvolvimento do produto [...]
+Aprendi muito mais na prática do que na teoria.
+
+Por fim, na categoria de Aprendizado Autodirigido, os relatos reforçam a importância de
+desenvolver a autonomia para gerenciar o próprio aprendizado. Um exemplo relevante é:
+“Consegui perceber uma deficiência do meu conhecimento com relação ao Vue.js e como já
+entendia melhor forma pra mim aprender, consegui buscar conteúdos que melhor se encaixassem
+no meu modo de aprendizagem e consegui entender alguns conceitos.” Esse relato destaca a
+capacidade de identificar lacunas no conhecimento e buscar soluções eficazes, evidenciando o
+papel do aprendizado autodirigido em promover a adaptação e o crescimento técnico mesmo em
+situações desafiadoras.
+
+632
+
+Valente et al.
+
+5.3
+
+RBIE v.33 – 2025
+
+Lições Aprendidas
+
+Na subseção de lições aprendidas, destacam-se os aprendizados nas seguintes categorias:
+avaliação final das sprints, competências de computação, negócios e liderança, docentes e
+processo seletivo, e infraestrutura tecnológica, conforme segue:
+• Infraestrutura tecnológica: Uma das lições aprendidas neste processo foi a importância de
+equilibrar a autonomia dos alunos com a necessidade de monitoramento pedagógico. A criação
+de espaços privados nos grupos, embora essencial para fomentar a colaboração genuína e
+descontraída entre os participantes, limitou a visibilidade da equipe organizadora sobre a
+dinâmica interna, dificultando uma avaliação mais detalhada da interação. Além disso, ficou
+evidente que as ferramentas poderiam ser mais integradas para registrar reflexões sobre a
+aprendizagem; por exemplo, ao mover um card no Trello, os alunos poderiam fazer breves
+registros sobre o que realizaram, conectando ações práticas com insights sobre seu progresso.
+O controle de versão dos artefatos no GitHub, complementado por comentários de professores
+e alunos em um formato de fórum, também se mostrou uma oportunidade de enriquecer o
+processo, promovendo storytelling e registros mais completos sobre as etapas de
+desenvolvimento e os aprendizados envolvidos. Essas observações ressaltam a necessidade de
+ferramentas que não apenas facilitem a execução, mas também documentem e valorizem o
+processo reflexivo. Para decisões futuras, será fundamental avaliar a viabilidade de
+implementar um sistema próprio, considerando custos associados ao desenvolvimento,
+manutenção e suporte técnico, além de definir claramente os requisitos que atendam às
+necessidades específicas do programa. Um sistema próprio também deverá permitir integração
+eficiente com ferramentas já consolidadas no ecossistema, como plataformas de
+desenvolvimento e gerenciamento de projetos, para evitar redundâncias e maximizar a
+produtividade. Paralelamente, o uso de ferramentas comerciais diferentes em projetos
+específicos poderá ser explorado como alternativa para diversificar abordagens e testar soluções
+mais flexíveis, desde que a equipe esteja preparada para gerenciar a curva de aprendizado e
+garantir uma experiência consistente para os participantes. Essas decisões exigirão um
+equilíbrio cuidadoso entre personalização, eficiência e custo-benefício.
+• Processo seletivo dos alunos: O processo seletivo do bootcamp trouxe lições valiosas que
+reforçam a importância de estratégias alinhadas aos valores e objetivos do Inteli. Identificar
+embaixadores por meio de abordagens direcionadas e personalizadas mostrou-se mais eficaz do
+que campanhas de comunicação em massa, pois atraiu candidatos com maior alinhamento ao
+perfil desejado. Além disso, a construção de um processo seletivo desafiador revelou ser uma
+ferramenta essencial para selecionar os participantes mais engajados, capazes de demonstrar
+habilidades e disposição para aprender dentro do contexto proposto. A coerência entre as etapas
+do processo seletivo e a proposta educacional do Inteli também se destacou como um ponto
+crítico. Cada interação foi planejada para refletir os valores e a metodologia do programa, o
+que, combinado com um tratamento personalizado e transparente, criou uma experiência
+positiva e acolhedora para os candidatos. Além disso, ficou evidente a importância da
+preparação contínua e do alinhamento das equipes envolvidas no processo, assegurando que
+todos os envolvidos compartilhem os mesmos objetivos e compreendam o papel fundamental
+de cada etapa na formação do grupo ideal. Essas lições servirão de base para fortalecer ainda
+mais os próximos ciclos do bootcamp.
+• Processo seletivo dos professores: As lições aprendidas com o processo seletivo dos
+professores destacaram pontos positivos e áreas de atenção que precisam ser aprimoradas. A
+prospecção dos candidatos foi um aspecto bem-sucedido, evidenciando uma estratégia eficiente
+para atrair talentos. No entanto, o número reduzido de candidatos foi identificado como um
+desafio, limitando a diversidade e amplitude do processo. Além disso, o tempo disponível para
+633
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+trabalhar com os professores após a seleção foi considerado insuficiente, comprometendo a
+preparação adequada para o modelo pedagógico. Embora o resultado tenha sido positivo dentro
+do contexto, ficou claro que o processo precisa ser ajustado para atender melhor às
+especificidades do modelo e incluir um planejamento mais robusto para a formação dos
+professores antes do início das atividades.
+• Avaliação das sprints: A avaliação final das sprints trouxe pontos positivos e de atenção
+importantes para reflexão. Entre os aspectos positivos, destacou-se a melhoria na colaboração
+ao longo do projeto, indicando que os participantes foram capazes de aprimorar suas habilidades
+de trabalho em equipe e sinergia à medida que as sprints progrediam. No entanto, alguns pontos
+de atenção foram identificados, como a subjetividade nas formas de observação, que se
+basearam em percepções pontuais, podendo limitar a objetividade das avaliações. Além disso,
+a falta de feedback entre os próprios alunos foi uma lacuna, uma vez que essa troca poderia
+enriquecer o processo avaliativo e promover um aprendizado ainda mais colaborativo. Por fim,
+as análises qualitativas realizadas nos focus groups forneceram poucos insights novos,
+reforçando a necessidade de revisar a metodologia para extrair informações mais significativas
+e inovadoras.
+• Competências de computação: As lições aprendidas em relação às competências de
+computação evidenciaram importantes avanços e desafios no desenvolvimento técnico dos
+alunos. Entre os pontos positivos, destacou-se o fato de que todos os grupos conseguiram
+entregar projetos abrangendo diversas competências computacionais, sendo a maioria
+desenvolvida de forma satisfatória. No entanto, alguns pontos de atenção foram levantados,
+como a necessidade de mais comentários sobre o autoestudo nas avaliações diárias, a limitação
+de materiais de estudo para bancos de dados e a pressão para concluir as atividades, que
+impactou negativamente a qualidade das entregas e do aprendizado. Além disso, a divisão de
+tarefas setorizada dificultou o aprendizado integral, e a competência extra de IA foi considerada
+excessivamente desafiadora para este contexto. Para aprimorar esse processo, sugere-se a
+implementação de estratégias como atividades colaborativas, comunidades de prática e o uso
+de mecanismos que garantam o acesso e aprendizado integral de todos os tópicos pelos alunos.
+Essas reflexões indicam a necessidade de um modelo pedagógico mais equilibrado e
+direcionado para atender às diferentes demandas e desafios técnicos enfrentados pelos
+participantes.
+• Competências de negócios: As lições aprendidas em relação às competências de negócios
+destacam tanto avanços quanto desafios no desenvolvimento dessas habilidades. Entre os
+pontos positivos, foi ressaltada a reflexão sobre a relação prática-teoria proporcionada pela
+Prova 2, que ajudou os alunos a conectar conceitos ao contexto real. Outro aspecto positivo foi
+a elaboração dos elementos de valor a partir da interação com clientes, permitindo que os alunos
+aplicassem os princípios de negócios de forma concreta e prática. Contudo, desafios também
+foram evidenciados, como a percepção de que as competências de negócios foram vistas como
+uma parte "leve" do projeto, o que limitou seu impacto. Além disso, materiais de autoestudo
+relacionados a negócios foram negligenciados, e as atividades relacionadas ao projeto ficaram
+desalinhadas com o cronograma, dificultando a integração e o aprendizado fluido. Para superar
+essas dificuldades, sugere-se um modelo mais horizontal, que torne as competências de
+negócios integradas com outros aspectos do projeto, reforçando sua relevância e eficácia para
+o aprendizado dos alunos.
+• Competências de liderança: As lições aprendidas em relação às competências de liderança
+destacam tanto os avanços alcançados quanto os desafios enfrentados ao longo do processo.
+Entre os aspectos positivos, os encontros com especialistas foram altamente valorizados pelos
+participantes, contribuindo para reflexões sobre liderança e desenvolvimento pessoal. A
+634
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+percepção de ganhos nessas competências por parte dos alunos demonstra que houve progresso
+significativo, ainda que os pontos de atenção indiquem áreas de melhoria. Um desafio notável
+foi a dificuldade em organizar os conteúdos de maneira que as competências comportamentais,
+incluindo a liderança, fossem mais claramente definidas e conectadas às práticas do dia a dia.
+Além disso, algumas limitações foram evidenciadas, como a dificuldade em "isolar"
+competências específicas, visto que muitas delas se sobrepunham nos módulos, gerando
+confusão entre práticas colaborativas e habilidades de liderança. Como mencionado, "o trabalho
+e observação das competências nos rituais de sprint aconteceu de forma muito pontual",
+destacando a necessidade de maior integração entre essas competências e o contexto dos
+projetos. Também houve uma necessidade de evidenciar o desenvolvimento dessas
+competências de forma mais concreta, pois a ausência de registros dificultou a análise do
+progresso dos alunos. Para aprimorar esses aspectos, sugere-se incluir momentos estruturados
+para trabalhar competências específicas de liderança e adotar ferramentas para registrar e
+avaliar o impacto dessas práticas de maneira mais sistemática.
+• Professora orientadora: As lições aprendidas em relação ao professor orientador (PO)
+destacaram tanto sua contribuição significativa quanto os desafios do papel acumulado. Entre
+os pontos positivos, o orientador conseguiu integrar-se de maneira eficaz ao time de professores
+instrutores e assumiu também o papel de PO, contribuindo para a organização do projeto.
+Contudo, foram identificados desafios importantes, como o foco excessivo de encontros em
+atividades técnicas ou não previstas, como aulas de requisitos e modelagem de dados, o que
+reduziu os momentos de reflexão sobre os conteúdos técnicos e pedagógicos. Além disso, as
+interações individuais com os alunos foram insuficientes, limitando o apoio personalizado. Para
+aprimorar esse papel, sugere-se estruturar melhor as atribuições do orientador, garantindo que
+ele atue como mediador entre alunos, instrutores e demandas do projeto, promovendo equilíbrio
+entre orientação técnica e pedagógica, além de gerenciar melhor sua carga de trabalho.
+• Professor Scrum Master: As lições aprendidas sobre o papel do Scrum Master revelaram
+avanços importantes e desafios a serem enfrentados. Entre os pontos positivos, destacou-se a
+presença diária do Scrum Master para conduzir os rituais e a utilização da abordagem ágil como
+uma ferramenta eficiente para organizar o trabalho e facilitar a comunicação entre os times. No
+entanto, desafios significativos foram identificados, como o fato de o Scrum Master não ser
+uma parte efetiva do time de desenvolvimento, o que limitou sua interação com as atividades
+técnicas e comprometeu a eficácia no acompanhamento de métricas, como gráficos burndown
+e progresso geral. Além disso, adaptações frequentes nos rituais, feitas para acomodar questões
+específicas dos grupos, acabaram gerando inconsistências na aplicação das práticas ágeis. Para
+aprimorar o papel do Scrum Master, sugere-se uma definição mais clara de suas
+responsabilidades, incluindo atuar como facilitador nos rituais, proteger a equipe contra
+sobrecargas e remover obstáculos levantados durante o processo. A formação gradual de alunos
+para assumir esse papel também foi proposta, o que promoveria a internalização das
+competências comportamentais e técnicas associadas à metodologia Scrum. Por fim, é
+fundamental ajustar a terminologia e alinhar o papel do Scrum Master aos objetivos do
+metaprojeto, garantindo sua relevância e aplicabilidade no contexto educacional.
+• Instrutores: As lições aprendidas sobre o papel dos instrutores destacaram a importância do
+apoio contínuo no aprendizado dos alunos, especialmente em conteúdos específicos e no
+desenvolvimento das atividades dos projetos. Entre os pontos positivos, a participação dos
+instrutores em reuniões de planejamento e integração foi fundamental para alinhar objetivos e
+oferecer suporte direcionado. Além disso, o atendimento individual, tanto de forma síncrona
+quanto assíncrona, permitiu que os alunos recebessem orientações personalizadas para superar
+dificuldades e avançar nos conteúdos técnicos. No entanto, desafios também foram
+identificados, como a necessidade de melhorar a revisão de artefatos construídos pelos alunos
+635
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+e a estruturação de feedbacks, tanto individuais quanto em grupo, para torná-los mais
+consistentes e efetivos. Outro ponto de atenção foi a necessidade de maior alinhamento entre
+os instrutores e o orientador para realizar avaliações de competências de forma integrada e
+eficaz. Para otimizar o papel do instrutor, sugere-se a inclusão de atividades que promovam um
+acompanhamento mais próximo dos alunos, revisão regular de materiais de autoestudo e uma
+maior interação com o orientador para garantir que os objetivos pedagógicos sejam plenamente
+atingidos.
+
+6
+
+Considerações Finais
+
+As atividades desenvolvidas desde meados de 2019 até final de 2020 foram consideradas o campo
+de prova para diferentes ideias que fizeram parte da criação do Inteli. Foram realizados estudos e
+pesquisas sobre os cenários de mercado e acadêmico das áreas tecnológicas, o que foi
+determinante para a proposta dos quatro cursos. Foram constituídos os diferentes Conselhos,
+contratados diversos profissionais, inclusive a diretora-geral. O modelo pedagógico, baseado
+totalmente na aprendizagem por projetos, foi estudado e desenvolvido, cujos aspectos mais
+importantes foram testados no primeiro bootcamp. Finalmente, foram efetuadas diversas ações
+como o desenvolvimento dos documentos para regulatório dos cursos no MEC, estudo sobre o
+local e infraestrutura física, estudo sobre as infraestruturas digital, administrativa e pedagógica e
+a criação de parcerias.
+É importante assinalar que todas as ações realizadas foram fundamentais para a criação do
+Inteli como um instituto educacional cuja missão é a de formar líderes empreendedores e
+inovadores na área de computação. Ele nasce sem as amarras financeiras e educacionais,
+contribuindo para que realmente possa ser inovador e ter suas atividades pautadas pelos princípios
+da excelência, transformação e acolhimento.
+Estão sendo desenvolvidas diversas ações para que sua implantação obtenha sucesso,
+como: a preocupação com o local e as infraestruturas físicas e digitais; o design e o teste do modelo
+pedagógico, contemplando o processo de seleção dos alunos e dos professores, de modo que
+possam se adequar ao modelo pedagógico proposto; e o estabelecimento de parcerias e conexões
+com pessoas, empresas e universidades que contribuam para o desenvolvimento dos processos de
+ensino e de aprendizagem, bem como a criação de confiança e reputação do Inteli.
+No final de 2020, o Inteli passou a ser mantido pela Faculdade Paulistana Unidas Ltda.,
+pessoa jurídica de direito privado com fins lucrativos, sociedade simples. O objetivo é desenvolver
+um projeto de educação superior de qualidade no município de São Paulo, que atenda aos
+indivíduos e à sociedade, buscando contribuir com a formação de profissionais com capacidade
+científica, técnica, autonomia intelectual, senso de justiça e humanidade, a partir da construção do
+conhecimento por meio do ensino, pesquisa e extensão inovadora.
+Os fundadores do Inteli encaram como sua responsabilidade social contribuir para o
+desenvolvimento de profissionais altamente capacitados em tecnologia, negócios e liderança, que
+possam impactar positivamente nosso país. Para tanto, veem uma grande oportunidade ao criar
+um centro de ensino superior que ofereça conhecimento de ponta nas áreas de computação e
+empreendedorismo e investir em alunos que possam ser potenciais agentes de transformação na
+sociedade. O objetivo é propiciar oportunidades para alunos de alto potencial e por essa razão
+selecionar alunos com base em mérito e potencial, sem que o critério financeiro seja um
+empecilho. Para esses alunos serão oferecidos bolsa integral. Por fim, os fundadores veem grande
+valor na experiência com o mercado durante a experiência acadêmica e visionam potencializar a
+participação de parceiros dentro do Inteli, fomentando um ecossistema de curiosidade, inovação,
+conhecimento de ponta e empreendedorismo.
+636
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+No início de 2021, como desdobramento direto das lições aprendidas no primeiro
+bootcamp, foram planejados e realizados dois novos bootcamps, agora em formato presencial. O
+objetivo dessa nova etapa foi testar outros aspectos do modelo pedagógico e operacional,
+incluindo melhorias identificadas no projeto inicial, bem como avaliar a eficácia da infraestrutura
+física. Essa mudança para um formato presencial permitiu explorar dinâmicas mais complexas de
+interação entre alunos, professores e equipe técnica, garantindo um ambiente mais realista para a
+aplicação dos princípios de aprendizagem por projetos. Além disso, foi uma oportunidade para
+validar a adequação dos espaços físicos e promover ajustes necessários para consolidar a proposta
+inovadora da instituição.
+Posteriormente, a operação da faculdade foi oficialmente iniciada, marcando um passo
+importante na concretização da missão do instituto. Com o apoio da mantenedora Faculdade
+Paulistana Unidas Ltda., foram estruturadas as atividades administrativas e acadêmicas
+necessárias para viabilizar o funcionamento dos cursos e atender às exigências regulatórias. A
+operação foi pensada para sustentar a qualidade do ensino, garantindo suporte completo aos
+alunos, professores e colaboradores. Além disso, ações estratégicas foram implementadas para
+atrair e engajar os primeiros parceiros institucionais e estabelecer a reputação da faculdade como
+referência em educação superior de excelência e inovação.
+
+Referências
+ACM (2006). Computing Curricula 2005: the overview report. Association for Computing
+Machinery and IEEE Computer Society. New York. https://doi.org/10.1145/1121341.1121482
+[link].
+ACM (2013). Computer Science Curricula 2013: Curriculum Guidelines for Undergraduate
+Degree Programs in Computer Science. Association for Computing Machinery and IEEE
+Computer Society. New York. https://doi.org/10.1145/2534860. [link]
+ACM (2020). Computing Curricula 2020: Paradigms for Global Computing Education.
+Association for Computing Machinery and IEEE Computer Society. New York.
+https://doi.org/10.1145/3467967. [link].
+Almulla, M. A. (2020). The Effectiveness of the Project-Based Learning (PBL) Approach as a
+Way to Engage Students in Learning. SAGE Open, July-September 2020, 1–15. [link]. [GS
+Search].
+Balmen, N. & Keskin, M. Ö. (2018). The effectiveness of project-based learning on science
+education: A meta-analysis search. International Online Journal of Education and Teaching
+(IOJET), 5(4), 849-865. [link]. [GS Search].
+Berbel, N. A. N. (2011). As metodologias ativas e a promoção da autonomia de estudantes.
+Semina: Ciências Sociais e Humanas, Londrina, 32(1), 25-40.
+Biazus, M. de O., & Mahtari, S. (2022). The Impact of Project-Based Learning (PjBL) Model on
+Secondary Students’ Creative Thinking Skills. International Journal of Essential Competencies
+in Education, 1(1), 38–48. https://doi.org/10.36312/ijece.v1i1.752. [GS Search].
+Bittencourt, I. I. & Isotani, S. (2018). Evidence-based Computers in Education: A Manifesto
+(Informática na Educação baseada em Evidências: Um Manifesto). Brazilian Journal of
+Computers in Education (Revista Brasileira de Informática na Educação - RBIE), 26(3), 108119. https://doi.org/10.5753/rbie.2018.26.03.108. [GS Search].
+
+637
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+Borba, G. B., Fabro, J. A., Schneider, G. A. & Lopes, H. S. (2021). Aplicação de aprendizagem
+baseada em projetos por meio de disciplinas integradoras: experiência do curso de engenharia
+de computação da UTFPR. In: Costa J., Ademar G., D’Andrea, A. F., Dallabona, C. A. &
+Duarte, E. R. Educação em engenharia: aplicações no ensino em engenharia. João Pessoa
+(PB): Editora IFPB, 182-220.
+Brasscom (2021). Demanda de talentos em TI e estratégias TCEM. [link].
+Breiter, A., Fey, G. & Drechsler, R. (2005). Project-based learning in student teams in computer
+science education. Facta Universitatis, Series Electronics and Energetics, 18, 165-180.
+https://doi.org/10.2298/FUEE0502165B. [GS Search].
+Brown, P. C., Roediger, H. L. & Mcdaniel, M. A. (2014). Make it Stick: the science of successful
+learning. Cambridge, MA: The Belknap Press of Harvard University Press.
+BSV19 (2021). Brazil at Silicon Valley. Vídeos. [link].
+Chen, C.-H. & Yang, Y-C. (2018). Revisiting the effects of project-based learning on students'
+academic achievement: A meta-analysis investigating moderators. Educational Research
+Review, [s.l.], 1-27. https://doi.org/10.1016/j.edurev.2018.11.001. [GS Search].
+Correia, S. D., Rodrigues, L. F. & Carrondo, J. P. S. (2019). Project-based learning in the
+classroom: application in a computer science undergraduate degree, applied to a computer
+architecture course. In: 5th Ibero-American Congress on Entrepreneurship, Energy,
+Environment and Technology (CIEEMAT 2019). Portalegre, Portugal. [link]. [GS Search].
+De los Ríos, I., Cazorla, A., Díaz-Puente, J. M. & Yagüe, J. L. (2010). Project-based learning in
+engineering higher education: two decades of teaching competences in real environments.
+Procedia
+Social
+and
+Behavioral
+Sciences,
+2(2),
+1368-1378.
+https://doi.org/10.1016/j.sbspro.2010.03.202. [link]. [GS Search].
+De Luca, G. G., Magalhães, N. C., Rauch, S. L. B., Gusso, H. L. & Kienen, N. (2022). Problemas
+de Pesquisa em Estudos de Programação de Condições para Desenvolvimento de
+Comportamentos Acta Comportamentalia. Revista Latina de Análisis de Comportamiento,
+30(3). [link]. [GS Search].
+Denning, P. J., Comer, D. E., Gries, D., Mulder, M. C., Tucker, A., Turner, A. J. & Young, P. R.
+(1989). Computing as a discipline. Communications of the ACM, 32(1), 9-23.
+https://doi.org/10.1109/2.19833. [GS Search].
+Dewey, J. (1959). Como pensamos – como se relaciona o pensamento reflexivo com o processo
+educativo: uma reexposição. São Paulo: Nacional.
+Fang, I., Feofiloff, P., Kowaltowski, T., Lucchesi, C. L., Setzer, V. W., Song, S. W & Terada, R.
+(2015). História do Centro de Cálculo Numérico (CCN) e suas Contribuições. [link].
+Faste, T. & Faste, H. (2012). Demystifying “design research”: design is not research, research is
+design. Anais IDSA Educational Symposium 2012, Boston. [GS Search].
+Gil, A. C. (1999). Métodos e Técnicas de Pesquisa Social. 5ª ed. São Paulo: Atlas.
+Gil, A. C. (2006). Como Elaborar Projetos de Pesquisa. 4 ed. São Paulo: Atlas.
+Guo, P., Saab, N., Post, L. S. & Admiraal, W. (2020). A review of project-based learning in higher
+education: Student outcomes and measures. International Journal of Educational Research,
+102, 101586. https://doi.org/10.1016/j.ijer.2020.101586. [GS Search].
+Habimorad, M., Santoro, F. M. & Valente, J. A. (2022). Inteli: acolher para transformar. MIT
+Sloan Management Review, 4(10).
+638
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+Hamilton, A., & Hattie, J. (2021). Not all that glitters is gold: Can education technology finally
+deliver? Thousand Oaks, California: Corwin Press.
+Hernández, F. (1998). Transgressão e mudança na educação: os projetos de trabalho. Porto
+Alegre: Artes Médicas.
+Hernández, F. & Ventura, M. (1998). A organização do currículo por projetos de trabalho. Porto
+Alegre: Artes Médicas.
+Inep – Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (2022). Sinopse
+Estatística da Educação Superior 2020. Brasília: Inep. [link].
+Insper (2024). Graduação em Ciência da Computação. [link].
+Jazayeri, M. (2015). Combining mastery learning with project-based learning in a first
+programming course: an experience report. IEEE/ACM 37th IEEE International Conference on
+Software Engineering, 315-318. https://doi.org/10.1109/ICSE.2015.163. [link]. [GS Search].
+Junqueira, C. (2021). Como lidar com o apagão tecnológico? Exame, 24. [link].
+Kokotsaki, D., Menzies, V. & Wiggins, A. (2016). Project-based learning: A review of the
+literature. Improving Schools, 19(3), 267–277. https://doi.org/10.1177/1365480216659733.
+[link]. [GS Search].
+Magalu (2024). A Educação que conecta pessoas com o futuro do trabalho. [link].
+Meira, S. (2021). Fundações para os Futuros Figitais. Blog. [link].
+Osterwalder, A. & Pigneur, Y. (2010). Business Model Generation: a handbook for visionaries,
+game changers, and challengers. New Jersey: Hoboken.
+Papert, S. (1980). Mindstorms. Children, computer and powerful ideas. New York: Basic Books,
+[Traduzido como Logo: computadores e educação]. São Paulo: Brasiliense, 1985.
+Piaget, J. (1978). Fazer e compreender. São Paulo: Melhoramentos e Editora da Universidade de
+São Paulo.
+Pucher, R. (2014). Project-based learning in computer science. In: International Conference “The
+Future of Education. 4th ed. Florence, Italy. [GS Search].
+Pucher, R. & Lehner, M. (2011). Project-based learning in computer science – a review of more
+than 500 projects. Procedia – Social and Behavioral Sciences, 29, 1561-1566.
+https://doi.org/10.1016/j.sbspro.2011.11.398. [GS Search].
+42São Paulo (2024). Uma das Escolas de Engenharia de Software Mais Inovadoras do Mundo.
+[link].
+Sindre, G., Giannakos, M., Krogstie, B. R., Munkvold, R. & Aalberg, T. (2018). Project-based
+learning in IT education: definitions and qualities. Årgang, 41(2), 147-163.
+https://doi.org/10.18261/ISSN1893-8981-2018-02-06. [GS Search].
+Tafakur, T., Retnawati, H. & Shukri, A. A. M. (2023). Effectiveness of project-based learning for
+enhancing students' critical thinking skills: A meta-analysis. Jurnal Inovasi Pembelajaran,
+9(2), 191–209. https://doi.org/10.22219/jinop.v9i2.22142. [GS Search].
+Thomas, J. W. (2000). A Review of the Research on Project-Based Learning, San Rafael, CA:
+The Autodesk. [link].
+Uniamérica (2024). Descomplica + Uniamérica. [link].
+
+639
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+Valente, J. A. (2002). Repensando situações de aprendizagem: o fazer e o compreender. Boletim
+Salto para o Futuro. Tecnologia e Educação: novos tempos, outros rumos. TV Escola.
+Ministério da Educação, 28-35. [link].
+Valente, J. A. (2008). O desenvolvimento de projetos usando as tecnologias de informação e
+comunicação: oportunidades para trabalhar conceitos. In: Pontes, A. & Pontes, A. N. (Org.)
+Educação e comunicação: diálogos possíveis. Rio de Janeiro: Corifeu, 55-67.
+Wing, J. M. (2006). Computational thinking. Communications of the ACM, 49(3), 33-35.
+https://doi.org/10.1145/1118178.1118215. [link]. [GS Search].
+World Economic Forum (2020). The Future of Jobs Report 2020. [link].
+Zhang, L. & Ma, Y. (2023). A study of the impact of project-based learning on student learning
+effects:
+a
+meta-analysis
+study.
+Frontiers
+in
+Psychology,
+14,
+1–13.
+https://doi.org/10.3389/fpsyg.2023.1202728. [GS Search].
+Zhou, C. (2023). The Impact of the Project-Based Learning Method on Students. BCP Education
+& Psychology, 9, 20-25. https://doi.org/10.54691/bcpep.v9i.4603.
+
+Apêndice – Metaprojeto trabalhado no bootcamp
+Tabela 4 – Exemplos de Learning Backlogs
+
+LEARNING BACKLOGS
+Stories - PBL
+Nº Semana
+
+Desenvolvimento
+Preparar ambiente de
+desenvolvimento
+Elicitar e documentar
+requisitos
+
+Autoestudo
+Gerência de Configuração
+
+Instrução
+Configuração do ambiente de
+trabalho
+Técnicas de Persona e Estórias de
+usuários
+
+1
+
+1
+
+2
+
+1
+
+3
+
+1
+
+Avaliar elementos de valor
+e definir proposta de valor
+
+4
+
+2
+
+Analisar e documentar
+arquitetura
+
+5
+
+2
+
+Criar wireframes
+
+Design da interação
+
+-
+
+6
+
+2
+
+Criar interfaces web
+mockup
+
+Tecnologias: Cliente
+
+Construção de Interfaces
+
+7
+
+2
+
+-
+
+8
+
+3
+
+Implementar detecção
+facial
+
+9
+
+3
+
+-
+
+10
+
+4
+
+Refatorar e melhorar
+detecção facial
+
+Autoconhecimento Introspecção
+Tecnologias Servidor e
+Processamento de Imagem
+Autoconhecimento - Linha
+do tempo
+Haar-like cascade e Redes
+Neurais
+
+11
+
+4
+
+-
+
+Gestão de Projetos Ágeis
+
+12
+
+5
+
+Modelar banco de dados
+
+Técnicas de Modelagem e
+MySQL
+
+Engenharia de requisitos
+Proposta de valor e
+Aprendizagem
+autodirigida
+Arquitetura ClienteServidor e Padrões de
+Projeto
+
+640
+
+Elementos de valor e proposta de
+valor
+MVC
+
+Autoconhecimento - I
+Detecção Facial e Python
+Autoconhecimento - II
+Detecção Facial e Integração em
+Python
+Fundamentos de produtos e projetos
+ágeis, e Comunicação Efetiva
+Dúvidas de
+Densenvolvimento/Banco e
+Aprendizagem autodirigida I
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+13
+
+5
+
+CRUD de usuários
+
+Padrões de Projeto e SQL
+
+-
+
+14
+
+5
+
+Implementar
+reconhecimento de
+máscara
+
+Visão futurista da
+computação
+
+Redes neurais e Aprendizagem
+supervisionada
+
+15
+
+5
+
+-
+
+Aprendizagem
+autodirigida - CEP+R
+
+Aprendizagem autodirigida - I
+
+16
+
+6
+
+Full Stack
+
+PoC e Métricas - PI
+
+17
+
+6
+
+18
+
+6
+
+-
+
+19
+
+7
+
+20
+
+Integração web com
+reconhecimento facial
+Elaborar Canvas Modelo C
+- Parte I
+
+Aprendizagem autodirigida - II
+
+Elicitar e documentar
+requisitos de dashboards
+
+Proposta única de valor
+único
+Aprendizagem
+autodirigida - Entrevista
+Análise de Riscos e
+Impactos Sócioambientais
+
+7
+
+Criar Sistema de alertas
+
+-
+
+-
+
+21
+
+7
+
+-
+
+22
+
+7
+
+Elaborar Canvas Modelo C
+- Parte II
+
+Desenvolvimento de grupo
+e Comunicação
+Negócios globais e
+multiculturalismo
+
+23
+
+8
+
+Criar dashboards
+
+-
+
+Análises de Dashboards e
+Comunicação I
+
+24
+
+8
+
+-
+
+Métricas e Fluxo de
+Entrega de Valor
+
+Otimização do fluxo de valor
+
+25
+
+8
+
+-
+
+Comunicação
+
+Comunicação - I
+
+26
+
+9
+
+CRUD de ambientes de
+trabalho
+
+Prototipação
+
+-
+
+27
+
+9
+
+CRUD de câmeras
+
+Privacidade e Direito de
+acesso
+
+-
+
+28
+
+9
+
+Autenticação de usuário
+
+Segurança da Informação
+
+Autenticação
+
+29
+
+9
+
+Criar modelo de produto
+tecnológico
+
+Ruptura digital e
+tecnologias exponenciais
+
+Modelo de produto tecnológico e
+Comunicação II
+
+30
+
+10
+
+Refatorar interfaces
+
+Interação e Experiência
+
+-
+
+31
+
+10
+
+Refatorar código
+
+XP e Padrões de Projeto
+
+-
+
+32
+
+10
+
+Elaborar Canvas Social de
+Produto Tecnológico
+
+Modelo Social e U-Ujournaling
+
+Canvas Social de Produto
+Tecnológico
+
+33
+
+10
+
+-
+
+PDCA
+
+Melhoria contínua
+
+Canvas Modelo C - I
+
+UX
+
+Times ágeis
+Canvas Modelo C - II
+
+Tabela 5 - Exemplo de atividades I
+
+IBL: PREPARAR AMBIENTE DE DESENVOLVIMENTO
+Item
+
+Nome da Atividade
+
+Tempo estimado
+(horas)
+
+Pré-Requisito (Autoestudo)
+
+1
+
+Instalar e Configurar o Docker
+
+1:30:00
+
+-
+
+02:00:00
+
+-
+
+02:00:00
+
+Introdução ao controle de versão
+com o Git
+
+00:30:00
+
+-
+
+2
+3
+4
+
+Compreender o Script de
+Configuração do Docker
+Fazer clone do repositório e executar
+comandos Bash Básicos
+Instalar VSCode - IDE
+
+641
+
+Valente et al.
+
+RBIE v.33 – 2025
+
+Tabela 6 - Exemplo de atividades II
+
+IBL: ELICITAR E DOCUMENTAR REQUISITOS
+Item
+
+Nome da Atividade
+
+Tempo estimado
+(horas)
+
+1
+
+Identificar Publico(s)-Alvo(s)
+
+1:00:00
+
+2
+
+Criar Personas
+
+01:30:00
+
+3
+
+Elicitar Requisitos
+
+02:00:00
+
+4
+
+Criar “User Stories”
+
+02:30:00
+
+5
+
+Publicar link das Personas e
+Requisitos no Readme do GitHub
+
+00:30:00
+
+Pré-Requisito (Autoestudo)
+Necessidades dos clientes e
+requerimentos de software
+Necessidades dos clientes e
+requerimentos de software
+Necessidades dos clientes e
+requerimentos de software
+Necessidades dos clientes e
+requerimentos de software
+Introdução ao controle de versão
+com o Git
+
+Tabela 7 - Exemplo de atividades III
+
+IBL: IMPLEMENTAR DETECÇÃO FACIAL
+Item
+
+Nome da Atividade
+
+Tempo estimado
+(horas)
+
+Pré-Requisito (Autoestudo)
+
+1
+
+Ler imagens e capturar webcam
+
+1:00:00
+
+Image Processing - Week 1 Link
+
+2
+
+Carregar classificador Haar e detectar
+faces frontais
+
+02:00:00
+
+3
+
+Detectar faces em perfil
+
+01:00:00
+
+4
+
+Detectar olhos e boca
+
+02:00:00
+
+5
+
+Combinar detecção de faces, olhos e
+boca, frontal e em perfil
+
+03:00:00
+
+Vídeo: IA para todos
+(Disponível em link)
+Vídeos e Exercício: Introduction
+to Computer Vision with
+OpenCV (Disponíveis em link)
+
+Tabela 8 - Exemplo de atividades IV
+
+IBL: AVALIAR ELEMENTOS DE VALOR E DEFINIR PROPOSTA DE VALOR (AULA 17/09)
+Item
+
+Nome da Atividade
+
+1
+
+Avaliar elementos de valor
+
+2
+
+Definir segmento de cliente/usuário
+
+3
+
+Definir proposta de valor
+
+4
+
+Fazer 2 benchmarkings
+
+Tempo estimado
+(horas)
+
+Pré-Requisito (Autoestudo)
+
+1:00:00
+
+Leituras de pré-aula
+obrigatórias (Disponível em
+link)
+
+02:00:00
+
+-
+
+642
+
+

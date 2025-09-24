@@ -1,0 +1,150 @@
+01. [2024] Harnessing Generative AI to Enhance Feedback Quality in Peer Evaluations within Project-Based Learning Contexts
+    Venue: 
+    Score: 15 | Reasons: process, collaboration, competencies, feedback, scalability/objectivity, instrument/tech, empirical, edu context
+    ID: WOS:001385273300001
+
+02. [2023] An online progressive peer assessment approach to project-based learning: a constructivist perspective
+    Venue: 
+    Score: 15 | Reasons: process, collaboration, competencies, feedback, scalability/objectivity, instrument/tech, empirical, edu context
+    ID: WOS:001014475600001
+
+03. [2023] The Role of Group Project-Based Learning in Engineering Training
+    Venue: 
+    Score: 15 | Reasons: process, collaboration, competencies, feedback, scalability/objectivity, instrument/tech, empirical, edu context
+    ID: WOS:001463123800024
+
+04. [2019] Implementation of Project Based Learning: Lessons Learned
+    Venue: 
+    Score: 15 | Reasons: process, collaboration, competencies, feedback, scalability/objectivity, instrument/tech, empirical, edu context
+    ID: WOS:000926106200038
+
+05. [2025] Project-Based Learning Combined with Inquiry-Based Learning Using Solver Tools to Promote Computational Thinking Among Undergraduate Students
+    Venue: 
+    Score: 13 | Reasons: process, collaboration, competencies, scalability/objectivity, instrument/tech, empirical, edu context
+    ID: WOS:001439813900049
+
+06. [2021] Assessing individuals within teams in project-based learning courses - Strategies, evaluation and lessons learnt
+    Venue: 
+    Score: 13 | Reasons: process, collaboration, competencies, feedback, instrument/tech, empirical, edu context
+    ID: WOS:000689064100124
+
+07. [2021] Academic Performance in University Students in Morphological Science Courses: Use of Active Problem-Based Learning (PBL)
+    Venue: 
+    Score: 13 | Reasons: process, collaboration, competencies, scalability/objectivity, instrument/tech, empirical, edu context
+    ID: SCIELO:S0717-95022021000200401
+
+08. [2020] Online Project-Based Learning and Formative Assessment
+    Venue: 
+    Score: 13 | Reasons: process, competencies, feedback, scalability/objectivity, instrument/tech, empirical, edu context
+    ID: WOS:000551941100012
+
+09. [2020] Integration of different assessment approaches: application to a project-based learning engineering course
+    Venue: 
+    Score: 13 | Reasons: process, collaboration, feedback, scalability/objectivity, instrument/tech, empirical, edu context
+    ID: WOS:000541822100008
+
+10. [2019] Formative Assessment in Project-based Learning: Supporting Alternative on the Learning Outcome of Biology Students in University
+    Venue: 
+    Score: 13 | Reasons: process, collaboration, feedback, scalability/objectivity, instrument/tech, empirical, edu context
+    ID: WOS:000507519000108
+
+11. [2020] Toward an Integrative Nursing Curriculum: Combining Team-Based and Problem-Based Learning with Emergency-Care Scenario Simulation
+    Venue: 
+    Score: 12 | Reasons: collaboration, competencies, feedback, scalability/objectivity, empirical, edu context
+    ID: WOS:000549292100001
+
+12. [2025] Problem-Based Learning and Case-Based Learning in Clinical Practical Teaching for Gynecology Residents: A Narrative Review
+    Venue: 
+    Score: 11 | Reasons: collaboration, competencies, feedback, scalability/objectivity, instrument/tech, edu context
+    ID: WOS:001536445300001
+
+13. [2024] ASSESSING CREATIVE THINKING COMPETENCIES OF PRE-SERVICE TEACHERS VIA PROJECT-BASED LEARNING MODELS
+    Venue: 
+    Score: 11 | Reasons: competencies, feedback, scalability/objectivity, instrument/tech, empirical, edu context
+    ID: WOS:001409695800015
+
+14. [2024] Examining the Impact of Project-Based Learning on Students' Self-Reported and Actual Learning Outcomes
+    Venue: 
+    Score: 11 | Reasons: process, collaboration, competencies, instrument/tech, empirical, edu context
+    ID: WOS:001184098500001
+
+15. [2023] Data Science Course Design for a Large-Scale Cohort using Individual Project-Based Learning
+    Venue: 
+    Score: 11 | Reasons: collaboration, competencies, scalability/objectivity, instrument/tech, empirical, edu context
+    ID: WOS:001108946300005
+
+16. [2022] Gaining Student Engagement Through Project-Based Learning: A Competitive 2D Game Construction Case Study
+    Venue: 
+    Score: 11 | Reasons: process, collaboration, scalability/objectivity, instrument/tech, empirical, edu context
+    ID: WOS:000739991900001
+
+17. [2022] A comparison of face-to-face and fully online problem-based learning: Student results and staff experiences, 2014-2020
+    Venue: 
+    Score: 11 | Reasons: collaboration, competencies, feedback, instrument/tech, empirical, edu context
+    ID: WOS:000827666100001
+
+18. [2020] A Project-Based Learning Approach for Enhancing Learning Skills and Motivation in Software Engineering
+    Venue: 
+    Score: 11 | Reasons: collaboration, competencies, scalability/objectivity, instrument/tech, empirical, edu context
+    ID: WOS:000810169400050
+
+19. [2019] Combining Flipped Classroom, Project-Based Learning, and Formative Assessment Strategies in Engineering Studies
+    Venue: 
+    Score: 11 | Reasons: process, collaboration, feedback, scalability/objectivity, instrument/tech, edu context
+    ID: CCC:000496764400011
+
+20. [2023] Beyond technology: factors influencing the effects of teachers' audio feedback on students' project-based learning
+    Venue: 
+    Score: 10 | Reasons: collaboration, competencies, feedback, empirical, edu context
+    ID: WOS:000821449500001
+
+21. [2023] Assessment of Students' Creative Thinking Skill on the Implementation of Project-Based Learning
+    Venue: 
+    Score: 10 | Reasons: process, competencies, scalability/objectivity, instrument/tech, empirical
+    ID: WOS:001083541000004
+
+22. [2025] Innovating forest science education through problem-based learning: Insights from a public university in Brazil
+    Venue: 
+    Score: 8 | Reasons: collaboration, competencies, instrument/tech, empirical, edu context
+    ID: WOS:001461132900001
+
+23. [2025] Comparison of learning outcomes: Team-based vs. problem-based learning with high-Fidelity simulation in a critical care nursing course-a mixed-methods design
+    Venue: 
+    Score: 8 | Reasons: collaboration, scalability/objectivity, instrument/tech, empirical, edu context
+    ID: WOS:001509840800001
+
+24. [2024] Enhancing Chinese Language Education Through AI-Assisted Project-Based Learning: A Qualitative Study on Learning Values and Multimedia Skills Development
+    Venue: 
+    Score: 8 | Reasons: competencies, feedback, instrument/tech, empirical, edu context
+    ID: WOS:001460297100095
+
+25. [2021] DILEMMS IN EVALUATIVE PRACTICES AND TRAINING NEEDS FOR TUTORS IN THE PROBLEM-BASED LEARNING (PBL) METHOD
+    Venue: 
+    Score: 8 | Reasons: process, feedback, instrument/tech, empirical, edu context
+    ID: WOS:000733964200011
+
+26. [2020] Testing the "Grandma Hypothesis": Characterizing Skin Microbiome Diversity as a Project-Based Learning Approach to Genomics
+    Venue: 
+    Score: 8 | Reasons: competencies, feedback, instrument/tech, empirical, edu context
+    ID: WOS:000582667700007
+
+27. [2024] Teaching Advanced Topics in Numerical Engineering Using Project-Based Learning
+    Venue: 
+    Score: 7 | Reasons: feedback, scalability/objectivity, empirical, edu context
+    ID: WOS:001289091100055
+
+28. [2022] Assessing the Effectiveness of Problem-Based Learning Across Two Concrete Construction Courses
+    Venue: 
+    Score: 6 | Reasons: scalability/objectivity, instrument/tech, empirical, edu context
+    ID: WOS:000836321000026
+
+29. [2021] The Investigation of Logistic Regression Methods Applied to Engineering Education using Project Based Learning for Airport Systems Design
+    Venue: 
+    Score: 6 | Reasons: process, scalability/objectivity, instrument/tech, edu context
+    ID: WOS:000821947700094
+
+30. [2020] Does Project-Based Learning (PBL) Promote Student Learning? A Performance Evaluation
+    Venue: 
+    Score: 6 | Reasons: competencies, instrument/tech, empirical, edu context
+    ID: WOS:000593667700001
+
