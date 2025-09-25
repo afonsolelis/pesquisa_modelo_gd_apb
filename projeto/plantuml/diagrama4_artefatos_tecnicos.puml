@@ -1,0 +1,217 @@
+@startuml diagrama4_artefatos_tecnicos
+!define PRIMARY_COLOR #2E86AB
+!define SECONDARY_COLOR #A23B72
+!define ACCENT_COLOR #F18F01
+!define SUCCESS_COLOR #C73E1D
+
+skinparam class {
+    BackgroundColor WHITE
+    BorderColor PRIMARY_COLOR
+    HeaderBackgroundColor PRIMARY_COLOR
+    HeaderFontColor WHITE
+    AttributeFontColor BLACK
+    FontSize 11
+}
+
+skinparam arrow {
+    Color PRIMARY_COLOR
+    FontColor PRIMARY_COLOR
+    FontSize 10
+}
+
+top to bottom direction
+
+package "Artefatos e Processos Técnicos - Desenvolvimento" {
+
+    class Sprint <<from Execução>> {
+        + sprint_n : Integer
+        + backlog_selecionado : List<BacklogItem>
+    }
+
+    class BacklogItem <<from Execução>> {
+        + backlog_id : String
+        + req_tapi_id : String
+    }
+
+    class Artefato <<Produto-Tangivel>> {
+        + artifact_id : String
+        + tipo_artefato : String
+        + nome_arquivo : String
+        + versao : String
+        + autores : List<stud_id>
+        + data_criacao : Date
+        + data_ultima_modificacao : Date
+        + sprint_vinculada : Integer
+        + backlog_vinculado : List<backlog_id>
+        + tamanho_bytes : Long
+        + hash_integridade : String
+        + url_repositorio : String
+        + caminho_arquivo : String
+        --
+        + criaVersao() : String
+        + vinculaBacklog() : void
+        + calculaMetricas() : Map
+        + validaIntegridade() : Boolean
+        + geraRastreabilidade() : String
+    }
+
+    class CommitPR <<Operacao-Versioning>> {
+        + operacao_id : String
+        + tipo : String
+        + hash_commit : String
+        + pr_id : String
+        + autor : stud_id
+        + data_operacao : Date
+        + mensagem : Text
+        + arquivos_modificados : List<String>
+        + linhas_adicionadas : Integer
+        + linhas_removidas : Integer
+        + backlog_referenciado : List<backlog_id>
+        + reviewers : List<stud_id>
+        + aprovado : Boolean
+        + merge_commit : String
+        --
+        + registraAlteracao() : void
+        + vinculaBacklogItem() : void
+        + solicitaReview() : void
+        + aprova() : void
+        + realizaMerge() : String
+        + calculaImpacto() : Estatisticas
+    }
+
+    class PitchReview <<Ritual-Demonstracao>> {
+        + review_id : String
+        + sprint_n : Integer
+        + equipe : team_id
+        + data_realizacao : Date
+        + duracao_minutos : Integer
+        + participantes : List<String>
+        + artefatos_demonstrados : List<artifact_id>
+        + apresentadores : List<stud_id>
+        + feedback_parceiro : Text
+        + feedback_docentes : Map<String, Text>
+        + decisoes_registradas : List<String>
+        + proximos_passos : List<String>
+        + riscos_identificados : List<String>
+        + nota_qualitativa : String
+        --
+        + preparaDemo() : void
+        + conduzApresentacao() : void
+        + coletaFeedback() : Map
+        + registraDecisoes() : void
+        + planeja ProximosSpassos() : List<String>
+        + consolidaAta() : Documento
+    }
+
+    class RepositorioGit <<Sistema-Controle>> {
+        + repo_id : String
+        + nome_repositorio : String
+        + url_remote : String
+        + equipe_proprietaria : team_id
+        + branches_principais : List<String>
+        + configuracao_ci : String
+        + padroes_commit : String
+        + politicas_merge : String
+        + metricas_atividade : Map
+        --
+        + configuraPermissoes() : void
+        + defineWorkflow() : void
+        + coletaMetricas() : Map
+        + geraRelatorios() : List<Relatorio>
+        + monitora Atividade() : void
+    }
+
+    class Evidencia <<Registro-Processo>> {
+        + evidencia_id : String
+        + tipo_evidencia : String
+        + fonte_origem : String
+        + data_registro : Date
+        + contexto : String
+        + conteudo : Text
+        + arquivos_anexos : List<String>
+        + tags_categorias : List<String>
+        + nivel_confidencialidade : String
+        + validacao_automatica : Boolean
+        --
+        + registraOcorrencia() : void
+        + categorizaAutomaticamente() : void
+        + validaIntegridade() : Boolean
+        + vinculaProcesso() : void
+        + geraMetadados() : Map
+    }
+
+    enum TipoArtefato {
+        CODIGO_FONTE
+        DOCUMENTACAO_TECNICA
+        PROTOTIPO_INTERFACE
+        RELATORIO_TECNICO
+        APRESENTACAO
+        SCRIPT_TESTE
+        CONFIGURACAO_AMBIENTE
+        MODELO_DADOS
+    }
+
+    enum TipoOperacao {
+        COMMIT
+        PULL_REQUEST
+        MERGE
+        BRANCH
+        TAG_RELEASE
+        REVERT
+    }
+
+    enum TipoEvidencia {
+        DECISAO_TECNICA
+        PROBLEMA_IDENTIFICADO
+        SOLUCAO_IMPLEMENTADA
+        FEEDBACK_USUARIO
+        TESTE_VALIDACAO
+        RETROSPECTIVA_PROCESSO
+    }
+}
+
+' Layout vertical - fluxo de cima para baixo
+Sprint -[hidden]-> BacklogItem
+BacklogItem -[hidden]-> Artefato
+Artefato -[hidden]-> CommitPR
+CommitPR -[hidden]-> RepositorioGit
+RepositorioGit -[hidden]-> PitchReview
+PitchReview -[hidden]-> Evidencia
+
+' Relacionamentos principais
+Sprint ||--o{ Artefato : "produz\n1..* artefatos"
+BacklogItem ||--o{ Artefato : "gera\n0..* artefatos"
+Artefato ||--o{ CommitPR : "modificado por\n1..* operações"
+Sprint ||--|| PitchReview : "encerra com\n1 review"
+PitchReview ||--o{ Artefato : "demonstra\n1..* artefatos"
+RepositorioGit ||--o{ CommitPR : "armazena\n1..* operações"
+PitchReview ||--o{ Evidencia : "gera\n1..* evidências"
+CommitPR ||--o{ Evidencia : "produz\n0..* evidências"
+
+' Relacionamentos com enums
+Artefato --> TipoArtefato
+CommitPR --> TipoOperacao
+Evidencia --> TipoEvidencia
+
+' Notas explicativas
+note top of Artefato : **Produtos Tangíveis**\nCódigo, docs, protótipos\nRastreabilidade completa\nVersionamento obrigatório
+
+note right of CommitPR : **Operações de Versioning**\nCommits + Pull Requests\nReview obrigatório\nVínculo com backlog items
+
+note bottom of PitchReview : **Ritual de Avaliação**\nDemo + discussão técnica\nFeedback parceiro + docentes\nDecisões documentadas
+
+note left of RepositorioGit : **Sistema de Controle**\nPadrões obrigatórios\nCI/CD configurado\nMétricas automáticas
+
+' Cadeia de rastreabilidade
+note as N4
+    <b>Cadeia de Rastreabilidade:</b>
+    TAPI → Backlog → PR/Commit → Artefato → Review → Avaliação
+
+    <b>Métricas Técnicas Capturadas:</b>
+    • Atividade: commits/dia, PRs/sprint
+    • Qualidade: code reviews, testes
+    • Colaboração: co-authoring, discussões
+    • Evolução: complexidade, cobertura
+end note
+
+@enduml

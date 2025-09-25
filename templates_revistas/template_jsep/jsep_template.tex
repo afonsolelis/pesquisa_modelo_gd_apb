@@ -1,0 +1,261 @@
+% JSEP Template - APA Format (Purdue University Style)
+% Based on JSEP Author Guidelines with APA exceptions
+% Template for Journal of Software Engineering and Practice
+
+\documentclass[12pt,letterpaper]{article}
+
+% Essential packages for APA format
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{cite}
+\usepackage{natbib}
+\usepackage{apacite}
+
+% Page setup - APA format
+\geometry{
+    left=1in,
+    right=1in,
+    top=1in,
+    bottom=1in,
+    includeheadfoot
+}
+
+% Single spacing as per JSEP guidelines
+\singlespacing
+
+% Remove headers and footers as per JSEP guidelines
+\pagestyle{empty}
+
+% Title formatting
+\titleformat{\section}{\normalfont\bfseries\centering}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\bfseries\itshape}{\thesubsubsection}{1em}{}
+
+% Remove page breaks between sections as per JSEP guidelines
+\titlespacing{\section}{0pt}{12pt}{6pt}
+\titlespacing{\subsection}{0pt}{12pt}{6pt}
+\titlespacing{\subsubsection}{0pt}{12pt}{6pt}
+
+% Figure and table captions
+\usepackage[font=small,labelfont=bf,textfont=it]{caption}
+
+% URL formatting
+\urlstyle{same}
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,
+    urlcolor=blue,
+    citecolor=black
+}
+
+% Custom commands for APA formatting
+\newcommand{\apaabstract}[1]{
+    \begin{center}
+        \textbf{Abstract}
+    \end{center}
+    \noindent #1
+}
+
+\newcommand{\apakeywords}[1]{
+    \vspace{0.5em}
+    \noindent\textbf{Keywords:} #1
+}
+
+% Remove automatic indentation for first paragraph after section headers
+\usepackage{indentfirst}
+
+\begin{document}
+
+% Title and author information at the top of the first page (no separate title page)
+\begin{center}
+    \textbf{Your Paper Title Here: A Descriptive Subtitle if Needed}
+    
+    \vspace{0.5em}
+    
+    \textbf{Author Name}\\
+    Institution Name\\
+    City, State/Country\\
+    email@institution.edu
+    
+    \vspace{0.5em}
+    
+    \textbf{Second Author Name}\\
+    Institution Name\\
+    City, State/Country\\
+    email@institution.edu
+\end{center}
+
+\vspace{1em}
+
+% Abstract
+\apaabstract{
+    This is the abstract of your paper. It should be a concise summary of your research, typically between 150-250 words. The abstract should include the purpose of the study, methodology, key findings, and conclusions. Avoid citations in the abstract unless absolutely necessary.
+}
+
+\apakeywords{keyword1, keyword2, keyword3, keyword4, keyword5}
+
+\vspace{1em}
+
+% Introduction
+\section{Introduction}
+
+Your introduction should begin here. The first paragraph should introduce the topic and provide background information. Subsequent paragraphs should establish the context, identify gaps in the literature, and state the purpose of your research.
+
+\subsection{Background}
+
+Provide relevant background information here. This section should establish the context for your research and help readers understand why your study is important.
+
+\subsection{Problem Statement}
+
+Clearly state the problem or research question that your study addresses. This should be specific and measurable.
+
+\subsection{Research Objectives}
+
+List your research objectives or hypotheses here. Be specific about what you aim to achieve or test.
+
+% Literature Review
+\section{Literature Review}
+
+This section should provide a comprehensive review of relevant literature. Organize your review thematically or chronologically, and ensure that you connect the literature to your research objectives.
+
+\subsection{Previous Research}
+
+Discuss previous research in your area. Focus on studies that are directly relevant to your research question.
+
+\subsection{Theoretical Framework}
+
+If applicable, describe the theoretical framework that guides your research. This might include models, theories, or conceptual frameworks.
+
+% Methodology
+\section{Methodology}
+
+Describe your research design, participants, materials, and procedures in detail. This section should be comprehensive enough that another researcher could replicate your study.
+
+\subsection{Research Design}
+
+Explain your research design (e.g., experimental, quasi-experimental, correlational, qualitative, mixed methods).
+
+\subsection{Participants}
+
+Describe your participants, including how they were selected, their characteristics, and any relevant demographic information.
+
+\subsection{Materials and Instruments}
+
+Describe any materials, instruments, or tools used in your study. Include information about reliability and validity if applicable.
+
+\subsection{Procedures}
+
+Provide a detailed description of your procedures, including data collection methods and any interventions or treatments.
+
+\subsection{Data Analysis}
+
+Explain how you analyzed your data, including statistical methods used and any software programs.
+
+% Results
+\section{Results}
+
+Present your findings clearly and objectively. Use tables and figures to help illustrate your results, but ensure that the text provides sufficient explanation.
+
+\subsection{Descriptive Statistics}
+
+Present descriptive statistics for your variables. Use tables when appropriate to organize the information.
+
+\begin{table}[H]
+\centering
+\caption{Sample Descriptive Statistics}
+\begin{tabular}{lccc}
+\toprule
+Variable & M & SD & n \\
+\midrule
+Variable 1 & 25.5 & 4.2 & 100 \\
+Variable 2 & 18.3 & 3.1 & 100 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Inferential Statistics}
+
+Present the results of your statistical tests. Include effect sizes and confidence intervals when appropriate.
+
+% Discussion
+\section{Discussion}
+
+Interpret your results and discuss their implications. Connect your findings to the existing literature and address your research objectives.
+
+\subsection{Interpretation of Results}
+
+Discuss what your results mean and how they relate to your research questions or hypotheses.
+
+\subsection{Comparison with Previous Research}
+
+Compare your findings with previous research in the area. Discuss similarities and differences.
+
+\subsection{Limitations}
+
+Acknowledge the limitations of your study. Be honest about potential weaknesses and their impact on your conclusions.
+
+\subsection{Future Research}
+
+Suggest directions for future research based on your findings and the limitations you identified.
+
+% Conclusion
+\section{Conclusion}
+
+Provide a brief summary of your main findings and their implications. Restate the importance of your research and its contribution to the field.
+
+% References
+\section{References}
+
+% Use APA citation style
+% Example references - replace with your actual references
+\begin{thebibliography}{99}
+
+\bibitem{author2023}
+Author, A. A., \& Author, B. B. (2023). Title of the article. \textit{Journal Name}, \textit{Volume}(Issue), pages. https://doi.org/10.xxxx/xxxxx
+
+\bibitem{author2022}
+Author, C. C., Author, D. D., \& Author, E. E. (2022). Title of the book. Publisher Name.
+
+\bibitem{author2021}
+Author, F. F. (2021). Title of the chapter. In G. G. Editor \& H. H. Editor (Eds.), \textit{Title of the book} (pp. 123-145). Publisher Name.
+
+\end{thebibliography}
+
+% Alternative: If using BibTeX, uncomment the following lines:
+% \bibliographystyle{apacite}
+% \bibliography{references}
+
+% Appendices (if needed)
+% \appendix
+% \section{Appendix A}
+% Content of appendix A
+
+% \section{Appendix B}
+% Content of appendix B
+
+\end{document}
