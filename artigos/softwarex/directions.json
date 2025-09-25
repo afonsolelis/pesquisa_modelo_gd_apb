@@ -1,0 +1,124 @@
+{
+  "system_info": {
+    "operating_system": "Ubuntu (WSL2)",
+    "shell": "/usr/bin/zsh",
+    "sudo_password": "080909",
+    "workspace_path": "/home/afonsolelis/pesquisa_modelo_gd_apb/artigos/softwarex"
+  },
+  "git_workflow": {
+    "always_commit_changes": true,
+    "commit_format": "conventional_commits",
+    "commit_message_structure": {
+      "type": "Required - one of: feat, fix, docs, style, refactor, test, chore",
+      "scope": "Optional - component or area affected",
+      "description": "Required - brief description of changes",
+      "body": "Optional - detailed explanation",
+      "footer": "Optional - breaking changes, issues closed"
+    },
+    "examples": {
+      "feat": "feat(article): add PBLRepositoriesMetrics system documentation",
+      "fix": "fix(diagrams): correct UML class diagram references",
+      "docs": "docs(readme): update installation instructions",
+      "style": "style(tex): improve LaTeX formatting and layout",
+      "refactor": "refactor(structure): reorganize project directories",
+      "test": "test(compilation): verify LaTeX compilation process",
+      "chore": "chore(deps): update PlantUML version"
+    }
+  },
+  "workflow_commands": {
+    "before_modifications": [
+      "git status",
+      "git add .",
+      "git commit -m 'chore: save current state before modifications'"
+    ],
+    "after_modifications": [
+      "git add .",
+      "git commit -m '[TYPE]([SCOPE]): [DESCRIPTION]'",
+      "git log --oneline -5"
+    ],
+    "rollback_commands": {
+      "undo_last_commit": "git reset --soft HEAD~1",
+      "undo_last_commit_keep_changes": "git reset HEAD~1",
+      "undo_last_commit_discard_changes": "git reset --hard HEAD~1",
+      "view_commit_history": "git log --oneline -10",
+      "revert_specific_commit": "git revert [COMMIT_HASH]"
+    }
+  },
+  "project_structure": {
+    "main_files": {
+      "latex_source": "pblrepositoriesmetrics.tex",
+      "compiled_pdf": "afonsystem.pdf",
+      "guidelines": "article_guidelines.json",
+      "directions": "directions.json"
+    },
+    "diagrams_folder": "estudo_de_caso_1/",
+    "backup_files": "afonsystem_old.pdf"
+  },
+  "compilation_workflow": {
+    "latex_compilation": {
+      "command": "pdflatex pblrepositoriesmetrics.tex",
+      "iterations": 2,
+      "output_file": "pblrepositoriesmetrics.pdf",
+      "final_rename": "mv pblrepositoriesmetrics.pdf afonsystem.pdf"
+    },
+    "cleanup_commands": [
+      "rm -f *.aux *.log *.out *.toc *.fls *.fdb_latexmk *.synctex.gz"
+    ]
+  },
+  "conventional_commits_guide": {
+    "types": {
+      "feat": "A new feature for the user",
+      "fix": "A bug fix for the user",
+      "docs": "Documentation only changes",
+      "style": "Changes that do not affect the meaning of the code",
+      "refactor": "A code change that neither fixes a bug nor adds a feature",
+      "test": "Adding missing tests or correcting existing tests",
+      "chore": "Changes to the build process or auxiliary tools"
+    },
+    "scopes": {
+      "article": "Changes to the main article content",
+      "diagrams": "Changes to UML diagrams or PlantUML files",
+      "structure": "Changes to project structure or organization",
+      "compilation": "Changes to LaTeX compilation process",
+      "docs": "Changes to documentation files",
+      "deps": "Changes to dependencies or external tools"
+    },
+    "breaking_changes": {
+      "indicator": "!",
+      "example": "feat!: redesign article structure with new sections"
+    }
+  },
+  "best_practices": {
+    "before_any_changes": [
+      "1. Check git status",
+      "2. Create backup commit",
+      "3. Make changes",
+      "4. Test compilation if LaTeX",
+      "5. Commit with conventional format"
+    ],
+    "commit_frequency": "After each logical unit of work",
+    "commit_message_length": "Keep description under 50 characters",
+    "testing_commands": {
+      "latex_compilation": "pdflatex pblrepositoriesmetrics.tex",
+      "check_pdf_generation": "ls -la *.pdf",
+      "verify_diagrams": "ls -la estudo_de_caso_1/*.png"
+    }
+  },
+  "emergency_procedures": {
+    "recover_from_bad_commit": [
+      "git log --oneline -5",
+      "git reset --hard [GOOD_COMMIT_HASH]"
+    ],
+    "recover_lost_changes": [
+      "git reflog",
+      "git reset --hard [COMMIT_WITH_CHANGES]"
+    ],
+    "create_emergency_backup": "git tag emergency-backup-$(date +%Y%m%d-%H%M%S)"
+  },
+  "system_commands": {
+    "check_system_status": "uname -a && lsb_release -a",
+    "check_disk_space": "df -h",
+    "check_git_status": "git status --porcelain",
+    "view_recent_commits": "git log --oneline -10"
+  }
+}

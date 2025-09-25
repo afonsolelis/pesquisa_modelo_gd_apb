@@ -1,0 +1,81 @@
+{
+  "language": "english",
+  "publication_type": "academic_article",
+  "target_journal": "SoftwareX",
+  "writing_guidelines": {
+    "language_requirements": {
+      "primary_language": "English",
+      "tone": "academic",
+      "formality": "formal",
+      "voice": "third_person"
+    },
+    "structure_requirements": {
+      "sections": [
+        "Abstract",
+        "Keywords",
+        "Introduction",
+        "System Architecture",
+        "Implementation Details",
+        "Results and Discussion",
+        "Conclusion",
+        "Acknowledgments",
+        "References"
+      ],
+      "figure_requirements": {
+        "include_diagrams": true,
+        "figure_captions": "descriptive",
+        "figure_references": "in-text citations"
+      }
+    },
+    "content_guidelines": {
+      "technical_accuracy": "high",
+      "code_examples": "include when relevant",
+      "diagrams": "UML diagrams required",
+      "architecture_discussion": "detailed",
+      "implementation_focus": "practical aspects"
+    },
+    "formatting_requirements": {
+      "document_class": "article",
+      "font_size": "12pt",
+      "margins": "standard academic",
+      "line_spacing": "single",
+      "paragraph_spacing": "appropriate"
+    },
+    "terminology": {
+      "use_technical_terms": true,
+      "define_acronyms": "first use",
+      "consistent_naming": "camelCase for code, Title Case for sections"
+    }
+  },
+  "specific_requirements": {
+    "afonsystem_article": {
+      "focus_areas": [
+        "GitHub data analysis",
+        "Streamlit web application",
+        "Parquet data storage",
+        "Supabase integration",
+        "UML architecture diagrams"
+      ],
+      "key_technologies": [
+        "Streamlit",
+        "PyGithub",
+        "Supabase",
+        "Pandas",
+        "Plotly",
+        "Pydantic"
+      ],
+      "diagrams_required": [
+        "Component Diagram",
+        "Class Diagram",
+        "Sequence Diagram"
+      ]
+    }
+  },
+  "writing_style": {
+    "sentence_structure": "clear and concise",
+    "paragraph_organization": "logical flow",
+    "technical_explanations": "detailed but accessible",
+    "code_references": "inline when necessary",
+    "figure_integration": "seamless with text"
+  }
+}
