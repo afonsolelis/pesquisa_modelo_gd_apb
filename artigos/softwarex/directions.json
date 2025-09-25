@@ -27,6 +27,7 @@
   },
   "workflow_commands": {
     "before_modifications": [
+      "git pull",
       "git status",
       "git add .",
       "git commit -m 'chore: save current state before modifications'"
@@ -34,6 +35,7 @@
     "after_modifications": [
       "git add .",
       "git commit -m '[TYPE]([SCOPE]): [DESCRIPTION]'",
+      "git push",
       "git log --oneline -5"
     ],
     "rollback_commands": {
@@ -47,19 +49,19 @@
   "project_structure": {
     "main_files": {
       "latex_source": "pblrepositoriesmetrics.tex",
-      "compiled_pdf": "afonsystem.pdf",
+      "compiled_pdf": "pblrepositoriesmetrics.pdf",
       "guidelines": "article_guidelines.json",
       "directions": "directions.json"
     },
     "diagrams_folder": "estudo_de_caso_1/",
-    "backup_files": "afonsystem_old.pdf"
+    "backup_files": "pblrepositoriesmetrics_old.pdf"
   },
   "compilation_workflow": {
     "latex_compilation": {
       "command": "pdflatex pblrepositoriesmetrics.tex",
       "iterations": 2,
       "output_file": "pblrepositoriesmetrics.pdf",
-      "final_rename": "mv pblrepositoriesmetrics.pdf afonsystem.pdf"
+      "final_rename": ""
     },
     "cleanup_commands": [
       "rm -f *.aux *.log *.out *.toc *.fls *.fdb_latexmk *.synctex.gz"
