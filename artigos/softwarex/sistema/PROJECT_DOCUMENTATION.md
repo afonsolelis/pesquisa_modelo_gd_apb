@@ -251,7 +251,7 @@ PullRequestRepository --|> Repository : extends
 
 ```plantuml
 @startuml
-title Repository Snapshot Creation
+title PBLRepositoriesMetrics Repository Snapshot Creation
 
 actor User
 participant "Streamlit UI" as UI
@@ -285,7 +285,7 @@ UI -> User: Display result
 
 ```plantuml
 @startuml
-package "Afonsystem Application" {
+package "PBLRepositoriesMetrics Application" {
   [Streamlit UI] as UI
   [Data Collection] as DC
   [Data Storage] as DS

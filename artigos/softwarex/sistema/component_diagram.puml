@@ -1,5 +1,5 @@
 @startuml
-package "Afonsystem Application" {
+package "PBLRepositoriesMetrics Application" {
   [Streamlit UI] as UI
   [Data Collection] as DC
   [Data Storage] as DS

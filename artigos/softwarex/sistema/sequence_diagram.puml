@@ -1,5 +1,5 @@
 @startuml
-title Repository Snapshot Creation
+title PBLRepositoriesMetrics Repository Snapshot Creation
 
 actor User
 participant "Streamlit UI" as UI
