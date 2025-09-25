@@ -1022,19 +1022,19 @@ seus respectivos períodos de execução.
   \label{tab:cronograma}
   \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|}
     \hline
-    \textbf{Atividade}      & \textbf{Fev} & \textbf{Mar} & \textbf{Abr} & \textbf{Mai} & \textbf{Jun} & \textbf{Jul} & \textbf{Ago} & \textbf{Set} & \textbf{Out} \
+    \textbf{Atividade}      & \textbf{Fev} & \textbf{Mar} & \textbf{Abr} & \textbf{Mai} & \textbf{Jun} & \textbf{Jul} & \textbf{Ago} & \textbf{Set} & \textbf{Out} \\
     \hline
-    Pesquisa Bibliográfica  & X            & X            & X            &              &              &              &              &              &              \
+    Pesquisa Bibliográfica  & X            & X            & X            &              &              &              &              &              &              \\
     \hline
-    Proposição do Modelo    &              & X            & X            &              &              &              &              &              &              \
+    Proposição do Modelo    &              & X            & X            &              &              &              &              &              &              \\
     \hline
-    Case de Estudo          &              &              &              & X            & X            & X            &              &              &              \
+    Case de Estudo          &              &              &              & X            & X            & X            &              &              &              \\
     \hline
-    Análise de Resultados   &              &              &              &              &              & X            & X            & X            &              \
+    Análise de Resultados   &              &              &              &              &              & X            & X            & X            &              \\
     \hline
-    Preparação Qualificação &              &              &              &              &              &              &              & X            & X            \
+    Preparação Qualificação &              &              &              &              &              &              &              & X            & X            \\
     \hline
-    \textbf{Qualificação}   &              &              &              &              &              &              &              &              & \textbf{X}   \
+    \textbf{Qualificação}   &              &              &              &              &              &              &              &              & \textbf{X}   \\
     \hline
   \end{tabular}
 \end{table}
@@ -1370,7 +1370,7 @@ A documentação do sistema inclui diagramas UML complementares que ilustram dif
 
 O diagrama de classes representa a estrutura estática do sistema, organizando os componentes em três packages principais. O package \textbf{models} contém as classes Pydantic para validação de dados: Commit com atributos sha, message, author, date e url; PullRequest incluindo number, title, author, state, created\_at e url; e SnapshotMetadata armazenando timestamp, repository\_name, commits\_count, pull\_requests\_count, snapshot\_id e created\_at.
 
-O package \textbf{helpers} agrupa as classes de serviço: GitDataCollector para coleta de dados com métodos collect\_and\_create\snapshot() e get\_available\_repos(); StorageHelper para gerenciamento de armazenamento; SnapshotManager para operações de snapshot.
+O package \textbf{helpers} agrupa as classes de serviço: GitDataCollector para coleta de dados com métodos collect\_and\_create\_snapshot() e get\_available\_repos(); StorageHelper para gerenciamento de armazenamento; SnapshotManager para operações de snapshot.
 
 O package \textbf{repositories} implementa a persistência através de classes que estendem Repository abstrata: CommitRepository com operações especializadas para commits e PullRequestRepository para pull requests. Os relacionamentos mostram GitDataCollector utilizando SnapshotManager e clara separação entre modelos de dados e lógica de negócio.
 
@@ -1383,7 +1383,7 @@ O package \textbf{repositories} implementa a persistência através de classes q
 
 \subsubsection{Diagrama de Sequência}
 
-O diagrama de sequência detalha o fluxo de criação de snapshots, processo central do sistema. A interação inicia com o usuário clicando em "Criar Snapshot" na interface Streamlit, que aciona o método collect\_and\_create\_snapshot() no GitHubDataCollector. Este componente realiza chamadas sequenciais à GitHub API através de get\_repo(), get\_commits() e get\_pulls(), coletando sistematicamente os dados necessários.
+O diagrama de sequência detalha o fluxo de criação de snapshots, processo central do sistema. A interação inicia com o usuário clicando em "Criar Snapshot" na interface Streamlit, que aciona o método collect\_and\_create\_snapshot\_snapshot() no GitHubDataCollector. Este componente realiza chamadas sequenciais à GitHub API através de get\_repo(), get\_commits\_snapshot() e get\_pulls(), coletando sistematicamente os dados necessários.
 
 Os dados coletados são processados pelo SnapshotManager através do método create\_repository\_snapshot(), que executa uploads sequenciais para o Supabase Storage: primeiro commits.parquet, depois pull\_requests.parquet, e finalmente metadata.json. Cada upload recebe confirmação do Storage antes de prosseguir, garantindo integridade dos dados. O processo termina com retorno do snapshot\_id para a interface, que exibe o resultado ao usuário.
 
