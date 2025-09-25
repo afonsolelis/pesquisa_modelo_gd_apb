@@ -118,7 +118,7 @@ The system architecture is organized into five main components, as illustrated i
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{estudo_de_caso_1/component_diagram.png}
+\includegraphics[width=0.8\textwidth]{sistema/component_diagram.png}
 \caption{Component Diagram of PBLRepositoriesMetrics}
 \label{fig:componentes}
 \end{figure}
@@ -146,7 +146,7 @@ The system's class structure is organized into three main packages, as shown in 
 \begin{landscape}
 \begin{figure}[H]
 \centering
-\includegraphics[width=1.2\textwidth]{estudo_de_caso_1/class_diagram.png}
+\includegraphics[width=1.2\textwidth]{sistema/class_diagram.png}
 \caption{Class Diagram of PBLRepositoriesMetrics}
 \label{fig:classes}
 \end{figure}
@@ -192,7 +192,7 @@ The repository snapshot creation process follows a comprehensive, well-defined s
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{estudo_de_caso_1/sequence_diagram.png}
+\includegraphics[width=0.9\textwidth]{sistema/sequence_diagram.png}
 \caption{Sequence Diagram: Repository Snapshot Creation Process}
 \label{fig:sequencia}
 \end{figure}
@@ -287,33 +287,17 @@ The system provides comprehensive analysis features specifically designed for re
 
 \section{Results and Discussion}
 
-\subsection{Performance Evaluation}
+\subsection{System Capabilities and Technical Features}
 
-The empirical evaluation of PBLRepositoriesMetrics demonstrates substantial improvements in repository analysis efficiency and data accuracy. Our comprehensive testing involved 15 development teams monitoring 120 repositories across three development cycles, providing robust quantitative evidence of the system's effectiveness.
+The PBLRepositoriesMetrics system provides comprehensive repository analysis capabilities through its technical architecture and implementation. The system's design focuses on efficient data processing, reliable storage mechanisms, and scalable analytics workflows.
 
-\textbf{Analysis Efficiency Metrics:} The system achieved an 85\% reduction in manual analysis time compared to traditional evaluation methods. Teams reported spending an average of 2.3 hours per repository using the platform, compared to 15.2 hours with conventional approaches. This efficiency gain enables teams to monitor significantly more repositories while maintaining analysis quality.
+\textbf{Data Collection and Processing:} The system implements sophisticated GitHub API integration with intelligent rate limiting and error handling mechanisms. The data collection process systematically gathers repository metrics including commit histories, pull request activities, collaboration patterns, and development indicators.
 
-\textbf{Data Accuracy Improvements:} The platform demonstrated a 90\% improvement in data accuracy through automated data collection and processing. Manual data entry errors were eliminated, and the system's validation mechanisms ensured consistent data quality across all repositories.
+\textbf{Storage and Data Management:} The platform employs Parquet format for efficient columnar storage, providing significant compression benefits and enabling fast analytical queries. The snapshot-based data isolation ensures data integrity by creating immutable records of repository states at specific time points.
 
-\textbf{Scalability Performance:} The system successfully processed datasets containing over 50,000 commits and 8,000 pull requests from 120 repositories, demonstrating its capability to handle large-scale repository data while maintaining real-time performance.
+\textbf{Analytics and Visualization:} The system provides comprehensive analysis features including development progress tracking, collaboration assessment, code quality metrics, and contribution analysis. The Streamlit-based interface enables real-time monitoring and interactive visualization of repository data.
 
-\subsection{Technical Impact Analysis}
-
-The integration of data engineering principles into the system's design resulted in significant improvements in repository analysis outcomes. Teams reported enhanced ability to identify development bottlenecks early in the project lifecycle, enabling timely intervention and support. The system's collaborative analytics provided insights into team dynamics that were previously difficult to assess.
-
-\textbf{Developer Engagement Metrics:} Analysis of developer interaction patterns revealed increased engagement levels, with developers spending 23\% more time on collaborative activities when using the platform. The system's real-time feedback mechanisms contributed to improved code quality and development outcomes.
-
-\textbf{Analysis Consistency:} The platform's standardized metrics eliminated subjective analysis variations, resulting in more consistent and fair evaluation of repository projects. Teams reported increased confidence in their analysis decisions, with 94\% indicating improved analysis reliability.
-
-\textbf{Data Integrity Protection:} The snapshot-based approach demonstrated significant advantages in maintaining data integrity. During the evaluation period, the system detected 12 instances where contributors attempted to manipulate their repository history using \texttt{git push --force} or similar operations. The immutable snapshot system preserved authentic records of development progression, enabling analysts to identify these attempts and maintain analysis reliability. This represents a 100\% success rate in detecting and preventing data manipulation attempts, compared to traditional approaches that would have lost this historical data.
-
-\subsection{Technical Performance Analysis}
-
-The system's technical architecture demonstrated robust performance under various load conditions. The Parquet-based storage system achieved 3.2x faster query performance compared to traditional relational databases, while the snapshot-based data isolation ensured data integrity across all operations.
-
-\textbf{Data Processing Efficiency:} The system processed large-scale repository data with an average processing time of 2.1 minutes per repository, enabling real-time analysis capabilities. The columnar storage format reduced storage requirements by 67\% while maintaining query performance.
-
-\textbf{System Reliability:} The platform achieved 99.7\% uptime during the evaluation period, with zero data loss incidents. The service-oriented architecture enabled seamless maintenance and updates without service interruption.
+\textbf{Technical Architecture:} The service-oriented architecture supports modular scaling and maintenance, with clear separation of concerns between data collection, storage, analysis, and visualization components. This design enables independent optimization of system components based on specific requirements.
 
 \section{Conclusion}
 
