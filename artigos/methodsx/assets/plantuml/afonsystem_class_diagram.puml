@@ -1,0 +1,102 @@
+@startuml afonsystem_class_diagram
+package "models" {
+  class Commit {
+    +sha: str
+    +message: str
+    +author: str
+    +date: datetime
+    +url: str
+  }
+
+  class PullRequest {
+    +number: int
+    +title: str
+    +author: str
+    +state: str
+    +created_at: datetime
+    +url: str
+  }
+
+  class SnapshotMetadata {
+    +timestamp: str
+    +repository_name: str
+    +commits_count: int
+    +pull_requests_count: int
+    +snapshot_id: str
+    +created_at: str
+  }
+}
+
+package "helpers" {
+  class GitHubDataCollector {
+    -github_token: str
+    -repo_names: List[str]
+    -snapshot_manager: SnapshotManager
+    +collect_and_create_snapshot(repo_name, progress_callback, quarter): str
+    +get_available_repos(): List[str]
+  }
+
+  class SupabaseHelper {
+    -url: str
+    -key: str
+    -client: Client
+    -snapshot_manager: SnapshotManager
+    +create_parquet_snapshot(): str
+    +list_parquet_snapshots(): List[Dict]
+    +load_snapshot_data(): pd.DataFrame
+    +delete_parquet_snapshot(): bool
+  }
+
+  class SnapshotManager {
+    -url: str
+    -key: str
+    -client: Client
+    +create_repository_snapshot(): str
+    +list_repository_snapshots(): List[Dict]
+    +load_snapshot_data(): pd.DataFrame
+    +get_snapshot_metadata(): Dict
+    +delete_snapshot(): bool
+  }
+
+  class AnalyticsService {
+    -commit_repo: CommitRepository
+    -pr_repo: PullRequestRepository
+    +get_commit_kpis(): Dict[str, int]
+    +get_commits_data(): List[Dict]
+    +get_pull_requests_data(): List[Dict]
+  }
+}
+
+package "repositories" {
+  abstract class Repository {
+    +dataset_path: str
+    +close()
+  }
+
+  class CommitRepository {
+    -commits_file: str
+    +_read_commits(): pd.DataFrame
+    +get_commits_by_date_range(): List[dict]
+    +count_commits_by_type(): int
+    +get_commits_by_type_count(): List[dict]
+  }
+
+  class PullRequestRepository {
+    -prs_file: str
+    +_read_prs(): pd.DataFrame
+    +get_pull_requests_by_date_range(): List[dict]
+    +count_pull_requests_by_state(): int
+    +get_pull_requests_by_state_count(): List[dict]
+  }
+}
+
+Commit ||--|| CommitRepository : uses
+PullRequest ||--|| PullRequestRepository : uses
+
+GitHubDataCollector --> SnapshotManager : uses
+SupabaseHelper --> SnapshotManager : uses
+AnalyticsService --> CommitRepository : uses
+AnalyticsService --> PullRequestRepository : uses
+CommitRepository --|> Repository : extends
+PullRequestRepository --|> Repository : extends
+@enduml

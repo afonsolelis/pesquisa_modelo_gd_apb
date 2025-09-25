@@ -1,0 +1,99 @@
+@startuml afonsystem_class
+package "models" {
+  class Commit {
+    +sha: str
+    +message: str
+    +author: str
+    +date: datetime
+    +url: str
+  }
+
+  class PullRequest {
+    +number: int
+    +title: str
+    +author: str
+    +state: str
+    +created_at: datetime
+    +url: str
+  }
+
+  class SnapshotMetadata {
+    +timestamp: str
+    +repository_name: str
+    +commits_count: int
+    +pull_requests_count: int
+    +snapshot_id: str
+    +created_at: str
+  }
+}
+
+package "helpers" {
+  class GitHubDataCollector {
+    -github_token: str
+    -repo_names: List[str]
+    -snapshot_manager: SnapshotManager
+    +collect_and_create_snapshot()
+    +get_available_repos()
+  }
+
+  class SupabaseHelper {
+    -url: str
+    -key: str
+    -client: Client
+    -snapshot_manager: SnapshotManager
+    +create_parquet_snapshot()
+    +list_parquet_snapshots()
+    +load_snapshot_data()
+    +delete_parquet_snapshot()
+  }
+
+  class SnapshotManager {
+    -url: str
+    -key: str
+    -client: Client
+    +create_repository_snapshot()
+    +list_repository_snapshots()
+    +load_snapshot_data()
+    +get_snapshot_metadata()
+    +delete_snapshot()
+  }
+
+  class AnalyticsService {
+    -commit_repo: CommitRepository
+    -pr_repo: PullRequestRepository
+    +get_commit_kpis()
+    +get_commits_data()
+    +get_pull_requests_data()
+  }
+}
+
+package "repositories" {
+  abstract class Repository {
+    +dataset_path: str
+    +close()
+  }
+
+  class CommitRepository {
+    -commits_file: str
+    +_read_commits()
+    +get_commits_by_date_range()
+    +count_commits_by_type()
+    +get_commits_by_type_count()
+  }
+
+  class PullRequestRepository {
+    -prs_file: str
+    +_read_prs()
+    +get_pull_requests_by_date_range()
+    +count_pull_requests_by_state()
+    +get_pull_requests_by_state_count()
+  }
+}
+
+GitHubDataCollector --> SnapshotManager
+SupabaseHelper --> SnapshotManager
+AnalyticsService --> CommitRepository
+AnalyticsService --> PullRequestRepository
+CommitRepository --|> Repository
+PullRequestRepository --|> Repository
+@enduml

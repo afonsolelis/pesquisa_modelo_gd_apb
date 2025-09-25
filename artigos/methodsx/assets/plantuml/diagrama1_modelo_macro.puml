@@ -1,0 +1,180 @@
+@startuml diagrama1_modelo_macro
+!define PRIMARY_COLOR #2E86AB
+!define SECONDARY_COLOR #A23B72
+!define ACCENT_COLOR #F18F01
+!define SUCCESS_COLOR #C73E1D
+
+skinparam class {
+    BackgroundColor WHITE
+    BorderColor PRIMARY_COLOR
+    HeaderBackgroundColor PRIMARY_COLOR
+    HeaderFontColor WHITE
+    AttributeFontColor BLACK
+    FontSize 10
+}
+
+skinparam arrow {
+    Color PRIMARY_COLOR
+    FontColor PRIMARY_COLOR
+    FontSize 9
+}
+
+package "Modelagem Macro do Sistema PBL" {
+
+    class "PPC (MEC)" as PPC <<Documento-Regulador>> {
+        + define_metaprojetos : String
+        + diretrizes_curriculo : List<String>
+        + competencias_obrigatorias : List<String>
+    }
+
+    class DCN <<Norma-Reguladora>> {
+        + dcn_id : String
+        + nome_diretrizes : String
+        + regras_metaprojetos : List<String>
+        + competencias_gerais : List<String>
+    }
+
+    class Curso <<Entidade-Institucional>> {
+        + curso_id : String
+        + nome : String
+        + carga_horaria : Integer
+        + perfil_egresso : String
+    }
+
+    class Metaprojeto <<Template-Pedagogico>> {
+        + metaproj_id : String
+        + nome : String
+        + descricao : String
+        + competencias_alvo : List<String>
+        + semestres_aplicacao : List<Integer>
+    }
+
+    class Parceiro <<Entidade-Externa>> {
+        + parc_id : String
+        + nome_organizacao : String
+        + setor_atuacao : String
+        + contato_responsavel : String
+    }
+
+    class TAPI <<Documento-Formal>> {
+        + tapi_id : String
+        + descricao_problema : Text
+        + objetivos : List<String>
+        + criterios_aceite : List<String>
+        + escopo_projeto : Text
+    }
+
+    class Modulo <<Unidade-Execucao>> {
+        + mod_id : String
+        + semestre : String
+        + data_inicio : Date
+        + data_fim : Date
+        + numero_sprints : Integer = 5
+    }
+
+    class Sprint <<Ciclo-Desenvolvimento>> {
+        + sprint_id : String
+        + numero : Integer [1..5]
+        + data_inicio : Date
+        + data_fim : Date
+        + metas : List<String>
+    }
+
+    class Artefato <<Produto-Entregue>> {
+        + artefato_id : String
+        + nome : String
+        + tipo : String
+        + versao : String
+        + autor : String
+        + data_entrega : Date
+    }
+
+    class Pitch <<Apresentacao-Obrigatoria>> {
+        + pitch_id : String
+        + data_apresentacao : Date
+        + duracao_minutos : Integer
+        + avaliadores : List<String>
+        + nota : Float
+    }
+
+    class AutoEstudo <<Atividade-Preparatoria>> {
+        + autoestudo_id : String
+        + titulo : String
+        + conteudo : String
+        + prazo : Date
+        + ponderado : Boolean
+    }
+
+    class AtividadePonderada <<Avaliacao-Formal>> {
+        + ap_id : String
+        + titulo : String
+        + peso : Float
+        + criterios : List<String>
+        + nota : Float
+    }
+
+    class Turma <<Grupo-Estudantes>> {
+        + turma_id : String
+        + codigo : String
+        + semestre : String
+        + numero_alunos : Integer
+    }
+
+    class Aluno <<Participante-Individual>> {
+        + aluno_id : String
+        + nome : String
+        + matricula : String
+        + email : String
+    }
+
+    class Grupo <<Equipe-Projeto>> {
+        + grupo_id : String
+        + nome_equipe : String
+        + po_designado : String
+        + scrum_master : String
+    }
+
+    class Orientador <<Docente-Responsavel>> {
+        + orientador_id : String
+        + nome : String
+        + especialidade : String
+        + email : String
+    }
+}
+
+' Relacionamentos conforme diagrama macro
+DCN ||--o{ Curso : "nomeia\n1:N"
+DCN ||--o{ Metaprojeto : "regra\n1:N"
+PPC ||--o{ Metaprojeto : "define\n1:N"
+Curso ||--o{ Metaprojeto : "tem\n1:N"
+Metaprojeto ||--o{ Modulo : "instancia\n1:N"
+
+Parceiro ||--|| TAPI : "1:1"
+Parceiro ||--|| Sprint : "1:1"
+TAPI ||--|| Sprint : "1:1"
+
+Modulo ||--o{ Sprint : "1:5"
+
+Sprint ||--o{ Artefato : "1:1..N"
+Sprint ||--|| Pitch : "1:1"
+Sprint ||--o{ AutoEstudo : "1:1..N"
+Sprint ||--o{ AtividadePonderada : "1:0..N"
+
+Turma }o--|| Modulo : "N:1"
+Aluno }o--|| Turma : "N:1"
+Grupo }o--|| Turma : "N:1"
+Aluno ||--|| Grupo : "1:1"
+
+Orientador ||--o{ Turma : "1:N"
+Orientador ||--|| Aluno : "1:1"
+
+' Notas explicativas da estrutura hierárquica
+note top of DCN : **Marco Regulatório**\nDefine diretrizes e regras\npara todos os cursos
+
+note right of Metaprojeto : **Template Reutilizável**\nInstanciado em múltiplos\nmódulos ao longo do curso
+
+note bottom of Sprint : **Núcleo Operacional**\n2 semanas de duração\nProduz artefatos e pitch obrigatório
+
+note left of Grupo : **Estrutura de Trabalho**\nRelação 1:1 com aluno\nPO e Scrum Master definidos
+
+@enduml

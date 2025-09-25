@@ -1,0 +1,191 @@
+\section{MODELO PROPOSTO}
+
+Este capítulo apresenta o modelo conceitual de gêmeo digital para avaliação de projetos em PBL na área de engenharia de software. O modelo integra três visões arquiteturais (estrutural, comportamental e de processo) conforme ISO/IEC/IEEE 42010:2022, proporcionando monitoramento e avaliação contínua dos processos de aprendizagem.
+
+\subsection{Visão Geral e Contexto}
+
+O gêmeo digital opera sincronizado com as atividades reais do PBL, processando eventos acadêmicos e operacionais para gerar feedback formativo, indicadores e justificativas rastreáveis direcionadas a estudantes, docentes e coordenação. A Figura \ref{fig:modelo_proposto} apresenta o fluxo macro de atuação.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{assets/f1.png}
+  \caption{Fluxo macro de atuação do gêmeo digital na avaliação em PBL}
+  \label{fig:modelo_proposto}
+\end{figure}
+
+O modelo aplica-se a módulos trimestrais de PBL em Engenharia de Software estruturados em 5 sprints de 2 semanas com parceiros externos que apresentam problemas autênticos. Cada módulo é formalizado por um TAPI (Termo de Abertura do Projeto Institucional) que define problema, objetivos, escopo e critérios de avaliação.
+
+O processo adota Scrum: equipes definem PO e Scrum Master, realizam planning, dailies e reviews com parceiro e docentes ao final de cada sprint. As atividades didáticas envolvem professor orientador, docentes de programação, UX, negócios e liderança, complementadas por autoestudos preparatórios.
+
+A avaliação soma 100 pontos distribuídos em: Artefatos/Projeto (40%), Atividades Ponderadas (35%), Prova (20%) e Avaliação de Pares (5%). O parceiro contribui na avaliação qualitativa das entregas via reviews.
+
+O modelo utiliza \textit{Complex Event Processing} (CEP) para agregar e correlacionar eventos de múltiplas fontes (Git, gestão de tarefas, sistemas acadêmicos, sensores institucionais) derivando métricas integradas pelas três visões arquiteturais.
+
+\subsection{Processos e Abstrações}
+
+O modelo é estruturado seguindo metodologia IDEF0 (Integration Definition for Function Modeling), proporcionando visão hierárquica dos processos desde o nível macro até os detalhes operacionais.
+
+\textbf{Camada de Abstração 0 - Visão Sistêmica:}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{plantuml/idef0_camada_0}
+    \caption{IDEF0 Camada 0: Visão sistêmica do PBL Inteli}
+    \label{fig:idef0_camada_0}
+\end{figure}
+
+A camada 0 apresenta o sistema PBL como função única controlada pelas \textbf{Diretrizes Curriculares MEC} e \textbf{PPC/ES}, processando \textbf{Alunos, Atividades e Comportamentos} através de mecanismos tecnológicos (\textbf{Adalove, GPS, Catracas, Repositórios}) para produzir \textbf{Alunos com Conhecimentos, Artefatos e Evidências}.
+
+\subsection{Modelagem: Entidades e Relacionamentos}
+
+Esta subseção apresenta a modelagem conceitual atualizada conforme estrutura hierárquica macro, desde o nível regulatório (DCN) até a execução operacional (Sprint), garantindo alinhamento institucional e pedagógico.
+
+\textbf{Visão Geral da Modelagem Macro:}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{plantuml/diagrama_macro_simplificado}
+    \caption{Visão geral: Modelagem macro das entidades e relacionamentos principais}
+    \label{fig:modelagem_macro_geral}
+\end{figure}
+
+O diagrama apresenta a arquitetura completa do modelo, destacando a cadeia hierárquica **DCN → Curso → Metaprojeto → Módulo → Sprint** e os relacionamentos operacionais entre entidades pedagógicas (Turma, Aluno, Grupo), contextuais (Parceiro, TAPI) e produtos (Artefatos, Pitch, Autoestudos, APs).
+
+\subsubsection{Hierarquia Institucional Completa}
+
+A modelagem adota estrutura hierárquica que parte das \textbf{Diretrizes Curriculares Nacionais (DCN)} e se desdobra até a execução operacional, garantindo coerência regulatória e institucional.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{plantuml/diagrama1_modelo_macro}
+    \caption{Modelagem macro: hierarquia institucional completa (DCN → Curso → Metaprojeto → Módulo)}
+    \label{fig:modelo_macro_65}
+\end{figure}\textbf{DCN (Diretrizes Curriculares Nacionais)} estabelecem o marco regulatório, nomeando \textbf{Cursos} e definindo regras para \textbf{Metaprojetos}. \textbf{PPC (MEC)} operacionaliza as diretrizes definindo Metaprojetos específicos. Cada \textbf{Curso} implementa múltiplos Metaprojetos que se instanciam em \textbf{Módulos} concretos ao longo da formação.
+
+\textbf{Metaprojetos} funcionam como templates pedagógicos reutilizáveis, definindo competências-alvo, estrutura curricular e metodologias. Cada instanciação gera um \textbf{Módulo} específico de 10 semanas com 5 \textbf{Sprints} de 2 semanas.
+
+A tríade \textbf{Parceiro-TAPI-Sprint} (relacionamento 1:1:1) contextualiza cada ciclo: \textbf{Parceiro} apresenta problema real, \textbf{TAPI} formaliza escopo/critérios, \textbf{Sprint} executa desenvolvimento incremental.
+
+\subsubsection{Estrutura Operacional}
+
+A execução organiza-se através da estrutura operacional que integra pessoas, grupos e processos temporais.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{plantuml/diagrama2_estrutura_operacional}
+    \caption{Estrutura operacional: Módulo, Sprint, Turma, Aluno, Grupo e Orientador}
+    \label{fig:estrutura_operacional_65}
+\end{figure}
+
+\textbf{Módulo} contém exatamente 5 \textbf{Sprints} e múltiplas \textbf{Turmas}. Cada \textbf{Turma} organiza \textbf{Alunos} em \textbf{Grupos} (relação 1:1), garantindo estrutura colaborativa definida. \textbf{Orientador} mantém relação N:1 com Turmas e relacionamento específico 1:1 com Aluno destacado para acompanhamento individualizado.
+
+\subsubsection{Produtos da Sprint}
+
+Cada Sprint produz produtos específicos com cardinalidades bem definidas, garantindo estrutura de entrega padronizada.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{plantuml/diagrama3_produtos_sprint}
+    \caption{Produtos da Sprint: Artefatos, Pitch, Autoestudos e Atividades Ponderadas}
+    \label{fig:produtos_sprint_65}
+\end{figure}
+
+\textbf{Sprint} produz obrigatoriamente: 1..N \textbf{Artefatos} (código, documentos, protótipos), exatamente 1 \textbf{Pitch} (apresentação 15-30min), 1..N \textbf{Autoestudos} (preparatórios/ponderados) e 0..N \textbf{Atividades Ponderadas} (avaliações formais).
+
+\textbf{Grupos} desenvolvem Artefatos e apresentam Pitches. \textbf{Alunos} realizam Autoestudos individuais e participam de APs. \textbf{Parceiro} avalia produtos conforme critérios do \textbf{TAPI}, garantindo alinhamento com problema real.
+
+\subsubsection{Artefatos e Processos Técnicos}
+
+O desenvolvimento técnico implementa uma cadeia de rastreabilidade completa que conecta requisitos do TAPI aos artefatos finais.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{plantuml/diagrama4_artefatos_tecnicos}
+    \caption{Desenvolvimento técnico: Artefatos, Commits/PRs e Reviews}
+    \label{fig:artefatos_tecnicos_65}
+\end{figure}
+
+A Entidade Artefato compreende resultados tangíveis produzidos pelas equipes: código, documentos técnicos, protótipos, relatórios, apresentações e pitches. Cada Artefato possui atributos mínimos (autor(es), data/hora, versão, vínculo com sprint e requisito do TAPI) e critérios de qualidade associados (correção, completude, aderência, clareza, rastreabilidade). Artefatos são as principais evidências do progresso e da aprendizagem técnico-procedimental, constituindo-se em objeto direto de análise tanto pela visão estrutural quanto pela de processo.
+
+O Pitch/Review é um ritual de avaliação incremental ao final de cada sprint, com demonstração dos artefatos e discussão de decisões técnicas e de produto. O Pitch/Review consolida feedbacks do parceiro e dos docentes, registra riscos e próximos passos e pode redefinir prioridades do backlog. É momento privilegiado para coleta de evidências qualitativas (comentários, justificativas, decisões) e quantitativas (atingimento de metas, cobertura de requisitos, comparações com sprints anteriores), constituindo-se em um dos pontos críticos para a coleta de dados do gêmeo digital.
+
+A Avaliação é o componente que consolida notas individuais e por equipe conforme eixos institucionais. Tipicamente, distribui-se em: artefatos (cerca de 40\%), atividades ponderadas/avaliações em sala (cerca de 35\%), prova escrita (cerca de 20\%) e auto/avaliação por pares (cerca de 5\%). A Avaliação integra múltiplas fontes (instrumentos rubrificados, métricas objetivas, percepções do parceiro) e cumpre papéis formativo e somativo, constituindo-se em um dos principais pontos de convergência entre o modelo conceitual e os objetivos pedagógicos do PBL.
+
+\subsubsection{Métricas e Indicadores}
+
+A dimensão analítica utiliza Complex Event Processing para correlacionar eventos de múltiplas fontes, produzindo indicadores contextualizados.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{plantuml/diagrama5_metricas_indicadores}
+    \caption{Dimensão analítica: CEP, Métricas e Dashboards}
+    \label{fig:metricas_indicadores_65}
+\end{figure}
+
+A Entidade Métrica compreende indicadores calculados a partir de eventos e registros de diferentes sistemas (Git, gestão de tarefas, presença, interações em aula). As Métricas são operacionalizações de objetivos de aprendizagem e critérios do TAPI, com definição explícita de fórmula, unidade, periodicidade, fonte, e limitações de interpretação. Servem à retroalimentação contínua e à comparabilidade entre sprints, equipes e módulos, constituindo-se em elementos fundamentais para a construção do gêmeo digital de processos.
+
+\subsubsection{Modelo Integrado Completo}
+
+A visão consolidada integra todas as dimensões do modelo, suportando as três visões arquiteturais conforme ISO/IEC/IEEE 42010:2022.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{plantuml/diagrama6_modelo_integrado}
+    \caption{Visão consolidada: Integração das três visões arquiteturais}
+    \label{fig:modelo_integrado_65}
+\end{figure}
+
+O modelo integrado estabelece um conjunto de relacionamentos e restrições que garantem a coerência arquitetural e a integridade do processo pedagógico. A estrutura fundamental baseia-se na relação unívoca entre módulo, parceiro e TAPI, criando um elo direto entre o ambiente acadêmico e o contexto profissional real. Cada módulo referencia exatamente um TAPI (Termo de Abertura do Projeto Institucional) e está associado a um parceiro específico, assegurando que os estudantes trabalhem em problemas autênticos e alinhados com as demandas do mercado.
+
+A organização temporal segue uma estrutura rígida de 10 semanas divididas em 5 sprints de 2 semanas cada. Esta configuração permite que as equipes desenvolvam incrementos funcionais enquanto mantêm um ritmo sustentável de aprendizagem. Durante este período, instruções e autoestudos são distribuídos estrategicamente para complementar o trabalho prático, garantindo que os fundamentos teóricos sejam assimilados em paralelo ao desenvolvimento do projeto.
+
+Cada equipe pertence exclusivamente a um módulo e executa todas as cinco sprints, criando uma jornada contínua de aprendizagem e desenvolvimento. Esta organização permite que os estudantes vivenciem um ciclo completo de desenvolvimento de software, desde a concepção inicial até a entrega final, desenvolvendo competências tanto técnicas quanto de gestão de projetos.
+
+A rastreabilidade é garantida através da vinculação sistemática entre artefatos, itens de backlog e requisitos especificados no TAPI. Esta cadeia de rastreabilidade permite identificar a origem de cada decisão técnica e verificar se os objetivos pedagógicos estão sendo alcançados. O processo avaliativo multidimensional fundamenta-se nas métricas coletadas automaticamente e nos instrumentos aplicados pelos docentes, proporcionando uma visão abrangente do progresso individual e das equipes.
+
+As regras operacionais estabelecem um protocolo claro para o funcionamento dos módulos. A primeira semana é dedicada à apresentação do parceiro e à realização de um workshop estruturado para esclarecer dúvidas sobre o problema proposto. Esta atividade culmina com a planning da primeira sprint, onde as equipes definem formalmente os papéis de Product Owner e Scrum Master, estabelecendo as bases para a governança do projeto.
+
+Ao final de cada sprint, realiza-se uma review com a presença obrigatória do parceiro, momento em que os incrementos desenvolvidos são demonstrados e avaliados. Estes eventos geram registros formais de feedback e decisões que orientam o trabalho subsequente, garantindo que o projeto mantenha-se alinhado com as expectativas e necessidades identificadas.
+
+O sistema demonstra flexibilidade ao permitir ajustes de calendário decorrentes de feriados ou outros eventos institucionais, deslocando datas sem suprimir os rituais essenciais do processo. Para cada sprint, definem-se evidências mínimas obrigatórias: backlog planejado, artefatos entregues, pitch documentado e registro formal de feedback. Mudanças significativas de escopo devem ser refletidas no TAPI original ou documentadas através de aditivos registrados, mantendo a transparência e a rastreabilidade das decisões.
+
+As fontes de dados e evidências constituem o substrato informacional para a construção do gêmeo digital. Os repositórios Git fornecem séries temporais detalhadas de commits, branches, pull requests e revisões de código, permitindo calcular métricas de produtividade individual e padrões de colaboração técnica entre os membros das equipes. As ferramentas de gestão de tarefas contribuem com métricas de fluxo, incluindo work-in-progress (WIP), lead time, cycle time e throughput, além de indicadores de saúde do processo de desenvolvimento.
+
+Os documentos TAPI e relatórios de progresso contextualizam os objetivos, escopo e critérios de aceitação, servindo como base para a rastreabilidade entre requisitos especificados e entregas realizadas. Registros institucionais, como dados de catraca e listas de presença, sustentam a construção de indicadores de presença física e engajamento dos estudantes. As avaliações formais e formulários de feedback capturam tanto dimensões quantitativas (notas de atividades ponderadas e provas) quanto qualitativas (percepções de parceiros e docentes), enriquecendo a análise com múltiplas perspectivas sobre o processo de aprendizagem.
+
+A linha temporal de 10 semanas segue um padrão estruturado que inicia com a apresentação do parceiro e coleta sistematizada de dúvidas, seguida por um workshop que esclarece objetivos e expectativas. As equipes então realizam a planning da primeira sprint e iniciam a execução, com dailies regulares e acompanhamento do orientador. Ao término da segunda semana, a review com demonstração e coleta de feedback constitui um ponto de verificação e ajuste do trabalho realizado. Este padrão se repete consistentemente nas sprints subsequentes, com cada iteração acrescentando valor ao produto e conhecimento técnico às equipes. A nona semana é reservada para a prova escrita individual e ajustes finais da quinta sprint, culminando na décima semana com a review final, consolidação de todos os artefatos produzidos, fechamento das avaliações e retrospectiva geral do módulo.
+
+\subsection{Framework Conceitual}
+
+O modelo pressupõe adoção de práticas ágeis, existência de TAPI estruturado, repositórios de código com gestão de tarefas e registros acadêmicos básicos. Não abrange processos administrativos externos ao módulo.
+
+Os atores principais são: \textbf{Estudantes} (executam tarefas técnicas e geram dados primários), \textbf{Equipes} (planejam e entregam incrementos com PO/Scrum Master), \textbf{Professor Orientador} (acompanhamento pedagógico e feedback formativo), \textbf{Docentes de Eixo} (instrução especializada por área), \textbf{Parceiro Externo} (apresenta problema real e valida soluções), e \textbf{Coordenação} (recursos, infraestrutura e indicadores agregados).
+
+Os eventos são classificados em: \textbf{Acadêmicos} (instruções, presença, atividades ponderadas, provas), \textbf{Operacionais} (plannings, dailies, reviews, retrospectivas), \textbf{Técnicos} (commits, PRs, issues, builds, testes) e \textbf{Documentais} (TAPI, relatórios, apresentações).
+
+O sistema utiliza identificadores canônicos conforme hierarquia institucional: \texttt{dcn\_id}, \texttt{curso\_id}, \texttt{metaproj\_id}, \texttt{mod\_id}, \texttt{turma\_id}, \texttt{grupo\_id}, \texttt{aluno\_id}, \texttt{sprint\_id}, \texttt{parc\_id}, \texttt{tapi\_id}, \texttt{artefato\_id}.
+
+A cadeia hierárquica DCN → Curso → Metaprojeto → Módulo → Sprint → Artefato permite rastreabilidade completa desde normativas institucionais até produtos finais, garantindo explicabilidade e transparência regulatória.
+
+O sistema requer: \textbf{Confiabilidade} (processamento determinístico, tolerância a dados faltantes), \textbf{Latência} (atualizações diárias, demanda sob pedido), \textbf{Escalabilidade} (múltiplos módulos concorrentes), \textbf{Segurança} (controle de acesso, auditoria, criptografia) e \textbf{Usabilidade} (dashboards acessíveis com rastreabilidade).
+
+\subsection{Arquitetura de Implementação}
+
+O modelo integra quatro dimensões: \textbf{Pedagógica} (frequência, competências, instruções), \textbf{Parceria Externa} (TAPI, requisitos do parceiro), \textbf{Técnica} (versionamento, qualidade de código) e \textbf{Processos} (métricas ágeis, produtividade).
+
+A avaliação integra quatro eixos ponderados: \textbf{Processo} (métricas de fluxo, rituais ágeis), \textbf{Produto} (qualidade técnica, adequação ao TAPI), \textbf{Conceitual} (prova, APs, justificativas técnicas) e \textbf{Colaboração} (avaliação por pares, participação em reviews).
+
+\subsection{Gêmeo Digital de Processos e Sistemas}
+
+O modelo adota abordagem híbrida: um gêmeo de processos educacionais acompanha o “como” se aprende e se trabalha; um gêmeo do sistema acompanha o “que” se constrói (o MVP). Ambos compartilham um esquema de chaves capaz de vincular pessoas, equipes, sprints, requisitos do TAPI, itens de backlog, artefatos e avaliações, permitindo rastreabilidade completa \cite{barricelli2019}.
+
+\textbf{Gêmeo de Processos}: trilhas temporais de eventos acadêmicos e operacionais com painéis de progresso por sprint.
+\textbf{Gêmeo de Sistemas}: espelha evolução do software com rastreabilidade código-TAPI-backlog.
+
+\subsection{Arquitetura Integrada do Modelo}
+
+A arquitetura em camadas compreende: \textbf{Coleta} (APIs, NLP, integração institucional), \textbf{Datalake} (bronze/silver/gold com JSON/Parquet), \textbf{Processamento} (pipelines CEP, NLP/LLM), \textbf{Gêmeos Digitais} (sincronização incremental) e \textbf{Interface} (dashboards por papel, alertas, exportações).
+
+O modelo implementa três visões conforme ISO/IEC/IEEE 42010:2022 \cite{iso42010}: \textbf{Estrutural} (organização estática), \textbf{Comportamental} (interações dinâmicas) e \textbf{Processo} (fluxos temporais), derivando dos cinco viewpoints RM-ODP \cite{iso10746}.
+
+O modelo é agnóstico a tecnologias, utilizando conectores configuráveis para facilitar portabilidade entre instituições, respeitando aspectos pedagógicos, éticos e de privacidade.

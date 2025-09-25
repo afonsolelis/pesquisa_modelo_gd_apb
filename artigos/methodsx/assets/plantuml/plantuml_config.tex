@@ -1,0 +1,21 @@
+% Configuração PlantUML para LaTeX
+% Adicione este código no preâmbulo do seu documento LaTeX
+
+% Pacote para incluir imagens
+\usepackage{graphicx}
+\usepackage{float}
+
+% Comando personalizado para incluir diagramas PlantUML
+\newcommand{\plantuml}[3][1]{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1\textwidth]{#2}
+    \caption{#3}
+    \label{fig:#2}
+  \end{figure}
+}
+
+% Exemplo de uso:
+% 1. Crie arquivo .puml (ex: diagrama.puml)
+% 2. Compile: ./plantuml.sh diagrama.puml
+% 3. Inclua no LaTeX: \plantuml{diagrama}{Descrição do diagrama}

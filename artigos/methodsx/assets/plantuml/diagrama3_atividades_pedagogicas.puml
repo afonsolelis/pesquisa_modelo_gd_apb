@@ -1,0 +1,206 @@
+@startuml diagrama3_atividades_pedagogicas
+!define PRIMARY_COLOR #2E86AB
+!define SECONDARY_COLOR #A23B72
+!define ACCENT_COLOR #F18F01
+!define SUCCESS_COLOR #C73E1D
+
+skinparam class {
+    BackgroundColor WHITE
+    BorderColor PRIMARY_COLOR
+    HeaderBackgroundColor PRIMARY_COLOR
+    HeaderFontColor WHITE
+    AttributeFontColor BLACK
+    FontSize 10
+}
+
+skinparam arrow {
+    Color PRIMARY_COLOR
+    FontColor PRIMARY_COLOR
+    FontSize 9
+}
+
+package "Atividades Pedagógicas - Dimensão Educacional" {
+
+    class Modulo <<from Núcleo>> {
+        + mod_id : String
+        + objetivos_aprendizagem : List<String>
+    }
+
+    class Instrucao <<Sessao-Educativa>> {
+        + inst_id : String
+        + eixo_conhecimento : String
+        + tema_abordado : String
+        + data_realizacao : Date
+        + duracao_minutos : Integer
+        + docente_responsavel : String
+        + materiais_utilizados : List<String>
+        + metodologia_aplicada : String
+        + competencias_trabalhadas : List<String>
+        + registros_presenca : Map<stud_id, Boolean>
+        + nivel_participacao : Map<stud_id, Integer>
+        --
+        + preparaMaterial() : List<Recurso>
+        + conduzSessao() : void
+        + registraPresenca() : void
+        + avaliaParticipacao() : Map
+        + forneceFeedback() : String
+        + vinculaCompetencias() : void
+    }
+
+    class DocenteEixo <<Professor-Especialista>> {
+        + docente_id : String
+        + nome : String
+        + eixo_especialidade : String
+        + formacao : String
+        + experiencia : List<String>
+        + metodologias_preferidas : List<String>
+        + historico_avaliacoes : List<String>
+        --
+        + planejaSessoes() : List<Instrucao>
+        + elaboraAtividades() : List<AtividadePonderada>
+        + avaliaDesempenho() : Nota
+        + orientaEquipes() : void
+        + interpretaIndicadores() : String
+    }
+
+    class Autoestudo <<Atividade-Autonoma>> {
+        + autoest_id : String
+        + tipo : String
+        + titulo : String
+        + descricao : Text
+        + objetivos : List<String>
+        + recursos_recomendados : List<String>
+        + tempo_estimado : Integer
+        + data_disponibilizacao : Date
+        + data_entrega : Date
+        + eh_ponderado : Boolean
+        + peso_avaliativo : Float
+        + instrucoes_execucao : Text
+        --
+        + disponibilizaRecursos() : void
+        + acompanhaProgresso() : Map
+        + coletaEvidencias() : List<String>
+        + calculaNota() : Float
+    }
+
+    class AtividadePonderada <<Avaliacao-Formativa>> {
+        + ap_id : String
+        + titulo : String
+        + eixo_avaliativo : String
+        + competencias_avaliadas : List<String>
+        + criterios_avaliacao : List<String>
+        + rubrica_associada : String
+        + peso_total : Float
+        + data_aplicacao : Date
+        + tempo_execucao : Integer
+        + modalidade : String
+        + recursos_permitidos : List<String>
+        --
+        + aplicaInstrumento() : void
+        + corrigeRespostas() : Map<stud_id, Nota>
+        + geraFeedback() : Map<stud_id, String>
+        + analisaDesempenho() : Estatisticas
+        + calibraRubrica() : void
+    }
+
+    class Prova <<Avaliacao-Somativa>> {
+        + exam_id : String
+        + titulo : String
+        + escopo_tematico : List<String>
+        + competencias_aferidas : List<String>
+        + data_aplicacao : Date
+        + duracao_minutos : Integer
+        + peso_modulo : Float = 0.20
+        + tipo_questoes : List<String>
+        + criterios_correcao : String
+        + nota_maxima : Float = 100.0
+        --
+        + elaboraQuestoes() : List<Questao>
+        + aplicaProva() : void
+        + corregeRespostas() : Map<stud_id, Nota>
+        + analisaResultados() : Relatorio
+        + calibraDificuldade() : void
+    }
+
+    class Avaliacao <<Sistema-Avaliativo>> {
+        + aval_id : String
+        + estudante : stud_id
+        + modulo : mod_id
+        + eixo_avaliado : String
+        + evidencias_referenciadas : List<String>
+        + instrumentos_utilizados : List<String>
+        + nota_parcial : Float
+        + nota_final : Float
+        + peso_eixo : Float
+        + justificativas : Text
+        + feedback_qualitativo : Text
+        + recomendacoes : List<String>
+        + data_consolidacao : Date
+        --
+        + consolidaEvidencias() : void
+        + calculaNotaFinal() : Float
+        + geraJustificativas() : String
+        + forneceFeedback() : String
+        + registraRastreabilidade() : void
+    }
+
+    enum EixoConhecimento {
+        ORIENTACAO
+        PROGRAMACAO_COMPUTACAO
+        UX_DESIGN
+        NEGOCIOS
+        LIDERANCA
+    }
+
+    enum ModalidadeAP {
+        INDIVIDUAL
+        EQUIPE
+        PEER_REVIEW
+        AUTOAVALIACAO
+        PRATICA_LAB
+    }
+
+    enum TipoAutoestudo {
+        PREPARATORIO
+        PONDERADO
+        COMPLEMENTAR
+        REFORCO
+    }
+}
+
+' Relacionamentos principais
+Modulo ||--o{ Instrucao : "programa\n10..16 instruções"
+Modulo ||--o{ Autoestudo : "organiza\nblocs diários"
+Modulo ||--|| Prova : "aplica\n1 prova (sem. 9)"
+DocenteEixo ||--o{ Instrucao : "conduz sessões"
+DocenteEixo ||--o{ AtividadePonderada : "elabora APs"
+Instrucao ||--o{ AtividadePonderada : "pode incluir\n0..* APs"
+Autoestudo ||--o{ AtividadePonderada : "pode gerar\n0..1 AP"
+Modulo ||--o{ Avaliacao : "consolida\n4 eixos × N estudantes"
+
+' Relacionamentos com enums
+DocenteEixo --> EixoConhecimento
+Instrucao --> EixoConhecimento
+AtividadePonderada --> ModalidadeAP
+Autoestudo --> TipoAutoestudo
+
+' Notas explicativas
+note top of Instrucao : **Sessão Educativa**\n5 Eixos de Conhecimento\nRegistra presença + participação\nVincula competências trabalhadas
+
+note right of DocenteEixo : **Especialistas por Eixo**\n• Orientador (10-16 sessões)\n• Programação (10-16 sessões)\n• UX (4-6 sessões)\n• Negócios (4-6 sessões)\n• Liderança (~3 sessões)
+
+note bottom of Avaliacao : **Sistema Integrado**\n4 Eixos de Avaliação:\n• Artefatos/Projeto (40%)\n• Atividades Ponderadas (35%)\n• Prova Escrita (20%)\n• Avaliação de Pares (5%)
+
+note left of Autoestudo : **Blocos Autônomos**\nPreparatórios (manhã)\nPonderados (avaliativos)\nComplementares (reforço)\nTempo estimado controlado
+
+' Distribuição temporal
+note as N3
+    <b>Distribuição Temporal (10 semanas):</b>
+    • Instruções: distribuídas por eixo
+    • Autoestudos: 2 blocos diários
+    • APs: ao longo do módulo
+    • Prova: tipicamente semana 9
+    • Avaliação final: semana 10
+end note
+
+@enduml

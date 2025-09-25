@@ -1,0 +1,160 @@
+@startuml diagrama2_estrutura_operacional
+!define PRIMARY_COLOR #2E86AB
+!define SECONDARY_COLOR #A23B72
+!define ACCENT_COLOR #F18F01
+!define SUCCESS_COLOR #C73E1D
+
+skinparam class {
+    BackgroundColor WHITE
+    BorderColor PRIMARY_COLOR
+    HeaderBackgroundColor PRIMARY_COLOR
+    HeaderFontColor WHITE
+    AttributeFontColor BLACK
+    FontSize 10
+}
+
+skinparam arrow {
+    Color PRIMARY_COLOR
+    FontColor PRIMARY_COLOR
+    FontSize 9
+}
+
+package "Estrutura Operacional do Módulo PBL" {
+
+    class Metaprojeto <<Template>> {
+        + metaproj_id : String
+        + nome : String
+        + competencias_alvo : List<String>
+        --
+        + instanciaModulo() : Modulo
+    }
+
+    class Modulo <<Unidade-Execucao>> {
+        + mod_id : String
+        + semestre : String
+        + data_inicio : Date
+        + data_fim : Date
+        + status : String
+        --
+        + iniciaExecucao() : void
+        + geraSprints() : List<Sprint>
+        + consolidaResultados() : Relatorio
+    }
+
+    class Sprint <<Ciclo-2Semanas>> {
+        + sprint_id : String
+        + numero : Integer [1..5]
+        + data_inicio : Date
+        + data_fim : Date
+        + metas_sprint : List<String>
+        + status : String
+        --
+        + executaPlanning() : void
+        + realizaDailies() : void
+        + executaReview() : void
+        + geraArtefatos() : List<Artefato>
+    }
+
+    class Turma <<Grupo-Estudantes>> {
+        + turma_id : String
+        + codigo : String
+        + semestre : String
+        + numero_alunos : Integer
+        + grupos_formados : Integer
+        --
+        + formaGrupos() : List<Grupo>
+        + acompanhaProgresso() : void
+    }
+
+    class Aluno <<Participante>> {
+        + aluno_id : String
+        + nome : String
+        + matricula : String
+        + email : String
+        + papel_grupo : String
+        --
+        + participaSprint() : void
+        + entregaArtefatos() : void
+        + realizaAutoestudo() : void
+    }
+
+    class Grupo <<Equipe-Desenvolvimento>> {
+        + grupo_id : String
+        + nome_equipe : String
+        + po_designado : String
+        + scrum_master : String
+        + repository_url : String
+        --
+        + defineBacklog() : void
+        + executaPlanning() : void
+        + entregaIncremento() : void
+        + realizaPitch() : void
+    }
+
+    class Orientador <<Docente-Facilitador>> {
+        + orientador_id : String
+        + nome : String
+        + especialidade : String
+        + turmas_orientadas : List<String>
+        --
+        + acompanhaTurma() : void
+        + forneceFeedback() : void
+        + avaliaProgresso() : void
+        + intervemPedagogicamente() : void
+    }
+
+    class Parceiro <<Stakeholder-Externo>> {
+        + parc_id : String
+        + nome_organizacao : String
+        + representante : String
+        + contexto_problema : Text
+        --
+        + apresentaProblema() : void
+        + participaWorkshops() : void
+        + avaliaEntregas() : void
+        + validaSolucao() : Boolean
+    }
+
+    class TAPI <<Documento-Projeto>> {
+        + tapi_id : String
+        + problema_definido : Text
+        + objetivos_claros : List<String>
+        + criterios_aceite : List<String>
+        + restricoes : List<String>
+        --
+        + validaEscopo() : Boolean
+        + rastreiaRequisitos() : Map
+    }
+}
+
+' Relacionamentos da estrutura operacional
+Metaprojeto ||--o{ Modulo : "instancia\n1:N"
+Modulo ||--o{ Sprint : "contém\n1:5"
+Modulo ||--o{ Turma : "executa\n1:N"
+
+Turma ||--o{ Aluno : "composta por\n1:N"
+Turma ||--o{ Grupo : "organizada em\n1:N"
+Aluno ||--|| Grupo : "pertence a\n1:1"
+
+Orientador ||--o{ Turma : "orienta\n1:N"
+Orientador ||--|| Aluno : "acompanha\n1:1"
+
+Sprint }o--|| Parceiro : "envolve\n1:1"
+Sprint }o--|| TAPI : "segue\n1:1"
+Parceiro ||--|| TAPI : "define\n1:1"
+
+' Regras importantes
+note as N1
+<b>Regras Operacionais:</b>
+• Módulo = exatamente 5 Sprints
+• Sprint = exatamente 2 semanas
+• Aluno ∈ único Grupo por Módulo
+• Orientador acompanha N Turmas
+• Parceiro + TAPI = contexto do Sprint
+end note
+
+note right of Sprint : **Unidade Atômica**\nCiclo básico de 2 semanas\nProduz artefatos + pitch
+
+note bottom of Grupo : **Estrutura Scrum**\nPO + Scrum Master\nRepositório próprio
+
+@enduml
