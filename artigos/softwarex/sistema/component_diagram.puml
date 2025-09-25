@@ -26,12 +26,12 @@ VIZ --> [Plotly] : create charts
 VIZ --> UI : display results
 
 note bottom of [Supabase Storage]
-  Armazena snapshots Parquet
-  Organizados por trimestre e repositório
+  Stores Parquet snapshots
+  Organized by quarter and repository
 end note
 
 note bottom of [GitHub API]
-  Coleta commits e pull requests
-  Autenticação via token
+  Fetches commits and pull requests
+  Authentication via token
 end note
 @enduml

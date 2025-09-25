@@ -1,56 +1,56 @@
-# Estudo de Caso 1 - Afonsystem
+# Case Study 1 - Afonsystem
 
-Este diretório contém os diagramas UML e documentação do estudo de caso do sistema Afonsystem.
+This directory contains the UML diagrams and documentation for the Afonsystem case study.
 
-## Diagramas UML
+## UML Diagrams
 
-### 1. Diagrama de Sequência - Criação de Snapshot
+### 1. Sequence Diagram - Snapshot Creation
 
-![Diagrama de Sequência](sequence_diagram.png)
+![Sequence Diagram](sequence_diagram.png)
 
-Este diagrama mostra o fluxo de criação de um snapshot, desde a interação do usuário até o armazenamento dos dados no Supabase Storage.
+This diagram shows the snapshot creation flow, from user interaction to data storage in Supabase Storage.
 
-### 2. Diagrama de Classes
+### 2. Class Diagram
 
-![Diagrama de Classes](class_diagram.png)
+![Class Diagram](class_diagram.png)
 
-Este diagrama apresenta a estrutura de classes do sistema, incluindo:
+This diagram presents the system's class structure, including:
 - **Models**: Commit, PullRequest, SnapshotMetadata
 - **Helpers**: GitHubDataCollector, SupabaseHelper, SnapshotManager, AnalyticsService
 - **Repositories**: CommitRepository, PullRequestRepository
 
-### 3. Diagrama de Componentes
+### 3. Component Diagram
 
-![Diagrama de Componentes](component_diagram.png)
+![Component Diagram](component_diagram.png)
 
-Este diagrama mostra a arquitetura de componentes do sistema Afonsystem e suas dependências externas.
+This diagram shows the component architecture of the Afonsystem and its external dependencies.
 
-## Arquivos de Diagramas
+## Diagram Files
 
-- `sequence_diagram.puml` - Código PlantUML do diagrama de sequência
-- `class_diagram.puml` - Código PlantUML do diagrama de classes
-- `component_diagram.puml` - Código PlantUML do diagrama de componentes
+- `sequence_diagram.puml` - PlantUML code for the sequence diagram
+- `class_diagram.puml` - PlantUML code for the class diagram
+- `component_diagram.puml` - PlantUML code for the component diagram
 
-## Documentação
+## Documentation
 
-- `PROJECT_DOCUMENTATION.md` - Documentação completa do projeto Afonsystem
+- `PROJECT_DOCUMENTATION.md` - Complete documentation for the Afonsystem project
 
-## Imagens Geradas
+## Generated Images
 
-- `sequence_diagram.png` - Imagem PNG do diagrama de sequência
-- `class_diagram.png` - Imagem PNG do diagrama de classes
-- `component_diagram.png` - Imagem PNG do diagrama de componentes
+- `sequence_diagram.png` - PNG image of the sequence diagram
+- `class_diagram.png` - PNG image of the class diagram
+- `component_diagram.png` - PNG image of the component diagram
 
-## Como Usar
+## How to Use
 
-Para regenerar as imagens PNG a partir dos arquivos PlantUML, use:
+To regenerate the PNG images from PlantUML files, use:
 
 ```bash
 java -jar plantuml.jar -tpng *.puml
 ```
 
-## Tecnologias Utilizadas
+## Technologies Used
 
-- **PlantUML**: Para criação dos diagramas UML
-- **Java**: Para execução do PlantUML
-- **PNG**: Formato de saída das imagens
+- **PlantUML**: For creating UML diagrams
+- **Java**: For running PlantUML
+- **PNG**: Output format for images

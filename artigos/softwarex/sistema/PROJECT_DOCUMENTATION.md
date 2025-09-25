@@ -1,146 +1,146 @@
-# Afonsystem - Documentação Completa
+# Afonsystem - Complete Documentation
 
-## Índice
-1. [Visão Geral](#visão-geral)
-2. [Estrutura do Projeto](#estrutura-do-projeto)
-3. [Classes e Arquitetura](#classes-e-arquitetura)
-4. [Lógica de Código](#lógica-de-código)
-5. [Diagramas UML](#diagramas-uml)
-6. [Táticas Arquiteturais](#táticas-arquiteturais)
+## Index
+1. [Overview](#overview)
+2. [Project Structure](#project-structure)
+3. [Classes and Architecture](#classes-and-architecture)
+4. [Code Logic](#code-logic)
+5. [UML Diagrams](#uml-diagrams)
+6. [Architectural Tactics](#architectural-tactics)
 
-## Visão Geral
+## Overview
 
-O Afonsystem é uma aplicação web Streamlit desenvolvida para análise de repositórios GitHub. A aplicação coleta dados de commits e pull requests de repositórios configurados, armazena-os em snapshots Parquet no Supabase Storage e fornece uma interface web para análise e visualização desses dados.
+Afonsystem is a Streamlit web application developed for GitHub repository analysis. The application collects data from commits and pull requests of configured repositories, stores them in Parquet snapshots in Supabase Storage, and provides a web interface for analysis and visualization of this data.
 
-### Tecnologias Utilizadas
-- **Streamlit**: Framework web para interface
-- **PyGithub**: Integração com a API do GitHub
-- **Supabase**: Banco de dados e armazenamento
-- **Pandas**: Manipulação de dados
-- **Plotly**: Visualização de dados
-- **Pydantic**: Modelagem de dados com validação
-- **Parquet**: Formato de armazenamento de dados
+### Technologies Used
+- **Streamlit**: Web framework for interface
+- **PyGithub**: Integration with GitHub API
+- **Supabase**: Database and storage
+- **Pandas**: Data manipulation
+- **Plotly**: Data visualization
+- **Pydantic**: Data modeling with validation
+- **Parquet**: Data storage format
 
-## Estrutura do Projeto
+## Project Structure
 
 ```
 afonsystem/
-├── app.py                     # Arquivo principal da aplicação Streamlit
-├── requirements.txt           # Dependências do projeto
-├── models/                    # Modelos de dados (Pydantic)
-│   ├── commit.py             # Modelo de commit
-│   ├── pull_request.py       # Modelo de pull request
-│   └── snapshot.py           # Modelo de snapshot
-├── helpers/                   # Módulos auxiliares
-│   ├── __init__.py           # Exportação de módulos
-│   ├── analytics_service.py  # Serviço de análise de dados
-│   ├── app_config.py         # Configuração da aplicação
-│   ├── data_analysis.py      # Funções de análise de dados
-│   ├── data_collector.py     # Coletor de dados do GitHub
-│   ├── data_formatter.py     # Formatação de dados
-│   ├── database_helper.py    # Helper para banco de dados
-│   ├── snapshot_manager.py   # Gerenciador de snapshots
-│   ├── supabase_helper.py    # Helper para Supabase
-│   └── ui_components.py      # Componentes de interface
-├── repositories/              # Repositórios de dados
-│   ├── commit_repository.py  # Repositório de commits
-│   └── pull_request_repository.py # Repositório de pull requests
-├── docs/                     # Documentação
+├── app.py                     # Main Streamlit application file
+├── requirements.txt           # Project dependencies
+├── models/                    # Data models (Pydantic)
+│   ├── commit.py             # Commit model
+│   ├── pull_request.py       # Pull request model
+│   └── snapshot.py           # Snapshot model
+├── helpers/                   # Helper modules
+│   ├── __init__.py           # Module exports
+│   ├── analytics_service.py  # Data analytics service
+│   ├── app_config.py         # Application configuration
+│   ├── data_analysis.py      # Data analysis functions
+│   ├── data_collector.py     # GitHub data collector
+│   ├── data_formatter.py     # Data formatting
+│   ├── database_helper.py    # Database helper
+│   ├── snapshot_manager.py   # Snapshot manager
+│   ├── supabase_helper.py    # Supabase helper
+│   └── ui_components.py      # Interface components
+├── repositories/              # Data repositories
+│   ├── commit_repository.py  # Commit repository
+│   └── pull_request_repository.py # Pull request repository
+├── docs/                     # Documentation
 └── ...
 ```
 
-## Classes e Arquitetura
+## Classes and Architecture
 
-### Modelos de Dados (Pydantic)
+### Data Models (Pydantic)
 
 #### Commit
-- **sha**: Hash SHA do commit
-- **message**: Mensagem do commit
-- **author**: Autor do commit
-- **date**: Data do commit
-- **url**: URL do commit no GitHub
+- **sha**: Commit SHA hash
+- **message**: Commit message
+- **author**: Commit author
+- **date**: Commit date
+- **url**: Commit URL on GitHub
 
 #### PullRequest
-- **number**: Número do pull request
-- **title**: Título do pull request
-- **author**: Autor do pull request
-- **state**: Estado do pull request (open/closed)
-- **created_at**: Data de criação
-- **url**: URL do pull request
+- **number**: Pull request number
+- **title**: Pull request title
+- **author**: Pull request author
+- **state**: Pull request state (open/closed)
+- **created_at**: Creation date
+- **url**: Pull request URL
 
 #### SnapshotMetadata
-- **timestamp**: Timestamp do snapshot
-- **repository_name**: Nome do repositório
-- **commits_count**: Contagem de commits
-- **pull_requests_count**: Contagem de pull requests
-- **snapshot_id**: ID único do snapshot
-- **created_at**: Timestamp de criação
+- **timestamp**: Snapshot timestamp
+- **repository_name**: Repository name
+- **commits_count**: Commit count
+- **pull_requests_count**: Pull request count
+- **snapshot_id**: Unique snapshot ID
+- **created_at**: Creation timestamp
 
-### Classes de Serviço
+### Service Classes
 
 #### GitHubDataCollector
-Classe responsável por coletar dados do GitHub:
-- Conecta-se à API do GitHub usando token
-- Coleta commits e pull requests de repositórios configurados
-- Cria snapshots de dados usando SnapshotManager
+Class responsible for collecting data from GitHub:
+- Connects to GitHub API using token
+- Collects commits and pull requests from configured repositories
+- Creates data snapshots using SnapshotManager
 
 #### SupabaseHelper
-Classe para operações de armazenamento Supabase:
-- Cria e gerencia snapshots Parquet
-- Carrega dados de snapshots
-- Lista e deleta snapshots
-- Fornece resumos de snapshots
+Class for Supabase storage operations:
+- Creates and manages Parquet snapshots
+- Loads data from snapshots
+- Lists and deletes snapshots
+- Provides snapshot summaries
 
 #### SnapshotManager
-Classe para gerenciamento de snapshots:
-- Cria snapshots Parquet de dados
-- Faz upload para Supabase Storage
-- Lista e obtém metadados de snapshots
-- Carrega dados de snapshots
+Class for snapshot management:
+- Creates Parquet snapshots of data
+- Uploads to Supabase Storage
+- Lists and retrieves snapshot metadata
+- Loads data from snapshots
 
 #### AnalyticsService
-Serviço para análise de dados:
-- Calcula KPIs de commits
-- Fornece dados para visualização
-- Filtra dados por intervalo de datas
+Service for data analysis:
+- Calculates commit KPIs
+- Provides data for visualization
+- Filters data by date range
 
-#### CommitRepository e PullRequestRepository
-Repositórios para persistência de dados:
-- Operações CRUD para commits e pull requests
-- Filtros por data, autor, tipo
-- Agrupamentos e contagens
+#### CommitRepository and PullRequestRepository
+Data persistence repositories:
+- CRUD operations for commits and pull requests
+- Filters by date, author, type
+- Grouping and counting
 
-## Lógica de Código
+## Code Logic
 
-### Fluxo Principal
-1. A aplicação Streamlit inicia e configura o ambiente virtual
-2. O usuário seleciona um trimestre e repositório
-3. Um snapshot pode ser criado coletando dados do GitHub
-4. Dados são armazenados em formato Parquet no Supabase Storage
-5. O usuário seleciona um snapshot existente para análise
-6. Dados são carregados e visualizações são renderizadas
+### Main Flow
+1. Streamlit application starts and configures virtual environment
+2. User selects a quarter and repository
+3. A snapshot can be created by collecting data from GitHub
+4. Data is stored in Parquet format in Supabase Storage
+5. User selects an existing snapshot for analysis
+6. Data is loaded and visualizations are rendered
 
-### Coleta de Dados
-- A aplicação usa PyGithub para acessar a API do GitHub
-- Coleta commits e pull requests de repositórios configurados
-- Dados são convertidos para DataFrames pandas
-- DataFrames são salvos em formato Parquet em snapshots
+### Data Collection
+- Application uses PyGithub to access GitHub API
+- Collects commits and pull requests from configured repositories
+- Data is converted to pandas DataFrames
+- DataFrames are saved in Parquet format in snapshots
 
-### Armazenamento de Dados
-- Dados são salvos em formato Parquet para eficiência
-- Cada snapshot contém commits.parquet, pull_requests.parquet e metadata.json
-- Snapshots são organizados por trimestre e repositório
-- Armazenados no Supabase Storage
+### Data Storage
+- Data is stored in Parquet format for efficiency
+- Each snapshot contains commits.parquet, pull_requests.parquet and metadata.json
+- Snapshots are organized by quarter and repository
+- Stored in Supabase Storage
 
-### Análise de Dados
-- Commits são categorizados por tipo (feat, fix, docs, etc.)
-- KPIs são calculados baseados em tipos de commits
-- Visualizações são geradas com Plotly (gráficos de pizza, linha e barra)
-- Dados podem ser filtrados por intervalo de datas e autor
+### Data Analysis
+- Commits are categorized by type (feat, fix, docs, etc.)
+- KPIs are calculated based on commit types
+- Visualizations are generated with Plotly (pie, line, and bar charts)
+- Data can be filtered by date range and author
 
-## Diagramas UML
+## UML Diagrams
 
-### Diagrama de Classes
+### Class Diagram
 
 ```plantuml
 @startuml
@@ -247,11 +247,11 @@ PullRequestRepository --|> Repository : extends
 @enduml
 ```
 
-### Diagrama de Sequência - Criação de Snapshot
+### Sequence Diagram - Repository Snapshot Creation
 
 ```plantuml
 @startuml
-title Criação de Snapshot
+title Repository Snapshot Creation
 
 actor User
 participant "Streamlit UI" as UI
@@ -260,7 +260,7 @@ participant "Supabase Storage" as Storage
 participant "SnapshotManager" as SM
 participant "GitHub API" as GitHub
 
-User -> UI: Clicar em "Criar Snapshot"
+User -> UI: Click "Create Snapshot"
 UI -> Collector: collect_and_create_snapshot()
 Collector -> GitHub: get_repo(repo_name)
 GitHub -> Collector: Repository object
@@ -277,11 +277,11 @@ SM -> Storage: upload metadata.json
 Storage -> SM: confirmation
 SM -> Collector: snapshot_id
 Collector -> UI: snapshot_id
-UI -> User: Exibir resultado
+UI -> User: Display result
 @enduml
 ```
 
-### Diagrama de Componentes
+### Component Diagram
 
 ```plantuml
 @startuml
@@ -312,55 +312,55 @@ VIZ --> [Plotly] : create charts
 VIZ --> UI : display results
 
 note bottom of [Supabase Storage]
-  Armazena snapshots Parquet
-  Organizados por trimestre e repositório
+  Stores Parquet snapshots
+  Organized by quarter and repository
 end note
 
 note bottom of [GitHub API]
-  Coleta commits e pull requests
-  Autenticação via token
+  Fetches commits and pull requests
+  Authentication via token
 end note
 @enduml
 ```
 
-## Táticas Arquiteturais
+## Architectural Tactics
 
-### 1. Persistência de Dados
-- **Tática**: Armazenamento Parquet em nuvem
-- **Implementação**: Dados são salvos em formato Parquet (colunar, eficiente) no Supabase Storage
-- **Benefícios**: Compactação eficiente, leitura rápida de colunas específicas, armazenamento escalável
+### 1. Data Persistence
+- **Tactic**: Cloud-based Parquet storage
+- **Implementation**: Data is saved in Parquet format (columnar, efficient) in Supabase Storage
+- **Benefits**: Efficient compression, fast reading of specific columns, scalable storage
 
-### 2. Isolamento de Dados
-- **Tática**: Snapshots independentes
-- **Implementação**: Cada coleta de dados gera um snapshot separado com metadados
-- **Benefícios**: Histórico de estados, recuperação fácil, dados imutáveis para análise
+### 2. Data Isolation
+- **Tactic**: Independent snapshots
+- **Implementation**: Each data collection generates a separate snapshot with metadata
+- **Benefits**: Historical states, easy recovery, immutable data for analysis
 
-### 3. Cache de Dados
-- **Tática**: Cache de Streamlit
-- **Implementação**: @st.cache_resource e @st.cache_data para objetos e dados
-- **Benefícios**: Redução de chamadas à API e Supabase, melhor performance
+### 3. Data Caching
+- **Tactic**: Streamlit caching
+- **Implementation**: @st.cache_resource and @st.cache_data for objects and data
+- **Benefits**: Reduced API and Supabase calls, better performance
 
-### 4. Separação de Responsabilidades
-- **Tática**: Padrão de repositórios e serviços
-- **Implementação**: Repositórios para persistência, serviços para lógica de negócio
-- **Benefícios**: Testabilidade, manutenibilidade, escalabilidade
+### 4. Separation of Concerns
+- **Tactic**: Repository and service pattern
+- **Implementation**: Repositories for persistence, services for business logic
+- **Benefits**: Testability, maintainability, scalability
 
-### 5. Interface de Dados Tipada
-- **Tática**: Pydantic para modelagem de dados
-- **Implementação**: Modelos Pydantic com validação automática
-- **Benefícios**: Validação de dados, documentação automática, segurança de tipo
+### 5. Typed Data Interface
+- **Tactic**: Pydantic for data modeling
+- **Implementation**: Pydantic models with automatic validation
+- **Benefits**: Data validation, automatic documentation, type safety
 
-### 6. Escalabilidade Horizontal
-- **Tática**: Arquitetura stateless
-- **Implementação**: Streamlit app sem estado de sessão crítico
-- **Benefícios**: Fácil horizontal scaling, menor acoplamento
+### 6. Horizontal Scalability
+- **Tactic**: Stateless architecture
+- **Implementation**: Streamlit app without critical session state
+- **Benefits**: Easy horizontal scaling, reduced coupling
 
-### 7. Integração com APIs Externas
-- **Tática**: Abstração de clientes de API
-- **Implementação**: GitHubDataCollector abstrai a API do GitHub
-- **Benefícios**: Fácil substituição, testabilidade, centralização de lógica
+### 7. External API Integration
+- **Tactic**: API client abstraction
+- **Implementation**: GitHubDataCollector abstracts GitHub API
+- **Benefits**: Easy replacement, testability, centralized logic
 
-### 8. Visualização de Dados
-- **Tática**: Camada de visualização separada
-- **Implementação**: Componentes UI separados da lógica de dados
-- **Benefícios**: Facilidade de atualização de visualizações, reutilização de componentes
+### 8. Data Visualization
+- **Tactic**: Separate visualization layer
+- **Implementation**: UI components separated from data logic
+- **Benefits**: Easy visualization updates, component reuse

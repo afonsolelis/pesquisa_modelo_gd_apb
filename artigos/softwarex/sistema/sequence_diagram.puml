@@ -1,5 +1,5 @@
 @startuml
-title Criação de Snapshot
+title Repository Snapshot Creation
 
 actor User
 participant "Streamlit UI" as UI
@@ -8,7 +8,7 @@ participant "Supabase Storage" as Storage
 participant "SnapshotManager" as SM
 participant "GitHub API" as GitHub
 
-User -> UI: Clicar em "Criar Snapshot"
+User -> UI: Click "Create Snapshot"
 UI -> Collector: collect_and_create_snapshot()
 Collector -> GitHub: get_repo(repo_name)
 GitHub -> Collector: Repository object
@@ -25,5 +25,5 @@ SM -> Storage: upload metadata.json
 Storage -> SM: confirmation
 SM -> Collector: snapshot_id
 Collector -> UI: snapshot_id
-UI -> User: Exibir resultado
+UI -> User: Display result
 @enduml
