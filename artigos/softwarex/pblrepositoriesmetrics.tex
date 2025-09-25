@@ -13,14 +13,16 @@
 \geometry{margin=2.5cm}
 
 \title{PBLRepositoriesMetrics: A Streamlit-based Repository Analytics Platform for Project-Based Learning Supervision}
-\author{Afonso Cesar Lelis Brandão$^1$, Reginaldo Arakaki$^1$, Leandro Augusto da Silva$^2$ \\
-$^1$Instituto de Tecnologia e Liderança (Inteli), São Paulo, Brazil \\
+\author{Afonso Cesar Lelis Brandão$^1$, Reginaldo Arakaki$^1$, Leandro Augusto da Silva$^2$ \
+$^1$Instituto de Tecnologia e Liderança (Inteli), São Paulo, Brazil \
 $^2$Universidade Presbiteriana Mackenzie, São Paulo, Brazil}
 \date{\today}
+
 
 \begin{document}
 
 \maketitle
+
 
 \begin{abstract}
 Repository analytics platforms face significant challenges in processing large-scale collaborative development data while maintaining data integrity and providing real-time insights. This paper introduces PBLRepositoriesMetrics, a novel web-based analytics platform designed to address the complex requirements of repository data analysis and visualization. The system leverages modern data engineering principles and machine learning techniques to provide comprehensive insights into repository development patterns, collaboration dynamics, and code evolution metrics.
@@ -33,6 +35,7 @@ Empirical evaluation of the system demonstrates substantial improvements in repo
 
 This research contributes to the field of repository analytics by presenting a novel approach to automated repository analysis that combines software engineering best practices with data engineering principles. The system's open-source architecture and comprehensive documentation facilitate adoption by development teams and organizations worldwide, while its modular design enables future extensions and customizations for diverse analytical contexts.
 \end{abstract}
+
 
 \textbf{Keywords:} Repository analytics, GitHub metrics, Data visualization, Streamlit, Code analysis, Development patterns, Parquet storage, Supabase
 
@@ -116,6 +119,7 @@ The system architecture is founded on several key design principles that ensure 
 
 The system architecture is organized into five main components, as illustrated in Figure \ref{fig:componentes}. Each component has distinct responsibilities and interacts with others through well-defined interfaces, specifically designed to support repository analysis workflows and ensure optimal performance in development environments.
 
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{sistema/component_diagram.png}
@@ -123,7 +127,9 @@ The system architecture is organized into five main components, as illustrated i
 \label{fig:componentes}
 \end{figure}
 
+
 The architecture consists of the following core components, each designed to address specific aspects of repository data management and analysis:
+
 
 \begin{itemize}
 \item \textbf{Streamlit UI}: Provides a comprehensive web-based dashboard that enables users to monitor repository projects in real-time, access detailed analytical insights, and generate technical reports. The interface is designed with analytical considerations in mind, offering intuitive navigation and technical context for all data visualizations.
@@ -137,24 +143,30 @@ The architecture consists of the following core components, each designed to add
 \item \textbf{Visualization}: Generates interactive charts, graphs, and visual representations specifically designed for repository analysis, incorporating data engineering best practices and technical reporting standards to support informed decision-making by development teams.
 \end{itemize}
 
+
 External dependencies include the GitHub API for comprehensive repository data retrieval, Supabase Storage for scalable cloud-based data persistence, Pandas for advanced repository data manipulation and analysis, and Plotly for creating interactive visualizations tailored to repository analysis needs and technical reporting requirements.
 
 \subsection{Class Structure}
 
 The system's class structure is organized into three main packages, as shown in Figure \ref{fig:classes}. This organization promotes separation of concerns and maintainability while supporting repository analysis requirements.
 
+
 \begin{landscape}
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.2\textwidth]{sistema/class_diagram.png}
 \caption{Class Diagram of PBLRepositoriesMetrics}
 \label{fig:classes}
 \end{figure}
+
 \end{landscape}
+
 
 \subsubsection{Data Models}
 
 The system employs Pydantic models for data validation and type safety, specifically designed for repository data:
+
 
 \begin{itemize}
 \item \textbf{Commit}: Represents repository commits with attributes including SHA hash, commit message, author information, timestamp, and development context
@@ -162,9 +174,11 @@ The system employs Pydantic models for data validation and type safety, specific
 \item \textbf{SnapshotMetadata}: Contains snapshot metadata including timestamp, repository name, contributor information, and development progress indicators
 \end{itemize}
 
+
 \subsubsection{Service Layer}
 
 The service layer implements business logic and repository data processing:
+
 
 \begin{itemize}
 \item \textbf{GitHubDataCollector}: Manages GitHub API interactions and automated data collection from repositories
@@ -173,22 +187,22 @@ The service layer implements business logic and repository data processing:
 \item \textbf{AnalyticsService}: Performs repository metrics analysis, collaboration assessment, and progress tracking calculations
 \end{itemize}
 
+
 \subsubsection{Repository Pattern}
 
 The repository pattern provides data access abstraction for repository data:
+
 
 \begin{itemize}
 \item \textbf{CommitRepository}: Implements CRUD operations for repository commit data with development filtering and progress analysis
 \item \textbf{PullRequestRepository}: Manages repository pull request data access with collaboration metrics and code review analysis
 \end{itemize}
 
-\section{Implementation Details}
-
-The PBLRepositoriesMetrics system implementation incorporates sophisticated software engineering practices and data engineering principles to deliver a robust, scalable platform for repository analysis. The implementation details presented in this section demonstrate the system's technical capabilities, architectural decisions, and integration strategies that contribute to its effectiveness in development environments.
 
 \subsection{Repository Snapshot Creation Process}
 
 The repository snapshot creation process follows a comprehensive, well-defined sequence that ensures data consistency, data integrity, and provides users with detailed insights into repository development patterns. This process is illustrated in Figure \ref{fig:sequencia} and represents a critical component of the system's data management strategy.
+
 
 \begin{figure}[H]
 \centering
@@ -197,7 +211,9 @@ The repository snapshot creation process follows a comprehensive, well-defined s
 \label{fig:sequencia}
 \end{figure}
 
+
 The snapshot creation process involves the following detailed steps, each designed to ensure data quality and technical relevance:
+
 
 \begin{enumerate}
 \item \textbf{User Initiation}: Users initiate snapshot creation for repositories through the intuitive Streamlit interface, selecting specific repositories, time periods, and analysis criteria based on technical objectives and development outcomes.
@@ -219,9 +235,11 @@ The snapshot creation process involves the following detailed steps, each design
 \item \textbf{Confirmation and Monitoring}: Users receive detailed confirmation with snapshot ID for ongoing repository monitoring, including access to real-time analytics and historical trend analysis capabilities.
 \end{enumerate}
 
+
 \subsection{Data Storage Strategy}
 
 The system employs Parquet format for repository data storage due to its columnar structure and compression efficiency, specifically optimized for technical analysis:
+
 
 \begin{itemize}
 \item \textbf{Efficient Compression}: Parquet files achieve 80-90\% compression ratios, reducing storage costs for development teams
@@ -229,6 +247,7 @@ The system employs Parquet format for repository data storage due to its columna
 \item \textbf{Schema Evolution}: Supports changes in technical analysis criteria without data migration
 \item \textbf{Cross-Platform Compatibility}: Works seamlessly with various repository data analysis tools
 \end{itemize}
+
 
 \subsection{Architectural Patterns}
 
@@ -242,6 +261,7 @@ Technical business logic is encapsulated in service classes, separating concerns
 
 \subsubsection{Repository Snapshot Pattern}
 Data isolation is achieved through snapshot-based storage, where each data collection creates an immutable snapshot of development progress. This approach provides:
+
 \begin{itemize}
 \item Historical development progress preservation
 \item Easy technical record rollback capabilities
@@ -249,11 +269,13 @@ Data isolation is achieved through snapshot-based storage, where each data colle
 \item Technical data integrity assurance
 \end{itemize}
 
+
 \section{Results and Discussion}
 
 \subsection{Performance Characteristics}
 
 The system demonstrates efficient performance characteristics for repository analysis:
+
 
 \begin{itemize}
 \item \textbf{Data Collection}: GitHub API rate limits are respected through intelligent request batching for multiple repositories
@@ -262,9 +284,11 @@ The system demonstrates efficient performance characteristics for repository ana
 \item \textbf{User Experience}: Streamlit's caching mechanisms reduce response times for repeated repository analysis
 \end{itemize}
 
+
 \subsection{Scalability Considerations}
 
 The architecture supports horizontal scaling through several mechanisms designed for development teams:
+
 
 \begin{itemize}
 \item \textbf{Stateless Design}: Application components maintain no critical session state, supporting multiple users
@@ -273,9 +297,11 @@ The architecture supports horizontal scaling through several mechanisms designed
 \item \textbf{Modular Architecture}: Components can be scaled independently based on team demand
 \end{itemize}
 
+
 \subsection{Repository Analysis Capabilities}
 
 The system provides comprehensive analysis features specifically designed for repository analysis:
+
 
 \begin{itemize}
 \item \textbf{Development Progress Tracking}: Individual and team progress monitoring with temporal analysis
@@ -284,6 +310,7 @@ The system provides comprehensive analysis features specifically designed for re
 \item \textbf{Contribution Analysis}: Developer participation patterns and contribution consistency
 \item \textbf{Development Timeline}: Project milestone tracking and deadline compliance monitoring
 \end{itemize}
+
 
 \section{Results and Discussion}
 
@@ -347,6 +374,7 @@ The authors acknowledge the contributions of the open-source community, particul
 
 \section{References}
 
+
 \begin{thebibliography}{9}
 
 \bibitem{thomas2000review}
@@ -364,4 +392,6 @@ Johnson, M., Smith, K., \& Brown, L. (2020). GitHub analytics for educational as
 \end{thebibliography}
 
 
+
 \end{document}
+
