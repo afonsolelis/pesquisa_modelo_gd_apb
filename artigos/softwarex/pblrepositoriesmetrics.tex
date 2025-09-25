@@ -9,6 +9,7 @@
 \usepackage{amssymb}
 \usepackage{url}
 \usepackage{pdflscape}
+\usepackage{indentfirst}
 
 \geometry{margin=2.5cm}
 
@@ -34,15 +35,13 @@
 
 
 \begin{abstract}
-Repository analytics platforms face significant challenges in processing large-scale collaborative development data while maintaining data integrity and providing real-time insights. This paper introduces PBLRepositoriesMetrics, a novel web-based analytics platform designed to address the complex requirements of repository data analysis and visualization. The system leverages modern data engineering principles and machine learning techniques to provide comprehensive insights into repository development patterns, collaboration dynamics, and code evolution metrics.
+This paper presents PBLRepositoriesMetrics, a web-based analytics platform for comprehensive repository data analysis and visualization. The system addresses the growing need for efficient processing of large-scale collaborative development data while ensuring data integrity and providing real-time insights into development patterns and collaboration dynamics.
 
-Our methodology encompasses the development of a sophisticated data pipeline that integrates with the GitHub API to collect granular repository metrics, including commit histories, pull request activities, code review patterns, and collaborative dynamics. The system employs advanced data processing algorithms to transform raw repository data into meaningful technical indicators, utilizing Parquet format for efficient columnar storage and implementing snapshot-based data isolation to ensure data integrity and temporal consistency.
+The platform integrates with the GitHub API to collect granular repository metrics, employing advanced data processing algorithms to transform raw data into meaningful technical indicators. Utilizing Parquet format for efficient columnar storage and implementing snapshot-based data isolation, the system ensures data integrity and temporal consistency across multiple repositories.
 
-The platform's architecture follows service-oriented design principles, implementing clean separation of concerns through repository and service patterns, while incorporating data engineering best practices into its core functionality. The system features an intuitive Streamlit-based interface that enables users to monitor repository progress in real-time, generate comprehensive analytics reports, and identify development patterns through predictive analytics.
+Built on service-oriented architecture principles, the platform features an intuitive Streamlit-based interface that enables real-time monitoring, comprehensive analytics reporting, and development pattern identification through predictive analytics. The system successfully processes large-scale datasets, providing actionable insights into code quality metrics, collaborative dynamics, and project evolution indicators.
 
-Empirical evaluation of the system demonstrates substantial improvements in repository analysis efficiency, with quantitative results showing 85\% reduction in manual data processing time and 90\% improvement in data accuracy compared to traditional analysis methods. The platform successfully processes large-scale datasets from multiple repositories, providing users with actionable insights into development patterns, code quality metrics, collaborative dynamics, and project evolution indicators.
-
-This research contributes to the field of repository analytics by presenting a novel approach to automated repository analysis that combines software engineering best practices with data engineering principles. The system's open-source architecture and comprehensive documentation facilitate adoption by development teams and organizations worldwide, while its modular design enables future extensions and customizations for diverse analytical contexts.
+This research contributes to repository analytics by presenting a novel approach that combines software engineering best practices with data engineering principles. The system's open-source architecture and modular design facilitate adoption by development teams worldwide while enabling future extensions for diverse analytical contexts.
 \end{abstract}
 
 
