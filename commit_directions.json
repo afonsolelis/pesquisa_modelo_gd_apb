@@ -1,0 +1,126 @@
+{
+  "title": "Diretrizes para Commits - Conventional Commits",
+  "description": "Diretrizes para criar commits seguindo o padrão Conventional Commits no projeto de pesquisa sobre modelo de gêmeo digital aplicado a PBL",
+  "conventional_commit_format": {
+    "structure": "<type>[optional scope]: <description>",
+    "body_format": "<body>",
+    "footer_format": "<footer>"
+  },
+  "types": [
+    {
+      "name": "feat",
+      "description": "Nova funcionalidade ou melhoria significativa",
+      "example": "feat: adiciona nova seção sobre arquitetura de gêmeo digital"
+    },
+    {
+      "name": "fix",
+      "description": "Correção de erro ou problema",
+      "example": "fix: corrige equação 3.2 na seção de modelo matemático"
+    },
+    {
+      "name": "docs",
+      "description": "Alterações na documentação",
+      "example": "docs: atualiza referências bibliográficas no capítulo 2"
+    },
+    {
+      "name": "style",
+      "description": "Mudanças de formatação, estilo ou apresentação sem alterar conteúdo",
+      "example": "style: ajusta formatação LaTeX do capítulo 4"
+    },
+    {
+      "name": "refactor",
+      "description": "Refatoração de código sem alterar funcionalidade",
+      "example": "refactor: reestruturação de seções do capítulo metodológico"
+    },
+    {
+      "name": "perf",
+      "description": "Mudanças que melhoram performance",
+      "example": "perf: otimiza processamento de dados no modelo"
+    },
+    {
+      "name": "test",
+      "description": "Adição ou modificação de testes",
+      "example": "test: adiciona testes para validação do modelo proposto"
+    },
+    {
+      "name": "chore",
+      "description": "Tarefas de manutenção ou configuração",
+      "example": "chore: atualiza dependências do projeto"
+    },
+    {
+      "name": "build",
+      "description": "Mudanças que afetam o sistema de build ou dependências externas",
+      "example": "build: atualiza versão do LaTeX para compilação"
+    },
+    {
+      "name": "ci",
+      "description": "Mudanças nos arquivos de configuração de CI",
+      "example": "ci: configuração para validação de PDF"
+    },
+    {
+      "name": "revert",
+      "description": "Reverte commits anteriores",
+      "example": "revert: revert alterações da seção de resultados"
+    }
+  ],
+  "scope_examples": [
+    "modelo",
+    "arquitetura",
+    "implementacao",
+    "validacao",
+    "resultados",
+    "metodologia",
+    "introducao",
+    "fundamentacao",
+    "referencias",
+    "apendices"
+  ],
+  "description_guidelines": [
+    "Use verbo no presente e imperativo (adiciona, corrige, atualiza, remove)",
+    "Escreva em português",
+    "Descreva o que foi feito de forma clara e concisa",
+    "Limite a 50 caracteres na linha de descrição",
+    "Evite pontos finais"
+  ],
+  "body_guidelines": [
+    "Inclua informações detalhadas sobre as mudanças",
+    "Explique o motivo da mudança",
+    "Descreva como as mudanças afetam o projeto",
+    "Use quebra de linha para cada pensamento",
+    "Limite cada linha a 72 caracteres"
+  ],
+  "footer_guidelines": [
+    "Inclua referência a issues ou tarefas associadas",
+    "Use 'Closes #<issue_number>' para fechar issues",
+    "Use 'BREAKING CHANGE:' para mudanças incompatíveis"
+  ],
+  "examples": [
+    {
+      "type": "feat",
+      "description": "adiciona nova seção sobre arquitetura de gêmeo digital"
+    },
+    {
+      "type": "docs",
+      "description": "atualiza referências bibliográficas do capítulo 2"
+    },
+    {
+      "type": "fix",
+      "description": "corrige equação 3.2 na seção de modelo matemático"
+    },
+    {
+      "type": "style",
+      "scope": "capitulo4",
+      "description": "ajusta formatação LaTeX"
+    },
+    {
+      "type": "refactor",
+      "scope": "metodologia",
+      "description": "reestrutura seções metodológicas"
+    }
+  ],
+  "additional_notes": [
+    "Todas as mudanças nos arquivos do projeto devem seguir estas diretrizes",
+    "Commits devem ser atômicos (focados em uma única mudança)",
+    "Commits devem ter descrições claras para facilitar a revisão"
+  ]
+}
