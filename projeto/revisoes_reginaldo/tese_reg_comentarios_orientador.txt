@@ -1,0 +1,66 @@
+Autor considerado (orientador): Inteli
+
+Página 1:
+sugestão 1 - Gemeo Digital aplicado em uma plataforma PBL
+
+Sugestão 2 - Arquitetura de integração de uma plataforma PBL com Gêmeo Digital, com IA.
+
+Página 2:
+"Como uma alternativa de captura de eventos de ensino e de aprendizado para subsidiar a avaliação de desempenho de um ecossistema de ensino PBL"
+
+Página 2:
+Isso é muito forte. Neste ponto da pesquisa, considere sempre a captura de eventos para subsidiar a análise e elaboração de feedbacks.
+
+Página 2:
+Combinado com as técnicas de arquitetura para a especificação e experimentação do gêmeo digital PBL, ...
+
+Página 2:
+Avaliação de Arquiteturas ATAM/SEI, Táticas arquiteturais, ISO 10746, ISO 25010, CEP (Complex Event Processing), Inteligência Artificial, Agentes de IA, Predição
+
+Página 5:
+ser baseada em subsidios coletados do caminho
+
+Página 5:
+????
+
+Página 7:
+obter subsidios para elaborar
+
+Página 7:
+Encaixar como parte do bullet seguinte
+
+Página 7:
+Citar CEP
+
+Página 7:
+Citar Arquitetura, táticas e avaliação de arquitetura
+
+Página 23:
+1) Falar sobre avaliação arquitetural, para validar a proposta de integração do gemeo digital com a plataforma digital que sustenta o PBL.
+2) Táticas de arquitetura com eventos CEP e consumo de informações.
+
+Página 29:
+Exemplo aplicado (PBL de uma escola)
+
+Página 30:
+Avaliação da arquitetura ATAM/SEI da arquitetura do Gemeo Digital e integração com o ecossistema.
+
+Página 31:
+Mudar o nome case
+
+Página 33:
+Não entendi
+
+Página 34:
+Usar terminologia e base UML:
+1) Modelagem estrutural (Classes) com hierarquia. Rever os 3 modelos. Fale comigo pf.
+2) Modelagem dinâmica 
+Cenários fontes de  eventos CEP para justificar os modelos de eventos 
+3) Conectar os subsídios com as avaliações pelos especialistas para a elaboração dos feedbacks de aprendizado.
+
+Página 35:
+Tirar a cor ou colocar letra em branco
+
+Página 49:
+case mudar
+
