@@ -5,11 +5,8 @@
 \usepackage[provide=*,portuguese]{babel}
 \usepackage{graphicx}
 \usepackage{hyperref}
-% Estilo de citações ABNT (autor-data)
-% Citacoes ABNT (fallback para natbib se pacote ausente)
-\makeatletter
-\@ifpackageloaded{abntex2cite}{}{\IfFileExists{abntex2cite.sty}{\usepackage[alf]{abntex2cite}}{\usepackage[authoryear]{natbib}}}
-\makeatother
+% Citações (autor-ano) com natbib para compatibilidade ampla
+\usepackage[authoryear]{natbib}
 \usepackage[expansion=false,protrusion=true]{microtype} % desativa expansão para compatibilidade de fontes
 \usepackage{newunicodechar}
 \DeclareUnicodeCharacter{2265}{\ensuremath{\geq}}
@@ -46,7 +43,7 @@
 \textbf{\large Afonso Cesar Lelis Brandão}
 \vskip 4.0cm
 \setlength{\baselineskip}{1.5\baselineskip}
-\textbf{\large MODELAGEM DO PBL PARA APLICAÇÃO DE GÊMEO DIGITAL}
+\textbf{\large Arquitetura de integração de uma plataforma PBL com gêmeo digital, com IA}
 \vskip 4.5cm
 \end{center}
 \hfill{\vbox{\hsize=8.5cm
@@ -75,10 +72,11 @@ São Paulo, 2025\
 \textbf{RESUMO}
 \end{center}
 \renewcommand{\baselinestretch}{0.6666666}
-Esta tese, em fase de qualificação, investiga o uso de gêmeos digitais para avaliação contínua e multidimensional de projetos desenvolvidos em Aprendizagem Baseada em Projetos (PBL) na engenharia de software. Parte-se do problema da insuficiência de métodos tradicionais de avaliação pontual para captar a complexidade do processo de aprendizagem em contextos autênticos, especialmente quanto à integração entre estrutura, comportamento e processo das equipes. Como objetivo geral, propõe-se desenvolver um modelo de gêmeo digital que integre as visões arquiteturais estrutural, comportamental e de processo, fornecendo feedback em tempo real sobre assimilação de conceitos, evolução do aprendizado e qualidade dos artefatos. Especificamente, a pesquisa contempla: (i) conceituação do modelo; (ii) definição de métricas e indicadores; (iii) modelagem da arquitetura e dos fluxos de dados; (iv) implementação de protótipo integrado a ferramentas de desenvolvimento e colaboração; (v) validação por estudos de caso; e (vi) diretrizes de implantação e escalabilidade. Metodologicamente, adota-se Design Science Research, articulando revisão sistemática da literatura, desenvolvimento do artefato e avaliação em contexto real de aprendizagem. Espera-se como contribuição um arcabouço técnico‑pedagógico que reduza a subjetividade da avaliação, antecipe dificuldades de aprendizagem e qualifique o feedback docente, preservando a natureza experiencial do PBL. Nesta etapa de qualificação não são apresentados resultados nem discussões, restringindo-se à fundamentação, ao escopo e ao plano metodológico.
+Esta tese, em fase de qualificação, propõe uma arquitetura para captar, integrar e organizar eventos educacionais — interações, artefatos e registros operacionais — gerados em ambientes de Project‑Based Learning (PBL) em um módulo de um curso de engenharia de software, com o propósito de alimentar um gêmeo digital do ecossistema. Parte-se da limitação de abordagens pontuais, insuficientes para representar a dinâmica do processo de aprendizagem em contextos autênticos e a articulação entre estrutura, comportamento e processo das equipes. O trabalho descreve um modelo que consolida fontes heterogêneas e fornece uma base unificada e rastreável para acompanhar o andamento dos projetos e apoiar a orquestração pedagógica, sem realizar mensuração de desempenho discente.
+Especificamente, a pesquisa abrange: (i) concepção do modelo; (ii) definição dos tipos de eventos e metadados; (iii) especificação de esquemas e contratos de dados; (iv) modelagem da arquitetura e dos fluxos de ingestão, processamento e persistência; (v) implementação de protótipo integrado a ferramentas de desenvolvimento e colaboração; (vi) demonstração por estudo de caso; e (vii) diretrizes de implantação e escalabilidade. Metodologicamente, adota-se Design Science Research, combinando revisão sistemática da literatura, desenvolvimento do artefato e técnicas de arquitetura e especificação de gêmeos digitais. Como contribuição, apresenta-se um arcabouço técnico‑pedagógico para captura e rastreabilidade de eventos em PBL, ampliando a visibilidade do processo e a integração entre as perspectivas estrutural, comportamental e de processo, preservando a natureza experiencial da abordagem. Nesta etapa de qualificação não são apresentados resultados nem discussões, restringindo-se à fundamentação, ao escopo e ao plano metodológico.
 \vspace{0.5cm}
 \begin{flushleft}
-{\bf Palavras-chave:} {\it Gêmeos Digitais, Aprendizagem Baseada em Projetos, Avaliação da Aprendizagem, Engenharia de Software, Design Science Research, Arquitetura de Sistemas Educacionais}
+{\bf Palavras-chave:} {\it Avaliação de Arquiteturas ATAM/SEI, Táticas arquiteturais, ISO 10746, ISO 25010, CEP (Complex Event Processing), Inteligência Artificial, Agentes de IA, Predição}
 \end{flushleft}
 
 % Coorientador (fora da capa, após palavras‑chave)
@@ -113,39 +111,37 @@ transversais em cursos de engenharia, ao articular teoria e prática em torno de
 problemas autênticos \cite{zhang2023, lavado2024, guo2020}. Por sua natureza,
 o PBL promove aprendizagem experiencial: estudantes planejam, executam e
 refletem sobre projetos que integram conhecimentos conceituais e aplicações
-práticas. Para que essa experiência se traduza em aprendizagem mensurável e em
-melhoria pedagógica contínua, a avaliação precisa acompanhar o caminho que leva
-ao produto final — isto é, o processo — e não apenas o resultado entregue em
-marcos específicos.
+práticas. Para que essa experiência se traduza em melhoria pedagógica contínua,
+é necessário dispor de instrumentos com visibilidade e rastreabilidade
+do caminho que leva ao produto final — isto é, o processo — e não apenas do
+resultado entregue em marcos específicos.
 
-Avaliar processos em PBL, porém, é desafiador. O desempenho dos estudantes
+Observar processos em PBL, porém, é desafiador. O desempenho dos estudantes
 emerge de interações distribuídas no tempo, mediadas por ferramentas e papéis
 distintos (equipes, docentes, parceiros externos). O fenômeno é
 multidimensional (cognitiva, procedimental, colaborativa e metacognitiva) e
-altamente dinâmico, o que torna a avaliação sujeita à subjetividade e à
+altamente dinâmico, o que torna a observação sujeita à subjetividade e à
 intermitência quando apoiada apenas em instrumentos pontuais (provas,
-apresentações, rubricas de produto). Soma-se a isso a fragmentação dos dados
+apresentações e rubricas de produto). Soma-se a isso a fragmentação dos dados
 relevantes em múltiplas plataformas (repositórios de código, gestão de tarefas,
 mensageria, ambientes de aula), dificultando a construção de uma visão
-integrada que subsidie feedback oportuno e decisões pedagógicas informadas
+integrada que subsidie decisões pedagógicas informadas e a orquestração do processo
 \cite{romero2010, romero2020}. Em síntese, faltam meios sistemáticos para
 observar o processo em curso e para transformar essa observação em evidências
 interpretáveis por diferentes stakeholders.
 
 Nesse cenário, os Gêmeos Digitais (Digital Twins) despontam como tecnologia
-capaz de aproximar a avaliação do PBL daquilo que se pretende observar: o
+capaz de aproximar a observação do PBL daquilo que se pretende acompanhar: o
 andamento real dos projetos. Gêmeos digitais fornecem representações virtuais
 dinâmicas e sincronizadas de sistemas, processos ou entidades \cite{grieves2014,
 tao2018}. Diferentemente de simulações estáticas, mantêm acoplamento contínuo
-com seus referentes, permitindo monitoramento em tempo real, análises
-diagnósticas e preditivas, além de ações de otimização.
+com seus referentes, permitindo acompanhamento e análises sob demanda.
 Transpostos para o contexto educacional, esses recursos podem ampliar a
-visibilidade sobre o que se aprende, quando e como se aprende — especialmente
+visibilidade sobre o que acontece, quando e como acontece — especialmente
 em ambientes orientados a projetos —, como sugerem investigações que relatam a
 integração entre protótipos físicos e virtuais. Com isso,
-abre-se a oportunidade de explorar gêmeos digitais não apenas como objetos de
-aprendizagem, mas como instrumentos de avaliação capazes de qualificar o
-feedback formativo e apoiar a tomada de decisão docente.
+abre-se a oportunidade de explorar gêmeos digitais como instrumentos de
+observabilidade capazes de subsidiar a tomada de decisão de docentes e tutores.
 
 Para que essa exploração resulte em um instrumento confiável e comparável, é
 necessário estruturar o gêmeo digital com base em perspectivas arquiteturais
@@ -154,47 +150,45 @@ e de \textbf{processo} oferecem lentes complementares para caracterizar
 meta‑projetos em PBL: a visão estrutural organiza componentes, recursos,
 ferramentas e artefatos; a visão comportamental modela interações dinâmicas
 entre estudantes, orientadores e sistemas; e a visão de processo mapeia fluxos
-de atividades, marcos e critérios de avaliação. Ao integrar essas visões,
+de atividades e marcos operacionais. Ao integrar essas visões,
 constrói-se uma base coerente para coleta de dados, análise e visualização que
 favorece a responsividade às necessidades dos stakeholders, a justificativa de
 conclusões com base em evidências e o uso eficiente de recursos. Essa
 organização arquitetural dialoga com boas práticas de descrição de sistemas
 complexos em engenharia de software, oferecendo um vocabulário comum para a
-concepção e a avaliação do artefato proposto.
+concepção e a verificação arquitetural do artefato proposto.
 
 Apesar de avanços relatados, persiste uma lacuna no emprego de gêmeos digitais
-especificamente como \textit{instrumento de avaliação} contínua e
-multidimensional de projetos em PBL na engenharia de software. As iniciativas
-mais frequentes concentram-se na construção de protótipos físicos e virtuais
-sem enfrentar de forma abrangente duas questões centrais: (i) como monitorar — de modo ético e objetivo — os processos de aprendizagem ao
-longo do tempo; e (ii) como transformar esses dados em feedback pedagógico
-acionável para estudantes, docentes e coordenação. Como consequência, feedbacks
-críticos podem chegar tardiamente, padrões de colaboração passam despercebidos e
-o alinhamento entre objetivos de aprendizagem, processos e produtos fica pouco
-transparente. Diante desse quadro, torna-se premente conceber sistemas de
-avaliação que satisfaçam padrões de excelência educacional (efetividade,
-eficiência, impacto e sustentabilidade), ao mesmo tempo em que sejam sensíveis à
-complexidade própria de programas de engenharia.
+como mecanismo de captura e integração de eventos em projetos PBL na
+engenharia de software. As iniciativas mais frequentes concentram-se na
+construção de protótipos físicos e virtuais sem enfrentar de forma abrangente
+duas questões centrais: (i) como observar — de modo ético e objetivo — os
+processos em andamento ao longo do tempo; e (ii) como transformar esses dados
+em insumos úteis para coordenação e tutoria. Como consequência, decisões
+críticas podem ocorrer tardiamente, padrões de colaboração passam
+despercebidos e o alinhamento entre objetivos, processos e produtos fica pouco
+transparente. Diante desse quadro, torna-se premente conceber arquiteturas de
+captura e integração de eventos que satisfaçam requisitos de qualidade
+(efetividade, eficiência, sustentabilidade), ao mesmo tempo em que sejam
+sensíveis à complexidade própria de programas de engenharia.
 
 Neste trabalho, a necessidade de pesquisa é, portanto, dupla: de um lado,
-propor um \textit{modelo de gêmeo digital} capaz de integrar dados dispersos
-(artefatos, eventos e interações) e, de outro, demonstrar que tal integração
-pode sustentar avaliação contínua, objetiva e útil para a prática pedagógica em
-PBL. Para isso, delineiam-se requisitos que orientam a solução: (a) objetividade
-e confiabilidade de medidas; (b) temporalidade adequada ao uso formativo do
-feedback; (c) interpretabilidade para diferentes públicos; (d) interoperabilidade
-com ferramentas correntes de desenvolvimento e colaboração; e (e) observância a
+propor uma arquitetura de gêmeo digital focada em capturar, integrar e
+organizar eventos (artefatos, atividades e interações) e, de outro, demonstrar
+que tal integração pode subsidiar decisões docentes e a orquestração do PBL.
+Para isso, delineiam-se requisitos que orientam a solução: (a) confiabilidade e
+integridade de dados; (b) temporalidade adequada às rotinas pedagógicas; (c)
+interpretabilidade para diferentes públicos; (d) interoperabilidade com
+ferramentas correntes de desenvolvimento e colaboração; e (e) observância a
 princípios éticos e de privacidade.
 
 \subsection{Objetivo Geral}
 
-À luz do problema delineado, o objetivo geral desta pesquisa é conceber e
-especificar um modelo de gêmeo digital para avaliação contínua e
-multidimensional de projetos em Project-Based Learning na área de engenharia de
-software, integrando as visões arquiteturais estrutural, comportamental e de
-processo, de forma a possibilitar feedback formativo em tempo quase real sobre
-a assimilação de conceitos, a evolução do aprendizado e a qualidade dos
-artefatos produzidos.
+À luz do problema delineado, o objetivo geral desta pesquisa é projetar e
+especificar uma arquitetura de captura, integração e organização de eventos de
+ensino e aprendizagem que integre as visões arquiteturais estrutural,
+comportamental e de processo, de forma a alimentar um gêmeo digital do
+ecossistema PBL e apoiar a decisão docente, sem mensurar desempenho discente.
 
 \subsection{Objetivos Específicos}
 
@@ -207,22 +201,23 @@ específicos, organizados de forma progressiva:
         éticas (privacidade, consentimento e minimização de dados).
   \item Propor o modelo conceitual do gêmeo digital integrando as visões
         estrutural, comportamental e de processo; explicitar metamodelos e mapas
-        entre variáveis observáveis e objetivos de aprendizagem.
-  \item Especificar e operacionalizar métricas e indicadores por visão
-        (definição, fonte, método de coleta, periodicidade, agregação, validade e
-        confiabilidade), destacando limites de interpretação e vieses potenciais.
+        entre fontes, eventos e entidades do domínio.
+  \item Definir e padronizar eventos, metadados e contratos de dados por visão
+        (tipos, fontes, método de coleta, periodicidade, agregação e validação),
+        destacando limites de interpretação e vieses potenciais.
   \item Projetar a arquitetura e o pipeline de dados (coleta $\to$ processamento $\to$ armazenamento $\to$
         visualização), com esquemas de dados, integrações com ferramentas de
         desenvolvimento/colaboração e controles de segurança/privacidade.
   \item Implementar um protótipo funcional integrado ao ecossistema de projeto
         (controle de versão, gestão de tarefas, comunicação) e desenvolver
-        dashboards alinhados a perfis de uso (estudante, docente, coordenação).
-  \item Planejar e conduzir uma demonstração/estudo de caso em disciplina PBL,
-        com protocolo explícito (amostra, instrumentos, procedimentos, cronograma,
-        compliance ética) e plano de coleta de evidências.
-  \item Avaliar o artefato por métodos quantitativos e qualitativos, incluindo
-        tempo para identificação de dificuldades, confiabilidade interavaliadores e
-        utilidade percebida; quando aplicável, comparar com métodos tradicionais.
+        painéis alinhados a perfis de uso (docente, coordenação).
+  \item Planejar e conduzir um \textit{exemplo aplicado} em disciplina PBL,
+        com protocolo explícito (amostra, instrumentos, procedimentos,
+        cronograma, compliance ética) e plano de coleta de eventos.
+  \item Avaliar a arquitetura e o pipeline por métodos de avaliação
+        arquitetural (ATAM/SEI) e por métricas operacionais (latência,
+        throughput, perda de eventos, integridade e confiabilidade), sem
+        qualquer mensuração de desempenho discente.
   \item Sistematizar diretrizes de adoção e manutenção; discutir limitações e
         ameaças à validade; propor roteiro de evolução e escalabilidade para
         diferentes contextos educacionais.
@@ -230,25 +225,23 @@ específicos, organizados de forma progressiva:
 
 \subsection{Hipótese}
 
-As hipóteses a seguir derivam dos objetivos definidos e orientam a avaliação do
-artefato proposto.
+As hipóteses a seguir derivam dos objetivos definidos e orientam a avaliação
+arquitetural do artefato proposto.
 
 \subsubsection{Hipótese Principal}
 
-Se um modelo de gêmeo digital for concebido e integrado às visões arquiteturais
-estrutural, comportamental e de processo, então ele deverá possibilitar avaliação
-mais eficaz, objetiva e contínua de projetos em Project-Based Learning na área
-de engenharia de software, quando comparado a métodos tradicionais de avaliação
-pontual, manifestando-se por:
+Se uma arquitetura de captura, integração e organização de eventos for
+projetada e integrada às visões arquiteturais estrutural, comportamental e de
+processo, então ela deverá consolidar, com rastreabilidade e confiabilidade,
+dados de diferentes fontes do ecossistema PBL para apoiar a decisão docente,
+sem mensurar desempenho discente, manifestando-se por:
 
 \begin{itemize}
-  \item \textbf{Maior precisão na identificação de dificuldades de aprendizagem}: O monitoramento contínuo permite detectar padrões de comportamento e desempenho que indicam obstáculos no processo de assimilação de conceitos antes que se manifestem como deficiências nos produtos finais;
-
-  \item \textbf{Redução da subjetividade na avaliação}: A coleta automatizada de métricas objetivas sobre o processo de desenvolvimento (commits, refatorações, testes, colaboração) complementa e fundamenta a avaliação docente com dados quantitativos e qualitativos consistentes;
-
-  \item \textbf{Melhoria na qualidade do feedback pedagógico}: A disponibilidade de dados em tempo real sobre múltiplas dimensões do processo de aprendizagem permite intervenções pedagógicas mais oportunas, específicas e personalizadas;
-
-  \item \textbf{Aumento do engajamento e autorregulação dos estudantes}: A visibilidade contínua sobre o próprio progresso e comparação com marcos de referência promove maior consciência metacognitiva e motivação para melhoria contínua.
+  \item \textbf{Cobertura de fontes e completude de eventos}: integração de repositórios Git, gestão de tarefas e fontes institucionais com perdas toleráveis e consistência temporal;
+  \item \textbf{Rastreabilidade fim a fim}: encadeamento estável de chaves (pessoas‑equipes‑sprints‑artefatos‑eventos) do ponto de coleta à materialização no gêmeo digital;
+  \item \textbf{Latência e throughput compatíveis}: atualização dos dados em janelas temporais adequadas às rotinas do PBL;
+  \item \textbf{Resiliência a falhas}: tolerância a eventos fora de ordem, reprocessamento e reconciliação;
+  \item \textbf{Interoperabilidade/portabilidade}: conectores e contratos de dados que facilitem adoção em diferentes ecossistemas.
 \end{itemize}
 
 \subsubsection{Hipóteses Secundárias}
@@ -256,78 +249,49 @@ pontual, manifestando-se por:
 Para sustentar e detalhar a hipótese principal, estabelecem-se as seguintes
 hipóteses secundárias:
 
-\textbf{H1 — Eficácia da Visão Estrutural}: A modelagem da estrutura estática dos
-projetos PBL por meio do gêmeo digital (recursos, ferramentas, artefatos,
-organização de equipes) permite identificar, com maior precisão, lacunas de
-recursos e inadequações organizacionais que impactam o desempenho das equipes,
-em conformidade com viewpoints estruturais da ISO/IEC/IEEE 42010:2022, quando
-comparada à avaliação baseada exclusivamente em observação docente e autorelatos
-de estudantes.
+\textbf{H1 — Cobertura e Consistência}: O pipeline captura e integra, com perdas
+controladas, os eventos relevantes das principais fontes (Git, gestão de
+tarefas e registros institucionais), preservando consistência de chaves e
+ordem temporal.
 
-\textbf{H2 — Eficácia da Visão Comportamental}: O monitoramento das interações
-dinâmicas entre estudantes, orientadores e sistemas tecnológicos revela padrões
-de colaboração, comunicação e resolução de problemas não capturados por métodos
-convencionais de avaliação, em consonância com viewpoints comportamentais
-descritos na ISO/IEC/IEEE 42010:2022, oferecendo evidências sobre competências
-transversais e dinâmicas de equipe.
+\textbf{H2 — Latência e Throughput}: A ingestão e o processamento atendem a
+limiares temporais definidos para atualização e análise sob demanda.
 
-\textbf{H3 — Eficácia da Visão de Processo}: A representação dos fluxos de
-atividades, marcos e progressão temporal por meio do gêmeo digital oferece
-compreensão mais detalhada sobre a aderência a metodologias de desenvolvimento
-de software e sobre a qualidade dos processos adotados, aplicando viewpoints de
-processo da ISO/IEC/IEEE 42010:2022, com potencial para superar limitações de
-Acompanhamento presentes em métodos tradicionais.
+\textbf{H3 — Confiabilidade e Resiliência}: O sistema lida com eventos
+faltantes e fora de ordem por meio de reprocessamento, reconciliação e
+validações esquemáticas, mantendo integridade dos dados.
 
-\textbf{H4 — Integração Sinérgica das Visões}: A combinação das três visões em
-um modelo unificado produz compreensão holística dos processos de aprendizagem
-superior à soma das contribuições individuais, permitindo identificar
-inter-relações entre estrutura, comportamento e processo que influenciam o
-sucesso dos projetos em PBL.
+\textbf{H4 — Interoperabilidade e Portabilidade}: A arquitetura, baseada em
+contratos e conectores, integra-se a diferentes ecossistemas PBL, alinhada a
+viewpoints RM‑ODP (ISO 10746) e à ISO 42010.
 
-\textbf{H5 — Escalabilidade e Transferibilidade}: O modelo mantém eficácia quando
-aplicado a diferentes contextos de PBL em engenharia de software (variando em
-complexidade, duração, tamanho de equipe e tecnologias utilizadas), sugerindo
-robustez e aplicabilidade geral.
+\textbf{H5 — Observabilidade e Rastreabilidade}: A solução oferece trilhas de
+auditoria e rastreabilidade fim a fim, em consonância com atributos de
+qualidade relevantes da ISO 25010.
 
 \paragraph{Rastreabilidade entre objetivos e hipóteses.}
 Os objetivos específicos suportam as hipóteses do seguinte modo: (i) requisitos,
-escopo e ética criam condições de validade para todas as hipóteses (H1–H5); (ii) o modelo conceitual e os metamodelos dão base a H1–H4; (iii) a
-operacionalização de métricas e indicadores sustenta H1–H3 e contribui para H4; (iv) a arquitetura e o pipeline viabilizam evidências integradas para H1–H4 e a
-avaliação de desempenho necessária a H5; (v) o protótipo e os dashboards tornam
-testáveis H1–H4 no contexto real; (vi) a demonstração/estudo de caso e a
-avaliação empírica fornecem dados para aceitar/refutar H1–H5; e (vii) as
+escopo e ética criam condições de validade para todas as hipóteses (H1–H5);
+(ii) o modelo conceitual e os metamodelos dão base a H1–H4; (iii) a
+padronização de eventos e contratos de dados sustenta H1–H3 e contribui para
+H4; (iv) a arquitetura e o pipeline viabilizam evidências integradas para
+H1–H4; (v) o protótipo e os painéis tornam observáveis H1–H4 no contexto real;
+(vi) o exemplo aplicado fornece dados para aceitar/refutar H1–H5; e (vii) as
 diretrizes e análise de limitações informam H5 (transferibilidade/escala).
 
 \subsubsection{Critérios de Validação}
 
-A validação das hipóteses será realizada através de critérios quantitativos e
-qualitativos específicos:
+Serão utilizados critérios arquiteturais e operacionais, incluindo:
 
-\textbf{Critérios Quantitativos} (com alinhamento a hipóteses):
-
-A definição de métricas quantitativas específicas para validação das hipóteses
-apresenta desafios metodológicos significativos, uma vez que não existe
-consenso na literatura sobre benchmarks estabelecidos para avaliação de
-instrumentos educacionais em contextos de PBL. Reconhecendo esta limitação,
-espera-se que o modelo proposto demonstre melhorias mensuráveis em relação aos
-métodos tradicionais, sem estabelecer percentuais específicos a priori. Os
-critérios quantitativos incluem:
-
+\textbf{Critérios Arquiteturais e Operacionais} (alinhamento a hipóteses):
 \begin{itemize}
-  \item \textbf{Tempo de identificação de dificuldades} (H3, H4): Medição do intervalo temporal entre o surgimento de obstáculos de aprendizagem e sua identificação pelos instrumentos de avaliação, comparando o modelo proposto com métodos convencionais de acompanhamento. Espera-se redução significativa neste intervalo, embora os valores específicos dependam da definição operacional de "dificuldade de aprendizagem" a ser estabelecida durante a implementação;
-
-  \item \textbf{Confiabilidade inter-avaliadores} (H1, H2, H4): Avaliação da correlação entre avaliações realizadas por diferentes docentes utilizando os dados fornecidos pelo gêmeo digital versus avaliações tradicionais. Espera-se aumento na consistência das avaliações, com a magnitude específica dependendo da variabilidade baseline observada no contexto de aplicação;
-
-  \item \textbf{Qualidade dos produtos finais} (H1, H3, H4): Comparação dos indicadores de qualidade dos artefatos produzidos pelos estudantes em projetos utilizando o modelo proposto versus projetos com avaliação tradicional. Os indicadores específicos (funcionalidade, usabilidade, qualidade de código, documentação) serão definidos com base nas características de cada projeto;
-
-  \item \textbf{Engajamento e satisfação dos estudantes} (H2, H4): Medição através de questionários validados e métricas comportamentais (frequência de participação, tempo de dedicação, interações colaborativas). Espera-se melhoria nos índices, com a magnitude dependente dos instrumentos de medição selecionados e do contexto específico de aplicação.
+  \item \textbf{Cobertura de fontes} (H1): percentual de projetos/artefatos/eventos coletados por conector, taxa de perda e de duplicatas;
+  \item \textbf{Integridade e consistência} (H1, H5): validação de esquemas, ordenação temporal, unicidade de chaves e reconciliação de eventos fora de ordem;
+  \item \textbf{Latência e throughput} (H2): tempo mediano de ingestão/atualização e capacidade sustentada do pipeline;
+  \item \textbf{Confiabilidade} (H3): taxa de erros de coleta/processamento, disponibilidade, MTTR e sucesso de reprocessamentos;
+  \item \textbf{Interoperabilidade} (H4): esforço de integração medido por conectores/contratos e aderência a viewpoints RM‑ODP (ISO 10746) e ISO 42010;
+  \item \textbf{Rastreabilidade e observabilidade} (H5): existência de trilhas de auditoria fim a fim e recuperabilidade de encadeamentos.
 \end{itemize}
-
-A ausência de valores percentuais específicos reflete a natureza exploratória
-desta pesquisa e a necessidade de estabelecer baselines empíricos durante a
-fase de implementação. A validação focará na demonstração de diferenças
-estatisticamente significativas e na magnitude do efeito observado, utilizando
-testes apropriados para cada tipo de variável medida.
 
 \textbf{Critérios Qualitativos} (com alinhamento a hipóteses):
 \begin{itemize}
@@ -357,18 +321,18 @@ específicos):
         e fases da pesquisa).
   \item \textbf{OE2 — Modelo conceitual e metamodelos}: Entregáveis — modelo conceitual
         e metamodelos/dicionário de dados; Seções — Modelo Proposto (Fluxo Macro
-        de Atuação do Gêmeo Digital; Fig. \ref{fig:modelo_proposto}).
+        de Atuação do Gêmeo Digital).
   \item \textbf{OE3 — Métricas e indicadores}: Entregáveis — catálogo de métricas e
-        indicadores com definições operacionais; Seções — Modelo Proposto (Framework
-        de Avaliação Multidimensional; Avaliação e Pontuação do Módulo).
+        indicadores com definições operacionais; Seções — Modelo Proposto (framework
+        de eventos e integrações do gêmeo digital).
   \item \textbf{OE4 — Arquitetura e pipeline}: Entregáveis — arquitetura técnica e
         pipeline de dados; Seções — Modelo Proposto (pipeline de coleta e análise;
         Componentes Conceituais).
   \item \textbf{OE5 — Protótipo e dashboards}: Entregáveis — protótipo integrado e
         dashboards por perfil (estudante, docente, coordenação); Seções — Case de
         Estudo: Implementação (descrição técnica e telas principais).
-  \item \textbf{OE6 — Demonstração/estudo de caso}: Entregáveis — protocolo e relato do
-        estudo de caso em disciplina PBL; Seções — Metodologia (Fase 3: Case de Estudo).
+  \item \textbf{OE6 — Demonstração/exemplo aplicado}: Entregáveis — protocolo e relato do
+        exemplo aplicado em disciplina PBL; Seções — Metodologia (Fase 3: Exemplo Aplicado).
   \item \textbf{OE7 — Avaliação do artefato}: Entregáveis — relatório de avaliação
         quantitativa/qualitativa; Seções — Hipóteses (Critérios de Validação) e, em
         versões subsequentes, Resultados/Discussão.
@@ -423,14 +387,13 @@ A relevância desta proposta de pesquisa manifesta-se em múltiplas dimensões. 
 ponto de vista \textbf{científico}, o trabalho contribui para o avanço do
 conhecimento na interseção entre tecnologias emergentes e educação em
 ingenharia, área que tem recebido crescente atenção da comunidade acadêmica
-internacional. A aplicação sistemática de gêmeos digitais para avaliação
+internacional. A aplicação sistemática de gêmeos digitais para observabilidade
 educacional representa uma abordagem inovadora que pode estabelecer novos
-paradigmas para instrumentos de avaliação em contextos de aprendizagem ativa.
+paradigmas para instrumentos de observação em contextos de aprendizagem ativa.
 
 Do ponto de vista \textbf{metodológico}, a proposta pode oferecer contribuições
-para o desenvolvimento de métodos de avaliação que atendam aos critérios de
-confiabilidade, validade, usabilidade e objetividade exigidos para instrumentos
-educacionais de qualidade. A integração das visões arquiteturais estrutural,
+para o desenvolvimento de métodos de observação e análise que atendam a
+critérios de confiabilidade, validade, usabilidade e objetividade. A integração das visões arquiteturais estrutural,
 comportamental e de processo em um modelo unificado de gêmeo digital de
 processos e sistemas representa uma abordagem sistemática para compreensão
 holística dos processos de aprendizagem em PBL.
@@ -443,19 +406,16 @@ sobre a necessidade de desenvolvimento de aplicações educacionais de gêmeos d
 
 Do ponto de vista \textbf{pedagógico}, a pesquisa oferece subsídios para
 aprimoramento da qualidade da educação em engenharia de software através do
-desenvovimento de instrumentos de avaliação mais precisos, objetivos e
-informativos. A capacidade de fornecer feedback em tempo real sobre múltiplas
-dimensões do processo de aprendizagem pode transformar a experiência
-educacional, promovendo maior engajamento, motivação e efetividade do
-aprendizado.
+desenvolvimento de instrumentos de observação e integração de dados mais
+precisos, objetivos e informativos.
 
 A \textbf{originalidade} da proposta reside na aplicação específica de gêmeos
-digitais de processo para avaliação educacional em PBL, uma abordagem que não
+digitais de processo para observabilidade educacional em PBL, uma abordagem que não
 foi encontrada na literatura consultada. Enquanto trabalhos anteriores focam na
 utilização de gêmeos digitais como produtos de aprendizagem
 ou na aplicação de arquiteturas de gêmeos digitais em contextos industriais
 \cite{arakaki2022}, a presente proposta posiciona os gêmeos digitais como
-instrumentos de avaliação pedagógica, oferecendo uma perspectiva inédita sobre
+instrumentos de observação e integração de dados, oferecendo uma perspectiva inédita sobre
 suas potencialidades educacionais.
 
 A \textbf{viabilidade} técnica da proposta é respaldada pelo amadurecimento das
@@ -522,9 +482,9 @@ educacional. A dimensão estrutural compreende a organização curricular, a
 definição de objetivos de aprendizagem claros e mensuráveis, e a articulação
 entre diferentes componentes curriculares. A dimensão processual envolve a
 sequenciação de atividades, a gestão do tempo e recursos, e a facilitação do
-processo de aprendizagem pelos docentes. A dimensão avaliativa abrange a
-definição de critérios e instrumentos de avaliação que contemplem tanto
-produtos quanto processos de aprendizagem \cite{thomas2000}.
+processo de aprendizagem pelos docentes. A dimensão de acompanhamento abrange a
+definição de critérios e instrumentos que contemplem tanto produtos quanto
+processos de trabalho \cite{thomas2000}.
 
 No contexto da engenharia de software, o PBL encontra aplicação particularmente
 relevante devido à natureza intrínseca da área, que envolve a resolução de
@@ -536,15 +496,14 @@ estudantes vivenciar o ciclo completo de desenvolvimento de software, desde a
 concepção até a entrega, proporcionando compreensão profunda das metodologias,
 ferramentas e boas práticas da área.
 
-A avaliação em contextos de PBL representa um desafio metodológico específico,
+O acompanhamento em contextos de PBL representa um desafio metodológico específico,
 una vez que deve contemplar múltiplas dimensões do processo de aprendizagem. Os
 critérios convencionais de avaliação, tradicionalmente focados na verificação
-de conhecimentos declarativos através de provas e testes, apresentam
-características distintas dos requisitos de avaliação processual e contínua
-típicos do PBL. Torna-se necessário desenvolver instrumentos de avaliação que
-considerem a qualidade dos produtos desenvolvidos, a efetividade dos processos
-adotados, o desenvolvimento de competências transversais, e a capacidade de
-reflexão crítica sobre o próprio aprendizado \cite{hmelo2004}.
+de conhecimentos declarativos, apresentam características distintas dos
+requisitos de observação processual e contínua típicos do PBL. Torna-se
+necessário desenvolver instrumentos que considerem a qualidade dos produtos
+desenvolvidos, os processos adotados e as evidências de atividade, sem
+mensuração de desempenho discente \cite{hmelo2004}.
 
 Estudos recentes documentam resultados positivos da aplicação de PBL no
 desenvolvimento de competências específicas da engenharia de software. Bachmann
@@ -952,9 +911,9 @@ Esta primeira fase da pesquisa concentra-se na fundamentação teórica sólida 
 
 \textbf{Desenvolvimento Iterativo}: O desenvolvimento segue metodologia ágil com ciclos iterativos de prototipagem, teste e refinamento, buscando garantir alinhamento contínuo entre requisitos pedagógicos identificados na revisão sistemática e capacidades tecnológicas do modelo. Esta abordagem iterativa tem permitido incorporação de feedback de especialistas e ajustes baseados em avaliações parciais da arquitetura proposta.
 
-\subsubsection{Fase 3: Case de Estudo}
+\subsubsection{Fase 3: Exemplo Aplicado}
 
-\textbf{Seleção e Caracterização do Contexto}: O case de estudo será conduzido em disciplina de engenharia de software que adote metodologia PBL, selecionada com base em critérios específicos que incluem: complexidade adequada dos projetos para demonstração das capacidades do gêmeo digital, disponibilidade de infraestrutura tecnológica necessária, e acessibilidade para coleta de dados sobre o processo de aprendizagem. A seleção seguirá o modelo de referência do Inteli \cite{inteli_ppc_2024}, que demonstra implementação prática bem-sucedida de PBL em educação tecnológica, conforme identificado na revisão sistemática como contexto de referência para implementação de PBL.
+\textbf{Seleção e Caracterização do Contexto}: O exemplo aplicado será conduzido em disciplina de engenharia de software que adote metodologia PBL, selecionada com base em critérios específicos que incluem: complexidade adequada dos projetos para demonstrar a captura de eventos de repositórios Git, disponibilidade de infraestrutura tecnológica necessária e acessibilidade para coleta de dados do processo. A seleção seguirá o modelo de referência do Inteli \cite{inteli_ppc_2024}, que demonstra implementação prática bem-sucedida de PBL em educação tecnológica, conforme identificado na revisão sistemática como contexto de referência para implementação de PBL.
 
 \textbf{Participantes e Critérios}: Os participantes incluirão estudantes organizados em equipes de desenvolvimento, docentes orientadores e, quando aplicável, parceiros externos que fornecem desafios autênticos para os projetos. A seleção dos participantes seguirá critérios de representatividade e diversidade, buscando garantir validade externa dos resultados obtidos, alinhados com as práticas identificadas na revisão sistemática para estudos empíricos em PBL.
 
@@ -1028,7 +987,7 @@ seus respectivos períodos de execução.
     \hline
     Proposição do Modelo    &              & X            & X            &              &              &              &              &              &              \\
     \hline
-    Case de Estudo          &              &              &              & X            & X            & X            &              &              &              \\
+Exemplo Aplicado          &              &              &              & X            & X            & X            &              &              &              \\
     \hline
     Análise de Resultados   &              &              &              &              &              & X            & X            & X            &              \\
     \hline
@@ -1043,38 +1002,31 @@ seus respectivos períodos de execução.
 
 \textbf{Fase 2 - Proposição do Modelo (Março-Abril 2026)}: Desenvolvimento do modelo conceitual de gêmeo digital para avaliação de projetos PBL, incluindo a especificação detalhada das três visões arquiteturais (estrutural, comportamental e de processo), definição de métricas e indicadores de avaliação, e elaboração dos requisitos funcionais e não funcionais do sistema.
 
-\textbf{Fase 3 - Case de Estudo (Maio-Julho 2026)}: Implementação prática do modelo proposto em contexto real de PBL, incluindo seleção do ambiente educacional, especificação de requisitos específicos do contexto, escolha criteriosa de tecnologias adequadas, desenvolvimento do protótipo funcional, e coleta de dados empíricos para validação.
+\textbf{Fase 3 - Exemplo Aplicado (Maio-Julho 2026)}: Implementação prática do modelo proposto em contexto real de PBL, incluindo seleção do ambiente educacional, especificação de requisitos específicos do contexto, escolha criteriosa de tecnologias adequadas, desenvolvimento do protótipo funcional e coleta de dados empíricos do repositório Git para demonstrar a captura de eventos.
 
-\textbf{Fase 4 - Análise de Resultados (Julho-Setembro 2026)}: Processamento e análise dos dados coletados durante o case de estudo, validação das hipóteses de pesquisa através de testes estatísticos apropriados, avaliação da eficácia do modelo proposto, e documentação dos resultados obtidos.
+\textbf{Fase 4 - Análise de Resultados (Julho-Setembro 2026)}: Processamento e análise dos dados coletados durante o exemplo aplicado (captura de eventos Git), avaliação do comportamento arquitetural do pipeline e documentação dos resultados obtidos.
 
 \textbf{Fase 5 - Preparação para Qualificação (Setembro-Outubro 2026)}: Consolidação de todos os resultados em documento de qualificação, preparação da apresentação oral, e ajustes finais baseados em revisões do orientador e colaboradores.
 
 A \textbf{Qualificação} está prevista para \textbf{outubro de 2026}, quando serão
 apresentados todos os resultados obtidos nas fases anteriores, incluindo o
-modelo conceitual validado, os resultados empíricos do case de estudo, e as
+modelo conceitual validado, os resultados do exemplo aplicado, e as
 contribuições científicas da pesquisa para as áreas de educação em engenharia e
 tecnologias educacionais emergentes.
 
 \section{MODELO PROPOSTO}
 
-Este capítulo apresenta o modelo conceitual de gêmeo digital para avaliação de projetos em PBL na área de engenharia de software. O modelo integra três visões arquiteturais (estrutural, comportamental e de processo) conforme ISO/IEC/IEEE 42010:2022, proporcionando monitoramento e avaliação contínua dos processos de aprendizagem.
+Este capítulo apresenta a arquitetura para captura, integração e organização de eventos que alimentam um gêmeo digital no contexto de PBL em engenharia de software. O modelo integra três visões arquiteturais (estrutural, comportamental e de processo) conforme ISO/IEC/IEEE 42010:2022, proporcionando visibilidade e rastreabilidade do processo, alinhadas às perspectivas institucionais e técnicas.
 
 \subsection{Visão Geral e Contexto}
 
-O gêmeo digital opera sincronizado com as atividades reais do PBL, processando eventos acadêmicos e operacionais para gerar feedback formativo, indicadores e justificativas rastreáveis direcionadas a estudantes, docentes e coordenação. A Figura \ref{fig:modelo_proposto} apresenta o fluxo macro de atuação.
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.8\textwidth]{assets/f1.png}
-  \caption{Fluxo macro de atuação do gêmeo digital na avaliação em PBL}
-  \label{fig:modelo_proposto}
-\end{figure}
+O gêmeo digital opera sincronizado com as atividades do PBL, processando eventos acadêmicos e operacionais para consolidar uma base unificada e rastreável, direcionada a estudantes, docentes e coordenação.
 
 O modelo aplica-se a módulos trimestrais de PBL em Engenharia de Software estruturados em 5 sprints de 2 semanas com parceiros externos que apresentam problemas autênticos. Cada módulo é formalizado por um TAPI (Termo de Abertura do Projeto Institucional) que define problema, objetivos, escopo e critérios de avaliação.
 
 O processo adota Scrum: equipes definem PO e Scrum Master, realizam planning, dailies e reviews com parceiro e docentes ao final de cada sprint. As atividades didáticas envolvem professor orientador, docentes de programação, UX, negócios e liderança, complementadas por autoestudos preparatórios.
 
-A avaliação soma 100 pontos distribuídos em: Artefatos/Projeto (40%), Atividades Ponderadas (35%), Prova (20%) e Avaliação de Pares (5%). O parceiro contribui na avaliação qualitativa das entregas via reviews.
+
 
 O modelo utiliza \textit{Complex Event Processing} (CEP) para agregar e correlacionar eventos de múltiplas fontes (Git, gestão de tarefas, sistemas acadêmicos, sensores institucionais) derivando métricas integradas pelas três visões arquiteturais.
 
@@ -1084,12 +1036,7 @@ O modelo é estruturado seguindo metodologia IDEF0 (Integration Definition for F
 
 \textbf{Camada de Abstração 0 - Visão Sistêmica:}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{plantuml/idef0_camada_0}
-    \caption{IDEF0 Camada 0: Visão sistêmica do PBL Inteli}
-    \label{fig:idef0_camada_0}
-\end{figure}
+% [Figura removida: IDEF0 Camada 0]
 
 A camada 0 apresenta o sistema PBL como função única controlada pelas \textbf{Diretrizes Curriculares MEC} e \textbf{PPC/ES}, processando \textbf{Alunos, Atividades e Comportamentos} através de mecanismos tecnológicos (\textbf{Adalove, GPS, Catracas, Repositórios}) para produzir \textbf{Alunos com Conhecimentos, Artefatos e Evidências}.
 
@@ -1099,12 +1046,7 @@ Esta subseção apresenta a modelagem conceitual atualizada conforme estrutura h
 
 \textbf{Visão Geral da Modelagem Macro:}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\textwidth]{plantuml/diagrama_macro_simplificado}
-    \caption{Visão geral: Modelagem macro das entidades e relacionamentos principais}
-    \label{fig:modelagem_macro_geral}
-\end{figure}
+% [Figura removida: Diagrama macro simplificado]
 
 O diagrama apresenta a arquitetura completa do modelo, destacando a cadeia hierárquica **DCN → Curso → Metaprojeto → Módulo → Sprint** e os relacionamentos operacionais entre entidades pedagógicas (Turma, Aluno, Grupo), contextuais (Parceiro, TAPI) e produtos (Artefatos, Pitch, Autoestudos, APs).
 
@@ -1114,9 +1056,7 @@ A modelagem adota estrutura hierárquica que parte das \textbf{Diretrizes Curric
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{plantuml/diagrama1_modelo_macro}
-    \caption{Modelagem macro: hierarquia institucional completa (DCN → Curso → Metaprojeto → Módulo)}
-    \label{fig:modelo_macro_65}
+    % [Figura removida: diagrama1_modelo_macro]
 \end{figure}\textbf{DCN (Diretrizes Curriculares Nacionais)} estabelecem o marco regulatório, nomeando \textbf{Cursos} e definindo regras para \textbf{Metaprojetos}. \textbf{PPC (MEC)} operacionaliza as diretrizes definindo Metaprojetos específicos. Cada \textbf{Curso} implementa múltiplos Metaprojetos que se instanciam em \textbf{Módulos} concretos ao longo da formação.
 
 \textbf{Metaprojetos} funcionam como templates pedagógicos reutilizáveis, definindo competências-alvo, estrutura curricular e metodologias. Cada instanciação gera um \textbf{Módulo} específico de 10 semanas com 5 \textbf{Sprints} de 2 semanas.
@@ -1129,9 +1069,7 @@ A execução organiza-se através da estrutura operacional que integra pessoas, 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{plantuml/diagrama2_estrutura_operacional}
-    \caption{Estrutura operacional: Módulo, Sprint, Turma, Aluno, Grupo e Orientador}
-    \label{fig:estrutura_operacional_65}
+    % [Figura removida: diagrama2_estrutura_operacional]
 \end{figure}
 
 \textbf{Módulo} contém exatamente 5 \textbf{Sprints} e múltiplas \textbf{Turmas}. Cada \textbf{Turma} organiza \textbf{Alunos} em \textbf{Grupos} (relação 1:1), garantindo estrutura colaborativa definida. \textbf{Orientador} mantém relação N:1 com Turmas e relacionamento específico 1:1 com Aluno destacado para acompanhamento individualizado.
@@ -1142,9 +1080,7 @@ Cada Sprint produz produtos específicos com cardinalidades bem definidas, garan
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{plantuml/diagrama3_produtos_sprint}
-    \caption{Produtos da Sprint: Artefatos, Pitch, Autoestudos e Atividades Ponderadas}
-    \label{fig:produtos_sprint_65}
+    % [Figura removida: diagrama3_produtos_sprint]
 \end{figure}
 
 \textbf{Sprint} produz obrigatoriamente: 1..N \textbf{Artefatos} (código, documentos, protótipos), exatamente 1 \textbf{Pitch} (apresentação 15-30min), 1..N \textbf{Autoestudos} (preparatórios/ponderados) e 0..N \textbf{Atividades Ponderadas} (avaliações formais).
@@ -1157,16 +1093,14 @@ O desenvolvimento técnico implementa uma cadeia de rastreabilidade completa que
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{plantuml/diagrama4_artefatos_tecnicos}
-    \caption{Desenvolvimento técnico: Artefatos, Commits/PRs e Reviews}
-    \label{fig:artefatos_tecnicos_65}
+    % [Figura removida: diagrama4_artefatos_tecnicos]
 \end{figure}
 
 A Entidade Artefato compreende resultados tangíveis produzidos pelas equipes: código, documentos técnicos, protótipos, relatórios, apresentações e pitches. Cada Artefato possui atributos mínimos (autor(es), data/hora, versão, vínculo com sprint e requisito do TAPI) e critérios de qualidade associados (correção, completude, aderência, clareza, rastreabilidade). Artefatos são as principais evidências do progresso e da aprendizagem técnico-procedimental, constituindo-se em objeto direto de análise tanto pela visão estrutural quanto pela de processo.
 
 O Pitch/Review é um ritual de avaliação incremental ao final de cada sprint, com demonstração dos artefatos e discussão de decisões técnicas e de produto. O Pitch/Review consolida feedbacks do parceiro e dos docentes, registra riscos e próximos passos e pode redefinir prioridades do backlog. É momento privilegiado para coleta de evidências qualitativas (comentários, justificativas, decisões) e quantitativas (atingimento de metas, cobertura de requisitos, comparações com sprints anteriores), constituindo-se em um dos pontos críticos para a coleta de dados do gêmeo digital.
 
-A Avaliação é o componente que consolida notas individuais e por equipe conforme eixos institucionais. Tipicamente, distribui-se em: artefatos (cerca de 40\%), atividades ponderadas/avaliações em sala (cerca de 35\%), prova escrita (cerca de 20\%) e auto/avaliação por pares (cerca de 5\%). A Avaliação integra múltiplas fontes (instrumentos rubrificados, métricas objetivas, percepções do parceiro) e cumpre papéis formativo e somativo, constituindo-se em um dos principais pontos de convergência entre o modelo conceitual e os objetivos pedagógicos do PBL.
+% [Removido: descrição institucional de avaliação por pontos]
 
 \subsubsection{Métricas e Indicadores}
 
@@ -1174,9 +1108,7 @@ A dimensão analítica utiliza Complex Event Processing para correlacionar event
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{plantuml/diagrama5_metricas_indicadores}
-    \caption{Dimensão analítica: CEP, Métricas e Dashboards}
-    \label{fig:metricas_indicadores_65}
+    % [Figura removida: diagrama5_metricas_indicadores]
 \end{figure}
 
 A Entidade Métrica compreende indicadores calculados a partir de eventos e registros de diferentes sistemas (Git, gestão de tarefas, presença, interações em aula). As Métricas são operacionalizações de objetivos de aprendizagem e critérios do TAPI, com definição explícita de fórmula, unidade, periodicidade, fonte, e limitações de interpretação. Servem à retroalimentação contínua e à comparabilidade entre sprints, equipes e módulos, constituindo-se em elementos fundamentais para a construção do gêmeo digital de processos.
@@ -1187,9 +1119,7 @@ A visão consolidada integra todas as dimensões do modelo, suportando as três 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{plantuml/diagrama6_modelo_integrado}
-    \caption{Visão consolidada: Integração das três visões arquiteturais}
-    \label{fig:modelo_integrado_65}
+    % [Figura removida: diagrama6_modelo_integrado]
 \end{figure}
 
 O modelo integrado estabelece um conjunto de relacionamentos e restrições que garantem a coerência arquitetural e a integridade do processo pedagógico. A estrutura fundamental baseia-se na relação unívoca entre módulo, parceiro e TAPI, criando um elo direto entre o ambiente acadêmico e o contexto profissional real. Cada módulo referencia exatamente um TAPI (Termo de Abertura do Projeto Institucional) e está associado a um parceiro específico, assegurando que os estudantes trabalhem em problemas autênticos e alinhados com as demandas do mercado.
@@ -1208,7 +1138,7 @@ O sistema demonstra flexibilidade ao permitir ajustes de calendário decorrentes
 
 As fontes de dados e evidências constituem o substrato informacional para a construção do gêmeo digital. Os repositórios Git fornecem séries temporais detalhadas de commits, branches, pull requests e revisões de código, permitindo calcular métricas de produtividade individual e padrões de colaboração técnica entre os membros das equipes. As ferramentas de gestão de tarefas contribuem com métricas de fluxo, incluindo work-in-progress (WIP), lead time, cycle time e throughput, além de indicadores de saúde do processo de desenvolvimento.
 
-Os documentos TAPI e relatórios de progresso contextualizam os objetivos, escopo e critérios de aceitação, servindo como base para a rastreabilidade entre requisitos especificados e entregas realizadas. Registros institucionais, como dados de catraca e listas de presença, sustentam a construção de indicadores de presença física e engajamento dos estudantes. As avaliações formais e formulários de feedback capturam tanto dimensões quantitativas (notas de atividades ponderadas e provas) quanto qualitativas (percepções de parceiros e docentes), enriquecendo a análise com múltiplas perspectivas sobre o processo de aprendizagem.
+Os documentos TAPI e relatórios de progresso contextualizam os objetivos, escopo e critérios de aceitação, servindo como base para a rastreabilidade entre requisitos especificados e entregas realizadas. Registros institucionais, como dados de catraca e listas de presença, podem compor o conjunto de eventos observados. Registros de reviews e formulários específicos contribuem com evidências qualitativas e decisões sobre o andamento dos projetos.
 
 A linha temporal de 10 semanas segue um padrão estruturado que inicia com a apresentação do parceiro e coleta sistematizada de dúvidas, seguida por um workshop que esclarece objetivos e expectativas. As equipes então realizam a planning da primeira sprint e iniciam a execução, com dailies regulares e acompanhamento do orientador. Ao término da segunda semana, a review com demonstração e coleta de feedback constitui um ponto de verificação e ajuste do trabalho realizado. Este padrão se repete consistentemente nas sprints subsequentes, com cada iteração acrescentando valor ao produto e conhecimento técnico às equipes. A nona semana é reservada para a prova escrita individual e ajustes finais da quinta sprint, culminando na décima semana com a review final, consolidação de todos os artefatos produzidos, fechamento das avaliações e retrospectiva geral do módulo.
 
@@ -1230,7 +1160,7 @@ O sistema requer: \textbf{Confiabilidade} (processamento determinístico, toler�
 
 O modelo integra quatro dimensões: \textbf{Pedagógica} (frequência, competências, instruções), \textbf{Parceria Externa} (TAPI, requisitos do parceiro), \textbf{Técnica} (versionamento, qualidade de código) e \textbf{Processos} (métricas ágeis, produtividade).
 
-A avaliação integra quatro eixos ponderados: \textbf{Processo} (métricas de fluxo, rituais ágeis), \textbf{Produto} (qualidade técnica, adequação ao TAPI), \textbf{Conceitual} (prova, APs, justificativas técnicas) e \textbf{Colaboração} (avaliação por pares, participação em reviews).
+% [Removido: eixos institucionais de avaliação]
 
 \subsection{Gêmeo Digital de Processos e Sistemas}
 
@@ -1247,15 +1177,15 @@ O modelo implementa três visões conforme ISO/IEC/IEEE 42010:2022 \cite{iso4201
 
 O modelo é agnóstico a tecnologias, utilizando conectores configuráveis para facilitar portabilidade entre instituições, respeitando aspectos pedagógicos, éticos e de privacidade.
 
-\subsubsection{Abordagem Metodológica: Case de Estudo e Escolha Tecnológica}
+\subsubsection{Abordagem Metodológica: Exemplo Aplicado e Escolha Tecnológica}
 
 Em conformidade com os princípios de design centrado no usuário e arquitetura
 orientada a requisitos, a validação do modelo proposto será conduzida através
-de um \textbf{case de estudo} específico que permitirá implementação prática e
+de um \textbf{exemplo aplicado} específico que permitirá implementação prática e
 avaliação empírica da eficácia do gêmeo digital em
 contexto real de PBL.
 
-O case de estudo seguirá a filosofia de que \textbf{a tecnologia representa
+O exemplo aplicado seguirá a filosofia de que \textbf{a tecnologia representa
   sempre a última camada a ser definida} no processo de design, priorizando a
 compreensão profunda dos requisitos pedagógicos, necessidades dos usuários
 (estudantes e docentes) e objetivos educacionais antes da seleção de
@@ -1264,7 +1194,7 @@ garantir que as soluções tecnológicas sejam escolhidas com base em critérios
 adequação funcional e pedagógica, não por limitações ou preferências
 tecnológicas pré-concebidas.
 
-A estrutura do case de estudo contemplará:
+A estrutura do exemplo aplicado contemplará:
 
 \textbf{Definição do Contexto}: Seleção de uma disciplina de engenharia de software que utilize metodologia PBL, preferencialmente em nível de graduação ou pós-graduação, com projetos de complexidade adequada para demonstração das capacidades do gêmeo digital.
 
@@ -1272,23 +1202,22 @@ A estrutura do case de estudo contemplará:
 
 \textbf{Especificação de Requisitos}: Definição detalhada dos requisitos funcionais e não funcionais do sistema, considerando as três visões arquiteturais (estrutural, comportamental e de processo) e as necessidades específicas do contexto educacional escolhido.
 
-\textbf{Seleção Tecnológica Criteriosa}: Somente após a completa especificação de requisitos, será realizada a seleção de tecnologias, ferramentas e plataformas que melhor atendam aos objetivos pedagógicos identificados. Esta seleção considerará critérios como facilidade de integração com ambientes educacionais existentes, capacidade de coleta de dados em tempo real, escalabilidade, usabilidade para docentes e estudantes, e custos de implementação e manutenção.
+\textbf{Seleção Tecnológica Criteriosa}: Somente após a completa especificação de requisitos, será realizada a seleção de tecnologias, ferramentas e plataformas que melhor atendam aos objetivos pedagógicos identificados. Esta seleção considerará critérios como facilidade de integração com ambientes educacionais existentes, capacidade de coleta periódica e sob demanda, escalabilidade, usabilidade para docentes e estudantes, e custos de implementação e manutenção.
 
-\textbf{Implementação Iterativa}: O desenvolvimento do gêmeo digital seguirá metodologias ágeis de desenvolvimento de software, permitindo refinamentos contínuos baseados em feedback dos usuários e análise dos resultados parciais obtidos durante o case de estudo.
+\textbf{Implementação Iterativa}: O desenvolvimento do gêmeo digital seguirá metodologias ágeis de desenvolvimento de software, permitindo refinamentos contínuos baseados em feedback dos usuários e análise dos resultados parciais obtidos durante o exemplo aplicado.
 
 Esta abordagem metodológica busca assegurar que o foco do doutorado permaneça
 na \textbf{criação do modelo conceitual de gêmeo digital de processos e
-  sistemas} para avaliação educacional, utilizando o case de estudo como meio de
-validação prática sem que a escolha de tecnologias específicas limite ou
+  sistemas} voltado à captura e integração de eventos, utilizando o exemplo aplicado como demonstração prática sem que a escolha de tecnologias específicas limite ou
 comprometa a generalidade e aplicabilidade do modelo proposto.
 
-\section{CASE DE ESTUDO: IMPLEMENTAÇÃO PRÁTICA DO MODELO}
+\section{EXEMPLO APLICADO: CAPTURA DE EVENTOS EM REPOSITÓRIO GIT}
 
 Para demonstração e validação empírica do modelo conceitual proposto, desenvolveu-se um sistema de coleta de dados que implementa o conceito de gêmeo digital de processos PBL através de snapshots automatizados de repositórios Git e análise de versionamento. O sistema representa a materialização prática dos conceitos teóricos estabelecidos, oferecendo uma plataforma concreta para validação das hipóteses de pesquisa.
 
 \subsection{Visão Geral do Sistema de Coleta}
 
-O sistema é uma aplicação web desenvolvida com Streamlit que implementa o modelo de gêmeo digital para análise de repositórios Git. O sistema realiza snapshots automáticos dos repositórios configurados, capturando informações sobre commits, pull requests e versionamento, armazenando-os em snapshots estruturados no formato Parquet, e fornece uma interface web interativa para análise e visualização desses dados em tempo real.
+O sistema é uma aplicação web desenvolvida com Streamlit que implementa o modelo de gêmeo digital para análise de repositórios Git. O sistema realiza snapshots automáticos dos repositórios configurados, capturando informações sobre commits, pull requests e versionamento, armazenando-os em snapshots estruturados no formato Parquet, e fornece uma interface web interativa para análise e visualização com atualizações periódicas e sob demanda.
 
 A arquitetura tecnológica do sistema integra múltiplas tecnologias especializadas: Streamlit para a interface web responsiva, bibliotecas específicas para integração com repositórios Git, plataformas de banco de dados e armazenamento em nuvem, Pandas para manipulação e análise eficiente de dados, Plotly para visualizações interativas de alta qualidade, Pydantic para modelagem rigorosa de dados com validação automática, e formato Parquet para armazenamento otimizado de grandes volumes de dados.
 
@@ -1376,9 +1305,7 @@ O package \textbf{repositories} implementa a persistência através de classes q
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.9\textwidth, keepaspectratio]{plantuml/afonsystem_class}
-  \caption{Diagrama de Classes do Sistema de Coleta}
-  \label{fig:afonsystem_class}
+  % [Figura removida: afonsystem_class]
 \end{figure}
 
 
@@ -1391,9 +1318,7 @@ Os dados coletados são processados pelo SnapshotManager através do método cre
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\textwidth]{plantuml/afonsystem_sequence}
-  \caption{Diagrama de Sequência - Criação de Snapshot no Sistema de Coleta}
-  \label{fig:afonsystem_sequence}
+  % [Figura removida: afonsystem_sequence]
 \end{figure}
 
 \subsubsection{Diagrama de Componentes}
@@ -1404,14 +1329,12 @@ Os componentes interagem com dependências externas específicas: GitHub API par
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\textwidth]{plantuml/afonsystem_components}
-  \caption{Diagrama de Componentes do Sistema de Coleta}
-  \label{fig:afonsystem_components}
+  % [Figura removida: afonsystem_components]
 \end{figure}
 
-\subsection{Demonstração Prática: Análise de Repositório Real}
+\subsection{Demonstração: Captura de eventos em repositório Git}
 
-O sistema está sendo utilizado para capturar snapshots de repositórios Git em contextos de projetos de aprendizagem baseada em projetos, demonstrando na prática as capacidades do gêmeo digital implementado. A captura abrange o rastreamento de commits e pull requests para monitorar a criação de código e documentação por membros do grupo ao longo do tempo.
+No exemplo aplicado, o sistema é utilizado para capturar eventos de um repositório Git, demonstrando na prática a ingestão de dados do pipeline de coleta. A captura abrange o rastreamento de commits e pull requests para monitorar a criação de código e documentação por membros do grupo ao longo do tempo.
 
 \subsubsection{Coleta e Processamento de Dados}
 
@@ -1423,7 +1346,7 @@ A análise temporal revelou picos de atividade correlacionados com prazos de ent
 
 As visualizações interativas geradas pelo sistema incluem gráficos de pizza mostrando distribuição por tipos de commit, gráficos de linha ilustrando evolução temporal da atividade de desenvolvimento, e gráficos de barras comparando contribuições individuais dos membros da equipe. Estas visualizações são atualizadas automaticamente conforme novos dados são coletados, mantendo sincronização contínua com a realidade do projeto.
 
-O sistema demonstrou capacidade de filtrar dados por intervalos temporais específicos, permitir análise detalhada de períodos críticos do desenvolvimento, comparar performance entre diferentes sprints, e identificar tendências de melhoria ou deterioração em métricas específicas. Esta funcionalidade comprova a utilidade prática do gêmeo digital para acompanhamento pedagógico contínuo e intervenções educacionais oportunas.
+O sistema demonstrou capacidade de filtrar dados por intervalos temporais específicos, permitir análise detalhada de períodos críticos do desenvolvimento, comparar atividade entre diferentes sprints e identificar tendências em métricas específicas. Esta funcionalidade reforça a utilidade prática do gêmeo digital para acompanhar o processo e apoiar o planejamento de intervenções.
 
 \subsection{Métricas e Indicadores de Medição}
 
@@ -1439,25 +1362,18 @@ Competências são acompanhadas longitudinalmente por meio de instrumentos peri�
 Os dados de versionamento são capturados pelo sistema para rastrear a frequência de commits por estudante e a colaboração entre membros do grupo. A frequência de commits \(f_{c,i} = \frac{n_{c,i}}{14\ \mathrm{dias}}\) e a colaboração medida pelo índice de revisão de código \(I^{\mathrm{CR}}_i = \frac{\#\,reviews\,realizadas\,por\,i}{\#\,reviews\,da\,equipe}\) são utilizados como apoio às avaliações pedagógicas, mas as decisões sobre qualidade e critérios específicos continuam sendo realizadas pelos docentes no contexto do PBL.
 
 \paragraph{Dimensão Técnica: qualidade de código e arquitetura}
-O sistema captura informações sobre pull requests e commits que podem conter dados relevantes para avaliação de qualidade de código e decisões arquiteturais. Informações sobre complexidade, duplicação, cobertura de testes e \textit{lint errors} são obtidas de forma complementar às avaliações pedagógicas tradicionais, e decisões arquiteturais podem ser rastreadas por meio de PRs anotados com etiquetas de impacto (p.ex., \textit{api}, \textit{infra}, \textit{domínio}). A interpretação pedagógica desses dados permanece sob responsabilidade dos docentes no contexto do PBL.
+O sistema captura informações sobre pull requests e commits que podem conter dados relevantes para análise de qualidade de código e decisões arquiteturais. Informações sobre complexidade, duplicação, cobertura de testes e \textit{lint errors} são obtidas de forma complementar, e decisões arquiteturais podem ser rastreadas por meio de PRs anotados com etiquetas de impacto (p.ex., \textit{api}, \textit{infra}, \textit{domínio}). A interpretação desses dados permanece sob responsabilidade dos docentes no contexto do PBL.
 
 \paragraph{Rastreamento de desenvolvimento: versionamento e colaboração}
-O sistema capta informações de versionamento como commits e pull requests, fornecendo snapshots do estado do repositório em diferentes momentos. A colaboração é registrada por meio de dados de contribuição e revisão de código entre membros do grupo. Esses dados complementam as avaliações pedagógicas mas não substituem métricas ágeis específicas de WIP, throughput ou lead/cycle time, que continuam sendo avaliadas pelos docentes no contexto pedagógico do PBL.
+O sistema capta informações de versionamento como commits e pull requests, fornecendo snapshots do estado do repositório em diferentes momentos. A colaboração é registrada por meio de dados de contribuição e revisão de código entre membros do grupo. Esses dados complementam a análise do processo pelos docentes, mas não substituem métricas ágeis específicas de WIP, throughput ou lead/cycle time.
 
-\paragraph{Sistema de avaliação integrado: 40/35/20/5}
-O eixo “Desenvolvimento do Projeto” (40 pontos) considera aspectos técnicos e de processo com avaliação pericial do produto. “Atividades Ponderadas” (35) integra notas de APs e entregas intermediárias. “Prova” (20) consolida domínio conceitual individual. “Avaliação de Pares” (5) resulta de instrumento calibrado com verificação de consistência. O sistema de coleta fornece dados de versionamento que complementam os critérios de avaliação, mas as decisões sobre pontuação continuam sendo tomadas pelos docentes no contexto pedagógico do PBL.
+% [Removido: parágrafos institucionais de avaliação, correlações com notas e defesa de pontuações]
 
-\paragraph{Correlações interdimensionais e interpretação}
-São estimadas correlações entre frequência e desempenho, entre indicadores técnicos e notas, e entre qualidade de processo e de produto. Para cada relação, registram-se amostra, tamanho de efeito e intervalos de confiança. Interpretação pedagógica acompanha os números, evitando leituras determinísticas: baixa presença com alto desempenho pode indicar estudo autônomo eficaz; alta atividade técnica com baixa qualidade pode revelar necessidade de mentoria em boas práticas.
+\subsection{Avaliação do Exemplo Aplicado}
 
-\paragraph{Rastreamento de evidências}
-Cada requisito do TAPI é mapeado para itens de backlog e vinculado a PRs/commits, releases e artefatos. Avaliações por sprint referenciam explicitamente essas chaves, e os dashboards exibem a cadeia TAPI→Backlog→Implementação→Review→Avaliação. Esse encadeamento sustenta a explicabilidade do modelo e a defesa de notas.
+O exemplo aplicado foi avaliado por critérios arquiteturais e operacionais (ATAM/SEI, ISO 42010/10746/25010), considerando cobertura de fontes e completude, latência e throughput, confiabilidade e resiliência do pipeline, interoperabilidade/portabilidade por conectores e contratos, e rastreabilidade fim a fim. Não há qualquer mensuração de desempenho discente.
 
-\subsection{Validação das Hipóteses através do Case}
-
-O estudo de caso permitiu validação empírica das cinco hipóteses de pesquisa estabelecidas através de análise comparativa detalhada entre o modelo proposto e os métodos tradicionais de avaliação utilizados na instituição. Esta validação empregou tanto métricas quantitativas rigorosas quanto análises qualitativas aprofundadas das percepções de todos os stakeholders envolvidos no processo educacional, proporcionando uma avaliação abrangente da eficácia do gêmeo digital implementado.
-
-\subsection{Desenho do Estudo de Caso}
+\subsection{Descrição do Exemplo Aplicado}
 
 Para demonstrar a aplicação e validação do modelo proposto, foi conduzido um estudo de caso que explora a integração de dados de repositórios Git para análise dos processos de desenvolvimento de software em contextos de PBL.
 

@@ -1,0 +1,294 @@
+{
+  "schema_version": 1,
+  "title": "MODELAGEM DO PBL PARA APLICAÇÃO DE GÊMEO DIGITAL",
+  "author": "Afonso Cesar Lelis Brandão",
+  "institution": "Universidade Presbiteriana Mackenzie",
+  "program": "Programa de Pós-Graduação em Engenharia Elétrica e Computação",
+  "year": 2025,
+  "advisor": "Prof. Dr. Leandro Augusto da Silva",
+  "coadvisor": "Prof. Dr. Reginaldo Arakaki",
+  "file": "projeto/tese.tex",
+  "log_file": "projeto/tese.log",
+  "build": {
+    "commands": [
+      "cd projeto && pdflatex -interaction=nonstopmode -halt-on-error tese.tex",
+      "cd projeto && bibtex tese || true",
+      "cd projeto && pdflatex -interaction=nonstopmode -halt-on-error tese.tex",
+      "cd projeto && pdflatex -interaction=nonstopmode -halt-on-error tese.tex"
+    ]
+  },
+  "global_checks": [
+    {
+      "name": "Undefined citations",
+      "description": "Detecta citações não resolvidas após a compilação.",
+      "command": "rg -n \"Citation.*undefined|There were undefined citations\" projeto/tese.log || true"
+    },
+    {
+      "name": "Undefined references",
+      "description": "Detecta referências cruzadas não resolvidas.",
+      "command": "rg -n \"There were undefined references\" projeto/tese.log || true"
+    },
+    {
+      "name": "Over/Underfull boxes",
+      "description": "Lista problemas de formatação (Overfull/Underfull).",
+      "command": "rg -n \"(Overfull|Underfull) \\\\hbox\" projeto/tese.log || true"
+    },
+    {
+      "name": "TODO markers",
+      "description": "Marcações de TODO/FIXME/XXX/??? no LaTeX.",
+      "command": "rg -n \"TODO|FIXME|XXX|\\\\?\\\\?\\\\?\" projeto/tese.tex || true"
+    },
+    {
+      "name": "Missing includegraphics files",
+      "description": "Verifica se todos os arquivos referenciados por \\includegraphics existem.",
+      "command": "rg -oP \\\"\\\\includegraphics\\\\[[^\\\\]]*\\\\]\\\\{([^}]+)\\\\}|\\\\includegraphics\\\\{([^}]+)\\\\}\\\" projeto/tese.tex | sed -E 's/.*\\{([^}]+)\\}.*/\\1/' | while read p; do [ -e \"projeto/$p\" ] || echo \"MISSING: projeto/$p\"; done"
+    },
+    {
+      "name": "Label vs ref sanity",
+      "description": "Lista labels e refs de figuras/tabelas para inspeção rápida.",
+      "commands": [
+        "echo '[labels]' && rg -n \\\"\\\\label\\\\{(fig|tab):\\\" projeto/tese.tex || true",
+        "echo '[refs]' && rg -n \\\"\\\\ref\\\\{(fig|tab):\\\" projeto/tese.tex || true"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "resumo",
+      "title": "RESUMO",
+      "type": "frontmatter",
+      "content": "Esta tese, em fase de qualificação, investiga o uso de gêmeos digitais para avaliação contínua e multidimensional de projetos desenvolvidos em Aprendizagem Baseada em Projetos (PBL) na engenharia de software.",
+      "keywords": [
+        "Gêmeos Digitais",
+        "Aprendizagem Baseada em Projetos",
+        "Avaliação da Aprendizagem",
+        "Engenharia de Software",
+        "Design Science Research",
+        "Arquitetura de Sistemas Educacionais"
+      ],
+      "checks": [
+        {
+          "name": "Presença do RESUMO",
+          "command": "rg -n ^\\\\textbf\\\\{RESUMO\\\\} projeto/tese.tex"
+        },
+        {
+          "name": "Palavras-chave presentes",
+          "command": "rg -n \"Palavras-chave\" projeto/tese.tex"
+        }
+      ]
+    },
+    {
+      "id": "introducao",
+      "title": "INTRODUÇÃO",
+      "type": "section",
+      "checks": [
+        {
+          "name": "Seção presente",
+          "command": "rg -n ^\\\\section\\\\{INTRODUÇÃO\\\\} projeto/tese.tex"
+        },
+        {
+          "name": "Citações na seção (contagem)",
+          "command": "awk '/^\\\\section\\\\{INTRODUÇÃO\\\\}/{flag=1;next}/^\\\\section\\\\{/{flag=0}flag' projeto/tese.tex | rg -o \\\"\\\\cite\\\\{\\\" | wc -l"
+        }
+      ],
+      "children": [
+        {
+          "id": "objetivo_geral",
+          "title": "Objetivo Geral",
+          "type": "subsection",
+          "checks": [
+            { "name": "Subseção presente", "command": "rg -n ^\\\\subsection\\\\{Objetivo Geral\\\\} projeto/tese.tex" },
+            { "name": "Tamanho mínimo (linhas)", "command": "awk '/^\\\\subsection\\\\{Objetivo Geral\\\\}/{flag=1;next}/^\\\\subsection\\\\{|^\\\\section\\\\{/{flag=0}flag' projeto/tese.tex | wc -l" }
+          ]
+        },
+        {
+          "id": "objetivos_especificos",
+          "title": "Objetivos Específicos",
+          "type": "subsection",
+          "checks": [
+            { "name": "Subseção presente", "command": "rg -n ^\\\\subsection\\\\{Objetivos Específicos\\\\} projeto/tese.tex" },
+            { "name": "Lista de objetivos (itens)", "command": "awk '/^\\\\subsection\\\\{Objetivos Específicos\\\\}/{flag=1;next}/^\\\\subsection\\\\{|^\\\\section\\\\{/{flag=0}flag' projeto/tese.tex | rg -n '^\\\\\\\\item' | wc -l" }
+          ]
+        },
+        {
+          "id": "hipotese",
+          "title": "Hipótese",
+          "type": "subsection",
+          "checks": [
+            { "name": "Subseção presente", "command": "rg -n ^\\\\subsection\\\\{Hipótese\\\\} projeto/tese.tex" },
+            { "name": "Hipóteses H1–H5 presentes", "command": "awk '/^\\\\subsection\\\\{Hipótese\\\\}/{flag=1;next}/^\\\\section\\\\{/{flag=0}flag' projeto/tese.tex | rg -n \\\"\\\\bH[1-5]\\\\b\\\"" }
+          ],
+          "children": [
+            { "id": "hipotese_principal", "title": "Hipótese Principal", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Hipótese Principal\\\\} projeto/tese.tex" } ] },
+            { "id": "hipoteses_secundarias", "title": "Hipóteses Secundárias", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Hipóteses Secundárias\\\\} projeto/tese.tex" } ] },
+            { "id": "criterios_validacao", "title": "Critérios de Validação", "type": "subsubsection", "checks": [
+              { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Critérios de Validação\\\\} projeto/tese.tex" },
+              { "name": "Métricas-chave listadas", "command": "rg -n \"Tempo de identificação de dificuldades|Confiabilidade inter-avaliadores|Qualidade dos produtos finais|Engajamento e satisfação dos estudantes\" projeto/tese.tex" }
+            ] },
+            { "id": "rastreabilidade_oe", "title": "Rastreabilidade entre Objetivos e Entregáveis", "type": "subsubsection", "checks": [
+              { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Rastreabilidade entre Objetivos e Entregáveis\\\\} projeto/tese.tex" },
+              { "name": "OE1–OE8 presentes", "command": "awk '/^\\\\subsubsection\\\\{Rastreabilidade entre Objetivos e Entregáveis\\\\}/{flag=1;next}/^\\\\subsubsection\\\\{|^\\\\subsection\\\\{|^\\\\section\\\\{/{flag=0}flag' projeto/tese.tex | rg -n \\\"\\\\bOE[1-8]\\\\b\\\"" }
+            ] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "justificativa",
+      "title": "JUSTIFICATIVA",
+      "type": "section",
+      "checks": [
+        { "name": "Seção presente", "command": "rg -n ^\\\\section\\\\{JUSTIFICATIVA\\\\} projeto/tese.tex" },
+        { "name": "Citações na seção (contagem)", "command": "awk '/^\\\\section\\\\{JUSTIFICATIVA\\\\}/{flag=1;next}/^\\\\section\\\\{/{flag=0}flag' projeto/tese.tex | rg -o \\\"\\\\cite\\\\{\\\" | wc -l" }
+      ]
+    },
+    {
+      "id": "referencial_teorico",
+      "title": "REFERENCIAL TEÓRICO",
+      "type": "section",
+      "checks": [
+        { "name": "Seção presente", "command": "rg -n ^\\\\section\\\\{REFERENCIAL TEÓRICO\\\\} projeto/tese.tex" }
+      ],
+      "children": [
+        { "id": "pbl", "title": "Aprendizagem Baseada em Projetos (PBL)", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Aprendizagem Baseada em Projetos (PBL)\\\\} projeto/tese.tex" }, { "name": "Citações (contagem)", "command": "awk '/^\\\\subsection\\\\{Aprendizagem Baseada em Projetos (PBL)\\\\}/{flag=1;next}/^\\\\subsection\\\\{|^\\\\section\\\\{/{flag=0}flag' projeto/tese.tex | rg -o \\\"\\\\cite\\\\{\\\" | wc -l" } ] },
+        { "id": "gds", "title": "Gêmeos Digitais (Digital Twins)", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Gêmeos Digitais (Digital Twins)\\\\} projeto/tese.tex" } ] },
+        { "id": "integracao_pbl_gd", "title": "Integração de PBL e Gêmeos Digitais", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Integração de PBL e Gêmeos Digitais\\\\} projeto/tese.tex" } ], "children": [
+          { "id": "modelo_pbl_referencia", "title": "Modelo de PBL de Referência: Inteli e a Aplicação Prática de PBL", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Modelo de PBL de Referência: Inteli e a Aplicação Prática de PBL\\\\} projeto/tese.tex" } ] }
+        ] }
+      ]
+    },
+    {
+      "id": "metodologia",
+      "title": "METODOLOGIA",
+      "type": "section",
+      "checks": [ { "name": "Seção presente", "command": "rg -n ^\\\\section\\\\{METODOLOGIA\\\\} projeto/tese.tex" } ],
+      "children": [
+        { "id": "dsr_fundamentos", "title": "Fundamentos do Design Science Research", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Fundamentos do Design Science Research\\\\} projeto/tese.tex" } ] },
+        { "id": "dsr_estrutura_avaliacao", "title": "Estrutura Adotada e Estratégias de Avaliação", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Estrutura Adotada e Estratégias de Avaliação\\\\} projeto/tese.tex" } ] },
+        { "id": "aderencia_problema", "title": "Aderência ao Problema e Justificativa da Escolha", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Aderência ao Problema e Justificativa da Escolha\\\\} projeto/tese.tex" } ] },
+        { "id": "natureza_pesquisa", "title": "Natureza da Pesquisa", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Natureza da Pesquisa\\\\} projeto/tese.tex" } ] },
+        { "id": "procedimentos_transversais", "title": "Procedimentos Transversais", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Procedimentos Transversais\\\\} projeto/tese.tex" } ], "children": [
+          { "id": "governanca_etica_privacidade", "title": "Governança, Ética e Privacidade de Dados", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Governança, Ética e Privacidade de Dados\\\\} projeto/tese.tex" } ] },
+          { "id": "instrumentacao_integracoes", "title": "Instrumentação e Integrações", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Instrumentação e Integrações\\\\} projeto/tese.tex" } ] },
+          { "id": "operacionalizacao_metricas", "title": "Operacionalização de Métricas", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Operacionalização de Métricas\\\\} projeto/tese.tex" } ] },
+          { "id": "plano_analise_estatistica", "title": "Plano de Análise e Estatística", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Plano de Análise e Estatística\\\\} projeto/tese.tex" } ] },
+          { "id": "ameacas_validade_mitigacoes", "title": "Ameaças à Validade e Mitigações", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Ameaças à Validade e Mitigações\\\\} projeto/tese.tex" } ] },
+          { "id": "reprodutibilidade_transparencia", "title": "Reprodutibilidade e Transparência", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Reprodutibilidade e Transparência\\\\} projeto/tese.tex" } ] }
+        ] },
+        { "id": "fases_pesquisa", "title": "Fases da Pesquisa", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Fases da Pesquisa\\\\} projeto/tese.tex" } ], "children": [
+          { "id": "fase1", "title": "Fase 1: Pesquisa Bibliográfica Sistemática e Fundamentação Teórica", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Fase 1: Pesquisa Bibliográfica Sistemática e Fundamentação Teórica\\\\} projeto/tese.tex" } ] },
+          { "id": "fase2", "title": "Fase 2: Design e Desenvolvimento do Modelo", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Fase 2: Design e Desenvolvimento do Modelo\\\\} projeto/tese.tex" } ] },
+          { "id": "fase3", "title": "Fase 3: Case de Estudo", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Fase 3: Case de Estudo\\\\} projeto/tese.tex" } ] },
+          { "id": "fase4", "title": "Fase 4: Avaliação e Validação", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Fase 4: Avaliação e Validação\\\\} projeto/tese.tex" } ] }
+        ] },
+        { "id": "saidas_dsr", "title": "Saídas de Conhecimento em DSR", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Saídas de Conhecimento em DSR\\\\} projeto/tese.tex" } ] },
+        { "id": "consideracoes_eticas", "title": "Considerações Éticas", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Considerações Éticas\\\\} projeto/tese.tex" } ] },
+        { "id": "limitacoes_metodologicas", "title": "Limitações Metodológicas", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Limitações Metodológicas\\\\} projeto/tese.tex" } ] }
+      ]
+    },
+    {
+      "id": "cronograma",
+      "title": "CRONOGRAMA",
+      "type": "section",
+      "checks": [
+        { "name": "Seção presente", "command": "rg -n ^\\\\section\\\\{CRONOGRAMA\\\\} projeto/tese.tex" },
+        { "name": "Tabela cronograma referenciada", "command": "rg -n \\\"Tabela \\\\{\\\\ref\\\\{tab:cronograma\\\\}\\\\}\\\" projeto/tese.tex" },
+        { "name": "Label tab:cronograma existe", "command": "rg -n \\\"\\\\label\\\\{tab:cronograma\\\\}\\\" projeto/tese.tex" }
+      ]
+    },
+    {
+      "id": "modelo_proposto",
+      "title": "MODELO PROPOSTO",
+      "type": "section",
+      "checks": [ { "name": "Seção presente", "command": "rg -n ^\\\\section\\\\{MODELO PROPOSTO\\\\} projeto/tese.tex" } ],
+      "children": [
+        { "id": "visao_geral", "title": "Visão Geral e Contexto", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Visão Geral e Contexto\\\\} projeto/tese.tex" } ] },
+        { "id": "processos_abstracoes", "title": "Processos e Abstrações", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Processos e Abstrações\\\\} projeto/tese.tex" } ] },
+        { "id": "modelagem_er", "title": "Modelagem: Entidades e Relacionamentos", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Modelagem: Entidades e Relacionamentos\\\\} projeto/tese.tex" } ], "children": [
+          { "id": "hierarquia_institucional", "title": "Hierarquia Institucional Completa", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Hierarquia Institucional Completa\\\\} projeto/tese.tex" } ] },
+          { "id": "estrutura_operacional", "title": "Estrutura Operacional", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Estrutura Operacional\\\\} projeto/tese.tex" } ] },
+          { "id": "produtos_sprint", "title": "Produtos da Sprint", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Produtos da Sprint\\\\} projeto/tese.tex" } ] },
+          { "id": "artefatos_processos_tecnicos", "title": "Artefatos e Processos Técnicos", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Artefatos e Processos Técnicos\\\\} projeto/tese.tex" } ] },
+          { "id": "metricas_indicadores", "title": "Métricas e Indicadores", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Métricas e Indicadores\\\\} projeto/tese.tex" } ] },
+          { "id": "modelo_integrado", "title": "Modelo Integrado Completo", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Modelo Integrado Completo\\\\} projeto/tese.tex" } ] }
+        ] },
+        { "id": "framework_conceitual", "title": "Framework Conceitual", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Framework Conceitual\\\\} projeto/tese.tex" } ] },
+        { "id": "arquitetura_implementacao", "title": "Arquitetura de Implementação", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Arquitetura de Implementação\\\\} projeto/tese.tex" } ] },
+        { "id": "gd_processos_sistemas", "title": "Gêmeo Digital de Processos e Sistemas", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Gêmeo Digital de Processos e Sistemas\\\\} projeto/tese.tex" } ] },
+        { "id": "arquitetura_integrada_modelo", "title": "Arquitetura Integrada do Modelo", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Arquitetura Integrada do Modelo\\\\} projeto/tese.tex" } ] },
+        { "id": "abordagem_metodologica_case", "title": "Abordagem Metodológica: Case de Estudo e Escolha Tecnológica", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Abordagem Metodológica: Case de Estudo e Escolha Tecnológica\\\\} projeto/tese.tex" } ] }
+      ]
+    },
+    {
+      "id": "case_estudo",
+      "title": "CASE DE ESTUDO: IMPLEMENTAÇÃO PRÁTICA DO MODELO",
+      "type": "section",
+      "checks": [ { "name": "Seção presente", "command": "rg -n ^\\\\section\\\\{CASE DE ESTUDO: IMPLEMENTAÇÃO PRÁTICA DO MODELO\\\\} projeto/tese.tex" } ],
+      "children": [
+        { "id": "visao_geral_coleta", "title": "Visão Geral do Sistema de Coleta", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Visão Geral do Sistema de Coleta\\\\} projeto/tese.tex" } ] },
+        { "id": "arquitetura_componentes", "title": "Arquitetura e Componentes do Sistema", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Arquitetura e Componentes do Sistema\\\\} projeto/tese.tex" } ], "children": [
+          { "id": "modelos_dados_validacao", "title": "Modelos de Dados e Validação", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Modelos de Dados e Validação\\\\} projeto/tese.tex" } ] },
+          { "id": "arquitetura_servicos_repositorios", "title": "Arquitetura de Serviços e Repositórios", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Arquitetura de Serviços e Repositórios\\\\} projeto/tese.tex" } ] },
+          { "id": "repositorios_persistencia", "title": "Repositórios de Persistência", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Repositórios de Persistência\\\\} projeto/tese.tex" } ] }
+        ] },
+        { "id": "fluxo_operacional_sistema", "title": "Fluxo Operacional do Sistema", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Fluxo Operacional do Sistema\\\\} projeto/tese.tex" } ], "children": [
+          { "id": "coleta_armazenamento_dados", "title": "Coleta e Armazenamento de Dados", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Coleta e Armazenamento de Dados\\\\} projeto/tese.tex" } ] },
+          { "id": "analise_visualizacao", "title": "Análise e Visualização", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Análise e Visualização\\\\} projeto/tese.tex" } ] }
+        ] },
+        { "id": "taticas_arquiteturais", "title": "Táticas Arquiteturais Implementadas", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Táticas Arquiteturais Implementadas\\\\} projeto/tese.tex" } ], "children": [
+          { "id": "persistencia_otimizada", "title": "Persistência Otimizada de Dados", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Persistência Otimizada de Dados\\\\} projeto/tese.tex" } ] },
+          { "id": "isolamento_versionamento", "title": "Isolamento e Versionamento de Dados", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Isolamento e Versionamento de Dados\\\\} projeto/tese.tex" } ] },
+          { "id": "otimizacao_performance", "title": "Otimização de Performance", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Otimização de Performance\\\\} projeto/tese.tex" } ] },
+          { "id": "arquitetura_responsabilidades", "title": "Arquitetura Orientada por Responsabilidades", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Arquitetura Orientada por Responsabilidades\\\\} projeto/tese.tex" } ] },
+          { "id": "validacao_tipagem", "title": "Validação e Tipagem Rigorosa", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Validação e Tipagem Rigorosa\\\\} projeto/tese.tex" } ] },
+          { "id": "arquitetura_stateless", "title": "Arquitetura Stateless", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Arquitetura Stateless\\\\} projeto/tese.tex" } ] },
+          { "id": "abstracao_apis", "title": "Abstração de APIs Externas", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Abstração de APIs Externas\\\\} projeto/tese.tex" } ] },
+          { "id": "separacao_logica_visualizacao", "title": "Separação de Lógica de Visualização", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Separação de Lógica de Visualização\\\\} projeto/tese.tex" } ] }
+        ] },
+        { "id": "modelagem_uml", "title": "Modelagem UML do Sistema", "type": "subsection", "checks": [
+          { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Modelagem UML do Sistema\\\\} projeto/tese.tex" },
+          { "name": "Imagens UML existem", "command": "for f in plantuml/afonsystem_class plantuml/afonsystem_sequence plantuml/afonsystem_components; do [ -e \"projeto/$f.png\" ] || echo \"MISSING: projeto/$f.png\"; done" }
+        ], "children": [
+          { "id": "uml_classes", "title": "Diagrama de Classes", "type": "subsubsection", "checks": [ { "name": "Label presente", "command": "rg -n \\\"\\\\label\\\\{fig:afonsystem_class\\\\}\\\" projeto/tese.tex" } ] },
+          { "id": "uml_sequencia", "title": "Diagrama de Sequência", "type": "subsubsection", "checks": [ { "name": "Label presente", "command": "rg -n \\\"\\\\label\\\\{fig:afonsystem_sequence\\\\}\\\" projeto/tese.tex" } ] },
+          { "id": "uml_componentes", "title": "Diagrama de Componentes", "type": "subsubsection", "checks": [ { "name": "Label presente", "command": "rg -n \\\"\\\\label\\\\{fig:afonsystem_components\\\\}\\\" projeto/tese.tex" } ] }
+        ] },
+        { "id": "demo_pratica_repositorio", "title": "Demonstração Prática: Análise de Repositório Real", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Demonstração Prática: Análise de Repositório Real\\\\} projeto/tese.tex" } ], "children": [
+          { "id": "demo_coleta_processamento", "title": "Coleta e Processamento de Dados", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Coleta e Processamento de Dados\\\\} projeto/tese.tex" } ] },
+          { "id": "demo_visualizacoes_insights", "title": "Visualizações e Insights Gerados", "type": "subsubsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsubsection\\\\{Visualizações e Insights Gerados\\\\} projeto/tese.tex" } ] }
+        ] },
+        { "id": "metricas_medicao", "title": "Métricas e Indicadores de Medição", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Métricas e Indicadores de Medição\\\\} projeto/tese.tex" } ] },
+        { "id": "validacao_hipoteses_case", "title": "Validação das Hipóteses através do Case", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Validação das Hipóteses através do Case\\\\} projeto/tese.tex" } ] },
+        { "id": "desenho_estudo_caso", "title": "Desenho do Estudo de Caso", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Desenho do Estudo de Caso\\\\} projeto/tese.tex" } ] }
+      ]
+    },
+    {
+      "id": "resultados_coletados",
+      "title": "RESULTADOS COLETADOS",
+      "type": "section",
+      "checks": [
+        { "name": "Seção presente", "command": "rg -n ^\\\\section\\\\{RESULTADOS COLETADOS\\\\} projeto/tese.tex" },
+        { "name": "Marcadores de conteúdo pendente", "command": "rg -n \"A ser preenchido|[Pp]endente\" projeto/tese.tex || true" }
+      ],
+      "children": [
+        { "id": "resultado_estrutural", "title": "Resultados da Visão Estrutural", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Resultados da Visão Estrutural\\\\} projeto/tese.tex" } ] },
+        { "id": "resultado_comportamental", "title": "Resultados da Visão Comportamental", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Resultados da Visão Comportamental\\\\} projeto/tese.tex" } ] },
+        { "id": "resultado_processo", "title": "Resultados da Visão de Processo", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Resultados da Visão de Processo\\\\} projeto/tese.tex" } ] },
+        { "id": "validacao_hipoteses", "title": "Validação das Hipóteses", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Validação das Hipóteses\\\\} projeto/tese.tex" } ] },
+        { "id": "analise_comparativa", "title": "Análise Comparativa", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Análise Comparativa\\\\} projeto/tese.tex" } ] }
+      ]
+    },
+    {
+      "id": "consideracoes_finais",
+      "title": "CONSIDERAÇÕES FINAIS",
+      "type": "section",
+      "checks": [ { "name": "Seção presente", "command": "rg -n ^\\\\section\\\\{CONSIDERAÇÕES FINAIS\\\\} projeto/tese.tex" } ],
+      "children": [
+        { "id": "principais_contribuicoes", "title": "Principais Contribuições", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Principais Contribuições\\\\} projeto/tese.tex" } ] },
+        { "id": "limitacoes_pesquisa", "title": "Limitações da Pesquisa", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Limitações da Pesquisa\\\\} projeto/tese.tex" } ] },
+        { "id": "trabalhos_futuros", "title": "Trabalhos Futuros", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Trabalhos Futuros\\\\} projeto/tese.tex" } ] },
+        { "id": "implicacoes_pratica", "title": "Implicações para a Prática Educacional", "type": "subsection", "checks": [ { "name": "Presente", "command": "rg -n ^\\\\subsection\\\\{Implicações para a Prática Educacional\\\\} projeto/tese.tex" } ] }
+      ]
+    }
+  ]
+}
