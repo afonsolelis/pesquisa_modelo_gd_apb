@@ -1,0 +1,16 @@
+SEQ-DT-20 — Complemento do PBL 25 (Encerramento do módulo) → Dossiê técnico no CEP/EP
+
+Referência PBL: seq-pbl-25-encerramento-de-modulo.txt
+Legenda: '---->' mensagem; '<--' aviso
+Passos: [A]…[D]
+
+Coordenação        Automação GitHub   Repositório        Conector Git       CEP/EP
+|                  |                  |                  |                  |
+|----------------->|                  |                  |                  |    [A] iniciar fechamento
+|                  |----------------->|                  |                  |    [B] gerar pacote técnico (tags/releases)
+|                  |                  |----------------->|----------------->|    [C] eventos e pacote → CEP/EP
+|                  |                  |                  |                  |    [D] confirmação de recebimento/linhagem
+
+Resultado:
+- Pacote técnico e eventos finais registrados; CEP e EP possuem material para arquivamento.
+

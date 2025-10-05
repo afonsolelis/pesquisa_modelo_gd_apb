@@ -1,0 +1,23 @@
+SEQ-DT-03 — EventoEntrega com referência a Artefato (rastreabilidade)
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C], [D], [E]
+
+Repositório        Conector Git       Camada Coleta       CEP                Silver
+|                  |                  |                  |                  |
+|----------------->|                  |                  |                  |    [A]
+|                  |----------------->|                  |                  |    [B]
+|                  |                  |----------------->|                  |    [C]
+|                  |                  |                  |----------------->|    [D]
+|                  |                  |                  |<-----------------|    
+
+Legenda dos passos:
+[A] Repositório emite webhooks (push/tag/release) para entrega
+[B] Conector monta EventoEntrega com referência a Artefato (repo_url, commit_sha, path)
+[C] Coleta valida VersaoSchema e preenche vínculo com Sprint/Grupo
+[D] CEP grava em Silver com dedup/ordenamento por event_time
+[E] CEP confirma referência Artefato↔EventoEntrega disponível para joins
+
+Resultado:
+- Entregas rastreáveis do commit ao artefato e à sprint/grupo no nível Silver.
+

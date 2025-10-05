@@ -1,0 +1,14 @@
+@startuml
+autonumber
+skinparam ArrowColor #222
+skinparam NoteBackgroundColor #FFFDE7
+participant "Grupo" as Grupo
+participant "Orientador" as Orientador
+participant "Sistema Ágil" as Sistema_gil
+participant "Parceiro" as Parceiro
+title seq-pbl-19-retrospectiva-pos-pitch
+Grupo -> Orientador : [A] Apresenta aprendizados
+Orientador -> Grupo : [B] Consolida ações de melhoria
+Grupo -> Sistema_gil : [C] Registra ações e ajustes de backlog
+Sistema_gil -> Parceiro : [D] Confirmações quando impactar escopo
+@enduml

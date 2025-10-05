@@ -1,0 +1,13 @@
+@startuml
+autonumber
+participant "Aluno" as Aluno
+participant "Professor" as Professor
+participant "LMS/Adalove" as LMS_Adalove
+participant "Conector LMS" as Conector_LMS
+participant "CEP" as CEP
+title seq-dt-13-compl-pbl-03-revisao-de-nota
+Aluno -> LMS_Adalove : [A] Solicita revisão
+LMS_Adalove -> Professor : [B] Encaminha pedido
+Conector_LMS -> CEP : [C] EventoGenerico revisao_nota
+LMS_Adalove -> Aluno : [D] Resultado da revisão
+@enduml

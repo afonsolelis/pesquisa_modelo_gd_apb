@@ -1,0 +1,23 @@
+SEQ-B07 — Daily com impedimento
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C], [D]
+
+Aluno              Grupo              Orientador         LMS/Adalove
+|                  |                  |                  |
+|----------------->|                  |                  |    [A]
+|                  |----------------->|                  |    [B]
+|                  |                  |----------------->|    [C]
+|                  |                  |<-----------------|    
+|                  |<-----------------|                  |    [D]
+|                  |                  |                  |
+
+Legenda dos passos:
+[A] Aluno reporta impedimento ao grupo
+[B] Grupo registra impedimento e aciona orientador
+[C] Orientador orienta/escala no LMS
+[D] Grupo recebe orientação e atualiza status
+
+Resultado:
+- Impedimento documentado e plano de ação definido.
+

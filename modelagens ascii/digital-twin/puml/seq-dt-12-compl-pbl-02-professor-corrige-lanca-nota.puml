@@ -1,0 +1,10 @@
+@startuml
+autonumber
+participant "Professor" as Professor
+participant "LMS/Adalove" as LMS_Adalove
+participant "Conector LMS" as Conector_LMS
+participant "CEP" as CEP
+title seq-dt-12-compl-pbl-02-professor-corrige-lanca-nota
+Professor -> LMS_Adalove : [A] Lança nota/feedback
+Conector_LMS -> CEP : [B] EventoFeedback padronizado
+@enduml

@@ -1,0 +1,17 @@
+SEQ-DT-14 — Complemento do PBL 07 (Planning no Kanban) → EventoGenerico no CEP
+
+Referência PBL: seq-pbl-07-planning-definicao-de-metas.txt
+Legenda: '---->' mensagem; '<--' aviso
+Passos: [A]…[D]
+
+Grupo              Orientador         Sistema Ágil        Conector Ágil      CEP
+|                  |                  |                  |                  |
+|----------------->|                  |----------------->|                  |    [A] criação/estimativa de cards
+|                  |                  |----------------->|                  |    [B] mudanças de status/backlog
+|                  |                  |                  |----------------->|    [C] eventos genericos (kanban_change)
+|                  |                  |                  |                  |    
+|                  |<-----------------|                  |                  |    [D] confirmação de planning
+
+Resultado:
+- Eventos genéricos do sistema ágil capturados e enviados ao CEP (kanban_change, estimation_set).
+

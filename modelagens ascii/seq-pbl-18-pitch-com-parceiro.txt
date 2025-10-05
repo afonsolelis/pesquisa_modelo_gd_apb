@@ -1,0 +1,23 @@
+SEQ-B15 — Pitch com parceiro
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C], [D]
+
+Grupo              Parceiro           Professores        LMS/Adalove
+|                  |                  |                  |
+|----------------->|                  |                  |    [A]
+|                  |----------------->|                  |    [B]
+|                  |                  |----------------->|    [C]
+|                  |                  |<-----------------|    
+|<-----------------|------------------|                  |    [D]
+|                  |                  |                  |
+
+Legenda dos passos:
+[A] Grupo agenda e inicia apresentação
+[B] Parceiro fornece feedback
+[C] Professores registram notas/observações no LMS
+[D] Grupo recebe consolidação de feedbacks
+
+Resultado:
+- Pitch concluído com feedback registrado.
+

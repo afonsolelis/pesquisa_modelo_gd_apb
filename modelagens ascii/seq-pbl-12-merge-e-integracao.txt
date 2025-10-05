@@ -1,0 +1,21 @@
+SEQ-B09 — Merge e integração contínua
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C]
+
+Revisor            Repositório        CI/CD              Grupo
+|                  |                  |                  |
+|----------------->|                  |                  |    [A]
+|                  |------------------|----------------->|    [B]
+|                  |                  |<-----------------|    
+|                  |<-------------------------------------|    [C]
+|                  |                  |                  |
+
+Legenda dos passos:
+[A] Revisor conclui aprovação e executa merge
+[B] Repositório dispara pipeline de integração
+[C] Grupo recebe status (verde/vermelho) do build
+
+Resultado:
+- Branch integrada com validação automática via CI/CD.
+

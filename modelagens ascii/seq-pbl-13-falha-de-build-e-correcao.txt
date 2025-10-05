@@ -1,0 +1,22 @@
+SEQ-B10 — Falha de build e correção
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C], [D]
+
+CI/CD              Grupo              Autor              Repositório
+|                  |                  |                  |
+|----------------->|                  |                  |    [A]
+|                  |----------------->|                  |    [B]
+|                  |                  |----------------->|    [C]
+|                  |                  |                  |<--- [D]
+|                  |                  |                  |
+
+Legenda dos passos:
+[A] CI/CD notifica falha do build ao grupo
+[B] Grupo designa o autor responsável
+[C] Autor envia correção (commit/push)
+[D] Repositório reexecuta pipeline automaticamente
+
+Resultado:
+- Build corrigido e pipeline restabelecido.
+

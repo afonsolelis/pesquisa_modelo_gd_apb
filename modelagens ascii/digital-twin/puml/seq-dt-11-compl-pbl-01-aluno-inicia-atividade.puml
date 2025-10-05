@@ -1,0 +1,14 @@
+@startuml
+autonumber
+participant "Aluno" as Aluno
+participant "LMS/Adalove" as LMS_Adalove
+participant "Repositório" as Reposit_rio
+participant "Conector Git" as Conector_Git
+participant "CEP" as CEP
+title seq-dt-11-compl-pbl-01-aluno-inicia-atividade
+Aluno -> LMS_Adalove : [A] Inicia tarefa
+Aluno -> Reposit_rio : [B] Commit/push
+Conector_Git -> CEP : [C] Webhook/EventoEntrega
+Aluno -> LMS_Adalove : [D] Finaliza/lock
+Conector_Git -> CEP : [E] Evento de lock/entrega
+@enduml

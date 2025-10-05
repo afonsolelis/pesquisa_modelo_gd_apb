@@ -1,0 +1,10 @@
+@startuml
+autonumber
+participant "Operação" as Opera_o
+participant "CEP" as CEP
+participant "Bronze/Silver/Gold Materialização" as Bronze_Silver_Gold_Materializa_o
+title seq-dt-09-replay-reprocessamento-controlado
+Opera_o -> CEP : [A] Solicita replay de janela
+CEP -> Bronze_Silver_Gold : [B] Reprocessa camadas
+Bronze_Silver_Gold -> Materializa_o : [C] Atualiza materializações
+@enduml

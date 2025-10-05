@@ -1,0 +1,12 @@
+@startuml
+autonumber
+participant "Grupo" as Grupo
+participant "Orientador" as Orientador
+participant "Sistema Ágil" as Sistema_gil
+participant "Conector Ágil" as Conector_gil
+participant "CEP" as CEP
+title seq-dt-14-compl-pbl-07-planning-kanban
+Grupo -> Sistema_gil : [A] Criação/estimativas de cards
+Orientador -> Sistema_gil : [B] Ajustes/aprovação
+Conector_gil -> CEP : [C] kanban_change / estimation_set
+@enduml

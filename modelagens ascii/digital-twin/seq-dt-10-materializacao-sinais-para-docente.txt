@@ -1,0 +1,21 @@
+SEQ-DT-10 — Materialização de sinais para docente
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C], [D]
+
+CEP (Agregações)  Silver             Gold (Sinais)       Painel Docente
+|                  |                  |                  |
+|----------------->|                  |                  |    [A]
+|                  |----------------->|                  |    [B]
+|                  |                  |----------------->|    [C]
+|                  |                  |<-----------------|    
+
+Legenda dos passos:
+[A] CEP calcula agregações por sprint/equipe (ex.: PR sem revisão > N horas)
+[B] Persiste visões derivadas em Gold (tabelas de sinais)
+[C] Painel consulta sinais com rastreabilidade para eventos/artefatos
+[D] Docente acessa explicações e links para evidências
+
+Resultado:
+- Sinais operacionais disponíveis com encadeamentos explicáveis até os eventos base.
+

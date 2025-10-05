@@ -1,0 +1,16 @@
+SEQ-DT-16 — Complemento do PBL 14 (Registro de presença) → EventoPresenca no CEP
+
+Referência PBL: seq-pbl-14-registro-de-presenca.txt
+Legenda: '---->' mensagem; '<--' aviso
+Passos: [A]…[C]
+
+Aluno              LMS/Adalove         Conector LMS       CEP
+|                  |                  |                  |
+|----------------->|                  |                  |    [A] check-in presença
+|                  |----------------->|                  |    [B] EventoPresenca padronizado
+|                  |                  |----------------->|    [C] ingestão CEP
+|                  |<-----------------|                  |    
+
+Resultado:
+- EventoPresenca com chaves (person_id, turma_id, sprint_id, timestamp) coletado pelo CEP.
+

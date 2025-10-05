@@ -1,0 +1,18 @@
+SEQ-B05 — Criação de branch (nomenclatura estilo Conventional Commits; fluxo 100% GitHub)
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legendas de passos: [A], [B]
+
+Aluno              Repositório        CI/CD              
+|                  |                  |                  
+|------------------------------------------------------->|    [A]
+|                  |------------------|----------------->|    [B]
+|                  |                  |<-----------------|    
+|                  |                  |                  
+
+Legenda dos passos:
+[A] Aluno cria branch seguindo padrão (ex.: feat/sprint-1-login, fix/sprint-1-build) e faz push inicial
+[B] Repositório dispara pipeline inicial na CI/CD
+
+Resultado:
+- Branch criada com nomenclatura alinhada a Conventional Commits; pipeline validando baseline. Não há registro no LMS (fluxo GitHub).

@@ -1,0 +1,17 @@
+SEQ-B06 — Abertura de item pelo parceiro (backlog em sistema de apoio ágil)
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legendas de passos: [A], [B]
+
+Parceiro           Sistema Ágil        Grupo              Orientador
+|                  |                  |                  |
+|----------------->|                  |                  |    [A]
+|                  |----------------->|                  |    [B]
+|                  |                  |<-----------------|    
+
+Legenda dos passos:
+[A] Parceiro registra novo item/requisito no sistema de apoio ágil (Kanban)
+[B] Grupo analisa e posiciona item no backlog da sprint (com orientação do professor quando necessário)
+
+Resultado:
+- Item disponível e priorizado no backlog do sistema ágil.

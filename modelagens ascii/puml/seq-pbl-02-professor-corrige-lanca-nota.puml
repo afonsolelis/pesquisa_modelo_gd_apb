@@ -1,0 +1,14 @@
+@startuml
+autonumber
+skinparam ArrowColor #222
+skinparam NoteBackgroundColor #FFFDE7
+participant "Aluno" as Aluno
+participant "Professor" as Professor
+participant "LMS/Adalove" as LMS_Adalove
+participant "Repositório" as Reposit_rio
+title seq-pbl-02-professor-corrige-lanca-nota
+Professor -> Reposit_rio : [A] Abre artefato para revisão
+Professor -> LMS_Adalove : [B] Registra feedback
+Professor -> LMS_Adalove : [C] Lança nota
+LMS_Adalove -> Aluno : [D] Notifica publicação de nota
+@enduml

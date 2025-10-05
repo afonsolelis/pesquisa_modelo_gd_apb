@@ -1,0 +1,23 @@
+SEQ-B02 — Formação de grupos (última semana; orientador define, secretaria cadastra)
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legendas de passos: [A], [B], [C], [D], [E]
+
+Orientador         Secretaria          LMS/Adalove         Aluno
+|                  |                  |                  |
+|----------------->|                  |                  |    [A]
+|                  |----------------->|                  |    [B]
+|                  |                  |----------------->|    [C]
+|                  |                  |<-----------------|    [D]
+|<-----------------|------------------|                  |    [E]
+|                  |                  |                  |
+
+Legenda dos passos:
+[A] Orientador define a composição e envia para a Secretaria
+[B] Secretaria cadastra/atualiza os grupos no LMS
+[C] LMS publica a composição para a turma
+[D] Alunos confirmam ciência no LMS
+[E] LMS encerra a fase e notifica o Orientador
+
+Resultado:
+- Grupos definidos pelo orientador, cadastrados pela secretaria, publicados e registrados.

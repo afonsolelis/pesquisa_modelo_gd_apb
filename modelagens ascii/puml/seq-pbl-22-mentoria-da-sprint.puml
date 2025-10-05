@@ -1,0 +1,15 @@
+@startuml
+autonumber
+skinparam ArrowColor #222
+skinparam NoteBackgroundColor #FFFDE7
+participant "Orientador" as Orientador
+participant "LMS/Adalove" as LMS_Adalove
+participant "Grupo" as Grupo
+participant "Aluno" as Aluno
+title seq-pbl-22-mentoria-da-sprint
+Orientador -> LMS_Adalove : [A] Agenda mentoria da sprint
+LMS_Adalove -> Grupo : [B] Notifica pautas e horário
+Orientador -> Grupo : [C] Devolutiva: notas individuais e de artefatos
+Orientador -> LMS_Adalove : [D] Lança notas e feedbacks
+LMS_Adalove -> Aluno : [E] Notifica publicação
+@enduml

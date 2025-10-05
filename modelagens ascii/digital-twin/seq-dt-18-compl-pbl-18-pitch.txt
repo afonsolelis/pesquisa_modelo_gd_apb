@@ -1,0 +1,17 @@
+SEQ-DT-18 — Complemento do PBL 18 (Pitch com parceiro) → EventoGenerico no CEP
+
+Referência PBL: seq-pbl-18-pitch-com-parceiro.txt
+Legenda: '---->' mensagem; '<--' aviso
+Passos: [A]…[D]
+
+Grupo              Parceiro           LMS/Adalove         Conector LMS       CEP
+|                  |                  |                  |                  |
+|----------------->|                  |                  |                  |    [A] apresentação
+|                  |----------------->|                  |                  |    [B] feedbacks/observações
+|                  |----------------->|                  |----------------->|    [C] evento generico: pitch_feedback
+|                  |                  |                  |                  |    
+|<-----------------|------------------|                  |                  |    [D] consolidação
+
+Resultado:
+- Evento genérico de pitch e feedback capturado, ligado a grupo/sprint/parceiro.
+

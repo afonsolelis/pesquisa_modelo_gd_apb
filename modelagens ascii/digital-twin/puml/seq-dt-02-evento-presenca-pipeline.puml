@@ -1,0 +1,13 @@
+@startuml
+autonumber
+participant "LMS (SistemaFonte) Conector LMS" as LMS_SistemaFonte_Conector_LMS
+participant "Camada Coleta" as Camada_Coleta
+participant "CEP" as CEP
+participant "Bronze" as Bronze
+title seq-dt-02-evento-presenca-pipeline
+LMS_SistemaFonte -> Conector_LMS : [A] Emite EventoPresenca
+Conector_LMS -> Camada_Coleta : [B] Padroniza/pseudonimiza
+Camada_Coleta -> CEP : [C] Valida e agrega ao lote
+CEP -> Bronze : [D] Persiste cru por data/fonte
+CEP -> Conector_LMS : [E] Confirma recebimento
+@enduml

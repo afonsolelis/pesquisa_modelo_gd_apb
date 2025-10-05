@@ -1,0 +1,21 @@
+SEQ-B17 — Mudança no TAPI (escopo)
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C]
+
+Parceiro           Coordenação        LMS/Adalove         Turma
+|                  |                  |                  |
+|------------------|----------------->|                  |    [A]
+|                  |------------------|----------------->|    [B]
+|                  |                  |<-----------------|    
+|                  |                  |----------------->|    [C]
+|                  |                  |<-----------------|    
+
+Legenda dos passos:
+[A] Parceiro propõe alteração de escopo
+[B] Coordenação avalia e aprova/nega no LMS
+[C] LMS publica nova versão do TAPI para a turma
+
+Resultado:
+- TAPI atualizado com versionamento e comunicação à turma.
+

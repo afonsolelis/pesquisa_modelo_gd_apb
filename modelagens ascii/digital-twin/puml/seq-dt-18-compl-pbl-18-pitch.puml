@@ -1,0 +1,12 @@
+@startuml
+autonumber
+participant "Grupo" as Grupo
+participant "Parceiro" as Parceiro
+participant "LMS/Adalove" as LMS_Adalove
+participant "Conector LMS" as Conector_LMS
+participant "CEP" as CEP
+title seq-dt-18-compl-pbl-18-pitch
+Grupo -> Parceiro : [A] Apresentação
+Parceiro -> LMS_Adalove : [B] Feedback/observações
+Conector_LMS -> CEP : [C] Evento pitch_feedback
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+autonumber
+skinparam ArrowColor #222
+skinparam NoteBackgroundColor #FFFDE7
+participant "Orientador" as Orientador
+participant "Secretaria" as Secretaria
+participant "LMS/Adalove" as LMS_Adalove
+participant "Aluno" as Aluno
+title seq-pbl-05-formacao-de-grupos
+Orientador -> Secretaria : [A] Define composição de grupos
+Secretaria -> LMS_Adalove : [B] Cadastra grupos
+LMS_Adalove -> Aluno : [C] Publica composição para a turma
+Aluno -> LMS_Adalove : [D] Confirma ciência
+LMS_Adalove -> Orientador : [E] Encerra fase e notifica
+@enduml

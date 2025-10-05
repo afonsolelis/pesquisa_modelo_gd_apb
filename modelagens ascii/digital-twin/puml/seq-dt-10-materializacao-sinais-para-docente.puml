@@ -1,0 +1,11 @@
+@startuml
+autonumber
+participant "CEP (Agregações)" as CEP_Agrega_es
+participant "Silver" as Silver
+participant "Gold (Sinais)" as Gold_Sinais
+participant "Painel Docente" as Painel_Docente
+title seq-dt-10-materializacao-sinais-para-docente
+CEP_Agrega_es -> Silver : [A] Calcula agregações
+Silver -> Gold_Sinais : [B] Persiste sinais
+Gold_Sinais -> Painel_Docente : [C] Consulta sinais
+@enduml

@@ -1,0 +1,20 @@
+SEQ-B23 — Detecção de anomalia de atividade
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C]
+
+CEP                Orientador         Grupo              Sistema Ágil
+|                  |                  |                  |
+|----------------->|                  |                  |    [A]
+|                  |----------------->|                  |    [B]
+|                  |                  |----------------->|    [C]
+|                  |                  |<-----------------|    
+
+Legenda dos passos:
+[A] CEP emite alerta de anomalia (ex.: atividade baixa)
+[B] Orientador abre investigação com o grupo
+[C] Grupo atualiza plano e status no sistema de apoio ágil
+
+Resultado:
+- Sinal tratado e ação corretiva definida.
+

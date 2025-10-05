@@ -1,0 +1,14 @@
+@startuml
+autonumber
+skinparam ArrowColor #222
+skinparam NoteBackgroundColor #FFFDE7
+participant "Grupo" as Grupo
+participant "Parceiro" as Parceiro
+participant "Professores" as Professores
+participant "LMS/Adalove" as LMS_Adalove
+title seq-pbl-18-pitch-com-parceiro
+Grupo -> Parceiro : [A] Apresenta pitch
+Parceiro -> Professores : [B] Fornece feedback
+Professores -> LMS_Adalove : [C] Registra notas/observações
+LMS_Adalove -> Grupo : [D] Consolida feedbacks
+@enduml

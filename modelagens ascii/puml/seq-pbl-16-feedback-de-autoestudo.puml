@@ -1,0 +1,12 @@
+@startuml
+autonumber
+skinparam ArrowColor #222
+skinparam NoteBackgroundColor #FFFDE7
+participant "Professor" as Professor
+participant "LMS/Adalove" as LMS_Adalove
+participant "Aluno" as Aluno
+title seq-pbl-16-feedback-de-autoestudo
+Professor -> LMS_Adalove : [A] Registra rubrica e comentários
+LMS_Adalove -> Aluno : [B] Notifica feedback
+Professor -> LMS_Adalove : [C] Ajusta nota se necessário
+@enduml

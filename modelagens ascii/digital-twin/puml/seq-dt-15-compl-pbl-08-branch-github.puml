@@ -1,0 +1,13 @@
+@startuml
+autonumber
+participant "Aluno" as Aluno
+participant "Repositório" as Reposit_rio
+participant "Webhook GitHub" as Webhook_GitHub
+participant "Conector Git" as Conector_Git
+participant "CEP" as CEP
+title seq-dt-15-compl-pbl-08-branch-github
+Aluno -> Reposit_rio : [A] Create branch/push
+Reposit_rio -> Webhook_GitHub : [B] Evento create/ref
+Webhook_GitHub -> Conector_Git : [C] Entrega webhook
+Conector_Git -> CEP : [D] Ingestão evento
+@enduml

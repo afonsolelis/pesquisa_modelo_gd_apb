@@ -1,0 +1,11 @@
+@startuml
+autonumber
+participant "Agendador" as Agendador
+participant "Conectores" as Conectores
+participant "Camada de Coleta" as Camada_de_Coleta
+participant "CEP" as CEP
+title SEQ-B22-coleta-periodica-de-eventos
+Agendador -> Conectores : [A] Dispara coleta
+Conectores -> Camada_de_Coleta : [B] Extrai e normaliza
+Camada_de_Coleta -> CEP : [C] Envia lote validado
+@enduml

@@ -1,0 +1,26 @@
+SEQ-B01 — Onboarding do parceiro e publicação do TAPI
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legendas de passos: [A], [B], [C], [D], [E], [F]
+
+Parceiro           Escritório Projetos Coordenação        Professores(Ori/Eixo) LMS/Adalove
+|                  |                  |                  |                  |
+|----------------->|                  |                  |                  |    [A]
+|                  |----------------->|                  |                  |    [B]
+|                  |                  |----------------->|                  |    [C]
+|                  |                  |<-----------------|                  |    
+|                  |<-----------------|------------------|                  |    [D]
+|                  |------------------|------------------------------------->|    [E]
+|<-----------------------------------------------------------------------------|    [F]
+|                  |                  |                  |                  |
+
+Legenda dos passos:
+[A] Parceiro submete proposta ao Escritório de Projetos
+[B] Escritório triagem e agenda reunião
+[C] Coordenação conduz reunião com professores orientadores/eixo
+[D] Coordenação aprova diretrizes; Escritório consolida e redige o TAPI
+[E] Escritório publica TAPI e habilita ajustes do módulo no LMS
+[F] LMS notifica parceiro e professores sobre TAPI/módulo publicados
+
+Resultado:
+- TAPI consolidado após reunião e módulo ajustável/publicado no LMS.

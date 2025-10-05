@@ -1,0 +1,24 @@
+SEQ-B24 — Mentoria da sprint (1 por sprint; devolutiva com notas; disparo do orientador)
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legendas de passos: [A], [B], [C], [D], [E]
+
+Orientador         LMS/Adalove         Grupo              Aluno
+|                  |                  |                  |
+|----------------->|                  |                  |    [A]
+|                  |----------------->|----------------->|    [B]
+|                  |                  |                  |
+|----------------->|                  |                  |    [C]
+|                  |----------------->|                  |    [D]
+|                  |<-----------------|<-----------------|    [E]
+|                  |                  |                  |
+
+Legenda dos passos:
+[A] Orientador agenda a mentoria da sprint (uma por sprint)
+[B] LMS notifica grupo e alunos com pautas e horário
+[C] Orientador realiza devolutiva: notas individuais do trabalho e notas dos artefatos do grupo
+[D] Orientador lança as notas e publica feedback no LMS
+[E] Grupo e alunos recebem notificação de publicação
+
+Resultado:
+- Mentoria realizada com devolutiva formal e notas publicadas no LMS.

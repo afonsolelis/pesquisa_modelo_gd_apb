@@ -1,0 +1,10 @@
+@startuml
+autonumber
+participant "Aluno" as Aluno
+participant "LMS/Adalove" as LMS_Adalove
+participant "Conector LMS" as Conector_LMS
+participant "CEP" as CEP
+title seq-dt-17-compl-pbl-15-autoestudo
+Aluno -> LMS_Adalove : [A] Entrega autoestudo
+Conector_LMS -> CEP : [B] EventoAutoestudo padronizado
+@enduml

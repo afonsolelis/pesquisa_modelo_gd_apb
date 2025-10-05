@@ -1,0 +1,22 @@
+SEQ-DT-04 — Deduplicação e idempotência na ingestão
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C], [D]
+
+Conector           Coleta             Deduplicador        CEP                Bronze/Silver
+|                  |                  |                  |                  |
+|----------------->|                  |                  |                  |    [A]
+|                  |----------------->|                  |                  |    [B]
+|                  |                  |----------------->|                  |    [C]
+|                  |                  |                  |----------------->|    [D]
+|                  |                  |                  |<-----------------|    
+
+Legenda dos passos:
+[A] Conector envia eventos com event_id e checksum
+[B] Coleta verifica idempotência (tabela de recebidos)
+[C] Deduplicador elimina duplicados por (event_id, checksum, trace_id)
+[D] CEP persiste apenas novos eventos; confirma processamento idempotente
+
+Resultado:
+- Ingestão livre de duplicatas com garantias de idempotência ponta a ponta.
+

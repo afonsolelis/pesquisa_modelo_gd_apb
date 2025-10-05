@@ -1,0 +1,20 @@
+SEQ-B16 — Retrospectiva pós‑pitch (ações e backlog no sistema ágil)
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legendas de passos: [A], [B], [C], [D]
+
+Grupo              Orientador         Sistema Ágil        Parceiro
+|                  |                  |                  |
+|----------------->|                  |                  |    [A]
+|                  |----------------->|                  |    [B]
+|----------------->|                  |----------------->|    [C]
+|                  |                  |<-----------------|    
+
+Legenda dos passos:
+[A] Grupo apresenta aprendizados (start/stop/continue) e impactos do pitch
+[B] Orientador consolida ações de melhoria e define critérios
+[C] Grupo registra ações e ajustes de backlog no sistema ágil
+[D] (Opcional) Parceiro confirma entendimento quando houver ação que impacte escopo
+
+Resultado:
+- Ações de melhoria registradas e backlog ajustado no sistema ágil, alinhado aos feedbacks do pitch.

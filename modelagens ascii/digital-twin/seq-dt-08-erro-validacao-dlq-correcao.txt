@@ -1,0 +1,24 @@
+SEQ-DT-08 — Erro de validação → DLQ → correção e reenvio
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C], [D], [E]
+
+Conector           Coleta             ValidadorSchema    DLQ                CEP
+|                  |                  |                  |                  |
+|----------------->|                  |                  |                  |    [A]
+|                  |----------------->|                  |                  |    [B]
+|                  |                  |----------------->|                  |    [C]
+|                  |                  |                  |<-----------------|    
+|----------------->|                  |                  |                  |    [D]
+|                  |                  |----------------->|                  |    [E]
+
+Legenda dos passos:
+[A] Conector envia lote com alguns eventos inválidos
+[B] Coleta encaminha ao ValidadorSchema
+[C] Inválidos são roteados para DLQ com motivo e payload
+[D] Conector corrige/normaliza e reenvia somente inválidos
+[E] Eventos corrigidos seguem fluxo normal ao CEP
+
+Resultado:
+- Fluxo de exceções com DLQ e reprocesso controlado, sem perder rastreabilidade.
+

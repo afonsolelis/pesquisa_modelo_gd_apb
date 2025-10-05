@@ -1,0 +1,33 @@
+SEQ-A3 — Solicitação de revisão de nota
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C], [D], [E]
+
+Aluno              Professor          LMS/Adalove         Repositório
+|                  |                  |                  |
+|------------------|------------------|----------------->|    [A]
+|                  |                  |<-----------------|    
+|                  |                  |                  |
+|                  |------------------|----------------->|    [B]
+|                  |                  |<-----------------|    
+|                  |                  |                  |
+|                  |------------------|----------------->|    [C]
+|                  |                  |<-----------------|    
+|<-----------------|------------------|                  |    [D]
+|                  |                  |                  |
+|------------------------------------------------------->|    [E]
+|                  |                  |                  |
+
+Legenda dos passos:
+[A] Aluno abre pedido de revisão no LMS
+[B] Professor recebe o pedido e aceita avaliar
+[C] Professor atualiza nota (ou mantém) no LMS
+[D] Aluno recebe o resultado da revisão
+[E] Aluno realiza ajuste no artefato (se solicitado)
+
+Resultado:
+- Revisão concluída com nota confirmada ou ajustada e trilha registrada.
+
+Observações:
+- O LMS encerra o pedido após a decisão do professor.
+

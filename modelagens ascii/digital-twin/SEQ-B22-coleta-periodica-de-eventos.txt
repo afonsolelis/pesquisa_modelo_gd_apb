@@ -1,0 +1,20 @@
+SEQ-B22 — Coleta periódica de eventos (ingestão)
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C]
+
+Agendador          Conectores         Camada de Coleta    CEP
+|                  |                  |                  |
+|----------------->|                  |                  |    [A]
+|                  |----------------->|                  |    [B]
+|                  |                  |----------------->|    [C]
+|                  |                  |<-----------------|    
+
+Legenda dos passos:
+[A] Agendador dispara coleta
+[B] Conectores extraem de fontes (LMS, Repositórios, Sistema Ágil)
+[C] Camada de Coleta valida e envia lote ao CEP
+
+Resultado:
+- Lote ingestão concluído com validação de schema.
+

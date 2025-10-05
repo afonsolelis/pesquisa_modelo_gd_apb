@@ -1,0 +1,13 @@
+@startuml
+autonumber
+skinparam ArrowColor #222
+skinparam NoteBackgroundColor #FFFDE7
+participant "Grupo" as Grupo
+participant "Orientador" as Orientador
+participant "Kanban (software de apoio)" as Kanban_software_de_apoio
+title seq-pbl-07-planning-definicao-de-metas
+Grupo -> Orientador : [A] Inicia Planning (1ª aula)
+Orientador -> Grupo : [B] Conduz e valida escopo
+Grupo -> Kanban_software_de_apoio : [C] Cria/estima cards
+Orientador -> Kanban_software_de_apoio : [D] Aprova backlog
+@enduml

@@ -1,0 +1,17 @@
+SEQ-DT-19 — Complemento do PBL 23 (Encerramento da sprint) → Eventos de fechamento no CEP
+
+Referência PBL: seq-pbl-23-encerramento-de-sprint.txt
+Legenda: '---->' mensagem; '<--' aviso
+Passos: [A]…[D]
+
+Sistema Ágil        Automação GitHub   Repositório        Conector Git       CEP
+|                  |                  |                  |                  |
+|----------------->|                  |                  |                  |    [A] fechar sprint
+|                  |----------------->|                  |                  |    [B] tag/release snapshot
+|                  |                  |----------------->|----------------->|    [C] eventos de release
+|                  |                  |                  |                  |    
+|                  |                  |                  |                  |    [D] materialização de encerramento
+
+Resultado:
+- Eventos de fechamento (release/tag) capturados e marcados como encerramento de sprint no CEP.
+

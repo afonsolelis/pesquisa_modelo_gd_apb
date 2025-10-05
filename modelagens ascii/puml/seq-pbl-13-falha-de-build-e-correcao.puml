@@ -1,0 +1,14 @@
+@startuml
+autonumber
+skinparam ArrowColor #222
+skinparam NoteBackgroundColor #FFFDE7
+participant "CI/CD" as CI_CD
+participant "Grupo" as Grupo
+participant "Autor" as Autor
+participant "Repositório" as Reposit_rio
+title seq-pbl-13-falha-de-build-e-correcao
+CI_CD -> Grupo : [A] Notifica falha de build
+Grupo -> Autor : [B] Designa responsável
+Autor -> Reposit_rio : [C] Commit/push da correção
+Reposit_rio -> CI_CD : [D] Reexecuta pipeline
+@enduml

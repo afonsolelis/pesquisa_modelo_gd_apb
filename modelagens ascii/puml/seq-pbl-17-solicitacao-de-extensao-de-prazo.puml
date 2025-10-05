@@ -1,0 +1,12 @@
+@startuml
+autonumber
+skinparam ArrowColor #222
+skinparam NoteBackgroundColor #FFFDE7
+participant "Aluno" as Aluno
+participant "Professor" as Professor
+participant "LMS/Adalove" as LMS_Adalove
+title seq-pbl-17-solicitacao-de-extensao-de-prazo
+Aluno -> Professor : [A] Solicita prorrogação
+Professor -> LMS_Adalove : [B] Aprova/nega e registra
+LMS_Adalove -> Aluno : [C] Notifica decisão
+@enduml

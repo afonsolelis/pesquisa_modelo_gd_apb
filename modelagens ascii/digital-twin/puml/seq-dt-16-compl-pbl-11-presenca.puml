@@ -1,0 +1,10 @@
+@startuml
+autonumber
+participant "Aluno" as Aluno
+participant "LMS/Adalove" as LMS_Adalove
+participant "Conector LMS" as Conector_LMS
+participant "CEP" as CEP
+title seq-dt-16-compl-pbl-11-presenca
+Aluno -> LMS_Adalove : [A] Check-in
+Conector_LMS -> CEP : [B] EventoPresenca padronizado
+@enduml

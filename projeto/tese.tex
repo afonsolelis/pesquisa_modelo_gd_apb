@@ -4,9 +4,16 @@
 \usepackage[utf8]{inputenc}
 \usepackage[provide=*,portuguese]{babel}
 \usepackage{graphicx}
-\usepackage{hyperref}
 % Citações (autor-ano) com natbib para compatibilidade ampla
 \usepackage[authoryear]{natbib}
+% URLs com hifenização melhorada antes do hyperref
+\usepackage[hyphens]{url}
+% Carregar hyperref por último para evitar conflitos
+\usepackage{hyperref}
+% Corrige âncoras de figuras/tabelas e permite quebras em links longos
+\usepackage[all]{hypcap}
+\urlstyle{same}
+\hypersetup{breaklinks=true}
 \usepackage[expansion=false,protrusion=true]{microtype} % desativa expansão para compatibilidade de fontes
 \usepackage{newunicodechar}
 \DeclareUnicodeCharacter{2265}{\ensuremath{\geq}}
@@ -20,18 +27,19 @@
 \usepackage[hybrid,fencedCode,pipeTables]{markdown}
 \usepackage[top=3cm,bottom=2cm,left=3cm,right=2cm]{geometry}
 \usepackage{indentfirst}
-% Ajustes globais para reduzir overfull/underfull
+% Ajustes globais para reduzir/suprimir avisos de "underfull/overfull"
 \pretolerance=1000
 \tolerance=2000
 \emergencystretch=3em
-\hfuzz=0.3pt
+\hfuzz=1pt
+\hbadness=10000
 % --- Sumário ---
 % \tableofcontents (movido para após o resumo)
 % ---
 
 \begin{document}
 % Evita avisos de destinos duplicados ao reiniciar numeração (roman/arabic)
-\hypersetup{pageanchor=false}
+\hypersetup{pageanchor=false,hypertexnames=false}
 
 % CAPA (Modelo Mackenzie)
 \pagestyle{empty}
@@ -51,9 +59,9 @@
 Projeto de Pesquisa apresentado ao Programa\
 de Pós-Graduação em Engenharia Elétrica e\
 Computação da Universidade Presbiteriana\
-Mackenzie como parte dos requisitos para a\
-aprovação na disciplina de Metodologia do\
-Trabalho Científico.}
+Mackenzie como parte dos requisitos para \
+qualificação para o grau de Doutor em \
+Engenharia Elétrica e Computação.}
 \strut}
 \vskip 3.0cm
 \textbf{
@@ -72,7 +80,7 @@ São Paulo, 2025\
 \textbf{RESUMO}
 \end{center}
 \renewcommand{\baselinestretch}{0.6666666}
-Esta tese, em fase de qualificação, propõe uma arquitetura para captar, integrar e organizar eventos educacionais — interações, artefatos e registros operacionais — gerados em ambientes de Project‑Based Learning (PBL) em um módulo de um curso de engenharia de software, com o propósito de alimentar um gêmeo digital do ecossistema. Parte-se da limitação de abordagens pontuais, insuficientes para representar a dinâmica do processo de aprendizagem em contextos autênticos e a articulação entre estrutura, comportamento e processo das equipes. O trabalho descreve um modelo que consolida fontes heterogêneas e fornece uma base unificada e rastreável para acompanhar o andamento dos projetos e apoiar a orquestração pedagógica, sem realizar mensuração de desempenho discente.
+Esta tese, em fase de qualificação, propõe uma arquitetura para captar, integrar e organizar eventos educacionais — interações, artefatos e registros operacionais — gerados em ambientes de Project‑Based Learning (PBL) em um módulo de um curso de engenharia de software, com o propósito de alimentar um gêmeo digital do ecossistema. Parte-se da limitação de abordagens pontuais, insuficientes para representar a dinâmica do processo de aprendizagem em contextos autênticos e a articulação entre estrutura, comportamento e processo das equipes. O trabalho descreve um modelo que consolida fontes heterogêneas e fornece uma base unificada e rastreável para acompanhar o andamento dos projetos e apoiar a orquestração pedagógica.
 Especificamente, a pesquisa abrange: (i) concepção do modelo; (ii) definição dos tipos de eventos e metadados; (iii) especificação de esquemas e contratos de dados; (iv) modelagem da arquitetura e dos fluxos de ingestão, processamento e persistência; (v) implementação de protótipo integrado a ferramentas de desenvolvimento e colaboração; (vi) demonstração por estudo de caso; e (vii) diretrizes de implantação e escalabilidade. Metodologicamente, adota-se Design Science Research, combinando revisão sistemática da literatura, desenvolvimento do artefato e técnicas de arquitetura e especificação de gêmeos digitais. Como contribuição, apresenta-se um arcabouço técnico‑pedagógico para captura e rastreabilidade de eventos em PBL, ampliando a visibilidade do processo e a integração entre as perspectivas estrutural, comportamental e de processo, preservando a natureza experiencial da abordagem. Nesta etapa de qualificação não são apresentados resultados nem discussões, restringindo-se à fundamentação, ao escopo e ao plano metodológico.
 \vspace{0.5cm}
 \begin{flushleft}
@@ -96,7 +104,7 @@ Especificamente, a pesquisa abrange: (i) concepção do modelo; (ii) definição
 
 \newpage
 % Reativa âncoras de página para a parte principal
-\hypersetup{pageanchor=true}
+\hypersetup{pageanchor=true,hypertexnames=false}
 \pagestyle{plain}
 \pagenumbering{arabic}
 \renewcommand{\baselinestretch}{1.5}
@@ -105,30 +113,10 @@ Especificamente, a pesquisa abrange: (i) concepção do modelo; (ii) definição
 
 \section{INTRODUÇÃO}
 
-A Aprendizagem Baseada em Projetos (Project-Based Learning — PBL) consolidou-se
-como abordagem central para o desenvolvimento de competências técnicas e
-transversais em cursos de engenharia, ao articular teoria e prática em torno de
-problemas autênticos \cite{zhang2023, lavado2024, guo2020}. Por sua natureza,
-o PBL promove aprendizagem experiencial: estudantes planejam, executam e
-refletem sobre projetos que integram conhecimentos conceituais e aplicações
-práticas. Para que essa experiência se traduza em melhoria pedagógica contínua,
-é necessário dispor de instrumentos com visibilidade e rastreabilidade
-do caminho que leva ao produto final — isto é, o processo — e não apenas do
-resultado entregue em marcos específicos.
+A Aprendizagem Baseada em Projetos (Project-Based Learning — PBL) consolidou-se como abordagem central para o desenvolvimento de competências técnicas e transversais em cursos de engenharia, ao articular teoria e prática em torno de problemas autênticos \cite{zhang2023, lavado2024, guo2020}. Por sua natureza, o PBL promove aprendizagem experiencial: estudantes planejam, executam e refletem sobre projetos que integram conhecimentos conceituais e aplicações práticas. Para que essa experiência se traduza em melhoria pedagógica contínua, é necessário dispor de instrumentos com visibilidade e rastreabilidade do caminho que leva ao produto final — isto é, o processo — e não apenas do resultado entregue em marcos específicos.
 
-Observar processos em PBL, porém, é desafiador. O desempenho dos estudantes
-emerge de interações distribuídas no tempo, mediadas por ferramentas e papéis
-distintos (equipes, docentes, parceiros externos). O fenômeno é
-multidimensional (cognitiva, procedimental, colaborativa e metacognitiva) e
-altamente dinâmico, o que torna a observação sujeita à subjetividade e à
-intermitência quando apoiada apenas em instrumentos pontuais (provas,
-apresentações e rubricas de produto). Soma-se a isso a fragmentação dos dados
-relevantes em múltiplas plataformas (repositórios de código, gestão de tarefas,
-mensageria, ambientes de aula), dificultando a construção de uma visão
-integrada que subsidie decisões pedagógicas informadas e a orquestração do processo
-\cite{romero2010, romero2020}. Em síntese, faltam meios sistemáticos para
-observar o processo em curso e para transformar essa observação em evidências
-interpretáveis por diferentes stakeholders.
+Observar processos em PBL, porém, é desafiador. O desempenho dos estudantes emerge de interações distribuídas no tempo, mediadas por ferramentas e papéis distintos (equipes, docentes, parceiros externos). O fenômeno é multidimensional (cognitiva, procedimental, colaborativa e metacognitiva) e altamente dinâmico, o que torna a observação sujeita à subjetividade e à
+intermitência quando apoiada apenas em instrumentos pontuais (provas, apresentações e rubricas de produto). Soma-se a isso a fragmentação dos dados relevantes em múltiplas plataformas (repositórios de código, gestão de tarefas, mensageria, ambientes de aula), dificultando a construção de uma visão integrada que subsidie decisões pedagógicas informadas e a orquestração do processo \cite{romero2010, romero2020}. Em resumo, faltam meios sistemáticos para observar o processo em curso e para transformar essa observação em evidências interpretáveis por diferentes públicos.
 
 Nesse cenário, os Gêmeos Digitais (Digital Twins) despontam como tecnologia
 capaz de aproximar a observação do PBL daquilo que se pretende acompanhar: o
@@ -188,7 +176,7 @@ princípios éticos e de privacidade.
 especificar uma arquitetura de captura, integração e organização de eventos de
 ensino e aprendizagem que integre as visões arquiteturais estrutural,
 comportamental e de processo, de forma a alimentar um gêmeo digital do
-ecossistema PBL e apoiar a decisão docente, sem mensurar desempenho discente.
+ecossistema PBL e subsidiar a tomada de decisão do corpo docente.
 
 \subsection{Objetivos Específicos}
 
@@ -216,8 +204,7 @@ específicos, organizados de forma progressiva:
         cronograma, compliance ética) e plano de coleta de eventos.
   \item Avaliar a arquitetura e o pipeline por métodos de avaliação
         arquitetural (ATAM/SEI) e por métricas operacionais (latência,
-        throughput, perda de eventos, integridade e confiabilidade), sem
-        qualquer mensuração de desempenho discente.
+        throughput, perda de eventos, integridade e confiabilidade).
   \item Sistematizar diretrizes de adoção e manutenção; discutir limitações e
         ameaças à validade; propor roteiro de evolução e escalabilidade para
         diferentes contextos educacionais.
@@ -234,7 +221,7 @@ Se uma arquitetura de captura, integração e organização de eventos for
 projetada e integrada às visões arquiteturais estrutural, comportamental e de
 processo, então ela deverá consolidar, com rastreabilidade e confiabilidade,
 dados de diferentes fontes do ecossistema PBL para apoiar a decisão docente,
-sem mensurar desempenho discente, manifestando-se por:
+manifestando-se por:
 
 \begin{itemize}
   \item \textbf{Cobertura de fontes e completude de eventos}: integração de repositórios Git, gestão de tarefas e fontes institucionais com perdas toleráveis e consistência temporal;
@@ -374,7 +361,7 @@ progresso da aprendizagem e identificando oportunidades de intervenção
 pedagógica.
 
 A aplicação de tecnologias de Gêmeos Digitais no contexto educacional
-representa uma oportunidade inovadora para endereçar estas limitações.
+oferece uma alternativa concreta para enfrentar estas limitações.
 Diferentemente de simulações estáticas ou sistemas de monitoramento pontuais,
 os gêmeos digitais podem oferecer capacidades de sincronização contínua com
 processos reais, análise preditiva e otimização baseada em dados
@@ -432,14 +419,7 @@ de profissionais mais qualificados e melhor preparados para os desafios da
 indústria de software contribui diretamente para a competitividade nacional no
 setor de tecnologia da informação.
 
-Finalmente, a pesquisa alinha-se com tendências internacionais de digitalização
-da educação e aplicação de tecnologias emergentes para melhoria dos processos
-educacionais. A experiência acumulada durante a pandemia de COVID-19 evidenciou
-a importância de tecnologias educacionais robustas e a necessidade de métodos
-de avaliação adaptados aos ambientes digitais de aprendizagem. Neste contexto,
-o desenvolvimento de instrumentos de avaliação baseados em gêmeos digitais de
-processos e sistemas representa uma contribuição oportuna e estratégica para o
-futuro da educação em engenharia.
+Por fim, a pesquisa se insere nas tendências de digitalização da educação e no uso de tecnologias emergentes para aprimorar processos educacionais. A experiência acumulada durante a pandemia de COVID-19 evidenciou a importância de tecnologias educacionais robustas e a necessidade de métodos de avaliação adaptados a ambientes digitais de aprendizagem. Nesse contexto, o desenvolvimento de instrumentos de avaliação baseados em gêmeos digitais de processos e sistemas constitui contribuição oportuna para a educação em engenharia.
 
 \section{REFERENCIAL TEÓRICO}
 
@@ -450,10 +430,7 @@ metodologia educacional com características específicas que a distinguem de
 outras abordagens pedagógicas, organizando o processo educacional em torno de
 projetos autênticos e complexos onde os estudantes desenvolvem competências
 attravés da execução de atividades práticas e significativas \cite{thomas2000,
-savery2015}. Esta metodologia fundamenta-se nos princípios da aprendizagem
-experiencial de Kolb \cite{kolb1984}, que estabelece um ciclo de aprendizado
-composto por quatro estágios: experiência concreta, observação reflexiva,
-conceituação abstrata e experimentação ativa.
+savery2015}. Esta metodologia fundamenta-se na aprendizagem pela experiência, articulando prática e reflexão.
 
 O conceito de PBL caracteriza-se por sua abordagem específica de organizar o
 processo educacional em torno de projetos complexos, autênticos e com propósito
@@ -467,12 +444,12 @@ ingenharia.
 
 A estrutura pedagógica do PBL caracteriza-se por elementos fundamentais que
 distingem esta metodologia de abordagens convencionais de ensino por projetos.
-Primeiramente, os projetos devem apresentar questões ou problemas complexos que
+Os projetos devem apresentar questões ou problemas complexos que
 não possuem soluções únicas ou predeterminadas, exigindo dos estudantes
 investigação aprofundada e tomada de decisões fundamentadas \cite{savery2015}.
-Em segundo lugar, a autenticidade dos projetos é crucial, devendo refletir
+A autenticidade dos projetos é central, devendo refletir
 situações reais do contexto profissional e conectar-se com necessidades
-genúinas da sociedade ou da indústria. Terceiro, a natureza colaborativa dos
+genúinas da sociedade ou da indústria. Além disso, a natureza colaborativa dos
 projetos promove o desenvolvimento de competências interpessoais e de trabalho
 em equipe, essenciais na prática profissional contemporânea.
 
@@ -502,8 +479,7 @@ critérios convencionais de avaliação, tradicionalmente focados na verificaç�
 de conhecimentos declarativos, apresentam características distintas dos
 requisitos de observação processual e contínua típicos do PBL. Torna-se
 necessário desenvolver instrumentos que considerem a qualidade dos produtos
-desenvolvidos, os processos adotados e as evidências de atividade, sem
-mensuração de desempenho discente \cite{hmelo2004}.
+desenvolvidos, os processos adotados e as evidências de atividade \cite{hmelo2004}.
 
 Estudos recentes documentam resultados positivos da aplicação de PBL no
 desenvolvimento de competências específicas da engenharia de software. Bachmann
@@ -515,8 +491,8 @@ teóricos com aplicações práticas.
 
 \subsection{Gêmeos Digitais (Digital Twins)}
 
-Os Gêmeos Digitais emergem como uma tecnologia com potencial transformador que
-pode representar uma evolução dos paradigmas tradicionais de simulação e
+Os Gêmeos Digitais emergem como tecnologia com potencial de mudança e
+podem representar uma evolução dos paradigmas tradicionais de simulação e
 modelagem de sistemas. Grieves \cite{grieves2014} estabelece a definição
 seminal de gêmeo digital como uma representação virtual dinâmica de um objeto,
 sistema, processo ou entidade que mantém sincronização contínua com seu
@@ -549,8 +525,7 @@ sistêmica. Por fim, os \textbf{gêmeos de processo} modelam fluxos de trabalho,
 procedimentos operacionais e sequências de atividades, oferecendo oportunidades
 de otimização de processos e identificação de gargalos operacionais.
 
-A aplicação de gêmeos digitais no contexto educacional representa uma fronteira
-emergente com potencial transformador. Silveira e Martins
+A aplicação de gêmeos digitais no contexto educacional está em expansão. Silveira e Martins
 Estudos analisam o panorama de aplicação de gêmeos digitais na América Latina, destacando iniciativas pioneiras em educação superior que utilizam esta tecnologia para simulações realistas e interativas. Estes trabalhos
 enfatizam a distinção fundamental entre simulações estáticas tradicionais e
 gêmeos digitais dinâmicos, ressaltando como a capacidade de atualização em
@@ -668,6 +643,29 @@ compreensão profunda dos processos de aprendizagem, análise de performance dos
 sistemas tecnológicos utilizados e fornecimento de feedback em tempo real para
 otimização tanto da experiência educacional quanto da infraestrutura de
 suporte.
+
+
+
+
+
+
+
+\subsubsection{Avaliação de Arquitetura com ATAM/SEI}
+
+A avaliação de arquiteturas de software é uma prática fundamental para garantir que um sistema atenda aos seus requisitos de qualidade. O Architecture Tradeoff Analysis Method (ATAM), desenvolvido pelo Software Engineering Institute (SEI), é um método sistemático para essa finalidade, focando na identificação de riscos, pontos de sensibilidade e trade-offs em decisões arquiteturais antes que se tornem custosas para alterar \cite{kazman2000atam}.
+
+A relevância contínua do ATAM é evidenciada por trabalhos recentes que o comparam com padrões modernos, como a norma ISO/IEC/IEEE 42020:2019. Um estudo de Oliveira, Mello e Almeida \cite{10022111} destaca que, embora ambos os enfoques tratem de atributos de qualidade, o ATAM é particularmente eficaz na criação de uma "árvore de utilidade" que torna explícitos os trade-offs entre esses atributos, como a relação entre desempenho e modificabilidade.
+
+No contexto desta tese, os "direcionadores de negócio" do ATAM são os objetivos pedagógicos do PBL. A aplicação do método na arquitetura do Gêmeo Digital é, portanto, pertinente para:
+\begin{itemize}
+    \item \textbf{Conectar decisões técnicas a objetivos pedagógicos}: Assegurar que o pipeline de dados, os modelos e as visualizações propostas atendam aos requisitos de observabilidade do processo de aprendizagem. Um cenário de ATAM, por exemplo, poderia analisar se a latência na coleta de eventos de um repositório Git é baixa o suficiente para permitir que um docente intervenha em um projeto de equipe em tempo hábil, validando o atributo de qualidade de "desempenho" em um contexto pedagógico.
+    \item \textbf{Identificar trade-offs críticos}: A arquitetura de um Gêmeo Digital educacional envolve múltiplos trade-offs. Por exemplo, aumentar a granularidade dos eventos coletados para melhorar a "modificabilidade" e a capacidade de análise pode colidir com requisitos de "privacidade" e "minimização de dados". O ATAM oferece um framework estruturado para analisar, documentar e justificar as decisões tomadas sobre esses trade-offs.
+    \item \textbf{Mitigar riscos proativamente}: A avaliação pode revelar riscos como a dificuldade de integrar uma nova ferramenta de colaboração ao ecossistema (risco de "interoperabilidade") ou a sobrecarga de informação nos dashboards dos docentes (risco de "usabilidade"). A identificação precoce desses riscos permite o planejamento de táticas de mitigação, como a criação de conectores mais flexíveis ou a personalização das interfaces.
+\end{itemize}
+
+Nesse sentido, a aplicação do ATAM valida a robustez técnica da solução e verifica seu alinhamento com a finalidade educacional do Gêmeo Digital, tornando as decisões arquiteturais explícitas e justificadas à luz dos objetivos do PBL.
+.
+
 
 \subsubsection{Modelo de PBL de Referência: Inteli e a Aplicação Prática de PBL}
 
@@ -967,6 +965,58 @@ na definição de métricas objetivas para competências transversais. Estas
 limitações serão consideradas na interpretação dos resultados e na proposição
 de trabalhos futuros.
 
+\section{POSICIONAMENTO DA PESQUISA}
+
+Esta seção explicita, com base na revisão sistemática e no levantamento bibliométrico conduzidos, o lugar desta tese no estado da arte sobre avaliação em Aprendizagem Baseada em Projetos (ABP) na Engenharia de Software. Apresentamos o escopo e a questão de pesquisa (PICO), a estratégia de busca e seleção (protocolo de Kitchenham \cite{kitchenham2004}), o funil de triagem, as visões analíticas adotadas (inspiradas no RM‑ODP \cite{iso10746}) e as lacunas sintetizadas que orientam a proposta arquitetural desta tese.
+
+\subsection{Questão e Escopo (PICO)}
+
+A formulação da questão de pesquisa seguiu o framework \textbf{PICO} (População, Intervenção, Comparação, Resultados), recomendado para revisões sistemáticas em Engenharia de Software \cite{kitchenham2004} e consolidado na literatura metodológica \cite{santos2007pico}. Essa escolha assegura uma ancoragem explícita entre a pergunta orientadora, os termos de busca e os critérios de seleção, reduzindo vieses e reforçando a rastreabilidade do protocolo.
+
+No contexto desta tese, a População considera o ensino superior — com ênfase em Engenharia de Software — em ambientes autênticos de Aprendizagem Baseada em Projetos. A Intervenção abrange métodos, instrumentos, arquiteturas e tecnologias de apoio à avaliação em ABP, com interesse particular em monitoramento processual e feedback formativo. A Comparação não foi definida como requisito obrigatório, sendo utilizada apenas quando estudos alternativos eram informativos para o tema. Os Resultados de interesse concentram-se na objetividade (métricas e validação), na escalabilidade (automação e padronização) e na avaliação processual (capacidade de acompanhar e retroalimentar o processo em curso).
+
+O PICO orientou de ponta a ponta o protocolo: guiou a decomposição da pergunta em facetas para a construção das strings de busca; fundamentou os critérios de inclusão e exclusão — ao exigir alinhamento explícito aos elementos P, I e O —; e estruturou o formulário de extração, de modo que intervenções e resultados fossem registrados de forma consistente. O mapeamento entre PICO e questões de pesquisa (RQs) foi documentado no protocolo e serviu de base para a síntese descritiva dos achados.
+
+Em consonância, o protocolo de revisão adotou as três fases de Kitchenham \cite{kitchenham2004}. No planejamento, justificaram-se escopo e necessidade da revisão, formalizou-se a questão (via PICO), definiram-se as visões analíticas (RM‑ODP), os critérios e o plano de análise. Na condução, realizaram-se as buscas na Web of Science, com documentação das strings e filtros; a triagem ocorreu no Rayyan, seguida de avaliação de qualidade e extração padronizada. No relato, consolidou-se a síntese descritiva, registrou-se com transparência o funil (882 \,$\to$\, 301 \,$\to$\, 20) e organizaram-se os artefatos para auditabilidade e reuso. Esse encadeamento confere clareza metodológica ao posicionamento e sustenta os requisitos do modelo proposto.
+
+\subsection{Estratégia Bibliométrica e Bases}
+
+Adotou‑se a \textbf{Web of Science} como única base de dados para a coleta principal, por combinar curadoria rigorosa (peer review), amplitude multidisciplinar e facilidades de exportação padronizada (RIS/DOI), em conformidade com Kitchenham \cite{kitchenham2004}. Idiomas não foram restritos na busca; na prática, os resultados recuperados foram predominantemente em inglês. As strings foram elaboradas de forma incremental e validadas por buscas piloto, decompondo a questão em facetas (escopo ABP, avaliação e contexto educacional) e adicionando termos específicos conforme as visões analíticas adotadas.
+
+Para garantir cobertura e reduzir vieses na coleta, estruturamos a busca segundo as cinco visões do \textbf{Reference Model of Open Distributed Processing (RM‑ODP, ISO/IEC 10746)} \cite{iso10746}. Essas visões funcionam aqui como lentes complementares para mapear o problema de avaliação em ABP: a \emph{visão empresarial} enquadra propósitos, políticas e atores institucionais; a \emph{visão de informação} foca instrumentos e fluxos informacionais (rubricas, dashboards, analytics); a \emph{visão computacional} privilegia objetividade, padronização e validação; a \emph{visão de engenharia} orienta mecanismos de monitoramento processual por eventos/telemetria; e a \emph{visão de tecnologia} trata da instrumentação de competências transversais e de plataformas concretas. O uso coordenado dessas visões aumentou a cobertura temática e preservou a rastreabilidade entre requisitos, dados e soluções analisadas. As strings foram, portanto, especializadas por visão, combinando termos‑base de ABP e avaliação com termos específicos e, quando necessário, filtros de exclusão.
+
+\subsection{Funil de Seleção e Critérios}
+
+A coleta multi‑camadas retornou 882 registros totais. Após retenção de DOIs e deduplicação inter‑camadas por DOI, consolidou‑se um conjunto com \textbf{301 artigos}. A triagem seguiu o protocolo de Kitchenham \cite{kitchenham2004}: títulos e resumos foram avaliados em ambiente de triagem (Rayyan), aplicando critérios de inclusão/exclusão definidos no protocolo; os estudos potencialmente elegíveis passaram à leitura completa, extração padronizada e síntese descritiva. O conjunto final incluiu \textbf{20 artigos}.
+
+\paragraph{Ferramenta de triagem (Rayyan).}
+Para operacionalizar a etapa de seleção utilizamos o \textbf{Rayyan} (\url{https://www.rayyan.ai}), uma plataforma web voltada a revisões sistemáticas e mapeamentos, que oferece organização de referências, triagem colaborativa (com possibilidade de cegamento), marcação estruturada de critérios, busca e filtros avançados e registro de razões de exclusão. Neste estudo, os registros consolidados (formato RIS, com DOI) foram importados para o Rayyan e triados segundo os \textbf{critérios de inclusão e exclusão} definidos no protocolo em conformidade com Kitchenham \cite{kitchenham2004}. Cada decisão foi justificada por rótulos padronizados, e os estudos classificados como “potencialmente incluídos” seguiram para leitura completa e extração padronizada, garantindo transparência e reprodutibilidade do funil.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{assets/Funil_WoS_Posicionamento.png}
+  \caption{Funil de seleção segundo Kitchenham: busca na Web of Science, organização por visões (RM\textendash ODP), deduplicação por DOI, triagem no Rayyan, avaliação em texto completo e seleção final.}
+  \label{fig:funil-kitchenham}
+\end{figure}
+
+Para assegurar consistência e relevância do corpus, os critérios de elegibilidade foram definidos a priori e aplicados de forma sistemática. Foram considerados elegíveis estudos que tratassem de avaliação em contextos de Aprendizagem Baseada em Projetos no ensino superior, preferencialmente em cursos de Engenharia/Computação; que descrevessem métodos, instrumentos, arquiteturas ou tecnologias com potencial de apoiar a avaliação (do processo e/ou do produto); e que apresentassem desenho empírico ou relato técnico suficientemente detalhado para permitir extração padronizada de evidências. Exigiu‑se ainda publicação com revisão por pares e identificação por DOI, sem restrição prévia de idioma (na prática, predominou o inglês).
+
+Foram excluídos trabalhos que não abordassem ABP ou que não tratassem de avaliação; estudos restritos à educação básica (K–12) ou a contextos sem transponibilidade para o ensino superior em Engenharia/Computação; peças opinativas e editoriais sem base empírica; duplicatas entre camadas de busca após normalização por DOI; e registros que não disponibilizassem metadados mínimos para triagem e extração reprodutível.
+
+Do ponto de vista da cobertura temática, o consolidado (n=301) revelou assimetrias características do campo. A perspectiva de Engenharia — crucial para avaliação processual em tempo real — é praticamente ausente. As visões Empresarial e de Informação aparecem com maior frequência, mas dispersas entre instrumentos e justificativas que raramente convergem para modelos integrados. Na visão Computacional, observa‑se baixa padronização de métricas e escassez de estudos com validação explícita (confiabilidade/validade). Já a visão de Tecnologia tende a privilegiar resultados finais e percepções, com pouca instrumentação longitudinal de competências transversais. Esse panorama corrobora a oportunidade e orienta as decisões arquiteturais assumidas nesta tese.
+
+\subsection{Síntese das Lacunas e Direcionadores}
+
+Da síntese emergem lacunas que direcionam a presente tese: (i) \textbf{integração informacional} entre dados técnicos, colaborativos e formativos (superando instrumentos isolados); (ii) \textbf{objetividade e escalabilidade} por meio de métricas operacionais com protocolos de validação (confiabilidade interavaliadores, reprodutibilidade); (iii) \textbf{avaliação processual} com \textbf{arquitetura orientada a eventos} para monitoramento contínuo/feedback; (iv) \textbf{instrumentação de competências transversais} com sinais observáveis no tempo. Essas lacunas mapeiam diretamente para as visões 2–4 (com 5 como dimensão de dados) e fundamentam os requisitos do modelo proposto.
+
+\subsection{Posicionamento desta Tese}
+
+Esta tese propõe uma \textbf{abordagem arquitetural integrada} — formalizada como gêmeo digital educacional — que: (a) define um \textbf{modelo de informação} para integrar evidências de processo e produto; (b) implementa um \textbf{pipeline computacional} com métricas objetivas e validação; e (c) adota um \textbf{backbone orientado a eventos} para avaliação processual e feedback formativo em ABP. O desenho ancora‑se em visões arquiteturais (ISO/IEC/IEEE 42010), mantendo rastreabilidade entre evidências, critérios e decisões pedagógicas.
+
+\subsection{Protocolo e Reprodutibilidade}
+
+O protocolo (Kitchenham \cite{kitchenham2004}) foi documentado nas fases de \emph{planejamento, condução e relato}, incluindo strings por visão, critérios, planilhas de extração e artefatos de exportação (RIS/DOI). A transparência do funil (882 \textrightarrow{} 301 \textrightarrow{} 20) e a descrição das visões asseguram auditabilidade e reuso. A seção de Metodologia detalha os procedimentos complementares de validação utilizados nesta tese.
+
 \section{CRONOGRAMA}
 
 O desenvolvimento desta pesquisa de doutorado está estruturado em fases
@@ -979,45 +1029,42 @@ seus respectivos períodos de execução.
   \centering
   \caption{Cronograma de Execução da Pesquisa}
   \label{tab:cronograma}
-  \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|}
+  % Reduz o tamanho e força ajuste à largura do texto
+  \small
+  \setlength{\tabcolsep}{4pt}
+  \resizebox{\textwidth}{!}{%
+  \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
     \hline
-    \textbf{Atividade}      & \textbf{Fev} & \textbf{Mar} & \textbf{Abr} & \textbf{Mai} & \textbf{Jun} & \textbf{Jul} & \textbf{Ago} & \textbf{Set} & \textbf{Out} \\
+    \textbf{Atividade}      & \textbf{Ago} & \textbf{Set} & \textbf{Out} & \textbf{Nov} & \textbf{Dez} & \textbf{Jan} & \textbf{Fev} & \textbf{Mar} & \textbf{Abr} & \textbf{Mai} & \textbf{Jun} & \textbf{Jul} & \textbf{Ago} & \textbf{Set} & \textbf{Out} \\
     \hline
-    Pesquisa Bibliográfica  & X            & X            & X            &              &              &              &              &              &              \\
+    Pesquisa Bibliográfica  & X            & X            & X            & X            &              &              &              &              &              &              &              &              &              &              &              \\
     \hline
-    Proposição do Modelo    &              & X            & X            &              &              &              &              &              &              \\
+    Proposição do Modelo    &              & X            & X            & X            & X            & X            & X            & X            &              &              &              &              &              &              &              \\
     \hline
-Exemplo Aplicado          &              &              &              & X            & X            & X            &              &              &              \\
+Exemplos Aplicados        &              &              &              &              &              &              & X            & X            & X            & X            & X            & X            &              &              &              \\
     \hline
-    Análise de Resultados   &              &              &              &              &              & X            & X            & X            &              \\
+    Análise e Preparação da Defesa   &              &              &              &              &              &              &              &              &              &              &              &              & X            & X            &              \\
     \hline
-    Preparação Qualificação &              &              &              &              &              &              &              & X            & X            \\
+    \textbf{Defesa de Tese}   &              &              &              &              &              &              &              &              &              &              &              &              &              &              & \textbf{X} \\
     \hline
-    \textbf{Qualificação}   &              &              &              &              &              &              &              &              & \textbf{X}   \\
-    \hline
-  \end{tabular}
+  \end{tabular}%
+  }
 \end{table}
 
-\textbf{Fase 1 - Pesquisa Bibliográfica (Fevereiro-Abril 2026)}: Revisão sistemática da literatura sobre gêmeos digitais aplicados à educação, metodologias PBL em engenharia de software, e frameworks de avaliação educacional. Esta fase incluirá a análise crítica de trabalhos correlatos e a identificação de lacunas de pesquisa que justifiquem a originalidade da proposta.
+\textbf{Fase 1 - Pesquisa Bibliográfica (Agosto-Novembro 2025)}: Revisão sistemática da literatura sobre gêmeos digitais aplicados à educação, metodologias PBL em engenharia de software, e frameworks de avaliação educacional. Esta fase inclui refinamentos até novembro.
 
-\textbf{Fase 2 - Proposição do Modelo (Março-Abril 2026)}: Desenvolvimento do modelo conceitual de gêmeo digital para avaliação de projetos PBL, incluindo a especificação detalhada das três visões arquiteturais (estrutural, comportamental e de processo), definição de métricas e indicadores de avaliação, e elaboração dos requisitos funcionais e não funcionais do sistema.
+\textbf{Fase 2 - Proposição do Modelo (Setembro/2025–Março/2026)}: Desenvolvimento do modelo conceitual de gêmeo digital, incluindo a especificação das três visões arquiteturais (estrutural, comportamental e de processo), a definição de métricas e indicadores de avaliação e a explicitação de requisitos funcionais e não funcionais, com iterações sucessivas até março para consolidar decisões e artefatos.
 
-\textbf{Fase 3 - Exemplo Aplicado (Maio-Julho 2026)}: Implementação prática do modelo proposto em contexto real de PBL, incluindo seleção do ambiente educacional, especificação de requisitos específicos do contexto, escolha criteriosa de tecnologias adequadas, desenvolvimento do protótipo funcional e coleta de dados empíricos do repositório Git para demonstrar a captura de eventos.
+\textbf{Fase 3 - Exemplos Aplicados (Fevereiro–Julho)}: Implementação prática do modelo em dois exemplos aplicados conduzidos entre fevereiro e julho.
 
-\textbf{Fase 4 - Análise de Resultados (Julho-Setembro 2026)}: Processamento e análise dos dados coletados durante o exemplo aplicado (captura de eventos Git), avaliação do comportamento arquitetural do pipeline e documentação dos resultados obtidos.
+\textbf{Fase 4 - Análise e Preparação (Agosto–Setembro)}: Análise dos dados coletados e preparação da defesa (documento final e apresentação).
 
-\textbf{Fase 5 - Preparação para Qualificação (Setembro-Outubro 2026)}: Consolidação de todos os resultados em documento de qualificação, preparação da apresentação oral, e ajustes finais baseados em revisões do orientador e colaboradores.
-
-A \textbf{Qualificação} está prevista para \textbf{outubro de 2026}, quando serão
-apresentados todos os resultados obtidos nas fases anteriores, incluindo o
-modelo conceitual validado, os resultados do exemplo aplicado, e as
-contribuições científicas da pesquisa para as áreas de educação em engenharia e
-tecnologias educacionais emergentes.
+A \textbf{Defesa de Tese} ocorrerá em \textbf{outubro do próximo ano}.
 
 \section{MODELO PROPOSTO}
 
-\input{modelo_proposto_cep}
-\iffalse
+% [Removido] Conteúdo de modelo_proposto_cep.tex foi excluído.
+% Mantenha esta seção para futuras inserções ou redija aqui diretamente.
 
 
 \subsection{Visão Geral e Contexto}
@@ -1032,9 +1079,9 @@ O processo adota Scrum: equipes definem PO e Scrum Master, realizam planning, da
 
 O modelo utiliza \textit{Complex Event Processing} (CEP) para agregar e correlacionar eventos de múltiplas fontes (Git, gestão de tarefas, sistemas acadêmicos, sensores institucionais) derivando métricas integradas pelas três visões arquiteturais.
 
-\subsection{Processos e Abstrações}
+\subsection{Modelagem PBL}
 
-O modelo é estruturado seguindo metodologia IDEF0 (Integration Definition for Function Modeling), proporcionando visão hierárquica dos processos desde o nível macro até os detalhes operacionais.
+O modelo pedagógico é estruturado com base em PBL e descrito com apoio de IDEF0 (Integration Definition for Function Modeling), proporcionando visão hierárquica dos processos desde o nível macro até os detalhes operacionais.
 
 \textbf{Camada de Abstração 0 - Visão Sistêmica:}
 
@@ -1042,91 +1089,105 @@ O modelo é estruturado seguindo metodologia IDEF0 (Integration Definition for F
 
 A camada 0 apresenta o sistema PBL como função única controlada pelas \textbf{Diretrizes Curriculares MEC} e \textbf{PPC/ES}, processando \textbf{Alunos, Atividades e Comportamentos} através de mecanismos tecnológicos (\textbf{Adalove, GPS, Catracas, Repositórios}) para produzir \textbf{Alunos com Conhecimentos, Artefatos e Evidências}.
 
-\subsection{Modelagem: Entidades e Relacionamentos}
+\subsubsection{IDEF0 do PBL}
 
-Esta subseção apresenta a modelagem conceitual atualizada conforme estrutura hierárquica macro, desde o nível regulatório (DCN) até a execução operacional (Sprint), garantindo alinhamento institucional e pedagógico.
+Para tornar explícita a dinâmica do PBL no nível institucional e didático, iniciamos com a modelagem funcional em IDEF0. Essa visão organiza entradas, controles, mecanismos e saídas de maneira clara, permitindo alinhar expectativas pedagógicas e fluxos operacionais.
 
-\textbf{Visão Geral da Modelagem Macro:}
-
-% [Figura removida: Diagrama macro simplificado]
-
-O diagrama apresenta a arquitetura completa do modelo, destacando a cadeia hierárquica **DCN → Curso → Metaprojeto → Módulo → Sprint** e os relacionamentos operacionais entre entidades pedagógicas (Turma, Aluno, Grupo), contextuais (Parceiro, TAPI) e produtos (Artefatos, Pitch, Autoestudos, APs).
-
-\subsubsection{Hierarquia Institucional Completa}
-
-A modelagem adota estrutura hierárquica que parte das \textbf{Diretrizes Curriculares Nacionais (DCN)} e se desdobra até a execução operacional, garantindo coerência regulatória e institucional.
+- \emph{A-0 (visão sistêmica)}: o módulo de PBL recebe como entradas as ações dos estudantes e os artefatos de projeto; é conduzido por controles como DCN, PPC/ES e TAPI; e opera sobre mecanismos institucionais (LMS, repositórios, infraestrutura e docentes). As saídas são indicadores, relatórios e uma base histórica de evidências.
 
 \begin{figure}[H]
-    \centering
-    % [Figura removida: diagrama1_modelo_macro]
-\end{figure}\textbf{DCN (Diretrizes Curriculares Nacionais)} estabelecem o marco regulatório, nomeando \textbf{Cursos} e definindo regras para \textbf{Metaprojetos}. \textbf{PPC (MEC)} operacionaliza as diretrizes definindo Metaprojetos específicos. Cada \textbf{Curso} implementa múltiplos Metaprojetos que se instanciam em \textbf{Módulos} concretos ao longo da formação.
-
-\textbf{Metaprojetos} funcionam como templates pedagógicos reutilizáveis, definindo competências-alvo, estrutura curricular e metodologias. Cada instanciação gera um \textbf{Módulo} específico de 10 semanas com 5 \textbf{Sprints} de 2 semanas.
-
-A tríade \textbf{Parceiro-TAPI-Sprint} (relacionamento 1:1:1) contextualiza cada ciclo: \textbf{Parceiro} apresenta problema real, \textbf{TAPI} formaliza escopo/critérios, \textbf{Sprint} executa desenvolvimento incremental.
-
-\subsubsection{Estrutura Operacional}
-
-A execução organiza-se através da estrutura operacional que integra pessoas, grupos e processos temporais.
-
-\begin{figure}[H]
-    \centering
-    % [Figura removida: diagrama2_estrutura_operacional]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/idf0-a0.png}
+  \caption{IDEF0 A-0 — PBL como função sistêmica institucional}
+  \label{fig:idef0-a0}
 \end{figure}
 
-\textbf{Módulo} contém exatamente 5 \textbf{Sprints} e múltiplas \textbf{Turmas}. Cada \textbf{Turma} organiza \textbf{Alunos} em \textbf{Grupos} (relação 1:1), garantindo estrutura colaborativa definida. \textbf{Orientador} mantém relação N:1 com Turmas e relacionamento específico 1:1 com Aluno destacado para acompanhamento individualizado.
-
-\subsubsection{Produtos da Sprint}
-
-Cada Sprint produz produtos específicos com cardinalidades bem definidas, garantindo estrutura de entrega padronizada.
+- \emph{A-0 detalhado}: explicita como matrículas e formação de grupos, configuração do metaprojeto (TAPI) e aplicação do módulo se encadeiam, sob orientação do PPC/ES e com participação do parceiro externo.
 
 \begin{figure}[H]
-    \centering
-    % [Figura removida: diagrama3_produtos_sprint]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/idf0-a0-1dec.png}
+  \caption{IDEF0 (detalhe do A-0) — Fluxo institucional de configuração e execução}
+  \label{fig:idef0-a0-det}
 \end{figure}
 
-\textbf{Sprint} produz obrigatoriamente: 1..N \textbf{Artefatos} (código, documentos, protótipos), exatamente 1 \textbf{Pitch} (apresentação 15-30min), 1..N \textbf{Autoestudos} (preparatórios/ponderados) e 0..N \textbf{Atividades Ponderadas} (avaliações formais).
-
-\textbf{Grupos} desenvolvem Artefatos e apresentam Pitches. \textbf{Alunos} realizam Autoestudos individuais e participam de APs. \textbf{Parceiro} avalia produtos conforme critérios do \textbf{TAPI}, garantindo alinhamento com problema real.
-
-\subsubsection{Artefatos e Processos Técnicos}
-
-O desenvolvimento técnico implementa uma cadeia de rastreabilidade completa que conecta requisitos do TAPI aos artefatos finais.
+- \emph{A-1 (aplicação do módulo)}: foca o ciclo das cinco sprints, ligando instruções, autoestudos, artefatos e ritos ágeis (planning e reviews) às saídas avaliativas e de progresso.
 
 \begin{figure}[H]
-    \centering
-    % [Figura removida: diagrama4_artefatos_tecnicos]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/idf0-a1.png}
+  \caption{IDEF0 A-1 — Aplicação do módulo e ritmos por sprints}
+  \label{fig:idef0-a1}
 \end{figure}
 
-A Entidade Artefato compreende resultados tangíveis produzidos pelas equipes: código, documentos técnicos, protótipos, relatórios, apresentações e pitches. Cada Artefato possui atributos mínimos (autor(es), data/hora, versão, vínculo com sprint e requisito do TAPI) e critérios de qualidade associados (correção, completude, aderência, clareza, rastreabilidade). Artefatos são as principais evidências do progresso e da aprendizagem técnico-procedimental, constituindo-se em objeto direto de análise tanto pela visão estrutural quanto pela de processo.
+Em conjunto, os três diagramas oferecem uma narrativa coesa: do enquadramento institucional e regras do jogo (TAPI e PPC/ES), passa-se à configuração do metaprojeto com o parceiro e, por fim, ao ciclo de trabalho e avaliação conduzido por sprints, no qual artefatos e evidências se materializam.
 
-O Pitch/Review é um ritual de avaliação incremental ao final de cada sprint, com demonstração dos artefatos e discussão de decisões técnicas e de produto. O Pitch/Review consolida feedbacks do parceiro e dos docentes, registra riscos e próximos passos e pode redefinir prioridades do backlog. É momento privilegiado para coleta de evidências qualitativas (comentários, justificativas, decisões) e quantitativas (atingimento de metas, cobertura de requisitos, comparações com sprints anteriores), constituindo-se em um dos pontos críticos para a coleta de dados do gêmeo digital.
+\subsection{Papéis e entidades do PBL (descrição operacional)}
 
-% [Removido: descrição institucional de avaliação por pontos]
+Os diagramas IDEF0 situam a macro‑lógica do PBL; abaixo, explicitamos em linguagem corrente os papéis e as entidades que materializam essa lógica e que, portanto, fundamentam a observabilidade requerida pelo gêmeo digital.
 
-\subsubsection{Métricas e Indicadores}
+No plano institucional, o \textbf{Curso} e seu \textbf{PPC} orientam finalidades e restrições pedagógicas; a \textbf{Secretaria} viabiliza o funcionamento do módulo (matrículas, turmas, formações de grupos, concessão de acessos e registros oficiais); o \textbf{TAPI} (Termo de Abertura do Projeto Institucional) formaliza o desafio, resultados de aprendizagem, critérios de avaliação e salvaguardas éticas; e o \textbf{Parceiro externo} aporta o problema autêntico e participa dos ritos avaliativos com feedbacks qualificados.
 
-A dimensão analítica utiliza Complex Event Processing para correlacionar eventos de múltiplas fontes, produzindo indicadores contextualizados.
+No plano didático, o \textbf{Módulo} organiza o semestre em cinco \textbf{sprints} de duas semanas. Cada \textbf{Turma} é acompanhada por um \textbf{Professor Orientador}, responsável por garantir o alinhamento entre objetivos pedagógicos e execução, promover feedback formativo e mediar a integração com os demais docentes. Os \textbf{Grupos} definem papéis operacionais (PO, SM) e conduzem o ciclo de planejamento, execução e revisão. Docentes de áreas técnicas e transversais (programação, UX, negócios, liderança) realizam \textbf{instruções} e aplicam instrumentos de avaliação que alimentam a leitura processual do trabalho em curso.
+
+No plano dos sujeitos e artefatos, o \textbf{Aluno} participa das instruções, realiza \textbf{autoestudos}, produz \textbf{artefatos} (código, documentos, protótipos) e registra decisões, deixando rastros nos sistemas institucionais e de desenvolvimento (LMS, repositórios, quadros Kanban, presença). Cada sprint exige evidências mínimas: \emph{backlog} planejado, entregas incrementais, \textbf{pitch/review} com feedbacks documentados e autoestudos realizados. Mudanças relevantes de escopo são pactuadas e refletidas no TAPI (ou em aditivos), preservando a rastreabilidade de decisões.
+
+Essa teia de papéis e entidades explica as chaves de rastreabilidade do modelo: pessoas e grupos; calendário e sprints; requisitos (TAPI e backlog) e artefatos entregues. É nessa interseção que o gêmeo digital opera, padronizando eventos e preservando chaves institucionais (turma, módulo, grupo) para oferecer visões estruturais, comportamentais e de processo que sustentem tanto o feedback formativo quanto a prestação de contas acadêmica.
+
+\subsubsection{Diagrama de Classes do PBL}
+
+A visão estática abaixo complementa o IDEF0 ao fixar as entidades, seus relacionamentos e multiplicidades. Ela apresenta a trilha institucional (Curso \textrightarrow{} Metaprojeto \textrightarrow{} Módulo \textrightarrow{} Sprint) e suas ligações com Turmas, Grupos e Alunos, vinculando ainda os principais artefatos didáticos (Autoestudos, Atividades Ponderadas e Pitch) e o papel do Parceiro e do TAPI na orquestração do ciclo.
 
 \begin{figure}[H]
-    \centering
-    % [Figura removida: diagrama5_metricas_indicadores]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/class-pbl.png}
+  \caption{Modelo conceitual de classes do PBL — visão institucional}
+  \label{fig:class-pbl}
 \end{figure}
 
-A Entidade Métrica compreende indicadores calculados a partir de eventos e registros de diferentes sistemas (Git, gestão de tarefas, presença, interações em aula). As Métricas são operacionalizações de objetivos de aprendizagem e critérios do TAPI, com definição explícita de fórmula, unidade, periodicidade, fonte, e limitações de interpretação. Servem à retroalimentação contínua e à comparabilidade entre sprints, equipes e módulos, constituindo-se em elementos fundamentais para a construção do gêmeo digital de processos.
+Essa composição entre o processo (IDEF0) e a estrutura (classes) sustenta o restante do modelo: a coleta de eventos, a construção de indicadores e a rastreabilidade entre pessoas, sprints, requisitos do TAPI e artefatos de aprendizagem.
 
-\subsubsection{Modelo Integrado Completo}
+\subsection{Descrição do Modelo PBL}
 
-A visão consolidada integra todas as dimensões do modelo, suportando as três visões arquiteturais conforme ISO/IEC/IEEE 42010:2022.
+No \textbf{planejamento}, o TAPI define o problema a ser enfrentado, os objetivos de aprendizagem e os critérios de avaliação. O PPC/ES assegura conformidade institucional e coerência curricular. A secretaria consolida turmas e grupos e garante acessos às plataformas. O parceiro externo oferece o desafio autêntico e participa dos ritos avaliativos.
 
-\begin{figure}[H]
-    \centering
-    % [Figura removida: diagrama6_modelo_integrado]
-\end{figure}
+Na \textbf{execução}, o módulo percorre 10 semanas em 5 sprints. Cada sprint inicia com \emph{planning}, contempla instruções e autoestudos dirigidos e encerra com \emph{review} com presença do parceiro. As equipes atuam com papéis claros (PO, SM) e são acompanhadas por um orientador que promove feedback formativo e zela pela aderência a objetivos e prazos.
 
-O modelo integrado estabelece um conjunto de relacionamentos e restrições que garantem a coerência arquitetural e a integridade do processo pedagógico. A estrutura fundamental baseia-se na relação unívoca entre módulo, parceiro e TAPI, criando um elo direto entre o ambiente acadêmico e o contexto profissional real. Cada módulo referencia exatamente um TAPI (Termo de Abertura do Projeto Institucional) e está associado a um parceiro específico, assegurando que os estudantes trabalhem em problemas autênticos e alinhados com as demandas do mercado.
+Como \textbf{evidências mínimas}, cada sprint registra o backlog planejado, os artefatos entregues, o pitch/review com feedbacks documentados e os autoestudos realizados. Essas evidências sustentam a análise equilibrada de processo e produto e permitem justificar decisões e resultados ao longo do ciclo.
 
-A organização temporal segue uma estrutura rígida de 10 semanas divididas em 5 sprints de 2 semanas cada. Esta configuração permite que as equipes desenvolvam incrementos funcionais enquanto mantêm um ritmo sustentável de aprendizagem. Durante este período, instruções e autoestudos são distribuídos estrategicamente para complementar o trabalho prático, garantindo que os fundamentos teóricos sejam assimilados em paralelo ao desenvolvimento do projeto.
+Na \textbf{avaliação}, combinam‑se instrumentos docentes e contribuições qualitativas do parceiro, priorizando feedback formativo, transparência e rastreabilidade. Ajustes de calendário podem ocorrer por motivos institucionais, sem suprimir os ritos essenciais. Mudanças relevantes de escopo são pactuadas e refletidas no TAPI ou em aditivos, preservando a coerência do módulo.
+
+Ao final, cada equipe completa um ciclo de concepção a entrega, desenvolvendo competências técnicas e colaborativas em contexto autêntico e deixando um rastro consistente de evidências para reflexão, comparação e melhoria contínua.
+
+\subsection{Modelagem conceitual do gêmeo digital para PBL}
+
+Esta subseção apresenta a modelagem conceitual do gêmeo digital proposta nesta tese, em linguagem direta e alinhada à sua estrutura. O objetivo é explicitar como o gêmeo digital representa e acompanha, de ponta a ponta, o processo de aprendizagem em PBL na Engenharia de Software.
+
+\textbf{Contexto pedagógico e escopo.} Trabalhamos com módulos trimestrais de PBL de 10 semanas, organizados em 5 sprints de 2 semanas, com desafios autênticos propostos por parceiros externos. Cada módulo é formalizado por um TAPI que consolida problema, objetivos, escopo e critérios de avaliação. As equipes adotam Scrum (planning, dailies, reviews), com papéis definidos (PO, SM) e participação ativa de docentes e do parceiro. A experiência é apoiada por docentes de áreas técnicas e transversais e por um conjunto de autoestudos estruturados.
+
+\textbf{Três visões arquiteturais.} Em alinhamento à ISO/IEC/IEEE 42010 \cite{iso42010}, o modelo se organiza nas visões \emph{estrutural} (componentes, entidades, artefatos e seus vínculos), \emph{comportamental} (interações dinâmicas entre pessoas e sistemas) e de \emph{processo} (fluxos temporais e marcos). Esta organização viabiliza uma descrição coerente do sistema educacional e se relaciona aos \emph{viewpoints} do RM-ODP \cite{iso10746}.
+
+\textbf{Operação do gêmeo digital.} O gêmeo digital opera sobre um fluxo de dados contínuo, integrando fontes heterogêneas: repositórios Git, quadros Kanban, registros acadêmicos, presença e outros sinais institucionais. Eventos são padronizados e enriquecidos (normalização, chaves institucionais) e então processados por CEP para derivar métricas e indicadores formativos. Essa base alimenta visualizações e análises alinhadas a perfis de uso (docente, coordenação, equipe), com rastreabilidade entre evidências, decisões e resultados.
+
+\textbf{IDEF0 e decomposição funcional.} A definição do modelo segue IDEF0 para explicitar entradas, controles, mecanismos e saídas nas diferentes camadas de abstração. Na camada sistêmica (A-0), as entradas são atividades e interações dos estudantes; os controles incluem DCN, PPC e o TAPI; os mecanismos abrangem plataformas acadêmicas, ferramentas de desenvolvimento e sensores; e as saídas reúnem aprendizados evidenciados, artefatos e justificativas rastreáveis. Camadas subsequentes detalham coleta, processamento, materializações e consumo.
+
+\textbf{Avaliação orientada a eixos.} A interpretação das evidências combina dados instrumentados e instrumentos docentes, organizada em quatro eixos: (i) \emph{Processo} — aderência a rituais ágeis e padrões de colaboração; (ii) \emph{Produto} — qualidade técnica e alinhamento ao TAPI; (iii) \emph{Conceitual} — domínio teórico evidenciado em provas/atividades e justificativas técnicas; (iv) \emph{Colaboração} — contribuição individual e dinâmica de equipe. Os eixos são ponderáveis e podem ser adaptados ao PPC.
+
+\textbf{Restrições e pressupostos.} A adoção exige práticas mínimas: uso consistente de controle de versão e gestão de tarefas; definição explícita do TAPI; integração com sistemas acadêmicos essenciais; diretrizes éticas e de privacidade ativas. O modelo é agnóstico de tecnologia e opera por conectores, preservando portabilidade entre ecossistemas institucionais.
+
+\textbf{Resultados esperados.} Com a integração das três visões e o pipeline de eventos, espera-se melhorar transparência e feedback formativo, oferecer justificativas rastreáveis para decisões de tutoria, e possibilitar comparabilidade entre turmas e ofertas. Para pesquisadores, o gêmeo fornece uma base reprodutível e extensível para estudos longitudinais sobre aprendizagem em projetos.
+
+\subsection{Detalhamento adicional do modelo}
+
+Para ampliar a clareza operacional, consolidamos a seguir decisões e artefatos do modelo:
+
+- Estrutural: entidades institucionais (Curso, Metaprojeto, Módulo, Turma, Grupo, Aluno) e artefatos (backlog, código, documentos, pitches, avaliações) com chaves institucionais que mantêm rastreabilidade entre pessoas, sprints, requisitos do TAPI e entregas.
+- Comportamental: padrões de interação (commits, PRs, code reviews, movimentações de cards, presenças e registros em aula) correlacionados no tempo para inferir ritmos de trabalho, ciclos de feedback e coordenação.
+- Processo: calendários, sprints e marcos (entregas, reviews, checkpoints) com métricas derivadas (cadência, throughput, estabilidade de WIP, lead/cycle time quando aplicável).
+- Pipeline: coleta via APIs e conectores; padronização e validações; camadas bronze/silver/gold; materializações incrementais para gêmeo de processos e de sistema; camadas de visualização e exportação.
+- Governança: versão de esquemas, contratos de dados e catálogos de métricas; salvaguardas (pseudonimização, minimização, consentimento informado) e pontos de auditoria.
+
+Essas decisões sustentam uma implementação incremental, guiada por requisitos de qualidade (desempenho, confiabilidade, portabilidade, segurança/privacidade) e avaliada por cenários arquiteturais (ATAM) já delineados nesta seção.
 
 Cada equipe pertence exclusivamente a um módulo e executa todas as cinco sprints, criando uma jornada contínua de aprendizagem e desenvolvimento. Esta organização permite que os estudantes vivenciem um ciclo completo de desenvolvimento de software, desde a concepção inicial até a entrega final, desenvolvendo competências tanto técnicas quanto de gestão de projetos.
 
@@ -1146,30 +1207,17 @@ A linha temporal de 10 semanas segue um padrão estruturado que inicia com a apr
 
 \subsection{Framework Conceitual}
 
-O modelo pressupõe adoção de práticas ágeis, existência de TAPI estruturado, repositórios de código com gestão de tarefas e registros acadêmicos básicos. Não abrange processos administrativos externos ao módulo.
+O modelo conceitual proposto estabelece as fundações para a captura e integração de eventos em ambientes de Aprendizagem Baseada em Projetos (PBL). Ele se baseia em um conjunto de premissas e definições que garantem a coerência e a rastreabilidade dos dados coletados. A principal premissa é a adoção de práticas ágeis no desenvolvimento dos projetos, com o uso de um Termo de Abertura de Projeto Institucional (TAPI) bem estruturado, repositórios de código para controle de versão e sistemas de gestão de tarefas. O escopo do modelo se concentra nos processos pedagógicos e de desenvolvimento, não abrangendo processos administrativos externos ao módulo de ensino.
 
-Os atores principais são: \textbf{Estudantes} (executam tarefas técnicas e geram dados primários), \textbf{Equipes} (planejam e entregam incrementos com PO/Scrum Master), \textbf{Professor Orientador} (acompanhamento pedagógico e feedback formativo), \textbf{Docentes de Eixo} (instrução especializada por área), \textbf{Parceiro Externo} (apresenta problema real e valida soluções), e \textbf{Coordenação} (recursos, infraestrutura e indicadores agregados).
+O framework reconhece a interação de múltiplos atores que desempenham papéis cruciais no ecossistema PBL. Os \textbf{Estudantes}, organizados em \textbf{Equipes}, são os protagonistas do processo, executando tarefas técnicas e gerando os dados primários que alimentam o gêmeo digital. As equipes operam com papéis definidos, como Product Owner e Scrum Master, e são responsáveis pelo planejamento e entrega de incrementos de software. O \textbf{Professor Orientador} atua como mediador do processo de aprendizagem, oferecendo acompanhamento pedagógico e feedback formativo contínuo. \textbf{Docentes de Eixo} contribuem com instrução especializada em áreas específicas, enquanto o \textbf{Parceiro Externo} enriquece a experiência ao apresentar um problema autêntico e validar as soluções propostas. A \textbf{Coordenação}, por sua vez, é responsável por garantir os recursos e a infraestrutura necessários, além de utilizar os indicadores agregados para a gestão acadêmica.
 
-Os eventos são classificados em: \textbf{Acadêmicos} (instruções, presença, atividades ponderadas, provas), \textbf{Operacionais} (plannings, dailies, reviews, retrospectivas), \textbf{Técnicos} (commits, PRs, issues, builds, testes) e \textbf{Documentais} (TAPI, relatórios, apresentações).
+A dinâmica do ambiente PBL é capturada por meio de uma tipologia de eventos que abrange as diversas facetas do processo de aprendizagem. Os eventos \textbf{Acadêmicos} incluem interações formais de ensino, como instruções, registros de presença, atividades ponderadas e avaliações. Os eventos \textbf{Operacionais} refletem a aplicação de metodologias ágeis, como cerimônias de planejamento, reuniões diárias, revisões de sprint e retrospectivas. Os eventos \textbf{Técnicos}, extraídos de ferramentas de desenvolvimento, compreendem ações como commits, pull requests, issues, builds e testes. Por fim, os eventos \textbf{Documentais} registram a evolução dos artefatos do projeto, como o TAPI, relatórios de progresso e apresentações.
 
-O sistema utiliza identificadores canônicos conforme hierarquia institucional: \texttt{dcn\_id}, \texttt{curso\_id}, \texttt{metaproj\_id}, \texttt{mod\_id}, \texttt{turma\_id}, \texttt{grupo\_id}, \texttt{aluno\_id}, \texttt{sprint\_id}, \texttt{parc\_id}, \texttt{tapi\_id}, \texttt{artefato\_id}.
+A rastreabilidade e a integração dos dados são asseguradas por um sistema de identificadores canônicos que reflete a hierarquia institucional. A cadeia de identificadores, que vai desde o nível macro das diretrizes curriculares até o nível micro dos artefatos de projeto, permite uma rastreabilidade completa. Essa estrutura garante a explicabilidade dos dados e a transparência do processo, desde as normativas institucionais até os produtos finais entregues pelas equipes.
 
-A cadeia hierárquica DCN → Curso → Metaprojeto → Módulo → Sprint → Artefato permite rastreabilidade completa desde normativas institucionais até produtos finais, garantindo explicabilidade e transparência regulatória.
+Para garantir a sua eficácia e utilidade, o modelo foi projetado com base em um conjunto de requisitos de qualidade. A \textbf{Confiabilidade} é assegurada por meio de um processamento de dados determinístico e tolerante a falhas, capaz de lidar com dados faltantes ou fora de ordem. A \textbf{Latência} do sistema é projetada para atender às necessidades do ambiente educacional, com atualizações diárias e a possibilidade de consultas sob demanda. A \textbf{Escalabilidade} garante que o modelo possa ser aplicado a múltiplos módulos e turmas concorrentemente. A \textbf{Segurança} é tratada por meio de mecanismos de controle de acesso, trilhas de auditoria e criptografia dos dados. Por fim, a \textbf{Usabilidade} é garantida por meio de dashboards acessíveis e intuitivos, que oferecem visualizações com rastreabilidade completa dos dados.
 
-O sistema requer: \textbf{Confiabilidade} (processamento determinístico, tolerância a dados faltantes), \textbf{Latência} (atualizações diárias, demanda sob pedido), \textbf{Escalabilidade} (múltiplos módulos concorrentes), \textbf{Segurança} (controle de acesso, auditoria, criptografia) e \textbf{Usabilidade} (dashboards acessíveis com rastreabilidade).
 
-\subsection{Arquitetura de Implementação}
-
-O modelo integra quatro dimensões: \textbf{Pedagógica} (frequência, competências, instruções), \textbf{Parceria Externa} (TAPI, requisitos do parceiro), \textbf{Técnica} (versionamento, qualidade de código) e \textbf{Processos} (métricas ágeis, produtividade).
-
-% [Removido: eixos institucionais de avaliação]
-
-\subsection{Gêmeo Digital de Processos e Sistemas}
-
-O modelo adota abordagem híbrida: um gêmeo de processos educacionais acompanha o “como” se aprende e se trabalha; um gêmeo do sistema acompanha o “que” se constrói (o MVP). Ambos compartilham um esquema de chaves capaz de vincular pessoas, equipes, sprints, requisitos do TAPI, itens de backlog, artefatos e avaliações, permitindo rastreabilidade completa \cite{barricelli2019}.
-
-\textbf{Gêmeo de Processos}: trilhas temporais de eventos acadêmicos e operacionais com painéis de progresso por sprint.
-\textbf{Gêmeo de Sistemas}: espelha evolução do software com rastreabilidade código-TAPI-backlog.
 
 \subsection{Arquitetura Integrada do Modelo}
 
@@ -1178,6 +1226,38 @@ A arquitetura em camadas compreende: \textbf{Coleta} (APIs, NLP, integração in
 O modelo implementa três visões conforme ISO/IEC/IEEE 42010:2022 \cite{iso42010}: \textbf{Estrutural} (organização estática), \textbf{Comportamental} (interações dinâmicas) e \textbf{Processo} (fluxos temporais), derivando dos cinco viewpoints RM-ODP \cite{iso10746}.
 
 O modelo é agnóstico a tecnologias, utilizando conectores configuráveis para facilitar portabilidade entre instituições, respeitando aspectos pedagógicos, éticos e de privacidade.
+
+\subsubsection{Modelagem Dinâmica do PBL}
+
+A modelagem dinâmica do PBL, representada por meio de diagramas de sequência, ilustra as interações entre os diferentes atores e componentes do sistema ao longo do tempo. A seguir, são apresentados os principais fluxos de interação que caracterizam o processo de aprendizagem e desenvolvimento no contexto do PBL.
+
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-01.png}
+  \caption{Diagrama de sequência PBL-01 — Aluno inicia atividade: (A) abre a tarefa no LMS/Adalove (card $\rightarrow$ fazendo), (B) realiza commit/push da entrega no repositório, (C) finaliza a tarefa (card $\rightarrow$ feito, com trava) e (D) o LMS/Adalove notifica que a entrega aguarda correção.}
+  \label{fig:seq-pbl-01}
+\end{figure}
+
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-02.png}
+  \caption{Diagrama de sequência PBL-02 — Professor corrige e lança nota: (A) abre o artefato para revisão no LMS/Adalove, (B) registra feedback, (C) lança a nota e (D) o LMS/Adalove notifica a publicação ao aluno.}
+  \label{fig:seq-pbl-02}
+\end{figure}
+
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-07.png}
+  \caption{Diagrama de sequência PBL-07 — Planning e definição de metas: (A) o grupo inicia a planning (1ª aula), (B) o orientador conduz e valida o escopo, (C) o grupo cria/estima cards no Kanban e (D) o backlog é aprovado.}
+  \label{fig:seq-pbl-07}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-14.png}
+  \caption{Diagrama de Sequência PBL-14: Avaliação da Sprint.}
+  \label{fig:seq-pbl-14}
+\end{figure}
 
 \subsubsection{Abordagem Metodológica: Exemplo Aplicado e Escolha Tecnológica}
 
@@ -1198,6 +1278,78 @@ tecnológicas pré-concebidas.
 
 A estrutura do exemplo aplicado contemplará:
 
+\subsection{Modelagem do Gêmeo Digital}
+
+Esta subseção sintetiza a modelagem conceitual que estrutura o gêmeo digital orientado a eventos. Utilizamos dois modelos de classes complementares: (i) um núcleo de CEP (captura e organização de eventos educacionais) e (ii) o metamodelo de eventos no nível de módulo.
+
+\subsubsection{Modelo de Classes para CEP}
+
+O diagrama a seguir estabelece as relações centrais entre \textit{Aluno}, \textit{Professor/Orientador}, \textit{Projeto} e a entidade \textit{CEP}, incluindo a taxonomia de \textit{Eixos} (Matemática/Física, Computação, Negócios, UX, Liderança) e elementos de contexto (\textit{Cenários}, \textit{Assunto}). Este núcleo fornece as chaves institucionais e de contexto que permitem normalizar e consultar eventos ao longo do tempo.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/class-cep.png}
+  \caption{Modelo conceitual de classes — CEP do PBL: relaciona alunos, professores/orientadores, projetos e a entidade CEP, com taxonomias de eixos e cenários/assuntos para contextualização dos eventos.}
+  \label{fig:class-cep}
+\end{figure}
+
+\subsubsection{Modelo de Classes de Eventos}
+
+O metamodelo de eventos organiza a hierarquia \textit{Evento} e especializações (\textit{EventoEntrega}, \textit{EventoFeedback}, \textit{EventoPresenca}, \textit{EventoGenerico}, \textit{EventoAutoestudo}) e conecta atores e artefatos do PBL: \textit{Aluno}, \textit{Grupo}, \textit{Professor}, \textit{Sprint} e \textit{Artefato}. Cada evento:
+
+- conforma uma \textit{VersaoSchema} e pode ser agregado em \textit{LoteIngestao};
+- referencia artefatos e guarda relação de resultado com \textit{Validacao};
+- registra a origem (\textit{SistemaFonte}/LMS e/ou \textit{Infra}).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/class-event.png}
+  \caption{Modelo conceitual de classes — Eventos de Módulo do PBL: hierarquia de Evento, associações com grupo/aluno/artefato/sprint, conformidade de schema e trilhas de ingestão e validação.}
+  \label{fig:class-event}
+\end{figure}
+
+Esses dois modelos compõem o backbone semântico do gêmeo digital, garantindo rastreabilidade entre contexto (CEP) e instâncias de eventos, além de suportar validações, versionamento de schema e linhagem de ingestão.
+
+\subsubsection{Modelagens Dinâmicas do Gêmeo Digital}
+
+Apresentamos a seguir quatro modelagens dinâmicas centrais do pipeline de eventos do gêmeo digital; as demais estão consolidadas nos anexos.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-01-ingestao-lote-validacao-schema.png}
+  \caption{Ingestão em lote com validação de schema antes do armazenamento.}
+  \label{fig:dt-01}
+\end{figure}
+
+Na ingestão em lote, fontes exportam eventos padronizados; o conector normaliza metadados (trace\_id, source, timestamps), a coleta valida contra a VersaoSchema vigente e somente então encaminha o lote válido ao CEP, preservando a referência ao LoteIngestao.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-02-evento-presenca-pipeline.png}
+  \caption{Pipeline do evento de presença: captura, validação, enriquecimento e persistência.}
+  \label{fig:dt-02}
+\end{figure}
+
+O LMS emite EventoPresenca com chaves institucionais; o conector aplica padronização e pseudonimização quando aplicável; a coleta valida e agrega no lote; o CEP persiste em Bronze particionado por data/fonte e confirma recebimento ao coletor.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-03-evento-entrega-artefato-rastreabilidade.png}
+  \caption{Evento de entrega com referência ao artefato e rastreabilidade de grupo/aluno.}
+  \label{fig:dt-03}
+\end{figure}
+
+Webhooks do repositório disparam a montagem de um EventoEntrega que referencia explicitamente o Artefato (repo, caminho, commit). Após validação de schema e vínculo com Sprint/Grupo, o evento é gravado em Silver com ordenação temporal e confirmações de rastreabilidade.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-04-deduplicacao-idempotencia.png}
+  \caption{Deduplicação e idempotência na ingestão para evitar eventos repetidos.}
+  \label{fig:dt-04}
+\end{figure}
+
+Eventos chegam com event\_id e checksum; a coleta verifica idempotência, o estágio de deduplicação elimina duplicatas por (event\_id, checksum, trace\_id) e o CEP confirma a persistência apenas de registros inéditos.
+
 \textbf{Definição do Contexto}: Seleção de uma disciplina de engenharia de software que utilize metodologia PBL, preferencialmente em nível de graduação ou pós-graduação, com projetos de complexidade adequada para demonstração das capacidades do gêmeo digital.
 
 \textbf{Identificação de Stakeholders}: Mapeamento dos parceiros educacionais (análogo aos business drivers do modelo Inteli), incluindo docentes orientadores, estudantes participantes, coordenação acadêmica e, quando aplicável, parceiros externos que fornecem desafios autênticos para os projetos.
@@ -1212,18 +1364,28 @@ Esta abordagem metodológica busca assegurar que o foco do doutorado permaneça
 na \textbf{criação do modelo conceitual de gêmeo digital de processos e
   sistemas} voltado à captura e integração de eventos, utilizando o exemplo aplicado como demonstração prática sem que a escolha de tecnologias específicas limite ou
 comprometa a generalidade e aplicabilidade do modelo proposto.
-\fi
 
-\section{EXEMPLO APLICADO: CAPTURA DE EVENTOS EM REPOSITÓRIO GIT}
 
-Para demonstração e validação empírica do modelo conceitual proposto, desenvolveu-se um sistema de coleta de dados que implementa o conceito de gêmeo digital de processos PBL através de snapshots automatizados de repositórios Git e análise de versionamento. O sistema representa a materialização prática dos conceitos teóricos estabelecidos, oferecendo uma plataforma concreta para validação das hipóteses de pesquisa.
 
-\subsection{Visão Geral do Sistema de Coleta}
 
-O sistema é uma aplicação web desenvolvida com Streamlit que implementa o modelo de gêmeo digital para análise de repositórios Git. O sistema realiza snapshots automáticos dos repositórios configurados, capturando informações sobre commits, pull requests e versionamento, armazenando-os em snapshots estruturados no formato Parquet, e fornece uma interface web interativa para análise e visualização com atualizações periódicas e sob demanda.
+\section{EXEMPLO APLICADO: CAPTURA DE SNAPSHOTS DOS REPOSITÓRIOS DOS GRUPOS}
 
-A arquitetura tecnológica do sistema integra múltiplas tecnologias especializadas: Streamlit para a interface web responsiva, bibliotecas específicas para integração com repositórios Git, plataformas de banco de dados e armazenamento em nuvem, Pandas para manipulação e análise eficiente de dados, Plotly para visualizações interativas de alta qualidade, Pydantic para modelagem rigorosa de dados com validação automática, e formato Parquet para armazenamento otimizado de grandes volumes de dados.
+Esta seção descreve, de forma objetiva e acadêmica, um exemplo aplicado que operacionaliza o modelo proposto por meio da captura periódica (ou sob demanda) de snapshots de repositórios Git utilizados pelos grupos no PBL. O objetivo é materializar o gêmeo digital de processos com reprodutibilidade, rastreabilidade e auditabilidade, fornecendo evidências consistentes para análise posterior por docentes e tutores.
 
+O sistema implementado é uma aplicação web leve que orquestra a coleta autenticada de dados de versionamento (commits e pull requests) e produz artefatos imutáveis por snapshot. Cada execução resulta em um identificador único (\emph{snapshotId}) e em três artefatos persistidos: \texttt{commits.parquet}, \texttt{pull\_requests.parquet} e \texttt{metadata.json}. A política de idempotência evita duplicações em reprocessamentos, e os metadados registram repositório, escopo temporal, contagens, carimbo de tempo e versão de esquema.
+
+O fluxo lógico preserva o baixo acoplamento entre coleta e análise: a interface do usuário inicia a criação do snapshot; o coletor realiza autenticação e consulta à API do controle de versão; o gerente de snapshots normaliza e valida os dados; por fim, os artefatos são gravados em armazenamento colunar, retornando o \emph{snapshotId} para referência futura e comparação temporal.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/seq-snapshot-app.png}
+  \caption{Fluxo simples e rastreável de criação de snapshot.}
+  \label{fig:seq-snapshot-app}
+\end{figure}
+
+Esse desenho privilegia rastreabilidade fim a fim (do repositório até os artefatos de snapshot), reprodutibilidade de análises e alinhamento com princípios de governança de dados: validação de esquema, separação clara entre coleta e análise e metadados autoexplicativos. A aplicação serve como instância concreta do gêmeo digital de processos e cria uma base confiável para estudos longitudinais sobre o andamento dos projetos dos grupos.
+
+\iffalse
 \subsection{Arquitetura e Componentes do Sistema}
 
 O sistema implementa uma arquitetura modular que separa claramente as responsabilidades em diferentes camadas especializadas, refletindo as melhores práticas de engenharia de software e permitindo manutenibilidade e escalabilidade futuras.
@@ -1294,47 +1456,6 @@ A implementação da classe GitDataCollector abstrai completamente a complexidad
 
 A arquitetura separa claramente a lógica de dados dos componentes de visualização, permitindo reutilização de componentes UI, facilidade de atualização de visualizações sem impacto na lógica de negócio, e manutenção independente de diferentes aspectos do sistema.
 
-\subsection{Modelagem UML do Sistema}
-
-A documentação do sistema inclui diagramas UML complementares que ilustram diferentes aspectos arquiteturais da implementação, oferecendo compreensão completa da estrutura e funcionamento do gêmeo digital.
-
-\subsubsection{Diagrama de Classes}
-
-O diagrama de classes representa a estrutura estática do sistema, organizando os componentes em três packages principais. O package \textbf{models} contém as classes Pydantic para validação de dados: Commit com atributos sha, message, author, date e url; PullRequest incluindo number, title, author, state, created\_at e url; e SnapshotMetadata armazenando timestamp, repository\_name, commits\_count, pull\_requests\_count, snapshot\_id e created\_at.
-
-O package \textbf{helpers} agrupa as classes de serviço: GitDataCollector para coleta de dados com métodos collect\_and\_create\_snapshot() e get\_available\_repos(); StorageHelper para gerenciamento de armazenamento; SnapshotManager para operações de snapshot.
-
-O package \textbf{repositories} implementa a persistência através de classes que estendem Repository abstrata: CommitRepository com operações especializadas para commits e PullRequestRepository para pull requests. Os relacionamentos mostram GitDataCollector utilizando SnapshotManager e clara separação entre modelos de dados e lógica de negócio.
-
-\begin{figure}[H]
-  \centering
-  % [Figura removida: afonsystem_class]
-\end{figure}
-
-
-
-\subsubsection{Diagrama de Sequência}
-
-O diagrama de sequência detalha o fluxo de criação de snapshots, processo central do sistema. A interação inicia com o usuário clicando em "Criar Snapshot" na interface Streamlit, que aciona o método collect\_and\_create\_snapshot\_snapshot() no GitHubDataCollector. Este componente realiza chamadas sequenciais à GitHub API através de get\_repo(), get\_commits\_snapshot() e get\_pulls(), coletando sistematicamente os dados necessários.
-
-Os dados coletados são processados pelo SnapshotManager através do método create\_repository\_snapshot(), que executa uploads sequenciais para o Supabase Storage: primeiro commits.parquet, depois pull\_requests.parquet, e finalmente metadata.json. Cada upload recebe confirmação do Storage antes de prosseguir, garantindo integridade dos dados. O processo termina com retorno do snapshot\_id para a interface, que exibe o resultado ao usuário.
-
-\begin{figure}[H]
-  \centering
-  % [Figura removida: afonsystem_sequence]
-\end{figure}
-
-\subsubsection{Diagrama de Componentes}
-
-O diagrama de componentes ilustra a arquitetura de alto nível do sistema, organizando funcionalidades em componentes coesos dentro do package "Sistema de Coleta": Streamlit UI para interface web, Data Collection para coleta automatizada, Data Storage para persistência, Data Analysis para processamento, e Visualization para renderização de gráficos.
-
-Os componentes interagem com dependências externas específicas: GitHub API para coleta de dados de repositórios, Supabase Storage para armazenamento escalável, Pandas para manipulação eficiente de dados, e Plotly para visualizações interativas. As setas mostram fluxo de dados desde input do usuário até renderização final, passando por coleta, armazenamento, análise e visualização, criando um pipeline completo de processamento.
-
-\begin{figure}[H]
-  \centering
-  % [Figura removida: afonsystem_components]
-\end{figure}
-
 \subsection{Demonstração: Captura de eventos em repositório Git}
 
 No exemplo aplicado, o sistema é utilizado para capturar eventos de um repositório Git, demonstrando na prática a ingestão de dados do pipeline de coleta. A captura abrange o rastreamento de commits e pull requests para monitorar a criação de código e documentação por membros do grupo ao longo do tempo.
@@ -1374,63 +1495,391 @@ O sistema capta informações de versionamento como commits e pull requests, for
 
 \subsection{Avaliação do Exemplo Aplicado}
 
-O exemplo aplicado foi avaliado por critérios arquiteturais e operacionais (ATAM/SEI, ISO 42010/10746/25010), considerando cobertura de fontes e completude, latência e throughput, confiabilidade e resiliência do pipeline, interoperabilidade/portabilidade por conectores e contratos, e rastreabilidade fim a fim. Não há qualquer mensuração de desempenho discente.
+O exemplo aplicado foi avaliado por critérios arquiteturais e operacionais (ATAM/SEI, ISO 42010/10746/25010), considerando cobertura de fontes e completude, latência e throughput, confiabilidade e resiliência do pipeline, interoperabilidade/portabilidade por conectores e contratos, e rastreabilidade fim a fim.
+
+\subsubsection{Aplicação do ATAM ao gêmeo digital}
+
+Para a arquitetura proposta (coleta $\to$ CEP $\to$ bronze/silver/gold $\to$
+sinais), a aplicação do ATAM será conduzida em \textbf{duas macrofases}:
+\begin{enumerate}
+  \item \textbf{Estruturação}: apresentação dos \textit{business drivers}
+  (apoio à decisão docente, transparência, explicabilidade), descrição da
+  arquitetura e construção da \textit{utility tree} com atributos priorizados:
+  desempenho (latência/throughput), disponibilidade/confiabilidade,
+  interoperabilidade/portabilidade, modifiabilidade, segurança/privacidade.
+  \item \textbf{Análise}: desenvolvimento de \textbf{cenários de qualidade}
+  (ex.: ingestão de 10\,k eventos/min com \(<\)15\,min até \emph{Gold};
+  reprocesso de janela mantendo idempotência; troca de ferramenta de Kanban via
+  conector; inclusão de novo tipo de evento; pseudonimização de PII na borda) e
+  exame de como táticas/decisões respondem a cada cenário.
+\end{enumerate}
+
+As saídas esperadas incluem a \textit{utility tree} priorizada, \textbf{riscos e
+temas de risco} (p.ex., sensibilidade à qualidade de \textit{schemas} e à
+ordenação temporal), \textbf{não riscos} e recomendações de mitigação
+(\emph{watermarks} configuráveis, DLQ, testes de contratos), que orientarão o
+plano de evolução da arquitetura e integrações.
 
 \subsection{Descrição do Exemplo Aplicado}
 
 Para demonstrar a aplicação e validação do modelo proposto, foi conduzido um estudo de caso que explora a integração de dados de repositórios Git para análise dos processos de desenvolvimento de software em contextos de PBL.
 
+\fi
+
+\subsection{Propósito e Escopo}
+
+O aplicativo de snapshots concretiza o gêmeo digital de processos ao capturar, padronizar e persistir evidências de versionamento dos grupos. Seu escopo foca metadados de commits e pull requests, possibilitando análises temporais e comparativas entre equipes sem invadir o conteúdo do código-fonte. O resultado é um repositório histórico confiável para estudos longitudinais e auditorias técnicas.
+
+\subsection{Componentes e Responsabilidades}
+
+O aplicativo organiza-se em quatro papéis complementares. A interface, implementada em Streamlit, conduz a seleção de repositório e de intervalo temporal, dispara a coleta e apresenta a confirmação ao usuário. O coletor (\textit{GitDataCollector}) autentica-se no provedor de Git e consulta commits e pull requests, preparando lotes consistentes. O \textit{SnapshotManager} normaliza campos, valida contra uma versão de esquema e elimina duplicidades, gerando os artefatos e os metadados do snapshot. Por fim, o armazenamento, em formato colunar Parquet no sistema de arquivos, mantém imutáveis os arquivos que materializam cada execução.
+
+\subsection{Fluxo Operacional}
+
+O fluxo operacional inicia com a escolha do repositório e do período de interesse (com branch opcional). De posse de um token de acesso, a aplicação consulta a API do provedor para obter os registros do intervalo. Em seguida, aplica normalização de carimbos temporais, autores e URLs, valida a conformidade com o esquema vigente e realiza deduplicação. Os dados são então gravados como arquivos Parquet e acompanha-se um \texttt{metadata.json} com o \emph{snapshotId}, o contexto e a versão de esquema. Ao final, a interface exibe o identificador do snapshot e o caminho para os artefatos.
+
+\subsection{Artefatos e Metadados}
+
+Cada snapshot resulta em três artefatos: \texttt{commits.parquet}, contendo \textit{sha}, autor, mensagem, timestamp, URL do commit e, quando aplicável, a branch; \texttt{pull\_requests.parquet}, com número, título, autor, estado, timestamps, URL e vínculos relevantes; e \texttt{metadata.json}, que registra o \texttt{snapshotId}, o repositório, o período coberto, as contagens, a versão de esquema e o carimbo de criação.
+
+\subsection{Idempotência, Validação e Rastreabilidade}
+
+A idempotência garante que reprocessamentos do mesmo escopo não introduzam duplicatas, permitindo reexecuções seguras. A validação por contratos de dados com versão de esquema documentada assegura consistência estrutural entre snapshots. A rastreabilidade é preservada por metadados que ligam, de forma inequívoca, os artefatos ao repositório, ao intervalo temporal e à versão de coleta.
+
+\subsection{Configuração e Parâmetros}
+
+A configuração mínima compreende a indicação do repositório, do período de coleta e, opcionalmente, da branch; um token pessoal de acesso à API do provedor de Git; e o diretório de destino onde os snapshots serão persistidos. Recomenda-se adotar convenções de nomenclatura por \texttt{snapshotId} e data, acompanhadas de políticas explícitas de retenção local.
+
+\subsection{Limitações e Considerações}
+
+O aplicativo limita-se à coleta de metadados, não contemplando conteúdo de arquivos, e opera sob limites de taxa impostos pelas APIs dos provedores. Adicionalmente, recomenda-se atenção a parâmetros e procedimentos de privacidade a fim de evitar a coleta inadvertida de informações pessoais em mensagens de commit ou em campos livres.
 \section{RESULTADOS COLETADOS}
 
-Esta seção apresenta os resultados empíricos obtidos durante a implementação dos estudos de caso, incluindo análise detalhada das métricas coletadas, validação das hipóteses de pesquisa estabelecidas e comparação sistemática com métodos tradicionais de avaliação. Os resultados são organizados de acordo com as três visões arquiteturais do modelo proposto—estrutural, comportamental e de processo—e incluem tanto análises quantitativas rigorosas quanto interpretações qualitativas aprofundadas dos dados coletados.
-
-\subsection{Resultados da Visão Estrutural}
-
-[A ser preenchido com os resultados da análise estrutural dos projetos PBL]
-
-\subsection{Resultados da Visão Comportamental}
-
-[A ser preenchido com os resultados da análise comportamental das equipes]
-
-\subsection{Resultados da Visão de Processo}
-
-[A ser preenchido com os resultados da análise dos processos ágeis]
-
-\subsection{Validação das Hipóteses}
-
-[A ser preenchido com a validação empírica das hipóteses H1-H5]
-
-\subsection{Análise Comparativa}
-
-[A ser preenchido com a comparação entre o modelo proposto e métodos tradicionais]
+Esta seção será desenvolvida após a qualificação.
 
 \section{CONSIDERAÇÕES FINAIS}
 
-Esta seção sintetizará as principais contribuições da pesquisa, limitações
-encontradas durante a implementação e direcionamentos para trabalhos futuros.
-Serão apresentadas as implicações práticas dos resultados obtidos para a área
-de educação em engenharia de software e as perspectivas de aplicação do modelo
-em diferentes contextos educacionais.
-
-\subsection{Principais Contribuições}
-
-[A ser preenchido com as contribuições científicas, metodológicas e práticas]
-
-\subsection{Limitações da Pesquisa}
-
-[A ser preenchido com as limitações identificadas durante a implementação]
-
-\subsection{Trabalhos Futuros}
-
-[A ser preenchido com propostas de extensão e melhoria do modelo]
-
-\subsection{Implicações para a Prática Educacional}
-
-[A ser preenchido com as recomendações para implementação prática]
+Esta seção será desenvolvida após a apresentação dos resultados e a conclusão das análises. Por ora, mantém-se como placeholder para a síntese das contribuições, limitações e direções futuras.
 
 
 \newpage
 % Estilo bibliografico (fallback se abntex2-alf nao existir)
 \bibliographystyle{plainnat}
 \bibliography{biblproj}
+\appendix
+\section{Diagramas de Sequência Adicionais}
+
+% Demais modelagens de sequência PBL (não exibidas na Seção 7.8)
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-03.png}
+  \caption{Diagrama de sequência PBL-03 — Solicita revisão de nota.}
+  \label{fig:seq-pbl-03}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-04.png}
+  \caption{Diagrama de sequência PBL-04 — Onboarding do parceiro e TAPI.}
+  \label{fig:seq-pbl-04}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-05.png}
+  \caption{Diagrama de sequência PBL-05 — Formação de grupos.}
+  \label{fig:seq-pbl-05}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-06.png}
+  \caption{Diagrama de sequência PBL-06 — Alocação de repositório ao grupo.}
+  \label{fig:seq-pbl-06}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-08.png}
+  \caption{Diagrama de sequência PBL-08 — Criação de branch.}
+  \label{fig:seq-pbl-08}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-09.png}
+  \caption{Diagrama de sequência PBL-09 — Abertura de item (parceiro).}
+  \label{fig:seq-pbl-09}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-10.png}
+  \caption{Diagrama de sequência PBL-10 — Daily com impedimento.}
+  \label{fig:seq-pbl-10}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-11.png}
+  \caption{Diagrama de sequência PBL-11 — Pull request e revisão.}
+  \label{fig:seq-pbl-11}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-12.png}
+  \caption{Diagrama de sequência PBL-12 — Merge e integração.}
+  \label{fig:seq-pbl-12}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-13.png}
+  \caption{Diagrama de sequência PBL-13 — Falha de build e correção.}
+  \label{fig:seq-pbl-13}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-15.png}
+  \caption{Diagrama de sequência PBL-15 — Entrega de autoestudo.}
+  \label{fig:seq-pbl-15}
+\end{figure}
+
+\subsection{Modelagens Dinâmicas do Gêmeo Digital (Adicionais)}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-05-eventos-atrasados-watermark.png}
+  \caption{Eventos atrasados: tratamento com watermark temporal.}
+  \label{fig:dt-05}
+\end{figure}
+
+Eventos que chegam fora de ordem são aceitos dentro de uma janela controlada por watermark; após o limite, registros tardios seguem para correção ou DLQ, preservando a consistência temporal.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-06-correlacao-join-por-chaves.png}
+  \caption{Correlação de eventos via \textit{join} por chaves canônicas.}
+  \label{fig:dt-06}
+\end{figure}
+
+Correlação e enriquecimento são feitos por chaves canônicas (pessoa, grupo, sprint, artefato), permitindo compor jornadas e métricas derivadas a partir de múltiplas fontes.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-07-validacao-versao-schema-migracao.png}
+  \caption{Validação de versão de schema e migração controlada.}
+  \label{fig:dt-07}
+\end{figure}
+
+Cada evento declara sua VersaoSchema; validadores garantem compatibilidade e conduzem migrações controladas, mantendo linhagem e repetibilidade das análises.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-08-erro-validacao-dlq-correcao.png}
+  \caption{Erro de validação: envio à DLQ e ciclo de correção.}
+  \label{fig:dt-08}
+\end{figure}
+
+Falhas de schema ou dados disparam roteamento para DLQ com contexto de erro; após correção, o replay reintegra os eventos ao fluxo normal.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-09-replay-reprocessamento-controlado.png}
+  \caption{Replay e reprocessamento controlado a partir de dados imutáveis.}
+  \label{fig:dt-09}
+\end{figure}
+
+Falhas ou mudanças de regra podem exigir reprocessamento; os dados imutáveis permitem replay seletivo com controle de versão e auditoria.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-10-materializacao-sinais-para-docente.png}
+  \caption{Materialização de sinais e dashboards para docentes.}
+  \label{fig:dt-10}
+\end{figure}
+
+Sinais derivados (atividade, WIP, presença) são materializados para leitura rápida por dashboards de docentes e coordenação.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-11-compl-pbl-01-aluno-inicia-atividade.png}
+  \caption{Complemento ao PBL‑01 na visão do gêmeo digital.}
+  \label{fig:dt-11}
+\end{figure}
+
+O início de atividade gera eventos padronizados e bloqueios de tarefa no CEP, ativando rastreabilidade do ciclo do aluno.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-12-compl-pbl-02-professor-corrige-lanca-nota.png}
+  \caption{Complemento ao PBL‑02 na visão do gêmeo digital.}
+  \label{fig:dt-12}
+\end{figure}
+
+O lançamento de notas/feedback é coletado como EventoFeedback com rubrica e timestamp, vinculado a artefato e pessoa.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-13-compl-pbl-03-revisao-de-nota.png}
+  \caption{Complemento ao PBL‑03 na visão do gêmeo digital.}
+  \label{fig:dt-13}
+\end{figure}
+
+Pedidos e decisões de revisão de nota geram EventoGenerico auditável, ligando aluno, professor e tarefa.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-14-compl-pbl-07-planning-kanban.png}
+  \caption{Complemento ao PBL‑07 com integração ao Kanban.}
+  \label{fig:dt-14}
+\end{figure}
+
+Mudanças no Kanban (criação, estimativa, aprovação) são emitidas como eventos genéricos, compondo o histórico do backlog.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-15-compl-pbl-08-branch-github.png}
+  \caption{Complemento ao PBL‑08 com criação de branch no GitHub.}
+  \label{fig:dt-15}
+\end{figure}
+
+Webhooks de criação de branch são normalizados no CEP com autor e referência ao repositório.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-16-compl-pbl-11-presenca.png}
+  \caption{Complemento ao PBL‑11 para registro de presença.}
+  \label{fig:dt-16}
+\end{figure}
+
+Check-in de presença vira EventoPresenca com chaves institucionais e integração ao calendário de sprint.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-17-compl-pbl-15-autoestudo.png}
+  \caption{Complemento ao PBL‑15 para autoestudo.}
+  \label{fig:dt-17}
+\end{figure}
+
+Entregas de autoestudo tornam-se EventoAutoestudo com vínculo a aluno, tarefa e sprint.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-18-compl-pbl-18-pitch.png}
+  \caption{Complemento ao PBL‑18 para pitch.}
+  \label{fig:dt-18}
+\end{figure}
+
+Pitch e feedback do parceiro são registrados como eventos genéricos ligados a grupo/sprint/parceiro.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-19-compl-pbl-23-encerramento-sprint.png}
+  \caption{Complemento ao PBL‑23 para encerramento de sprint.}
+  \label{fig:dt-19}
+\end{figure}
+
+Fechamento de sprint aciona marcações de release/tag para snapshot de encerramento.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-20-compl-pbl-25-encerramento-modulo.png}
+  \caption{Complemento ao PBL‑25 para encerramento de módulo.}
+  \label{fig:dt-20}
+\end{figure}
+
+Encerramento do módulo gera pacote técnico e eventos finais, assegurando arquivamento e linhagem completa.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/SEQ-B22-coleta-periodica-de-eventos.png}
+  \caption{Coleta periódica de eventos (batch) para atualização do gêmeo.}
+  \label{fig:dt-b22}
+\end{figure}
+
+Rotinas agendadas disparam conectores; os lotes são validados e enviados ao CEP.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/SEQ-B23-deteccao-de-anomalia-de-atividade.png}
+  \caption{Detecção de anomalias de atividade a partir de métricas de eventos.}
+  \label{fig:dt-b23}
+\end{figure}
+
+Sinais de anomalia (queda abrupta/atividade atípica) disparam alertas e ações corretivas com o orientador.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-16.png}
+  \caption{Diagrama de sequência PBL-16 — Feedback de autoestudo.}
+  \label{fig:seq-pbl-16}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-17.png}
+  \caption{Diagrama de sequência PBL-17 — Solicitação de extensão de prazo.}
+  \label{fig:seq-pbl-17}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-18.png}
+  \caption{Diagrama de sequência PBL-18 — Pitch com parceiro.}
+  \label{fig:seq-pbl-18}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-19.png}
+  \caption{Diagrama de sequência PBL-19 — Retrospectiva pós-pitch.}
+  \label{fig:seq-pbl-19}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-20.png}
+  \caption{Diagrama de sequência PBL-20 — Mudança no TAPI.}
+  \label{fig:seq-pbl-20}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-21.png}
+  \caption{Diagrama de sequência PBL-21 — Escalonamento de bloqueio.}
+  \label{fig:seq-pbl-21}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-22.png}
+  \caption{Diagrama de sequência PBL-22 — Mentoria da sprint.}
+  \label{fig:seq-pbl-22}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-23.png}
+  \caption{Diagrama de sequência PBL-23 — Encerramento de sprint.}
+  \label{fig:seq-pbl-23}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-24.png}
+  \caption{Diagrama de sequência PBL-24 — Preparação de demonstração final.}
+  \label{fig:seq-pbl-24}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-25.png}
+  \caption{Diagrama de sequência PBL-25 — Encerramento de módulo.}
+  \label{fig:seq-pbl-25}
+\end{figure}
+
+% (Seção movida para após a Figura PBL-15)
+
 \end{document}

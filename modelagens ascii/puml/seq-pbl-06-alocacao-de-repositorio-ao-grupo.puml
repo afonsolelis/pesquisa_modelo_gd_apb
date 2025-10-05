@@ -1,0 +1,14 @@
+@startuml
+autonumber
+skinparam ArrowColor #222
+skinparam NoteBackgroundColor #FFFDE7
+participant "Automação GitHub" as Automa_o_GitHub
+participant "Repositório" as Reposit_rio
+participant "Aluno" as Aluno
+participant "LMS/Adalove" as LMS_Adalove
+title seq-pbl-06-alocacao-de-repositorio-ao-grupo
+Automa_o_GitHub -> Reposit_rio : [A] Cria repositório por grupo
+Automa_o_GitHub -> Aluno : [B] Envia convites de acesso
+Aluno -> Reposit_rio : [C] Aceita convite e testa acesso
+Automa_o_GitHub -> LMS_Adalove : [D] Informa URL e status para registro
+@enduml

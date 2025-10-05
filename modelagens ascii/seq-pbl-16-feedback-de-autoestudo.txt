@@ -1,0 +1,22 @@
+SEQ-B13 — Feedback de autoestudo
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C]
+
+Professor          LMS/Adalove         Aluno              
+|                  |                  |                  
+|------------------|----------------->|                  |    [A]
+|                  |<-----------------|                  |    
+|                  |------------------|----------------->|    [B]
+|                  |                  |<-----------------|    
+|                  |------------------|----------------->|    [C]
+|                  |                  |<-----------------|    
+
+Legenda dos passos:
+[A] Professor registra rubrica e comentários
+[B] Aluno é notificado do feedback
+[C] Professor ajusta nota se necessário
+
+Resultado:
+- Feedback publicado e acessível ao aluno.
+

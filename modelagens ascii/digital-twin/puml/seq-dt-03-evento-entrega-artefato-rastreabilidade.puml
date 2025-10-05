@@ -1,0 +1,14 @@
+@startuml
+autonumber
+participant "Repositório" as Reposit_rio
+participant "Conector Git" as Conector_Git
+participant "Camada Coleta" as Camada_Coleta
+participant "CEP" as CEP
+participant "Silver" as Silver
+title seq-dt-03-evento-entrega-artefato-rastreabilidade
+Reposit_rio -> Conector_Git : [A] Webhook push/tag/release
+Conector_Git -> Camada_Coleta : [B] Monta EventoEntrega
+Camada_Coleta -> CEP : [C] Valida e define vínculos
+CEP -> Silver : [D] Grava ordenado/dedup
+CEP -> Conector_Git : [E] Confirma referência Artefato↔Evento
+@enduml

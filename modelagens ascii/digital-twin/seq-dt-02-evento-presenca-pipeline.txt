@@ -1,0 +1,23 @@
+SEQ-DT-02 — Pipeline para EventoPresenca (LMS → CEP)
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C], [D], [E]
+
+LMS (SistemaFonte) Conector LMS       Camada Coleta       CEP                Bronze
+|                  |                  |                  |                  |
+|----------------->|                  |                  |                  |    [A]
+|                  |----------------->|                  |                  |    [B]
+|                  |                  |----------------->|                  |    [C]
+|                  |                  |                  |----------------->|    [D]
+|                  |                  |                  |<-----------------|    
+
+Legenda dos passos:
+[A] LMS emite EventoPresenca (aluno, turma, timestamp)
+[B] Conector padroniza campos e aplica pseudonimização quando aplicável
+[C] Coleta valida schema e agrega no LoteIngestao
+[D] CEP persiste eventos crus em Bronze com partição por data/fonte
+[E] CEP confirma recebimento ao coletor
+
+Resultado:
+- EventoPresenca persistido (Bronze) e disponível para correlação/derivação.
+

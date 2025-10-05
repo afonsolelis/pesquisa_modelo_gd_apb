@@ -1,0 +1,25 @@
+SEQ-B04 — Planning da sprint (1ª aula; backlog em Kanban)
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legendas de passos: [A], [B], [C], [D]
+
+Grupo              Orientador         Kanban (software de apoio)
+|                  |                  |                  
+|----------------->|                  |                  |    [A]
+|                  |----------------->|                  |    [B]
+|----------------->|                  |----------------->|    [C]
+|                  |                  |<-----------------|    
+|                  |<-----------------|                  |    [D]
+|                  |                  |                  
+
+Legenda dos passos:
+[A] Grupo inicia sessão de Planning na 1ª aula da sprint
+[B] Orientador conduz e valida critérios/escopo da sprint
+[C] Grupo decompõe metas em cards no Kanban e estima
+[D] Orientador aprova backlog da sprint no Kanban
+
+Resultado:
+- Backlog da sprint definido e aprovado no Kanban; sprint iniciada.
+
+Notas:
+- A Planning normalmente ocorre na segunda‑feira da 1ª semana (salvo feriado/ajuste de calendário).

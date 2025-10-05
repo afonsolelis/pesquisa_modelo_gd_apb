@@ -1,0 +1,23 @@
+SEQ-B08 — Pull request e revisão
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C], [D]
+
+Autor PR           Repositório        Revisor            CI/CD
+|                  |                  |                  |
+|------------------------------------------------------->|    [A]
+|                  |------------------|----------------->|    [B]
+|                  |                  |<-----------------|    
+|                  |<-----------------|                  |    [C]
+|                  |                  |----------------->|    [D]
+|                  |                  |<-----------------|    
+
+Legenda dos passos:
+[A] Autor abre PR
+[B] Repositório notifica revisor e dispara checks
+[C] Revisor comenta/solicita mudanças
+[D] Autor envia ajustes até aprovação
+
+Resultado:
+- PR revisado e pronto para merge quando aprovado.
+

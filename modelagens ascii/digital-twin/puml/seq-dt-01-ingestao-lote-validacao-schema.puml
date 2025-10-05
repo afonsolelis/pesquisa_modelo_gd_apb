@@ -1,0 +1,13 @@
+@startuml
+autonumber
+participant "Sistema Fonte" as Sistema_Fonte
+participant "Conector" as Conector
+participant "Camada de Coleta" as Camada_de_Coleta
+participant "ValidadorSchema" as ValidadorSchema
+participant "CEP" as CEP
+title seq-dt-01-ingestao-lote-validacao-schema
+Sistema_Fonte -> Conector : [A] Exporta lote
+Conector -> Camada_de_Coleta : [B] Normaliza e enriquece
+Camada_de_Coleta -> ValidadorSchema : [C] Valida schema
+Camada_de_Coleta -> CEP : [D] Entrega eventos válidos (com LoteIngestao)
+@enduml

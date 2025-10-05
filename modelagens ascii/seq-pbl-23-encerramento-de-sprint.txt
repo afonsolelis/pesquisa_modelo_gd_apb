@@ -1,0 +1,18 @@
+SEQ-B28 — Encerramento de sprint (sinal no sistema ágil; snapshot via GitHub)
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C]
+
+Sistema Ágil        Grupo              Automação GitHub   Repositório
+|                  |                  |                  |
+|------------------|----------------->|                  |    [A]
+|                  |------------------|----------------->|    [B]
+|                  |                  |<-----------------|    
+|                  |                  |                  |
+
+Legenda dos passos:
+[A] Sistema ágil sinaliza fechamento da sprint
+[B] Automação GitHub gera tag/release e snapshot do repositório
+
+Resultado:
+- Sprint fechada com artefatos versionados e snapshot (registro de fechamento no sistema ágil).

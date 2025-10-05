@@ -1,0 +1,11 @@
+@startuml
+autonumber
+skinparam ArrowColor #222
+skinparam NoteBackgroundColor #FFFDE7
+participant "Aluno" as Aluno
+participant "Repositório" as Reposit_rio
+participant "CI/CD" as CI_CD
+title seq-pbl-08-criacao-de-branch
+Aluno -> Reposit_rio : [A] Cria branch e push inicial
+Reposit_rio -> CI_CD : [B] Dispara pipeline inicial
+@enduml

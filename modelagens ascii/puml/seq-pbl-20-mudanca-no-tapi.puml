@@ -1,0 +1,13 @@
+@startuml
+autonumber
+skinparam ArrowColor #222
+skinparam NoteBackgroundColor #FFFDE7
+participant "Parceiro" as Parceiro
+participant "Coordenação" as Coordena_o
+participant "LMS/Adalove" as LMS_Adalove
+participant "Turma" as Turma
+title seq-pbl-20-mudanca-no-tapi
+Parceiro -> Coordena_o : [A] Propõe alteração de escopo
+Coordena_o -> LMS_Adalove : [B] Aprova/nega no LMS
+LMS_Adalove -> Turma : [C] Publica nova versão do TAPI
+@enduml

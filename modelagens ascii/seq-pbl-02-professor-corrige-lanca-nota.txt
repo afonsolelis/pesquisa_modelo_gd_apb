@@ -1,0 +1,30 @@
+SEQ-A2 — Professor corrige e lança nota
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C], [D]
+
+Aluno              Professor          LMS/Adalove         Repositório
+|                  |                  |                  |
+|                  |------------------|----------------->|    [A]
+|                  |                  |<-----------------|    
+|                  |                  |                  |
+|                  |------------------|----------------->|    [B]
+|                  |                  |<-----------------|    
+|                  |                  |                  |
+|                  |------------------|----------------->|    [C]
+|                  |                  |<-----------------|    
+|<-----------------|------------------|                  |    [D]
+|                  |                  |                  |
+
+Legenda dos passos:
+[A] Professor abre artefato da atividade (busca no repositório)
+[B] Professor registra feedback no LMS
+[C] Professor lança nota no LMS
+[D] Aluno é notificado da publicação da nota
+
+Resultado:
+- Nota publicada e feedback disponível ao aluno.
+
+Observações:
+- Em caso de erro na publicação, o LMS exibe pendência para reenvio.
+

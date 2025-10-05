@@ -1,0 +1,22 @@
+SEQ-DT-07 — Validação de versão de schema e migração controlada
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C], [D]
+
+Conector           Catálogo de Schemas ValidadorSchema    CEP
+|                  |                  |                  |
+|----------------->|                  |                  |    [A]
+|                  |<-----------------|                  |    
+|                  |----------------->|                  |    [B]
+|                  |                  |----------------->|    [C]
+|                  |                  |<-----------------|    
+
+Legenda dos passos:
+[A] Conector consulta versão vigente (vN)
+[B] Catálogo retorna regras de compatibilidade (backward/forward)
+[C] Validador aplica migração (vN-1 → vN) quando permitido
+[D] CEP recebe eventos anotados com VersaoSchema e flags de migração
+
+Resultado:
+- Evolução de schemas com compatibilidade gerenciada e rastreável.
+

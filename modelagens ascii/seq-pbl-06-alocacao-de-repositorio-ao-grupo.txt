@@ -1,0 +1,24 @@
+SEQ-B03 — Alocação de repositório ao grupo (pós-formação; aceite individual; automação GitHub)
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legendas de passos: [A], [B], [C], [D]
+
+Automação GitHub   Repositório        Aluno              LMS/Adalove
+|                  |                  |                  |
+|------------------|----------------->|                  |    [A]
+|                  |<-----------------|                  |
+|------------------|----------------->|                  |    [B]
+|                  |                  |<-----------------|    
+|                  |------------------|----------------->|    [C]
+|                  |                  |<-----------------|    
+|------------------|------------------|----------------->|    [D]
+|                  |                  |                  |
+
+Legenda dos passos:
+[A] Script/automação no GitHub cria o repositório por grupo com nomenclatura padrão (ex.: 2025-2A-T14-SI07-G01)
+[B] Automação envia convites individuais via e-mail institucional aos alunos
+[C] Aluno aceita o convite e realiza teste de acesso (commit/push)
+[D] Automação informa o LMS a URL e o status de acesso (webhook/planilha) para registro no módulo
+
+Resultado:
+- Repositório provisionado no GitHub, com nome padrão e acessos individuais válidos; LMS registra o vínculo ao módulo.

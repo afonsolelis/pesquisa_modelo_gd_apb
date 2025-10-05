@@ -1,0 +1,14 @@
+@startuml
+autonumber
+participant "Conector" as Conector
+participant "Coleta" as Coleta
+participant "ValidadorSchema" as ValidadorSchema
+participant "DLQ" as DLQ
+participant "CEP" as CEP
+title seq-dt-08-erro-validacao-dlq-correcao
+Conector -> Coleta : [A] Envia lote
+Coleta -> ValidadorSchema : [B] Valida eventos
+ValidadorSchema -> DLQ : [C] Roteia inválidos
+Conector -> Coleta : [D] Corrige e reenvia
+Coleta -> CEP : [E] Entrega corrigidos
+@enduml

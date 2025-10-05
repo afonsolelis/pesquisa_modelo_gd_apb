@@ -1,0 +1,20 @@
+SEQ-B20 — Escalonamento de bloqueio
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C]
+
+Aluno              Orientador         Coordenação        LMS/Adalove
+|                  |                  |                  |
+|----------------->|                  |                  |    [A]
+|                  |----------------->|                  |    [B]
+|                  |                  |----------------->|    [C]
+|                  |                  |<-----------------|    
+
+Legenda dos passos:
+[A] Aluno relata bloqueio sem solução
+[B] Orientador escala para coordenação
+[C] Coordenação define ação e registra no LMS
+
+Resultado:
+- Bloqueio tratado com decisão registrada.
+

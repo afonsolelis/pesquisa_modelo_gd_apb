@@ -1,0 +1,13 @@
+@startuml
+autonumber
+participant "Conector" as Conector
+participant "Coleta" as Coleta
+participant "Deduplicador" as Deduplicador
+participant "CEP" as CEP
+participant "Bronze/Silver" as Bronze_Silver
+title seq-dt-04-deduplicacao-idempotencia
+Conector -> Coleta : [A] Envia eventos com ids/checksum
+Coleta -> Deduplicador : [B] Checa idempotência
+Deduplicador -> CEP : [C] Remove duplicados/segue
+CEP -> Bronze_Silver : [D] Persiste novos eventos
+@enduml

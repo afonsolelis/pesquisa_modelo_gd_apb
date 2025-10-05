@@ -1,0 +1,14 @@
+@startuml
+autonumber
+skinparam ArrowColor #222
+skinparam NoteBackgroundColor #FFFDE7
+participant "Grupo" as Grupo
+participant "Professores" as Professores
+participant "Parceiro" as Parceiro
+participant "LMS/Adalove" as LMS_Adalove
+title seq-pbl-24-preparacao-de-demonstracao-final
+Grupo -> Professores : [A] Envia roteiro e agenda ensaio
+Professores -> Parceiro : [B] Revisão e confirmação
+Parceiro -> LMS_Adalove : [C] Confirma disponibilidade
+Grupo -> LMS_Adalove : [D] Envia material final
+@enduml

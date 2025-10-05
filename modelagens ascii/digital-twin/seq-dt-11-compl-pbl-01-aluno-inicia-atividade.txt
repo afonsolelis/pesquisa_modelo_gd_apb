@@ -1,0 +1,19 @@
+SEQ-DT-11 — Complemento do PBL 01 (Aluno inicia atividade) → EventoEntrega no CEP
+
+Referência PBL: seq-pbl-01-aluno-inicia-atividade.txt
+Legenda no diagrama: '---->' mensagem; '<--' aviso
+Passos: [A]…[E]
+
+Aluno              LMS/Adalove         Repositório        Conector Git       CEP
+|                  |                  |                  |                  |
+|----------------->|                  |                  |                  |    [A] mover card "fazendo"
+|                  |                  |<-----------------|                  |    
+|------------------------------------------------------->|                  |    [B] commit/push
+|                  |                  |                  |----------------->|    [C] webhook → evento bruto
+|                  |                  |                  |                  |    
+|----------------->|                  |                  |                  |    [D] finalizar atividade
+|                  |                  |                  |----------------->|    [E] notificação/lock → evento
+
+Resultado:
+- Conector Git envia EventoEntrega (repo, commit_sha, artifact_ref) ao CEP, ligando a ação do aluno no PBL.
+

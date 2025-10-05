@@ -1,0 +1,11 @@
+@startuml
+autonumber
+participant "CEP" as CEP
+participant "Orientador" as Orientador
+participant "Grupo" as Grupo
+participant "Sistema Ágil" as Sistema_gil
+title SEQ-B23-deteccao-de-anomalia-de-atividade
+CEP -> Orientador : [A] Alerta de anomalia
+Orientador -> Grupo : [B] Abre investigação/contato
+Grupo -> Sistema_gil : [C] Atualiza plano/status
+@enduml

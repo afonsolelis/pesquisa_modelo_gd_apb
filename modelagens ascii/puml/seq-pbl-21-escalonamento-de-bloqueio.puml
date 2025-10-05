@@ -1,0 +1,13 @@
+@startuml
+autonumber
+skinparam ArrowColor #222
+skinparam NoteBackgroundColor #FFFDE7
+participant "Aluno" as Aluno
+participant "Orientador" as Orientador
+participant "Coordenação" as Coordena_o
+participant "LMS/Adalove" as LMS_Adalove
+title seq-pbl-21-escalonamento-de-bloqueio
+Aluno -> Orientador : [A] Relata bloqueio sem solução
+Orientador -> Coordena_o : [B] Escala para coordenação
+Coordena_o -> LMS_Adalove : [C] Registra decisão
+@enduml

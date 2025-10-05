@@ -1,0 +1,12 @@
+@startuml
+autonumber
+skinparam ArrowColor #222
+skinparam NoteBackgroundColor #FFFDE7
+participant "Aluno" as Aluno
+participant "LMS/Adalove" as LMS_Adalove
+participant "Professor" as Professor
+title seq-pbl-15-entrega-de-autoestudo
+Aluno -> LMS_Adalove : [A] Entrega autoestudo
+LMS_Adalove -> Professor : [B] Notifica para correção
+LMS_Adalove -> Aluno : [C] Confirmação de envio
+@enduml

@@ -1,0 +1,20 @@
+SEQ-DT-09 — Replay/Reprocessamento controlado por janela temporal
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C]
+
+Operação           CEP                Bronze/Silver/Gold Materialização
+|                  |                  |                  |
+|----------------->|                  |                  |    [A]
+|                  |----------------->|                  |    [B]
+|                  |                  |----------------->|    [C]
+|                  |                  |<-----------------|    
+
+Legenda dos passos:
+[A] Operação solicita replay de janela (ex.: sprint X)
+[B] CEP reprocessa a partir de Bronze → Silver, recalculando agregados
+[C] Atualiza materializações afetadas com nova versão/linhagem
+
+Resultado:
+- Reprocesso auditável por janela com preservação de linhagem (antes/depois).
+

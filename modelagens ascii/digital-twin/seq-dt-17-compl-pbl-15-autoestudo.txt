@@ -1,0 +1,16 @@
+SEQ-DT-17 — Complemento do PBL 15 (Entrega de autoestudo) → EventoAutoestudo no CEP
+
+Referência PBL: seq-pbl-15-entrega-de-autoestudo.txt
+Legenda: '---->' mensagem; '<--' aviso
+Passos: [A]…[C]
+
+Aluno              LMS/Adalove         Conector LMS       CEP
+|                  |                  |                  |
+|----------------->|                  |                  |    [A] entrega autoestudo
+|                  |----------------->|                  |    [B] EventoAutoestudo padronizado
+|                  |                  |----------------->|    [C] ingestão CEP
+|                  |<-----------------|                  |    
+
+Resultado:
+- EventoAutoestudo capturado com rastreabilidade para aluno/tarefa/sprint.
+

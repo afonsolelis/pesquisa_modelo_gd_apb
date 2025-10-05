@@ -1,0 +1,11 @@
+@startuml
+autonumber
+participant "Conector" as Conector
+participant "Coleta" as Coleta
+participant "CEP (Janela)" as CEP_Janela
+participant "Materialização" as Materializa_o
+title seq-dt-05-eventos-atrasados-watermark
+Conector -> Coleta : [A] Evento atrasado chega
+Coleta -> CEP_Janela : [B] Encaminha
+CEP_Janela -> Materializa_o : [C] Reabre janela/recalcula ou roteia tardio
+@enduml

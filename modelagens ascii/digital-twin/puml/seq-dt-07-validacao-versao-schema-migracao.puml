@@ -1,0 +1,11 @@
+@startuml
+autonumber
+participant "Conector" as Conector
+participant "Catálogo de Schemas ValidadorSchema" as Cat_logo_de_Schemas_ValidadorSchema
+participant "CEP" as CEP
+title seq-dt-07-validacao-versao-schema-migracao
+Conector -> Cat_logo_de_Schemas : [A] Consulta vN
+Cat_logo_de_Schemas -> Conector : [B] Regras compatibilidade
+Conector -> ValidadorSchema : [C] Migração vN-1→vN
+ValidadorSchema -> CEP : [D] Entrega eventos com VersaoSchema
+@enduml

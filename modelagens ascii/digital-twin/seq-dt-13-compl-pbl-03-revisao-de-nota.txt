@@ -1,0 +1,17 @@
+SEQ-DT-13 — Complemento do PBL 03 (Solicitação de revisão de nota) → EventoGenerico no CEP
+
+Referência PBL: seq-pbl-03-solicita-revisao-de-nota.txt
+Legenda: '---->' mensagem; '<--' aviso
+Passos: [A]…[D]
+
+Aluno              Professor          LMS/Adalove         Conector LMS       CEP
+|                  |                  |                  |                  |
+|----------------->|                  |                  |                  |    [A] pedido de revisão
+|                  |----------------->|                  |                  |    [B] decisão (ajuste/manutenção)
+|                  |----------------->|                  |----------------->|    [C] evento generico: revisao_nota
+|                  |                  |                  |                  |    
+|<-----------------|------------------|                  |                  |    [D] notificação de conclusão
+
+Resultado:
+- EventoGenerico(revisao_nota) coletado, ligado a aluno/professor/tarefa para auditoria.
+

@@ -1,0 +1,15 @@
+@startuml
+autonumber
+skinparam ArrowColor #222
+skinparam NoteBackgroundColor #FFFDE7
+participant "Coordenação" as Coordena_o
+participant "Automação GitHub" as Automa_o_GitHub
+participant "Repositório" as Reposit_rio
+participant "EP (Escritório Projetos) LMS/Adalove" as EP_Escrit_rio_Projetos_LMS_Adalove
+participant "Secretaria" as Secretaria
+title seq-pbl-25-encerramento-de-modulo
+Coordena_o -> Automa_o_GitHub : [A] Inicia fechamento do módulo
+Automa_o_GitHub -> Reposit_rio : [B] Consolida tags/releases
+Automa_o_GitHub -> EP_Escrit_rio_Projetos : [C] Envia dossiê técnico
+LMS_Adalove -> Secretaria : [D] Consolida notas/presenças/autoestudos
+@enduml

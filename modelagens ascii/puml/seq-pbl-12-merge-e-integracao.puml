@@ -1,0 +1,13 @@
+@startuml
+autonumber
+skinparam ArrowColor #222
+skinparam NoteBackgroundColor #FFFDE7
+participant "Revisor" as Revisor
+participant "Repositório" as Reposit_rio
+participant "CI/CD" as CI_CD
+participant "Grupo" as Grupo
+title seq-pbl-12-merge-e-integracao
+Revisor -> Reposit_rio : [A] Executa merge
+Reposit_rio -> CI_CD : [B] Pipeline de integração
+CI_CD -> Grupo : [C] Status de build (verde/vermelho)
+@enduml

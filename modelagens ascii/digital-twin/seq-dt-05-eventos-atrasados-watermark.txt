@@ -1,0 +1,24 @@
+SEQ-DT-05 — Tratamento de eventos atrasados (watermarks)
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C], [D], [E]
+
+Conector           Coleta             CEP (Janela)        Materialização
+|                  |                  |                  |
+|----------------->|                  |                  |    [A]
+|                  |----------------->|                  |    [B]
+|                  |                  |----------------->|    [C]
+|                  |                  |<-----------------|    
+|                  |                  |----------------->|    [D]
+|                  |                  |<-----------------|    
+
+Legenda dos passos:
+[A] Evento chega atrasado (event_time << processing_time)
+[B] Coleta marca atraso e encaminha ao CEP
+[C] CEP aplica watermarks; se dentro do limite, reabre janela e recalcula agregados
+[D] Se fora do limite, roteia a correção para fluxo tardio (late-arrival path)
+[E] Materialização recebe deltas/reprocessos conforme política
+
+Resultado:
+- Consistência temporal com política explícita para atrasos (recalcula ou ignora conforme SLO).
+

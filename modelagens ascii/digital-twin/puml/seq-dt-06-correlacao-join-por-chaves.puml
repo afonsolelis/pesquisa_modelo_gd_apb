@@ -1,0 +1,9 @@
+@startuml
+autonumber
+participant "Eventos A (Entrega) CEP (Join por keys)" as Eventos_A_Entrega_CEP_Join_por_keys
+participant "Eventos B (Feedback) Materialização" as Eventos_B_Feedback_Materializa_o
+title seq-dt-06-correlacao-join-por-chaves
+Eventos_A_Entrega -> CEP_Join_por_keys : [A] Entrega
+Eventos_B_Feedback -> CEP_Join_por_keys : [B] Feedback
+CEP_Join_por_keys -> Materializa_o : [C] Visão correlacionada
+@enduml

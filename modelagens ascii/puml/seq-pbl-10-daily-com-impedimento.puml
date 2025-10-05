@@ -1,0 +1,14 @@
+@startuml
+autonumber
+skinparam ArrowColor #222
+skinparam NoteBackgroundColor #FFFDE7
+participant "Aluno" as Aluno
+participant "Grupo" as Grupo
+participant "Orientador" as Orientador
+participant "LMS/Adalove" as LMS_Adalove
+title seq-pbl-10-daily-com-impedimento
+Aluno -> Grupo : [A] Reporta impedimento
+Grupo -> Orientador : [B] Aciona orientador
+Orientador -> LMS_Adalove : [C] Registra orientação/escalação
+Orientador -> Grupo : [D] Retorno e plano de ação
+@enduml

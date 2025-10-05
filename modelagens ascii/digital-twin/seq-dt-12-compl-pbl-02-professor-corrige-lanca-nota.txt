@@ -1,0 +1,16 @@
+SEQ-DT-12 — Complemento do PBL 02 (Professor corrige e lança nota) → EventoFeedback no CEP
+
+Referência PBL: seq-pbl-02-professor-corrige-lanca-nota.txt
+Legenda: '---->' mensagem; '<--' aviso
+Passos: [A]…[D]
+
+Professor          LMS/Adalove         Conector LMS       CEP
+|                  |                  |                  |
+|----------------->|                  |                  |    [A] lançamento de nota/feedback
+|                  |----------------->|                  |    [B] evento padronizado
+|                  |                  |----------------->|    [C] validação e ingestão
+|                  |<-----------------|                  |    
+
+Resultado:
+- EventoFeedback (artifact_id, person_id, rubrica, timestamp) coletado e disponível no CEP.
+

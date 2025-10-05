@@ -1,0 +1,47 @@
+@startuml seq-snapshot-app
+title Criação de snapshot dos repositórios dos grupos
+
+actor "Usuário" as User
+participant "Aplicação\n(Streamlit)" as App
+participant "Coletor\n(GitDataCollector)" as Collector
+participant "API\n(GitHub/GitLab)" as API
+participant "SnapshotManager" as Manager
+database "Armazenamento\n(Parquet/FS)" as Store
+
+User -> App: Seleciona repositório e período
+activate App
+App -> Collector: collectAndCreateSnapshot(repo, período)
+activate Collector
+
+Collector -> API: getRepo(repo)
+API --> Collector: dados do repositório
+Collector -> API: listCommits(período)
+API --> Collector: commits
+Collector -> API: listPullRequests(período)
+API --> Collector: pull requests
+
+Collector -> Manager: createRepositorySnapshot(commits, pulls, meta)
+activate Manager
+Manager -> Manager: normaliza + valida + deduplica
+
+Manager -> Store: gravar commits.parquet
+Store --> Manager: ok
+Manager -> Store: gravar pull_requests.parquet
+Store --> Manager: ok
+Manager -> Store: gravar metadata.json
+Store --> Manager: ok + snapshotId
+
+Manager --> Collector: snapshotId
+deactivate Manager
+Collector --> App: snapshotId
+deactivate Collector
+App --> User: Confirmação e link para artefatos
+deactivate App
+
+note right of Manager
+Metadados registram: repositório,
+período, contagens, carimbo de tempo,
+versão de esquema.
+end note
+
+@enduml

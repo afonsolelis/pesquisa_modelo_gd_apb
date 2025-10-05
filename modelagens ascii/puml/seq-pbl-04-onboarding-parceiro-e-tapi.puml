@@ -1,0 +1,15 @@
+@startuml
+autonumber
+skinparam ArrowColor #222
+skinparam NoteBackgroundColor #FFFDE7
+participant "Parceiro" as Parceiro
+participant "Escritório Projetos Coordenação" as Escrit_rio_Projetos_Coordena_o
+participant "Professores(Ori/Eixo) LMS/Adalove" as Professores_Ori_Eixo_LMS_Adalove
+title seq-pbl-04-onboarding-parceiro-e-tapi
+Parceiro -> Escrit_rio_Projetos : [A] Submete proposta
+Escrit_rio_Projetos -> Coordena_o : [B] Triagem e agendamento
+Coordena_o -> Professores_Ori_Eixo : [C] Reunião de alinhamento
+Coordena_o -> Escrit_rio_Projetos : [D] Aprova diretrizes / consolidar TAPI
+Escrit_rio_Projetos -> LMS_Adalove : [E] Publica TAPI e habilita módulo
+LMS_Adalove -> Parceiro : [F] Notifica publicação
+@enduml

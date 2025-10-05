@@ -1,0 +1,13 @@
+@startuml
+autonumber
+skinparam ArrowColor #222
+skinparam NoteBackgroundColor #FFFDE7
+participant "Aluno" as Aluno
+participant "LMS/Adalove" as LMS_Adalove
+participant "Professor" as Professor
+participant "Coordenação" as Coordena_o
+title seq-pbl-14-registro-de-presenca
+Aluno -> LMS_Adalove : [A] Check-in de presença
+LMS_Adalove -> Professor : [B] Envio de lista para conferência
+LMS_Adalove -> Aluno : [C] Confirmação de presença
+@enduml

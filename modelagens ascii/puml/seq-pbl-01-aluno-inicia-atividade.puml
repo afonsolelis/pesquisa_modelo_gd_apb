@@ -1,0 +1,14 @@
+@startuml
+autonumber
+skinparam ArrowColor #222
+skinparam NoteBackgroundColor #FFFDE7
+participant "Aluno" as Aluno
+participant "Professor" as Professor
+participant "LMS/Adalove" as LMS_Adalove
+participant "Repositório" as Reposit_rio
+title seq-pbl-01-aluno-inicia-atividade
+Aluno -> LMS_Adalove : [A] Inicia tarefa (card → fazendo)
+Aluno -> Reposit_rio : [B] Commit/push da entrega
+Aluno -> LMS_Adalove : [C] Finaliza (card → feito e trava)
+LMS_Adalove -> Professor : [D] Notifica: aguardando correção
+@enduml

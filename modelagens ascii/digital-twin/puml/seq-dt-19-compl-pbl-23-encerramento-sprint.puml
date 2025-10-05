@@ -1,0 +1,13 @@
+@startuml
+autonumber
+participant "Sistema Ágil" as Sistema_gil
+participant "Automação GitHub" as Automa_o_GitHub
+participant "Repositório" as Reposit_rio
+participant "Conector Git" as Conector_Git
+participant "CEP" as CEP
+title seq-dt-19-compl-pbl-23-encerramento-sprint
+Sistema_gil -> Automa_o_GitHub : [A] Fechar sprint
+Automa_o_GitHub -> Reposit_rio : [B] Tag/release snapshot
+Reposit_rio -> Conector_Git : [C] Eventos de release
+Conector_Git -> CEP : [D] Materialização de encerramento
+@enduml

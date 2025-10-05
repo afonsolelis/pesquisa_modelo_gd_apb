@@ -1,0 +1,21 @@
+SEQ-B14 — Solicitação de extensão de prazo
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C]
+
+Aluno              Professor          LMS/Adalove         
+|                  |                  |                  
+|------------------|----------------->|                  |    [A]
+|                  |------------------|----------------->|    [B]
+|                  |                  |<-----------------|    
+|<-----------------|------------------|                  |    [C]
+|                  |                  |                  
+
+Legenda dos passos:
+[A] Aluno solicita prorrogação justificando impedimento
+[B] Professor aprova/nega e registra decisão no LMS
+[C] Aluno recebe decisão (novo prazo ou negativa)
+
+Resultado:
+- Prazo ajustado quando aprovado; decisão registrada.
+

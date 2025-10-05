@@ -1,0 +1,37 @@
+SEQ-A1 — Aluno inicia atividade (entrega pendente de correção)
+
+Participantes:
+- Aluno
+- Professor
+- LMS/Adalove
+- Repositório
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C], [D]
+
+Aluno              Professor          LMS/Adalove         Repositório
+|                  |                  |                  |
+|------------------|----------------->|                  |    [A]
+|                  |<-----------------|                  |
+|                  |                  |                  |
+|------------------------------------------------------->|    [B]
+|                  |                  |                  |
+|------------------|----------------->|                  |    [C]
+|                  |<-----------------|                  |
+|                  |                  |                  |
+|                  |<-----------------|                  |    [D]
+|                  |                  |                  |
+
+Legenda dos passos:
+[A] Aluno inicia tarefa (card vai para "fazendo")
+[B] Aluno realiza commit/push da entrega
+[C] Aluno finaliza no LMS (card vai para "feito" e trava)
+[D] LMS notifica professor para correção
+
+Resultado:
+- Atividade enviada, card travado no LMS, aguardando correção do professor.
+- Repositório contém os commits da entrega.
+
+Observações:
+- Se o push falhar, o LMS pode manter o card em "fazendo" e exibir alerta.
+- Itens opcionais: upload de anexos no LMS antes de marcar "feito".

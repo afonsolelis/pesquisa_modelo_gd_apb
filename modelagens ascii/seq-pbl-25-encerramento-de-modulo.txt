@@ -1,0 +1,23 @@
+SEQ-B30 — Encerramento do módulo e arquivamento
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legendas de passos: [A], [B], [C], [D], [E]
+
+Coordenação        Automação GitHub   Repositório        EP (Escritório Projetos) LMS/Adalove       Secretaria
+|                  |                  |                  |                      |                  |
+|----------------->|                  |                  |                      |                  |    [A]
+|                  |------------------|----------------->|                      |                  |    [B]
+|                  |                  |<-----------------|                      |                  |
+|                  |------------------|----------------->|                      |                  |    [C]
+|                  |                  |                  |<---------------------|                  |
+|                  |                  |                  |                      |----------------->|    [D]
+|                  |                  |                  |                      |<-----------------|
+
+Legenda dos passos:
+[A] Coordenação inicia o encerramento do módulo
+[B] Automação GitHub consolida artefatos dos repositórios (tags/releases)
+[C] Automação envia dossiê técnico ao Escritório de Projetos
+[D] LMS consolida notas, presenças (check‑ins) e autoestudos e envia à Secretaria
+
+Resultado:
+- EP recebe dossiê técnico do GitHub; Secretaria recebe consolidação acadêmica do LMS.

@@ -1,0 +1,12 @@
+@startuml
+autonumber
+skinparam ArrowColor #222
+skinparam NoteBackgroundColor #FFFDE7
+participant "Parceiro" as Parceiro
+participant "Sistema Ágil" as Sistema_gil
+participant "Grupo" as Grupo
+participant "Orientador" as Orientador
+title seq-pbl-09-abertura-de-item-parceiro
+Parceiro -> Sistema_gil : [A] Registra novo item/requisito
+Grupo -> Sistema_gil : [B] Prioriza/posiciona item com orientação
+@enduml

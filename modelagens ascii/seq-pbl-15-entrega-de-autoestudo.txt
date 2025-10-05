@@ -1,0 +1,22 @@
+SEQ-B12 — Entrega de autoestudo
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C]
+
+Aluno              LMS/Adalove         Professor          
+|                  |                  |                  
+|----------------->|                  |                  |    [A]
+|                  |<-----------------|                  |    
+|                  |------------------|----------------->|    [B]
+|                  |                  |<-----------------|    
+|<-----------------|                  |                  |    [C]
+|                  |                  |                  
+
+Legenda dos passos:
+[A] Aluno envia respostas/arquivo do autoestudo
+[B] LMS notifica professor para correção
+[C] Aluno recebe confirmação de envio
+
+Resultado:
+- Autoestudo entregue e aguardando feedback.
+

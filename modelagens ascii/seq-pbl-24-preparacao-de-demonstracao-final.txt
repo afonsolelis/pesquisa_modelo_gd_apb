@@ -1,0 +1,23 @@
+SEQ-B29 — Preparação de demonstração final
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C], [D]
+
+Grupo              Professores        Parceiro           LMS/Adalove
+|                  |                  |                  |
+|----------------->|                  |                  |    [A]
+|                  |----------------->|                  |    [B]
+|                  |                  |----------------->|    [C]
+|                  |                  |<-----------------|    
+|----------------->|                  |                  |    [D]
+|                  |                  |                  |
+
+Legenda dos passos:
+[A] Grupo envia roteiro e agenda ensaio
+[B] Professores revisam roteiro e dão sugestões
+[C] Parceiro confirma disponibilidade
+[D] Grupo envia versão final do material ao LMS
+
+Resultado:
+- Demonstração final preparada e agenda confirmada.
+

@@ -1,0 +1,15 @@
+SEQ-DT-15 — Complemento do PBL 08 (Criação de branch) → EventoGenerico no CEP
+
+Referência PBL: seq-pbl-08-criacao-de-branch.txt
+Legenda: '---->' mensagem; '<--' aviso
+Passos: [A]…[C]
+
+Aluno              Repositório        Webhook GitHub      Conector Git       CEP
+|                  |                  |                  |                  |
+|------------------------------------------------------->|                  |    [A] create branch push
+|                  |----------------->|                  |                  |    [B] evento "create"/ref
+|                  |                  |----------------->|----------------->|    [C] ingestão CEP
+
+Resultado:
+- Evento generico de branch criada, vinculado a repo/autor, coletado pelo CEP.
+

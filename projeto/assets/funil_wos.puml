@@ -1,0 +1,50 @@
+@startuml Funil_WoS_Posicionamento
+title Funil da Revisão (Kitchenham) \- Web of Science (Fluxograma)
+
+skinparam dpi 180
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam activity {
+  BorderColor #333333
+  BackgroundColor #F9F9F9
+  FontSize 12
+}
+skinparam arrowColor #555555
+
+start
+
+:Web of Science \- busca estruturada;
+
+:Reference Model of Open Distributed Processing (RM\-ODP, ISO/IEC 10746)\nEstruturação por visões;
+
+fork
+  :Camada 1 \nVisão Empresarial\n(n = 255);
+fork again
+  :Camada 2 \nVisão de Informação\n(n = 319);
+fork again
+  :Camada 3 \nVisão Computacional\n(n = 120);
+fork again
+  :Camada 4 \nVisão de Engenharia\n(n = 1);
+fork again
+  :Camada 5 \nVisão de Tecnologia\n(n = 187);
+end fork
+
+:Retenção por DOI + Deduplicação inter\-camadas\nConjunto consolidado (n = 301);
+
+:Triagem por título e resumo (Rayyan)\nCritérios Kitchenham;
+
+:Avaliação de texto completo\nExtração padronizada;
+
+:Síntese qualitativa\nArtigos incluídos (n = 20);
+
+stop
+
+legend right
+  Notas
+  \- Números atualizados da revisão
+  \- Base: Web of Science
+  \- Visões: RM\-ODP (ISO/IEC 10746)
+  \- Triagem: Rayyan (Kitchenham)
+endlegend
+
+@enduml

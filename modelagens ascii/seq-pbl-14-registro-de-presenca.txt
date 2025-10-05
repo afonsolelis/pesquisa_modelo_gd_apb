@@ -1,0 +1,21 @@
+SEQ-B11 — Registro de presença em aula
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C]
+
+Aluno              LMS/Adalove         Professor          Coordenação
+|                  |                  |                  |
+|----------------->|                  |                  |    [A]
+|                  |------------------|----------------->|    [B]
+|                  |                  |<-----------------|    
+|<-----------------|                  |                  |    [C]
+|                  |                  |                  |
+
+Legenda dos passos:
+[A] Aluno realiza check-in de presença
+[B] LMS envia lista para conferência do professor
+[C] Aluno recebe confirmação de presença
+
+Resultado:
+- Presença registrada e validada.
+

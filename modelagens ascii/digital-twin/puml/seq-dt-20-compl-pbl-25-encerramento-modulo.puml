@@ -1,0 +1,12 @@
+@startuml
+autonumber
+participant "Coordenação" as Coordena_o
+participant "Automação GitHub" as Automa_o_GitHub
+participant "Repositório" as Reposit_rio
+participant "Conector Git" as Conector_Git
+participant "CEP/EP" as CEP_EP
+title seq-dt-20-compl-pbl-25-encerramento-modulo
+Coordena_o -> Automa_o_GitHub : [A] Iniciar fechamento
+Reposit_rio -> Conector_Git : [B] Gerar pacote técnico
+Conector_Git -> CEP_EP : [C] Enviar eventos e pacote
+@enduml

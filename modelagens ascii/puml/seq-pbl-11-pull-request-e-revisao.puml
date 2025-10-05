@@ -1,0 +1,14 @@
+@startuml
+autonumber
+skinparam ArrowColor #222
+skinparam NoteBackgroundColor #FFFDE7
+participant "Autor PR" as Autor_PR
+participant "Repositório" as Reposit_rio
+participant "Revisor" as Revisor
+participant "CI/CD" as CI_CD
+title seq-pbl-11-pull-request-e-revisao
+Autor_PR -> Reposit_rio : [A] Abre PR
+Reposit_rio -> Revisor : [B] Notifica revisão / checks
+Revisor -> Autor_PR : [C] Comenta ou solicita mudanças
+Autor_PR -> Reposit_rio : [D] Envia ajustes até aprovação
+@enduml

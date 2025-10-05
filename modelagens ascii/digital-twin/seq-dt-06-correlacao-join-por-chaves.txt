@@ -1,0 +1,22 @@
+SEQ-DT-06 — Correlação (join) por chaves entre eventos
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C], [D]
+
+Eventos A (Entrega) CEP (Join por keys)  Eventos B (Feedback) Materialização
+|                  |                  |                      |
+|----------------->|                  |                      |    [A]
+|                  |<-----------------|                      |    
+|                  |----------------->|                      |    [B]
+|                  |                  |--------------------->|    [C]
+|                  |                  |<---------------------|    
+
+Legenda dos passos:
+[A] Fluxo A: EventoEntrega (artifact_id, team_id, sprint_id)
+[B] Fluxo B: EventoFeedback (artifact_id, person_id, sprint_id)
+[C] CEP correlaciona por (artifact_id, sprint_id) e materializa visão unificada
+[D] Materialização expõe painel de rastreabilidade Entrega↔Feedback
+
+Resultado:
+- Visões correlacionadas habilitam análise de eficácia do feedback por artefato/sprint.
+

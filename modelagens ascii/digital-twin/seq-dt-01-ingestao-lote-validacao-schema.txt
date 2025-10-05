@@ -1,0 +1,23 @@
+SEQ-DT-01 — Ingestão em lote com validação de schema
+
+Legenda no diagrama: '---->' mensagem síncrona; '<--' resposta/aviso
+Legenda de passos: [A], [B], [C], [D]
+
+Sistema Fonte      Conector           Camada de Coleta    ValidadorSchema    CEP
+|                  |                  |                  |                  |
+|----------------->|                  |                  |                  |    [A]
+|                  |----------------->|                  |                  |    [B]
+|                  |                  |----------------->|                  |    [C]
+|                  |                  |<-----------------|                  |    
+|                  |                  |------------------------------>--------|    [D]
+|                  |                  |                  |                  |
+
+Legenda dos passos:
+[A] Sistema fonte exporta lote de eventos (JSON/NDJSON)
+[B] Conector normaliza metadados e enriquece cabeçalhos (trace_id, source, timestamps)
+[C] Camada de coleta valida contra VersaoSchema corrente
+[D] Eventos válidos seguem para o CEP com referência a LoteIngestao
+
+Resultado:
+- Lote ingerido com contratos validados e pronto para processamento CEP.
+
