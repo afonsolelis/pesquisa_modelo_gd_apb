@@ -115,78 +115,26 @@ Especificamente, a pesquisa abrange: (i) concepção do modelo; (ii) definição
 
 A Aprendizagem Baseada em Projetos (Project-Based Learning — PBL) consolidou-se como abordagem central para o desenvolvimento de competências técnicas e transversais em cursos de engenharia, ao articular teoria e prática em torno de problemas autênticos \cite{zhang2023, lavado2024, guo2020}. Por sua natureza, o PBL promove aprendizagem experiencial: estudantes planejam, executam e refletem sobre projetos que integram conhecimentos conceituais e aplicações práticas. Para que essa experiência se traduza em melhoria pedagógica contínua, é necessário dispor de instrumentos com visibilidade e rastreabilidade do caminho que leva ao produto final — isto é, o processo — e não apenas do resultado entregue em marcos específicos.
 
-Observar processos em PBL, porém, é desafiador. O desempenho dos estudantes emerge de interações distribuídas no tempo, mediadas por ferramentas e papéis distintos (equipes, docentes, parceiros externos). O fenômeno é multidimensional (cognitiva, procedimental, colaborativa e metacognitiva) e altamente dinâmico, o que torna a observação sujeita à subjetividade e à
-intermitência quando apoiada apenas em instrumentos pontuais (provas, apresentações e rubricas de produto). Soma-se a isso a fragmentação dos dados relevantes em múltiplas plataformas (repositórios de código, gestão de tarefas, mensageria, ambientes de aula), dificultando a construção de uma visão integrada que subsidie decisões pedagógicas informadas e a orquestração do processo \cite{romero2010, romero2020}. Em resumo, faltam meios sistemáticos para observar o processo em curso e para transformar essa observação em evidências interpretáveis por diferentes públicos.
+Observar processos em PBL, porém, é desafiador. O desempenho dos estudantes emerge de interações distribuídas no tempo, mediadas por ferramentas e papéis distintos (equipes, docentes, parceiros externos). O fenômeno é multidimensional (cognitiva, procedimental, colaborativa e metacognitiva) e altamente dinâmico, o que torna a observação sujeita à subjetividade e à intermitência quando apoiada apenas em instrumentos pontuais (provas, apresentações e rubricas de produto). Soma-se a isso a fragmentação dos dados relevantes em múltiplas plataformas (repositórios de código, gestão de tarefas, mensageria, ambientes de aula), dificultando a construção de uma visão integrada que subsidie decisões pedagógicas informadas e a orquestração do processo \cite{romero2010, romero2020}. Em resumo, faltam meios sistemáticos para observar o processo em curso e para transformar essa observação em evidências interpretáveis por diferentes públicos.
 
-Nesse cenário, os Gêmeos Digitais (Digital Twins) despontam como tecnologia
-capaz de aproximar a observação do PBL daquilo que se pretende acompanhar: o
-andamento real dos projetos. Gêmeos digitais fornecem representações virtuais
-dinâmicas e sincronizadas de sistemas, processos ou entidades \cite{grieves2014,
-tao2018}. Diferentemente de simulações estáticas, mantêm acoplamento contínuo
-com seus referentes, permitindo acompanhamento e análises sob demanda.
-Transpostos para o contexto educacional, esses recursos podem ampliar a
-visibilidade sobre o que acontece, quando e como acontece — especialmente
-em ambientes orientados a projetos —, como sugerem investigações que relatam a
-integração entre protótipos físicos e virtuais. Com isso,
-abre-se a oportunidade de explorar gêmeos digitais como instrumentos de
-observabilidade capazes de subsidiar a tomada de decisão de docentes e tutores.
+Nesse cenário, os Gêmeos Digitais (Digital Twins) despontam como tecnologia capaz de aproximar a observação do PBL daquilo que se pretende acompanhar: o andamento real dos projetos. Gêmeos digitais fornecem representações virtuais dinâmicas e sincronizadas de sistemas, processos ou entidades \cite{grieves2014, tao2018}. Diferentemente de simulações estáticas, mantêm acoplamento contínuo com seus referentes, permitindo acompanhamento e análises sob demanda. Transpostos para o contexto educacional, esses recursos podem ampliar a visibilidade sobre o que acontece, quando e como acontece — especialmente em ambientes orientados a projetos —, como sugerem investigações que relatam a integração entre protótipos físicos e virtuais. Com isso, abre-se a oportunidade de explorar gêmeos digitais como instrumentos de observabilidade capazes de subsidiar a tomada de decisão de docentes e tutores.
 
-Para que essa exploração resulte em um instrumento confiável e comparável, é
-necessário estruturar o gêmeo digital com base em perspectivas arquiteturais
-consolidadas. Em particular, as visões \textbf{estrutural}, \textbf{comportamental}
-e de \textbf{processo} oferecem lentes complementares para caracterizar
-meta‑projetos em PBL: a visão estrutural organiza componentes, recursos,
-ferramentas e artefatos; a visão comportamental modela interações dinâmicas
-entre estudantes, orientadores e sistemas; e a visão de processo mapeia fluxos
-de atividades e marcos operacionais. Ao integrar essas visões,
-constrói-se uma base coerente para coleta de dados, análise e visualização que
-favorece a responsividade às necessidades dos stakeholders, a justificativa de
-conclusões com base em evidências e o uso eficiente de recursos. Essa
-organização arquitetural dialoga com boas práticas de descrição de sistemas
-complexos em engenharia de software, oferecendo um vocabulário comum para a
-concepção e a verificação arquitetural do artefato proposto.
+Para que essa exploração resulte em um instrumento confiável e comparável, é necessário estruturar o gêmeo digital com base em perspectivas arquiteturais consolidadas. Em particular, as visões \textbf{estrutural}, \textbf{comportamental} e de \textbf{processo} oferecem lentes complementares para caracterizar meta‑projetos em PBL: a visão estrutural organiza componentes, recursos, ferramentas e artefatos; a visão comportamental modela interações dinâmicas entre estudantes, orientadores e sistemas; e a visão de processo mapeia fluxos de atividades e marcos operacionais. Ao integrar essas visões, constrói-se uma base coerente para coleta de dados, análise e visualização que favorece a responsividade às necessidades dos stakeholders, a justificativa de conclusões com base em evidências e o uso eficiente de recursos. Essa organização arquitetural dialoga com boas práticas de descrição de sistemas complexos em engenharia de software, oferecendo um vocabulário comum para a concepção e a verificação arquitetural do artefato proposto.
 
-Apesar de avanços relatados, persiste uma lacuna no emprego de gêmeos digitais
-como mecanismo de captura e integração de eventos em projetos PBL na
-engenharia de software. As iniciativas mais frequentes concentram-se na
-construção de protótipos físicos e virtuais sem enfrentar de forma abrangente
-duas questões centrais: (i) como observar — de modo ético e objetivo — os
-processos em andamento ao longo do tempo; e (ii) como transformar esses dados
-em insumos úteis para coordenação e tutoria. Como consequência, decisões
-críticas podem ocorrer tardiamente, padrões de colaboração passam
-despercebidos e o alinhamento entre objetivos, processos e produtos fica pouco
-transparente. Diante desse quadro, torna-se premente conceber arquiteturas de
-captura e integração de eventos que satisfaçam requisitos de qualidade
-(efetividade, eficiência, sustentabilidade), ao mesmo tempo em que sejam
-sensíveis à complexidade própria de programas de engenharia.
+Apesar de avanços relatados, persiste uma lacuna no emprego de gêmeos digitais como mecanismo de captura e integração de eventos em projetos PBL na engenharia de software. As iniciativas mais frequentes concentram-se na construção de protótipos físicos e virtuais sem enfrentar de forma abrangente duas questões centrais: (i) como observar — de modo ético e objetivo — os processos em andamento ao longo do tempo; e (ii) como transformar esses dados em insumos úteis para coordenação e tutoria. Como consequência, decisões críticas podem ocorrer tardiamente, padrões de colaboração passam despercebidos e o alinhamento entre objetivos, processos e produtos fica pouco transparente. Diante desse quadro, torna-se premente conceber arquiteturas de captura e integração de eventos que satisfaçam requisitos de qualidade (efetividade, eficiência, sustentabilidade), ao mesmo tempo em que sejam sensíveis à complexidade própria de programas de engenharia.
 
-Neste trabalho, a necessidade de pesquisa é, portanto, dupla: de um lado,
-propor uma arquitetura de gêmeo digital focada em capturar, integrar e
-organizar eventos (artefatos, atividades e interações) e, de outro, demonstrar
-que tal integração pode subsidiar decisões docentes e a orquestração do PBL.
-Para isso, delineiam-se requisitos que orientam a solução: (a) confiabilidade e
-integridade de dados; (b) temporalidade adequada às rotinas pedagógicas; (c)
-interpretabilidade para diferentes públicos; (d) interoperabilidade com
-ferramentas correntes de desenvolvimento e colaboração; e (e) observância a
-princípios éticos e de privacidade.
+Neste trabalho, a necessidade de pesquisa é, portanto, dupla: de um lado, propor uma arquitetura de gêmeo digital focada em capturar, integrar e organizar eventos (artefatos, atividades e interações) e, de outro, demonstrar que tal integração pode subsidiar decisões docentes e a orquestração do PBL. Para isso, delineiam-se requisitos que orientam a solução: (a) confiabilidade e integridade de dados; (b) temporalidade adequada às rotinas pedagógicas; (c) interpretabilidade para diferentes públicos; (d) interoperabilidade com ferramentas correntes de desenvolvimento e colaboração; e (e) observância a princípios éticos e de privacidade.
 
 \subsection{Objetivo Geral}
 
-À luz do problema delineado, o objetivo geral desta pesquisa é projetar e
-especificar uma arquitetura de captura, integração e organização de eventos de
-ensino e aprendizagem que integre as visões arquiteturais estrutural,
-comportamental e de processo, de forma a alimentar um gêmeo digital do
-ecossistema PBL e subsidiar a tomada de decisão do corpo docente.
+À luz do problema delineado, o objetivo geral desta pesquisa é projetar e especificar uma arquitetura de captura, integração e organização de eventos de ensino e aprendizagem que integre as visões arquiteturais estrutural, comportamental e de processo, de forma a alimentar um gêmeo digital do ecossistema PBL e subsidiar a tomada de decisão do corpo docente.
 
 \subsection{Objetivos Específicos}
 
-Para viabilizar o objetivo geral, estabelecem-se os seguintes objetivos
-específicos, organizados de forma progressiva:
+Para viabilizar o objetivo geral, estabelecem-se os seguintes objetivos específicos, organizados de forma progressiva:
 
 \begin{itemize}
-  \item Delimitar escopo, stakeholders e critérios de sucesso; levantar e
-        formalizar requisitos funcionais/não funcionais, riscos e salvaguardas
-        éticas (privacidade, consentimento e minimização de dados).
+  \item Delimitar escopo, stakeholders e critérios de sucesso; levantar e formalizar requisitos funcionais/não funcionais, riscos e salvaguardas éticas (privacidade, consentimento e minimização de dados).
   \item Propor o modelo conceitual do gêmeo digital integrando as visões
         estrutural, comportamental e de processo; explicitar metamodelos e mapas
         entre fontes, eventos e entidades do domínio.
