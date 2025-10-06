@@ -212,121 +212,61 @@ específicos, organizados de forma progressiva:
 
 \subsection{Hipótese}
 
-As hipóteses a seguir derivam dos objetivos definidos e orientam a avaliação
+As hipóteses a seguir derivam dos objetivos definidos e orientam a avaliação 
 arquitetural do artefato proposto.
 
 \subsubsection{Hipótese Principal}
 
-Se uma arquitetura de captura, integração e organização de eventos for
-projetada e integrada às visões arquiteturais estrutural, comportamental e de
-processo, então ela deverá consolidar, com rastreabilidade e confiabilidade,
-dados de diferentes fontes do ecossistema PBL para apoiar a decisão docente,
-manifestando-se por:
-
-\begin{itemize}
-  \item \textbf{Cobertura de fontes e completude de eventos}: integração de repositórios Git, gestão de tarefas e fontes institucionais com perdas toleráveis e consistência temporal;
-  \item \textbf{Rastreabilidade fim a fim}: encadeamento estável de chaves (pessoas‑equipes‑sprints‑artefatos‑eventos) do ponto de coleta à materialização no gêmeo digital;
-  \item \textbf{Latência e throughput compatíveis}: atualização dos dados em janelas temporais adequadas às rotinas do PBL;
-  \item \textbf{Resiliência a falhas}: tolerância a eventos fora de ordem, reprocessamento e reconciliação;
-  \item \textbf{Interoperabilidade/portabilidade}: conectores e contratos de dados que facilitem adoção em diferentes ecossistemas.
-\end{itemize}
+A hipótese principal desta pesquisa é que uma arquitetura de captura, integração e organização de eventos, quando projetada e integrada às visões arquiteturais estrutural, comportamental e de processo, pode consolidar com rastreabilidade e confiabilidade os dados de diferentes fontes do ecossistema PBL para apoiar a decisão docente. A manifestação bem-sucedida desta hipótese será evidenciada por uma efetiva cobertura de fontes e completude de eventos, integrando repositórios Git, ferramentas de gestão de tarefas e fontes institucionais com perdas toleráveis e consistência temporal. Adicionalmente, a arquitetura deve garantir rastreabilidade fim a fim, com um encadeamento estável de chaves (pessoas, equipes, sprints, artefatos, eventos) desde a coleta até a materialização no gêmeo digital. Outros indicadores de sucesso incluem latência e throughput compatíveis com as rotinas do PBL, resiliência a falhas (como eventos fora de ordem, reprocessamento e reconciliação), e interoperabilidade e portabilidade por meio de conectores e contratos de dados que facilitem sua adoção em diferentes ecossistemas.
 
 \subsubsection{Hipóteses Secundárias}
 
-Para sustentar e detalhar a hipótese principal, estabelecem-se as seguintes
+Para sustentar e detalhar a hipótese principal, estabelecem-se as seguintes 
 hipóteses secundárias:
 
-\textbf{H1 — Cobertura e Consistência}: O pipeline captura e integra, com perdas
-controladas, os eventos relevantes das principais fontes (Git, gestão de
-tarefas e registros institucionais), preservando consistência de chaves e
+H1 — Cobertura e Consistência: O pipeline captura e integra, com perdas 
+controladas, os eventos relevantes das principais fontes (Git, gestão de 
+tarefas e registros institucionais), preservando consistência de chaves e 
 ordem temporal.
 
-\textbf{H2 — Latência e Throughput}: A ingestão e o processamento atendem a
+H2 — Latência e Throughput: A ingestão e o processamento atendem a 
 limiares temporais definidos para atualização e análise sob demanda.
 
-\textbf{H3 — Confiabilidade e Resiliência}: O sistema lida com eventos
-faltantes e fora de ordem por meio de reprocessamento, reconciliação e
+H3 — Confiabilidade e Resiliência: O sistema lida com eventos 
+faltantes e fora de ordem por meio de reprocessamento, reconciliação e 
 validações esquemáticas, mantendo integridade dos dados.
 
-\textbf{H4 — Interoperabilidade e Portabilidade}: A arquitetura, baseada em
-contratos e conectores, integra-se a diferentes ecossistemas PBL, alinhada a
+H4 — Interoperabilidade e Portabilidade: A arquitetura, baseada em 
+contratos e conectores, integra-se a diferentes ecossistemas PBL, alinhada a 
 viewpoints RM‑ODP (ISO 10746) e à ISO 42010.
 
-\textbf{H5 — Observabilidade e Rastreabilidade}: A solução oferece trilhas de
-auditoria e rastreabilidade fim a fim, em consonância com atributos de
+H5 — Observabilidade e Rastreabilidade: A solução oferece trilhas de 
+auditoria e rastreabilidade fim a fim, em consonância com atributos de 
 qualidade relevantes da ISO 25010.
 
-\paragraph{Rastreabilidade entre objetivos e hipóteses.}
-Os objetivos específicos suportam as hipóteses do seguinte modo: (i) requisitos,
-escopo e ética criam condições de validade para todas as hipóteses (H1–H5);
-(ii) o modelo conceitual e os metamodelos dão base a H1–H4; (iii) a
-padronização de eventos e contratos de dados sustenta H1–H3 e contribui para
-H4; (iv) a arquitetura e o pipeline viabilizam evidências integradas para
-H1–H4; (v) o protótipo e os painéis tornam observáveis H1–H4 no contexto real;
-(vi) o exemplo aplicado fornece dados para aceitar/refutar H1–H5; e (vii) as
-diretrizes e análise de limitações informam H5 (transferibilidade/escala).
+\subsubsection{Rastreabilidade entre Objetivos e Hipóteses}
+
+A validação das hipóteses depende diretamente da execução dos objetivos específicos (OE). O objetivo de definir requisitos, escopo e ética (OE1) estabelece as condições de validade para todas as hipóteses (H1 a H5). A base para as hipóteses H1 a H4 é fornecida pelo modelo conceitual e metamodelos (OE2), enquanto a padronização de eventos e contratos (OE3) sustenta H1, H2 e H3, e contribui para H4. A arquitetura e o pipeline (OE4) viabilizam a coleta de evidências integradas para as hipóteses H1 a H4. A materialização e observação dessas hipóteses no contexto real são possíveis através do protótipo e dos painéis (OE5). O exemplo aplicado (OE6) fornecerá os dados empíricos necessários para aceitar ou refutar todas as hipóteses. Finalmente, as diretrizes e a análise de limitações (OE8) informarão a hipótese H5, referente à transferibilidade e escalabilidade da solução.
 
 \subsubsection{Critérios de Validação}
 
-Serão utilizados critérios arquiteturais e operacionais, incluindo:
+A validação das hipóteses será realizada por meio de critérios arquiteturais, operacionais e de utilidade.
 
-\textbf{Critérios Arquiteturais e Operacionais} (alinhamento a hipóteses):
-\begin{itemize}
-  \item \textbf{Cobertura de fontes} (H1): percentual de projetos/artefatos/eventos coletados por conector, taxa de perda e de duplicatas;
-  \item \textbf{Integridade e consistência} (H1, H5): validação de esquemas, ordenação temporal, unicidade de chaves e reconciliação de eventos fora de ordem;
-  \item \textbf{Latência e throughput} (H2): tempo mediano de ingestão/atualização e capacidade sustentada do pipeline;
-  \item \textbf{Confiabilidade} (H3): taxa de erros de coleta/processamento, disponibilidade, MTTR e sucesso de reprocessamentos;
-  \item \textbf{Interoperabilidade} (H4): esforço de integração medido por conectores/contratos e aderência a viewpoints RM‑ODP (ISO 10746) e ISO 42010;
-  \item \textbf{Rastreabilidade e observabilidade} (H5): existência de trilhas de auditoria fim a fim e recuperabilidade de encadeamentos.
-\end{itemize}
+Os critérios arquiteturais e operacionais avaliam o desempenho técnico da solução. A hipótese H1 será validada pela cobertura de fontes, medida pelo percentual de artefatos e eventos coletados, e pela integridade e consistência dos dados, que também se aplica a H5. A hipótese H2 será avaliada pela latência e throughput do pipeline de dados. A confiabilidade do sistema (H3) será medida pela taxa de erros e pelo sucesso no reprocessamento. A interoperabilidade (H4) será avaliada pela aderência a padrões como RM-ODP e pelo esforço de integração. Por fim, a rastreabilidade e observabilidade (H5) serão verificadas pela existência de trilhas de auditoria completas.
 
-\textbf{Critérios Qualitativos} (com alinhamento a hipóteses):
-\begin{itemize}
-  \item Evidências de maior especificidade e oportunidade das intervenções pedagógicas (H3, H4);
-  \item Demonstração de insights sobre processos de aprendizagem não capturados por
-        métodos convencionais (H2, H3, H4);
-  \item Confirmação de maior consciência metacognitiva dos estudantes sobre seu próprio
-        aprendizado (H2);
-  \item Validação da aplicabilidade do modelo em diferentes contextos de projetos PBL (H5).
-\end{itemize}
+Os critérios de utilidade focam na capacidade da arquitetura de fornecer subsídios para a tomada de decisão. A avaliação se concentrará na capacidade do sistema de gerar e apresentar métricas que ofereçam subsídios para intervenções pedagógicas mais específicas e oportunas (suporte a H3, H4). Será verificado se a arquitetura pode produzir insights sobre o processo que não são facilmente visíveis por métodos convencionais (suporte a H2, H3, H4). A avaliação também considerará a capacidade da arquitetura de fornecer dados que possam apoiar a aplicabilidade do modelo em diferentes contextos de projetos PBL (suporte a H5), sem, contudo, medir o impacto pedagógico ou o aprendizado do aluno.
 
-A refutação das hipóteses ocorrerá caso os estudos empíricos não demonstrem
-diferenças estatisticamente significativas nos critérios estabelecidos, ou caso
-sejam identificadas limitações técnicas ou pedagógicas que impeçam a
-implementação prática do modelo proposto em condições reais de ensino.
+A refutação das hipóteses ocorrerá caso os estudos empíricos não demonstrem 
+diferenças estatisticamente significativas nos critérios estabelecidos, ou caso 
+sejam identificadas limitações técnicas que impeçam a implementação prática do modelo proposto em condições reais de ensino.
 
 \subsubsection{Rastreabilidade entre Objetivos e Entregáveis}
 
-Para assegurar coerência entre o que se propõe (objetivos) e o que se entrega
-no documento e no artefato tecnológico, estabelece-se a seguinte
-\textbf{rastreabilidade} (a numeração OE1–OE8 corresponde à ordem dos objetivos
-específicos):
+Para assegurar a coerência entre os objetivos da pesquisa e os resultados apresentados, esta seção mapeia cada objetivo específico (OE) aos seus respectivos entregáveis e às seções correspondentes neste documento.
 
-\begin{itemize}
-  \item \textbf{OE1 — Requisitos, escopo e ética}: Entregáveis — documento de requisitos
-        e protocolo ético/privacidade; Seções — Metodologia (fundamentos, abordagem
-        e fases da pesquisa).
-  \item \textbf{OE2 — Modelo conceitual e metamodelos}: Entregáveis — modelo conceitual
-        e metamodelos/dicionário de dados; Seções — Modelo Proposto (Fluxo Macro
-        de Atuação do Gêmeo Digital).
-  \item \textbf{OE3 — Métricas e indicadores}: Entregáveis — catálogo de métricas e
-        indicadores com definições operacionais; Seções — Modelo Proposto (framework
-        de eventos e integrações do gêmeo digital).
-  \item \textbf{OE4 — Arquitetura e pipeline}: Entregáveis — arquitetura técnica e
-        pipeline de dados; Seções — Modelo Proposto (pipeline de coleta e análise;
-        Componentes Conceituais).
-  \item \textbf{OE5 — Protótipo e dashboards}: Entregáveis — protótipo integrado e
-        dashboards por perfil (estudante, docente, coordenação); Seções — Case de
-        Estudo: Implementação (descrição técnica e telas principais).
-  \item \textbf{OE6 — Demonstração/exemplo aplicado}: Entregáveis — protocolo e relato do
-        exemplo aplicado em disciplina PBL; Seções — Metodologia (Fase 3: Exemplo Aplicado).
-  \item \textbf{OE7 — Avaliação do artefato}: Entregáveis — relatório de avaliação
-        quantitativa/qualitativa; Seções — Hipóteses (Critérios de Validação) e, em
-        versões subsequentes, Resultados/Discussão.
-  \item \textbf{OE8 — Diretrizes, limitações e escala}: Entregáveis — diretrizes de
-        adoção, análise de limitações e roteiro de evolução/escalabilidade; Seções —
-        Justificativa e, na versão final, Conclusões/Trabalhos Futuros.
-\end{itemize}
+O objetivo OE1 (Requisitos, escopo e ética) é materializado no documento de requisitos e no protocolo ético, discutidos na seção de Metodologia. O OE2 (Modelo conceitual e metamodelos) resulta no modelo conceitual e no dicionário de dados, apresentados na seção do Modelo Proposto. O OE3 (Métricas e indicadores) e o OE4 (Arquitetura e pipeline) são detalhados na mesma seção, com entregáveis que incluem o catálogo de métricas, a arquitetura técnica e o pipeline de dados.
+
+A implementação prática é coberta pelo OE5 (Protótipo e dashboards), cujos resultados são o protótipo funcional e os dashboards, descritos na seção sobre o Estudo de Caso. O OE6 (Demonstração/exemplo aplicado) é endereçado pelo protocolo e relato do exemplo aplicado, na seção de Metodologia. Finalmente, o OE7 (Avaliação do artefato) e o OE8 (Diretrizes, limitações e escala) são abordados nas seções de Hipóteses, Justificativa e, na versão final do trabalho, nas seções de Resultados e Conclusões.
 
 
 \section{JUSTIFICATIVA}
