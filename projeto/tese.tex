@@ -81,7 +81,8 @@ São Paulo, 2025\
 \end{center}
 \renewcommand{\baselinestretch}{0.6666666}
 Esta tese, em fase de qualificação, propõe uma arquitetura para captar, integrar e organizar eventos educacionais — interações, artefatos e registros operacionais — gerados em ambientes de Project‑Based Learning (PBL) em um módulo de um curso de engenharia de software, com o propósito de alimentar um gêmeo digital do ecossistema. Parte-se da limitação de abordagens pontuais, insuficientes para representar a dinâmica do processo de aprendizagem em contextos autênticos e a articulação entre estrutura, comportamento e processo das equipes. O trabalho descreve um modelo que consolida fontes heterogêneas e fornece uma base unificada e rastreável para acompanhar o andamento dos projetos e apoiar a orquestração pedagógica.
-Especificamente, a pesquisa abrange: (i) concepção do modelo; (ii) definição dos tipos de eventos e metadados; (iii) especificação de esquemas e contratos de dados; (iv) modelagem da arquitetura e dos fluxos de ingestão, processamento e persistência; (v) implementação de protótipo integrado a ferramentas de desenvolvimento e colaboração; (vi) demonstração por estudo de caso; e (vii) diretrizes de implantação e escalabilidade. Metodologicamente, adota-se Design Science Research, combinando revisão sistemática da literatura, desenvolvimento do artefato e técnicas de arquitetura e especificação de gêmeos digitais. Como contribuição, apresenta-se um arcabouço técnico‑pedagógico para captura e rastreabilidade de eventos em PBL, ampliando a visibilidade do processo e a integração entre as perspectivas estrutural, comportamental e de processo, preservando a natureza experiencial da abordagem. Nesta etapa de qualificação não são apresentados resultados nem discussões, restringindo-se à fundamentação, ao escopo e ao plano metodológico.
+Especificamente, a pesquisa abrange sete frentes: concepção do modelo; definição dos tipos de eventos e metadados; especificação de esquemas e contratos de dados; modelagem da arquitetura e dos fluxos de ingestão, processamento e persistência; implementação de protótipo integrado a ferramentas de desenvolvimento e colaboração; demonstração por estudo de caso; e diretrizes de implantação e escalabilidade.
+Metodologicamente, adota-se Design Science Research, combinando revisão sistemática da literatura, desenvolvimento do artefato e técnicas de arquitetura e especificação de gêmeos digitais. Como contribuição, apresenta-se um arcabouço técnico‑pedagógico para captura e rastreabilidade de eventos em PBL, ampliando a visibilidade do processo e a integração entre as perspectivas estrutural, comportamental e de processo, preservando a natureza experiencial da abordagem. Nesta etapa de qualificação não são apresentados resultados nem discussões, restringindo-se à fundamentação, ao escopo e ao plano metodológico.
 \vspace{0.5cm}
 \begin{flushleft}
 {\bf Palavras-chave:} {\it Avaliação de Arquiteturas ATAM/SEI, Táticas arquiteturais, ISO 10746, ISO 25010, CEP (Complex Event Processing), Inteligência Artificial, Agentes de IA, Predição}
@@ -121,7 +122,12 @@ Nesse cenário, os Gêmeos Digitais (Digital Twins) despontam como tecnologia ca
 
 Para que essa exploração resulte em um instrumento confiável e comparável, é necessário estruturar o gêmeo digital com base em perspectivas arquiteturais consolidadas. Em particular, as visões \textbf{estrutural}, \textbf{comportamental} e de \textbf{processo} oferecem lentes complementares para caracterizar meta‑projetos em PBL: a visão estrutural organiza componentes, recursos, ferramentas e artefatos; a visão comportamental modela interações dinâmicas entre estudantes, orientadores e sistemas; e a visão de processo mapeia fluxos de atividades e marcos operacionais. Ao integrar essas visões, constrói-se uma base coerente para coleta de dados, análise e visualização que favorece a responsividade às necessidades dos stakeholders, a justificativa de conclusões com base em evidências e o uso eficiente de recursos. Essa organização arquitetural dialoga com boas práticas de descrição de sistemas complexos em engenharia de software, oferecendo um vocabulário comum para a concepção e a verificação arquitetural do artefato proposto.
 
-Apesar de avanços relatados, persiste uma lacuna no emprego de gêmeos digitais como mecanismo de captura e integração de eventos em projetos PBL na engenharia de software. As iniciativas mais frequentes concentram-se na construção de protótipos físicos e virtuais sem enfrentar de forma abrangente duas questões centrais: (i) como observar — de modo ético e objetivo — os processos em andamento ao longo do tempo; e (ii) como transformar esses dados em insumos úteis para coordenação e tutoria. Como consequência, decisões críticas podem ocorrer tardiamente, padrões de colaboração passam despercebidos e o alinhamento entre objetivos, processos e produtos fica pouco transparente. Diante desse quadro, torna-se premente conceber arquiteturas de captura e integração de eventos que satisfaçam requisitos de qualidade (efetividade, eficiência, sustentabilidade), ao mesmo tempo em que sejam sensíveis à complexidade própria de programas de engenharia.
+Apesar de avanços relatados, persiste uma lacuna no emprego de gêmeos digitais como mecanismo de captura e integração de eventos em projetos PBL na engenharia de software. As iniciativas mais frequentes concentram-se na construção de protótipos físicos e virtuais sem enfrentar de forma abrangente duas questões centrais:
+\begin{enumerate}
+  \item como observar — de modo ético e objetivo — os processos em andamento ao longo do tempo; e
+  \item como transformar esses dados em insumos úteis para coordenação e tutoria.
+\end{enumerate}
+Como consequência, decisões críticas podem ocorrer tardiamente, padrões de colaboração passam despercebidos e o alinhamento entre objetivos, processos e produtos fica pouco transparente. Diante desse quadro, torna-se premente conceber arquiteturas de captura e integração de eventos que satisfaçam requisitos de qualidade (efetividade, eficiência, sustentabilidade), ao mesmo tempo em que sejam sensíveis à complexidade própria de programas de engenharia.
 
 Neste trabalho, a necessidade de pesquisa é, portanto, dupla: de um lado, propor uma arquitetura de gêmeo digital focada em capturar, integrar e organizar eventos (artefatos, atividades e interações) e, de outro, demonstrar que tal integração pode subsidiar decisões docentes e a orquestração do PBL. Para isso, delineiam-se requisitos que orientam a solução: (a) confiabilidade e integridade de dados; (b) temporalidade adequada às rotinas pedagógicas; (c) interpretabilidade para diferentes públicos; (d) interoperabilidade com ferramentas correntes de desenvolvimento e colaboração; e (e) observância a princípios éticos e de privacidade.
 
@@ -624,10 +630,13 @@ corpo de conhecimento sob a forma de princípios de projeto, modelos e métodos
 No escopo de DSR, \textbf{artefatos} podem ser \textit{constructs}, modelos,
 métodos e instâncias/protótipos; sua criação e avaliação constituem o núcleo da
 atividade científica orientada a projeto \cite{march1995design}. Hevner et
-al. \cite{hevner2004design} estruturam DSR em três ciclos interligados: (i)
-\textbf{relevância} (vínculo com o ambiente e o problema real), (ii)
-\textbf{rigor} (ancoragem teórica e metodológica na base de conhecimento), e
-(iii) \textbf{design} (ciclos iterativos de construir–avaliar o artefato). Essa
+al. \cite{hevner2004design} estruturam DSR em três ciclos interligados:
+\begin{enumerate}
+  \item \textbf{relevância} (vínculo com o ambiente e o problema real),
+  \item \textbf{rigor} (ancoragem teórica e metodológica na base de conhecimento), e
+  \item \textbf{design} (ciclos iterativos de construir–avaliar o artefato).
+\end{enumerate}
+Essa
 visão assegura que o artefato atenda a necessidades reais sem perder solidez
 teórica e metodológica.
 
@@ -682,14 +691,12 @@ generalização, alinhados aos objetivos da solução \cite{gregor2013positionin
 
 \subsection{Aderência ao Problema e Justificativa da Escolha}
 
-O enquadramento em DSR é adequado porque: (i) o \textbf{problema} é prático e
-complexo (avaliar processos de aprendizagem em PBL, multidimensional e em
-tempo quase real); (ii) a \textbf{solução} exige um artefato tecnológico
-original (gêmeo digital educacional) que integre teoria pedagógica e
-arquiteturas de sistemas; e (iii) há necessidade de \textbf{avaliação rigorosa}
-em contexto real de uso, produzindo evidências sobre eficácia e delineando
-princípios de projeto transferíveis \cite{hevner2004design, gregor2013positioning,
-wieringa2014design, dresch2015design}.
+O enquadramento em DSR é adequado porque:
+\begin{enumerate}
+  \item o \textbf{problema} é prático e complexo (avaliar processos de aprendizagem em PBL, multidimensional e em tempo quase real);
+  \item a \textbf{solução} exige um artefato tecnológico original (gêmeo digital educacional) que integre teoria pedagógica e arquiteturas de sistemas; e
+  \item há necessidade de \textbf{avaliação rigorosa} em contexto real de uso, produzindo evidências sobre eficácia e delineando princípios de projeto transferíveis \cite{hevner2004design, gregor2013positioning, wieringa2014design, dresch2015design}.
+\end{enumerate}
 
 \subsection{Natureza da Pesquisa}
 
@@ -709,11 +716,16 @@ avaliação do artefato:
 
 \subsubsection{Governança, Ética e Privacidade de Dados}
 
-Estão sendo definidos controles para: (i) consentimento informado e ciência dos
-participantes; (ii) minimização e finalidade de uso de dados; (iii) anonimização
-ou pseudonimização quando cabível; (iv) segregação de ambientes (desenvolvimento,
-teste e análise); (v) controle de acesso e trilhas de auditoria; e (vi)
-retenção/desc descarte conforme política institucional. A coleta prioriza
+Estão sendo definidos controles para:
+\begin{enumerate}
+  \item consentimento informado e ciência dos participantes;
+  \item minimização e finalidade de uso de dados;
+  \item anonimização ou pseudonimização quando cabível;
+  \item segregação de ambientes (desenvolvimento, teste e análise);
+  \item controle de acesso e trilhas de auditoria; e
+  \item retenção/desc descarte conforme política institucional.
+\end{enumerate}
+A coleta prioriza
 telemetria técnica e metadados operacionais, evitando dados sensíveis ou de
 conteúdo pessoal sempre que possível. O protocolo ético integra o planejamento
 do estudo de caso e é documentado para revisão institucional.
@@ -753,13 +765,13 @@ equipe/entregas.
 
 \subsubsection{Ameaças à Validade e Mitigações}
 
-São consideradas ameaças à: (i) validade interna (história, maturação,
-instrumentação) — mitigadas por protocolos padronizados e linhas de base; (ii)
-validade de construto — mitigada por definições operacionais e triangulação de
-medidas; (iii) validade externa — mitigada por descrição detalhada do contexto
-e replicação em mais de um módulo quando possível; e (iv) validade
-estatística — mitigada por tamanho de efeito e intervalos de confiança, além de
-análises de poder a posteriori quando couber.
+São consideradas ameaças à:
+\begin{enumerate}
+  \item validade interna (história, maturação, instrumentação) — mitigadas por protocolos padronizados e linhas de base;
+  \item validade de construto — mitigada por definições operacionais e triangulação de medidas;
+  \item validade externa — mitigada por descrição detalhada do contexto e replicação em mais de um módulo quando possível; e
+  \item validade estatística — mitigada por tamanho de efeito e intervalos de confiança, além de análises de poder a posteriori quando couber.
+\end{enumerate}
 
 \subsubsection{Reprodutibilidade e Transparência}
 
@@ -823,16 +835,15 @@ proposto.
 
 \subsection{Saídas de Conhecimento em DSR}
 
-Serão disponibilizados e descritos de forma estruturada: (i) o \textbf{modelo
-arquitetural} com seus meta-requisitos (MR), princípios de design (DP) e
-decisões de design justificadas; (ii) a \textbf{instância prototípica} do gêmeo
-digital e artefatos de instrumentação; (iii) os \textbf{princípios de design}
-explicitados com suas justificativas empíricas e teóricas; (iv) o
-\textbf{método operacional} de avaliação contínua em PBL; (v) as
-\textbf{evidências de avaliação} (quantitativas e qualitativas) com discussão
-das ameaças à validade; e (vi) os \textbf{materiais reprodutíveis} (esquemas de
-dados, dicionário de métricas, scripts anonimizados, parâmetros) para
-facilitar replicação e extensão.
+Serão disponibilizados e descritos de forma estruturada:
+\begin{enumerate}
+  \item o \textbf{modelo arquitetural} com seus meta-requisitos (MR), princípios de design (DP) e decisões de design justificadas;
+  \item a \textbf{instância prototípica} do gêmeo digital e artefatos de instrumentação;
+  \item os \textbf{princípios de design} explicitados com suas justificativas empíricas e teóricas;
+  \item o \textbf{método operacional} de avaliação contínua em PBL;
+  \item as \textbf{evidências de avaliação} (quantitativas e qualitativas) com discussão das ameaças à validade; e
+  \item os \textbf{materiais reprodutíveis} (esquemas de dados, dicionário de métricas, scripts anonimizados, parâmetros) para facilitar replicação e extensão.
+\end{enumerate}
 
 \subsection{Considerações Éticas}
 
@@ -855,30 +866,37 @@ de trabalhos futuros.
 
 \section{POSICIONAMENTO DA PESQUISA}
 
-Esta seção explicita, com base na revisão sistemática e no levantamento bibliométrico conduzidos, o lugar desta tese no estado da arte sobre avaliação em Aprendizagem Baseada em Projetos (ABP) na Engenharia de Software. Apresentamos o escopo e a questão de pesquisa (PICO), a estratégia de busca e seleção (protocolo de Kitchenham \cite{kitchenham2004}), o funil de triagem, as visões analíticas adotadas (inspiradas no RM‑ODP \cite{iso10746}) e as lacunas sintetizadas que orientam a proposta arquitetural desta tese.
+Com base na revisão sistemática e no levantamento bibliométrico, situamos esta tese no estado da arte da avaliação em ABP na Engenharia de Software. A seção apresenta:
+\begin{itemize}
+  \item a questão e o escopo (PICO),
+  \item a estratégia de busca e seleção segundo Kitchenham \cite{kitchenham2004},
+  \item o funil de triagem,
+  \item as visões analíticas inspiradas no RM‑ODP \cite{iso10746}, e
+  \item as lacunas que direcionam a proposta arquitetural.
+\end{itemize}
 
 \subsection{Questão e Escopo (PICO)}
 
-A formulação da questão de pesquisa seguiu o framework \textbf{PICO} (População, Intervenção, Comparação, Resultados), recomendado para revisões sistemáticas em Engenharia de Software \cite{kitchenham2004} e consolidado na literatura metodológica \cite{santos2007pico}. Essa escolha assegura uma ancoragem explícita entre a pergunta orientadora, os termos de busca e os critérios de seleção, reduzindo vieses e reforçando a rastreabilidade do protocolo.
+A questão de pesquisa foi formulada com o framework \textbf{PICO} (População, Intervenção, Comparação, Resultados), recomendado para revisões em Engenharia de Software \cite{kitchenham2004} e consolidado na literatura metodológica \cite{santos2007pico}. Essa escolha ancora a pergunta, os termos de busca e os critérios de seleção, reduzindo vieses e reforçando a rastreabilidade do protocolo.
 
-No contexto desta tese, a População considera o ensino superior — com ênfase em Engenharia de Software — em ambientes autênticos de Aprendizagem Baseada em Projetos. A Intervenção abrange métodos, instrumentos, arquiteturas e tecnologias de apoio à avaliação em ABP, com interesse particular em monitoramento processual e feedback formativo. A Comparação não foi definida como requisito obrigatório, sendo utilizada apenas quando estudos alternativos eram informativos para o tema. Os Resultados de interesse concentram-se na objetividade (métricas e validação), na escalabilidade (automação e padronização) e na avaliação processual (capacidade de acompanhar e retroalimentar o processo em curso).
+Nesta tese, a População abrange o ensino superior, com ênfase em Engenharia de Software, em contextos autênticos de ABP. A Intervenção compreende métodos, instrumentos, arquiteturas e tecnologias de apoio à avaliação, com foco em monitoramento processual e feedback formativo. A Comparação não é obrigatória e é usada quando estudos alternativos agregam informação. Os Resultados de interesse concentram-se em objetividade (métricas e validação), escalabilidade (automação e padronização) e avaliação processual (acompanhamento e retroalimentação do processo em curso).
 
-O PICO orientou de ponta a ponta o protocolo: guiou a decomposição da pergunta em facetas para a construção das strings de busca; fundamentou os critérios de inclusão e exclusão — ao exigir alinhamento explícito aos elementos P, I e O —; e estruturou o formulário de extração, de modo que intervenções e resultados fossem registrados de forma consistente. O mapeamento entre PICO e questões de pesquisa (RQs) foi documentado no protocolo e serviu de base para a síntese descritiva dos achados.
+O PICO orientou todo o protocolo: guiou a decomposição da pergunta em facetas para compor as strings de busca; fundamentou os critérios de inclusão e exclusão (alinhados aos elementos P, I e O); e estruturou o formulário de extração para registrar intervenções e resultados de maneira consistente. O mapeamento entre PICO e questões de pesquisa (RQs) foi documentado e embasou a síntese descritiva.
 
-Em consonância, o protocolo de revisão adotou as três fases de Kitchenham \cite{kitchenham2004}. No planejamento, justificaram-se escopo e necessidade da revisão, formalizou-se a questão (via PICO), definiram-se as visões analíticas (RM‑ODP), os critérios e o plano de análise. Na condução, realizaram-se as buscas na Web of Science, com documentação das strings e filtros; a triagem ocorreu no Rayyan, seguida de avaliação de qualidade e extração padronizada. No relato, consolidou-se a síntese descritiva, registrou-se com transparência o funil (882 \,$\to$\, 301 \,$\to$\, 20) e organizaram-se os artefatos para auditabilidade e reuso. Esse encadeamento confere clareza metodológica ao posicionamento e sustenta os requisitos do modelo proposto.
+O protocolo de revisão seguiu as três fases de Kitchenham \cite{kitchenham2004}. No planejamento, justificaram-se escopo e necessidade, formalizou-se a questão (via PICO), definiram-se visões analíticas (RM‑ODP), critérios e plano de análise. Na condução, realizaram-se buscas na Web of Science, com documentação de strings e filtros; a triagem ocorreu no Rayyan, seguida de avaliação de qualidade e extração padronizada. No relato, consolidou-se a síntese descritiva, registrou-se o funil (882 \,$\to$\, 301 \,$\to$\, 20) e organizaram-se artefatos para auditabilidade e reuso. Esse encadeamento sustenta os requisitos do modelo proposto.
 
 \subsection{Estratégia Bibliométrica e Bases}
 
-Adotou‑se a \textbf{Web of Science} como única base de dados para a coleta principal, por combinar curadoria rigorosa (peer review), amplitude multidisciplinar e facilidades de exportação padronizada (RIS/DOI), em conformidade com Kitchenham \cite{kitchenham2004}. Idiomas não foram restritos na busca; na prática, os resultados recuperados foram predominantemente em inglês. As strings foram elaboradas de forma incremental e validadas por buscas piloto, decompondo a questão em facetas (escopo ABP, avaliação e contexto educacional) e adicionando termos específicos conforme as visões analíticas adotadas.
+Adotou‑se a \textbf{Web of Science} como base única da coleta principal por combinar curadoria rigorosa (peer review), amplitude multidisciplinar e exportação padronizada (RIS/DOI), em consonância com Kitchenham \cite{kitchenham2004}. Não houve restrição prévia de idioma; na prática, predominou o inglês. As strings foram elaboradas incrementalmente, validadas por buscas piloto e decompostas em facetas (ABP, avaliação, contexto educacional), com termos específicos conforme as visões analíticas.
 
-Para garantir cobertura e reduzir vieses na coleta, estruturamos a busca segundo as cinco visões do \textbf{Reference Model of Open Distributed Processing (RM‑ODP, ISO/IEC 10746)} \cite{iso10746}. Essas visões funcionam aqui como lentes complementares para mapear o problema de avaliação em ABP: a \emph{visão empresarial} enquadra propósitos, políticas e atores institucionais; a \emph{visão de informação} foca instrumentos e fluxos informacionais (rubricas, dashboards, analytics); a \emph{visão computacional} privilegia objetividade, padronização e validação; a \emph{visão de engenharia} orienta mecanismos de monitoramento processual por eventos/telemetria; e a \emph{visão de tecnologia} trata da instrumentação de competências transversais e de plataformas concretas. O uso coordenado dessas visões aumentou a cobertura temática e preservou a rastreabilidade entre requisitos, dados e soluções analisadas. As strings foram, portanto, especializadas por visão, combinando termos‑base de ABP e avaliação com termos específicos e, quando necessário, filtros de exclusão.
+Para ampliar cobertura e mitigar vieses, a busca foi estruturada pelas cinco visões do \textbf{RM‑ODP (ISO/IEC 10746)} \cite{iso10746}. Como lentes complementares: a \emph{visão empresarial} enquadra propósitos, políticas e atores institucionais; a \emph{visão de informação} foca instrumentos e fluxos (rubricas, dashboards, analytics); a \emph{visão computacional} privilegia objetividade, padronização e validação; a \emph{visão de engenharia} orienta mecanismos de monitoramento processual por eventos/telemetria; e a \emph{visão de tecnologia} trata da instrumentação de competências transversais e de plataformas. O uso coordenado dessas visões aumentou a cobertura e preservou a rastreabilidade entre requisitos, dados e soluções. As strings foram especializadas por visão, combinando termos‑base de ABP e avaliação com termos específicos e, quando necessário, filtros de exclusão.
 
 \subsection{Funil de Seleção e Critérios}
 
-A coleta multi‑camadas retornou 882 registros totais. Após retenção de DOIs e deduplicação inter‑camadas por DOI, consolidou‑se um conjunto com \textbf{301 artigos}. A triagem seguiu o protocolo de Kitchenham \cite{kitchenham2004}: títulos e resumos foram avaliados em ambiente de triagem (Rayyan), aplicando critérios de inclusão/exclusão definidos no protocolo; os estudos potencialmente elegíveis passaram à leitura completa, extração padronizada e síntese descritiva. O conjunto final incluiu \textbf{20 artigos}.
+A coleta em múltiplas camadas retornou 882 registros. Após retenção de DOIs e deduplicação intercamadas por DOI, consolidou‑se um conjunto com \textbf{301 artigos}. A triagem seguiu Kitchenham \cite{kitchenham2004}: títulos e resumos foram avaliados em ambiente de triagem (Rayyan), aplicando critérios de inclusão/exclusão definidos no protocolo; os estudos potencialmente elegíveis passaram à leitura completa, extração padronizada e síntese descritiva. O conjunto final incluiu \textbf{20 artigos}.
 
 \paragraph{Ferramenta de triagem (Rayyan).}
-Para operacionalizar a etapa de seleção utilizamos o \textbf{Rayyan} (\url{https://www.rayyan.ai}), uma plataforma web voltada a revisões sistemáticas e mapeamentos, que oferece organização de referências, triagem colaborativa (com possibilidade de cegamento), marcação estruturada de critérios, busca e filtros avançados e registro de razões de exclusão. Neste estudo, os registros consolidados (formato RIS, com DOI) foram importados para o Rayyan e triados segundo os \textbf{critérios de inclusão e exclusão} definidos no protocolo em conformidade com Kitchenham \cite{kitchenham2004}. Cada decisão foi justificada por rótulos padronizados, e os estudos classificados como “potencialmente incluídos” seguiram para leitura completa e extração padronizada, garantindo transparência e reprodutibilidade do funil.
+Utilizou‑se o \textbf{Rayyan} (\url{https://www.rayyan.ai}) para operacionalizar a seleção: organização de referências, triagem colaborativa (com possibilidade de cegamento), marcação estruturada de critérios, filtros avançados e registro de razões de exclusão. Os registros consolidados (RIS/DOI) foram importados e triados segundo os \textbf{critérios de inclusão e exclusão} do protocolo \cite{kitchenham2004}. Cada decisão foi justificada por rótulos padronizados; estudos “potencialmente incluídos” seguiram para leitura completa e extração padronizada, garantindo transparência e reprodutibilidade do funil.
 
 \begin{figure}[H]
   \centering
@@ -887,23 +905,59 @@ Para operacionalizar a etapa de seleção utilizamos o \textbf{Rayyan} (\url{htt
   \label{fig:funil-kitchenham}
 \end{figure}
 
-Para assegurar consistência e relevância do corpus, os critérios de elegibilidade foram definidos a priori e aplicados de forma sistemática. Foram considerados elegíveis estudos que tratassem de avaliação em contextos de Aprendizagem Baseada em Projetos no ensino superior, preferencialmente em cursos de Engenharia/Computação; que descrevessem métodos, instrumentos, arquiteturas ou tecnologias com potencial de apoiar a avaliação (do processo e/ou do produto); e que apresentassem desenho empírico ou relato técnico suficientemente detalhado para permitir extração padronizada de evidências. Exigiu‑se ainda publicação com revisão por pares e identificação por DOI, sem restrição prévia de idioma (na prática, predominou o inglês).
+Para assegurar consistência e relevância do corpus, os critérios de elegibilidade foram definidos a priori e aplicados sistematicamente. Foram incluídos estudos sobre avaliação em ABP no ensino superior (preferencialmente Engenharia/Computação) que descrevessem métodos, instrumentos, arquiteturas ou tecnologias com potencial de apoiar a avaliação (de processo e/ou produto) e apresentassem desenho empírico ou relato técnico com detalhamento suficiente para extração padronizada de evidências. Exigiu‑se publicação com revisão por pares e identificação por DOI, sem restrição prévia de idioma.
 
-Foram excluídos trabalhos que não abordassem ABP ou que não tratassem de avaliação; estudos restritos à educação básica (K–12) ou a contextos sem transponibilidade para o ensino superior em Engenharia/Computação; peças opinativas e editoriais sem base empírica; duplicatas entre camadas de busca após normalização por DOI; e registros que não disponibilizassem metadados mínimos para triagem e extração reprodutível.
+Foram excluídos trabalhos que não abordassem ABP ou avaliação; estudos restritos à educação básica (K–12) ou a contextos sem transponibilidade para o ensino superior em Engenharia/Computação; peças opinativas e editoriais sem base empírica; duplicatas entre camadas de busca (após normalização por DOI); e registros sem metadados mínimos para triagem e extração reprodutível.
 
-Do ponto de vista da cobertura temática, o consolidado (n=301) revelou assimetrias características do campo. A perspectiva de Engenharia — crucial para avaliação processual em tempo real — é praticamente ausente. As visões Empresarial e de Informação aparecem com maior frequência, mas dispersas entre instrumentos e justificativas que raramente convergem para modelos integrados. Na visão Computacional, observa‑se baixa padronização de métricas e escassez de estudos com validação explícita (confiabilidade/validade). Já a visão de Tecnologia tende a privilegiar resultados finais e percepções, com pouca instrumentação longitudinal de competências transversais. Esse panorama corrobora a oportunidade e orienta as decisões arquiteturais assumidas nesta tese.
+Quanto à cobertura temática, o consolidado (n = 301) revelou assimetrias. A perspectiva de Engenharia — crucial para avaliação processual em tempo real — é escassa. As visões Empresarial e de Informação aparecem com maior frequência, porém dispersas entre instrumentos e justificativas que raramente convergem para modelos integrados. Na visão Computacional, observa‑se baixa padronização de métricas e escassez de validação explícita (confiabilidade/validade). A visão de Tecnologia tende a privilegiar resultados finais e percepções, com pouca instrumentação longitudinal de competências transversais. Esse panorama reforça a oportunidade e orienta as decisões arquiteturais desta tese.
 
 \subsection{Síntese das Lacunas e Direcionadores}
 
-Da síntese emergem lacunas que direcionam a presente tese: (i) \textbf{integração informacional} entre dados técnicos, colaborativos e formativos (superando instrumentos isolados); (ii) \textbf{objetividade e escalabilidade} por meio de métricas operacionais com protocolos de validação (confiabilidade interavaliadores, reprodutibilidade); (iii) \textbf{avaliação processual} com \textbf{arquitetura orientada a eventos} para monitoramento contínuo/feedback; (iv) \textbf{instrumentação de competências transversais} com sinais observáveis no tempo. Essas lacunas mapeiam diretamente para as visões 2–4 (com 5 como dimensão de dados) e fundamentam os requisitos do modelo proposto.
+A síntese aponta quatro necessidades convergentes: integração informacional entre dados técnicos, colaborativos e formativos (superando instrumentos isolados); objetividade e escalabilidade por métricas operacionais com protocolos de validação (confiabilidade interavaliadores, reprodutibilidade); avaliação processual apoiada em arquitetura orientada a eventos para monitoramento contínuo e feedback; e instrumentação de competências transversais com sinais observáveis no tempo. Essas lacunas mapeiam diretamente para as visões 2–4 (com 5 como dimensão de dados) e fundamentam os requisitos do modelo proposto.
 
 \subsection{Posicionamento desta Tese}
 
-Esta tese propõe uma \textbf{abordagem arquitetural integrada} — formalizada como gêmeo digital educacional — que: (a) define um \textbf{modelo de informação} para integrar evidências de processo e produto; (b) implementa um \textbf{pipeline computacional} com métricas objetivas e validação; e (c) adota um \textbf{backbone orientado a eventos} para avaliação processual e feedback formativo em ABP. O desenho ancora‑se em visões arquiteturais (ISO/IEC/IEEE 42010), mantendo rastreabilidade entre evidências, critérios e decisões pedagógicas.
+O conjunto final de estudos incluídos (n=20) confirma tendências e lacunas observadas no consolidado (n=301) e explicita o espaço de contribuição desta Tese. Em termos de foco, os 20 artigos gravitam em torno de:
+\begin{itemize}
+  \item uso de rubricas (holísticas/analíticas) e estratégias de avaliação por pares/autoavaliação;
+  \item e‑portfólios e sistemas digitais de apoio à avaliação, frequentemente integrados a VLE/LMS; e
+  \item relatos de implementação de PBL/PjBL em cursos de Engenharia/Computação com ênfase em resultados finais (desempenho, percepções, satisfação).
+\end{itemize}
+Apesar de avanços pontuais, a literatura selecionada permanece predominantemente \emph{instrumental} e \emph{seccional}: as soluções avaliam produtos em marcos específicos, com pouca visibilidade processual e baixa padronização métrica.
+
+Quatro lacunas sobressaem de forma consistente ao analisar os 20 estudos em diálogo com o consolidado:
+
+\begin{enumerate}
+  \item \textbf{Integração informacional insuficiente}: evidências técnicas (código, commits, issues), colaborativas (papéis, interações) e formativas (rubricas, feedback) são tratadas de maneira fragmentada. Falta um modelo unificado que permita recuperar o \emph{como} se aprende e não apenas o \emph{o quê} se entrega.
+  \item \textbf{Objetividade e validação limitadas}: são raras as definições de métricas operacionais com protocolos explícitos de confiabilidade/validade (p.ex., acordo interavaliadores, reprodutibilidade). Predomina a avaliação subjetiva e localizada no tempo.
+  \item \textbf{Escalabilidade e monitoramento processual deficitários}: quase não há arquitetura orientada a eventos/telemetria que permita acompanhar o processo em curso (tempo quase real), gerar alertas e prover feedback formativo contínuo em cenários com múltiplas equipes.
+  \item \textbf{Instrumentação de competências transversais incipiente}: as iniciativas sobre soft skills tendem a depender de questionários pontuais ou percepções finais; há pouca instrumentação longitudinal baseada em sinais observáveis do trabalho (padrões de colaboração, comunicação, tomada de decisão).
+\end{enumerate}
+
+Essas lacunas são coerentes com a assimetria do consolidado (n=301), no qual tecnologias emergentes com alto potencial para avaliação processual aparecem sub‑representadas (p.ex., gêmeos digitais, learning analytics em fluxo, automação avaliativa, integração DevOps/CI/CD). O recorte dos 20 artigos explicita que a ênfase permanece na camada de \emph{instrumentos} (visão de informação) e em resultados finais, com baixa articulação às camadas \emph{computacional} (métricas e validação) e de \emph{engenharia} (arquiteturas e mecanismos para avaliação contínua).
+
+Esta Tese se posiciona para preencher precisamente esse \textbf{ponto cego sistêmico}, propondo uma \textbf{abordagem arquitetural integrada} formalizada como um \emph{gêmeo digital educacional} para ABP em Engenharia de Software. A contribuição central se materializa em quatro eixos complementares:
+
+\begin{itemize}
+  \item \textbf{Modelo de Informação unificado}: integra evidências de processo e produto (telemetria de desenvolvimento, artefatos do projeto, interações de equipe, rubricas), preservando rastreabilidade entre objetivos de aprendizagem, critérios e evidências.
+  \item \textbf{Pipeline Computacional de métricas}: define e operacionaliza métricas objetivas para dimensões técnicas e transversais, com protocolos de validação (confiabilidade interavaliadores, consistência temporal, reprodutibilidade) e consolidação em indicadores úteis à decisão pedagógica.
+  \item \textbf{Backbone orientado a eventos}: especifica mecanismos de coleta/ingestão e processamento de eventos (quase) em tempo real para avaliação \emph{processual}, permitindo feedback formativo contínuo, detecção precoce de riscos e suporte à tutoria em escala.
+  \item \textbf{Instrumentação de competências transversais}: propõe sinais e heurísticas observáveis no fluxo de trabalho (colaboração, comunicação, liderança situacional, planejamento) com mapeamento aos resultados de aprendizagem, indo além de autorrelatos e percepções finais.
+\end{itemize}
+
+Ao articular as visões \emph{empresarial, de informação, computacional, de engenharia e de tecnologia} (RM‑ODP), o desenho mantém \textbf{rastreabilidade} entre requisitos educacionais, dados, processos e decisões. Com isso, a Tese avança o estado da arte ao:
+\begin{enumerate}
+  \item transformar a avaliação de predominantemente \emph{pontual} para \emph{processual};
+  \item elevar a \emph{objetividade} e a \emph{comparabilidade} por meio de métricas operacionais validadas;
+  \item viabilizar \emph{escala} e \emph{responsividade} com uma arquitetura de eventos; e
+  \item oferecer \emph{visibilidade multidimensional} do trabalho das equipes e das contribuições individuais.
+\end{enumerate}
+
+Em síntese, frente ao panorama dos 20 estudos analisados — representativos das melhores práticas instrumentais atuais porém limitados na integração, na validação e no monitoramento contínuo — a Tese oferece uma contribuição \textbf{substancial e diferenciada}: um arcabouço arquitetural aplicável e auditável que conecta objetivos, evidências e decisões pedagógicas, fortalecendo a qualidade, a justiça e a efetividade da avaliação em ABP.
 
 \subsection{Protocolo e Reprodutibilidade}
 
-O protocolo (Kitchenham \cite{kitchenham2004}) foi documentado nas fases de \emph{planejamento, condução e relato}, incluindo strings por visão, critérios, planilhas de extração e artefatos de exportação (RIS/DOI). A transparência do funil (882 \textrightarrow{} 301 \textrightarrow{} 20) e a descrição das visões asseguram auditabilidade e reuso. A seção de Metodologia detalha os procedimentos complementares de validação utilizados nesta tese.
+O protocolo (Kitchenham \cite{kitchenham2004}) foi documentado nas fases de \emph{planejamento, condução e relato}, incluindo strings por visão, critérios, planilhas de extração e artefatos de exportação (RIS/DOI). A transparência do funil (882 \,$\to$\, 301 \,$\to$\, 20) e a descrição das visões asseguram auditabilidade e reuso. A seção de Metodologia detalha os procedimentos complementares de validação utilizados nesta tese.
 
 \section{CRONOGRAMA}
 
@@ -1059,7 +1113,14 @@ Esta subseção apresenta a modelagem conceitual do gêmeo digital proposta nest
 
 \textbf{IDEF0 e decomposição funcional.} A definição do modelo segue IDEF0 para explicitar entradas, controles, mecanismos e saídas nas diferentes camadas de abstração. Na camada sistêmica (A-0), as entradas são atividades e interações dos estudantes; os controles incluem DCN, PPC e o TAPI; os mecanismos abrangem plataformas acadêmicas, ferramentas de desenvolvimento e sensores; e as saídas reúnem aprendizados evidenciados, artefatos e justificativas rastreáveis. Camadas subsequentes detalham coleta, processamento, materializações e consumo.
 
-\textbf{Avaliação orientada a eixos.} A interpretação das evidências combina dados instrumentados e instrumentos docentes, organizada em quatro eixos: (i) \emph{Processo} — aderência a rituais ágeis e padrões de colaboração; (ii) \emph{Produto} — qualidade técnica e alinhamento ao TAPI; (iii) \emph{Conceitual} — domínio teórico evidenciado em provas/atividades e justificativas técnicas; (iv) \emph{Colaboração} — contribuição individual e dinâmica de equipe. Os eixos são ponderáveis e podem ser adaptados ao PPC.
+\textbf{Avaliação orientada a eixos.} A interpretação das evidências combina dados instrumentados e instrumentos docentes, organizada em quatro eixos:
+\begin{enumerate}
+  \item \emph{Processo} — aderência a rituais ágeis e padrões de colaboração;
+  \item \emph{Produto} — qualidade técnica e alinhamento ao TAPI;
+  \item \emph{Conceitual} — domínio teórico evidenciado em provas/atividades e justificativas técnicas; e
+  \item \emph{Colaboração} — contribuição individual e dinâmica de equipe.
+\end{enumerate}
+Os eixos são ponderáveis e podem ser adaptados ao PPC.
 
 \textbf{Restrições e pressupostos.} A adoção exige práticas mínimas: uso consistente de controle de versão e gestão de tarefas; definição explícita do TAPI; integração com sistemas acadêmicos essenciais; diretrizes éticas e de privacidade ativas. O modelo é agnóstico de tecnologia e opera por conectores, preservando portabilidade entre ecossistemas institucionais.
 
@@ -1095,15 +1156,15 @@ A linha temporal de 10 semanas segue um padrão estruturado que inicia com a apr
 
 \subsection{Framework Conceitual}
 
-O modelo conceitual proposto estabelece as fundações para a captura e integração de eventos em ambientes de Aprendizagem Baseada em Projetos (PBL). Ele se baseia em um conjunto de premissas e definições que garantem a coerência e a rastreabilidade dos dados coletados. A principal premissa é a adoção de práticas ágeis no desenvolvimento dos projetos, com o uso de um Termo de Abertura de Projeto Institucional (TAPI) bem estruturado, repositórios de código para controle de versão e sistemas de gestão de tarefas. O escopo do modelo se concentra nos processos pedagógicos e de desenvolvimento, não abrangendo processos administrativos externos ao módulo de ensino.
+O framework conceitual organiza, de forma coesa, os elementos que permitem observar o PBL sem reduzir o fenômeno a listas de verificação. Seu propósito é sustentar a captura e a integração de eventos com coerência semântica e rastreabilidade, tendo como premissas um TAPI claro, práticas ágeis efetivamente exercidas e o uso disciplinado de repositórios de código e sistemas de gestão de tarefas. O foco permanece nos processos pedagógicos e de desenvolvimento do módulo, evitando derivar para rotinas administrativas alheias ao escopo didático.
 
-O framework reconhece a interação de múltiplos atores que desempenham papéis cruciais no ecossistema PBL. Os \textbf{Estudantes}, organizados em \textbf{Equipes}, são os protagonistas do processo, executando tarefas técnicas e gerando os dados primários que alimentam o gêmeo digital. As equipes operam com papéis definidos, como Product Owner e Scrum Master, e são responsáveis pelo planejamento e entrega de incrementos de software. O \textbf{Professor Orientador} atua como mediador do processo de aprendizagem, oferecendo acompanhamento pedagógico e feedback formativo contínuo. \textbf{Docentes de Eixo} contribuem com instrução especializada em áreas específicas, enquanto o \textbf{Parceiro Externo} enriquece a experiência ao apresentar um problema autêntico e validar as soluções propostas. A \textbf{Coordenação}, por sua vez, é responsável por garantir os recursos e a infraestrutura necessários, além de utilizar os indicadores agregados para a gestão acadêmica.
+Neste ecossistema, estudantes trabalham em equipes com responsabilidades explícitas e ciclos iterativos; o professor orientador acompanha o progresso com feedback formativo; docentes de eixos complementam a instrução em momentos pontuais; a parceria externa introduz o problema autêntico e participa de validações; e a coordenação utiliza indicadores agregados para garantir condições institucionais e pedagógicas. Esses papéis cooperam em torno de um mesmo objeto de trabalho — o projeto — e os dados gerados por suas interações alimentam o gêmeo digital.
 
-A dinâmica do ambiente PBL é capturada por meio de uma tipologia de eventos que abrange as diversas facetas do processo de aprendizagem. Os eventos \textbf{Acadêmicos} incluem interações formais de ensino, como instruções, registros de presença, atividades ponderadas e avaliações. Os eventos \textbf{Operacionais} refletem a aplicação de metodologias ágeis, como cerimônias de planejamento, reuniões diárias, revisões de sprint e retrospectivas. Os eventos \textbf{Técnicos}, extraídos de ferramentas de desenvolvimento, compreendem ações como commits, pull requests, issues, builds e testes. Por fim, os eventos \textbf{Documentais} registram a evolução dos artefatos do projeto, como o TAPI, relatórios de progresso e apresentações.
+Os eventos que compõem essa observação não são tratados como categorias estanques, mas como um contínuo que atravessa ensino, operação e prática técnica. Assim, aulas, presenças e avaliações coexistem com ritos ágeis (planning, dailies, reviews) e com evidências de desenvolvimento (commits, pull requests, issues, builds, testes). Documentos como o TAPI, relatórios e apresentações encadeiam as decisões ao longo do tempo. A utilidade do gêmeo digital decorre exatamente da articulação entre essas fontes — e não do predomínio de uma única perspectiva.
 
-A rastreabilidade e a integração dos dados são asseguradas por um sistema de identificadores canônicos que reflete a hierarquia institucional. A cadeia de identificadores, que vai desde o nível macro das diretrizes curriculares até o nível micro dos artefatos de projeto, permite uma rastreabilidade completa. Essa estrutura garante a explicabilidade dos dados e a transparência do processo, desde as normativas institucionais até os produtos finais entregues pelas equipes.
+A rastreabilidade é viabilizada por identificadores canônicos que espelham a hierarquia institucional: de diretrizes curriculares e PPC/ES ao nível de equipes, sprints, artefatos e eventos. Com essa espinha dorsal, torna-se possível ligar objetivos a entregas, decisões a evidências e observações a intervenções pedagógicas, preservando contexto e explicabilidade.
 
-Para garantir a sua eficácia e utilidade, o modelo foi projetado com base em um conjunto de requisitos de qualidade. A \textbf{Confiabilidade} é assegurada por meio de um processamento de dados determinístico e tolerante a falhas, capaz de lidar com dados faltantes ou fora de ordem. A \textbf{Latência} do sistema é projetada para atender às necessidades do ambiente educacional, com atualizações diárias e a possibilidade de consultas sob demanda. A \textbf{Escalabilidade} garante que o modelo possa ser aplicado a múltiplos módulos e turmas concorrentemente. A \textbf{Segurança} é tratada por meio de mecanismos de controle de acesso, trilhas de auditoria e criptografia dos dados. Por fim, a \textbf{Usabilidade} é garantida por meio de dashboards acessíveis e intuitivos, que oferecem visualizações com rastreabilidade completa dos dados.
+Quanto à qualidade, o modelo assume processamento determinístico e tolerante a falhas (confiabilidade), janelas de atualização compatíveis com o ritmo de aula e de sprint (latência), operação concorrente entre turmas e módulos (escalabilidade) e proteções de acesso, trilhas de auditoria e criptografia quando necessário (segurança). A camada de apresentação prioriza clareza e rastreabilidade, oferecendo visualizações dirigidas a papéis sem perder a ligação com as evidências de origem (usabilidade).
 
 
 
@@ -1121,28 +1182,28 @@ A modelagem dinâmica do PBL, representada por meio de diagramas de sequência, 
 
   \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-01.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/pbl-01.png}
   \caption{Diagrama de sequência PBL-01 — Aluno inicia atividade: (A) abre a tarefa no LMS/Adalove (card $\rightarrow$ fazendo), (B) realiza commit/push da entrega no repositório, (C) finaliza a tarefa (card $\rightarrow$ feito, com trava) e (D) o LMS/Adalove notifica que a entrega aguarda correção.}
   \label{fig:seq-pbl-01}
 \end{figure}
 
   \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-02.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/pbl-02.png}
   \caption{Diagrama de sequência PBL-02 — Professor corrige e lança nota: (A) abre o artefato para revisão no LMS/Adalove, (B) registra feedback, (C) lança a nota e (D) o LMS/Adalove notifica a publicação ao aluno.}
   \label{fig:seq-pbl-02}
 \end{figure}
 
   \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-07.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/pbl-07.png}
   \caption{Diagrama de sequência PBL-07 — Planning e definição de metas: (A) o grupo inicia a planning (1ª aula), (B) o orientador conduz e valida o escopo, (C) o grupo cria/estima cards no Kanban e (D) o backlog é aprovado.}
   \label{fig:seq-pbl-07}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-14.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/pbl-14.png}
   \caption{Diagrama de Sequência PBL-14: Avaliação da Sprint.}
   \label{fig:seq-pbl-14}
 \end{figure}
@@ -1168,7 +1229,11 @@ A estrutura do exemplo aplicado contemplará:
 
 \subsection{Modelagem do Gêmeo Digital}
 
-Esta subseção sintetiza a modelagem conceitual que estrutura o gêmeo digital orientado a eventos. Utilizamos dois modelos de classes complementares: (i) um núcleo de CEP (captura e organização de eventos educacionais) e (ii) o metamodelo de eventos no nível de módulo.
+Esta subseção sintetiza a modelagem conceitual que estrutura o gêmeo digital orientado a eventos. Utilizamos dois modelos de classes complementares:
+\begin{enumerate}
+  \item um núcleo de CEP (captura e organização de eventos educacionais); e
+  \item o metamodelo de eventos no nível de módulo.
+\end{enumerate}
 
 \subsubsection{Modelo de Classes para CEP}
 
@@ -1204,7 +1269,7 @@ Apresentamos a seguir quatro modelagens dinâmicas centrais do pipeline de event
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-01-ingestao-lote-validacao-schema.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/seq-dt-01-ingestao-lote-validacao-schema.png}
   \caption{Ingestão em lote com validação de schema antes do armazenamento.}
   \label{fig:dt-01}
 \end{figure}
@@ -1213,7 +1278,7 @@ Na ingestão em lote, fontes exportam eventos padronizados; o conector normaliza
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-02-evento-presenca-pipeline.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/seq-dt-02-evento-presenca-pipeline.png}
   \caption{Pipeline do evento de presença: captura, validação, enriquecimento e persistência.}
   \label{fig:dt-02}
 \end{figure}
@@ -1222,7 +1287,7 @@ O LMS emite EventoPresenca com chaves institucionais; o conector aplica padroniz
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-03-evento-entrega-artefato-rastreabilidade.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/seq-dt-03-evento-entrega-artefato-rastreabilidade.png}
   \caption{Evento de entrega com referência ao artefato e rastreabilidade de grupo/aluno.}
   \label{fig:dt-03}
 \end{figure}
@@ -1231,7 +1296,7 @@ Webhooks do repositório disparam a montagem de um EventoEntrega que referencia 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-04-deduplicacao-idempotencia.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/seq-dt-04-deduplicacao-idempotencia.png}
   \caption{Deduplicação e idempotência na ingestão para evitar eventos repetidos.}
   \label{fig:dt-04}
 \end{figure}
@@ -1266,7 +1331,7 @@ O fluxo lógico preserva o baixo acoplamento entre coleta e análise: a interfac
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/seq-snapshot-app.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/seq-snapshot-app.png}
   \caption{Fluxo simples e rastreável de criação de snapshot.}
   \label{fig:seq-snapshot-app}
 \end{figure}
@@ -1460,77 +1525,77 @@ Esta seção será desenvolvida após a apresentação dos resultados e a conclu
 % Demais modelagens de sequência PBL (não exibidas na Seção 7.8)
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-03.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/pbl-03.png}
   \caption{Diagrama de sequência PBL-03 — Solicita revisão de nota.}
   \label{fig:seq-pbl-03}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-04.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/pbl-04.png}
   \caption{Diagrama de sequência PBL-04 — Onboarding do parceiro e TAPI.}
   \label{fig:seq-pbl-04}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-05.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/pbl-05.png}
   \caption{Diagrama de sequência PBL-05 — Formação de grupos.}
   \label{fig:seq-pbl-05}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-06.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/pbl-06.png}
   \caption{Diagrama de sequência PBL-06 — Alocação de repositório ao grupo.}
   \label{fig:seq-pbl-06}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-08.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/pbl-08.png}
   \caption{Diagrama de sequência PBL-08 — Criação de branch.}
   \label{fig:seq-pbl-08}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-09.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/pbl-09.png}
   \caption{Diagrama de sequência PBL-09 — Abertura de item (parceiro).}
   \label{fig:seq-pbl-09}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-10.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/pbl-10.png}
   \caption{Diagrama de sequência PBL-10 — Daily com impedimento.}
   \label{fig:seq-pbl-10}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-11.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/pbl-11.png}
   \caption{Diagrama de sequência PBL-11 — Pull request e revisão.}
   \label{fig:seq-pbl-11}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-12.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/pbl-12.png}
   \caption{Diagrama de sequência PBL-12 — Merge e integração.}
   \label{fig:seq-pbl-12}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-13.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/pbl-13.png}
   \caption{Diagrama de sequência PBL-13 — Falha de build e correção.}
   \label{fig:seq-pbl-13}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-15.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/pbl-15.png}
   \caption{Diagrama de sequência PBL-15 — Entrega de autoestudo.}
   \label{fig:seq-pbl-15}
 \end{figure}
@@ -1539,7 +1604,7 @@ Esta seção será desenvolvida após a apresentação dos resultados e a conclu
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-05-eventos-atrasados-watermark.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/seq-dt-05-eventos-atrasados-watermark.png}
   \caption{Eventos atrasados: tratamento com watermark temporal.}
   \label{fig:dt-05}
 \end{figure}
@@ -1548,7 +1613,7 @@ Eventos que chegam fora de ordem são aceitos dentro de uma janela controlada po
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-06-correlacao-join-por-chaves.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/seq-dt-06-correlacao-join-por-chaves.png}
   \caption{Correlação de eventos via \textit{join} por chaves canônicas.}
   \label{fig:dt-06}
 \end{figure}
@@ -1557,7 +1622,7 @@ Correlação e enriquecimento são feitos por chaves canônicas (pessoa, grupo, 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-07-validacao-versao-schema-migracao.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/seq-dt-07-validacao-versao-schema-migracao.png}
   \caption{Validação de versão de schema e migração controlada.}
   \label{fig:dt-07}
 \end{figure}
@@ -1566,7 +1631,7 @@ Cada evento declara sua VersaoSchema; validadores garantem compatibilidade e con
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-08-erro-validacao-dlq-correcao.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/seq-dt-08-erro-validacao-dlq-correcao.png}
   \caption{Erro de validação: envio à DLQ e ciclo de correção.}
   \label{fig:dt-08}
 \end{figure}
@@ -1575,7 +1640,7 @@ Falhas de schema ou dados disparam roteamento para DLQ com contexto de erro; ap�
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-09-replay-reprocessamento-controlado.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/seq-dt-09-replay-reprocessamento-controlado.png}
   \caption{Replay e reprocessamento controlado a partir de dados imutáveis.}
   \label{fig:dt-09}
 \end{figure}
@@ -1584,7 +1649,7 @@ Falhas ou mudanças de regra podem exigir reprocessamento; os dados imutáveis p
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-10-materializacao-sinais-para-docente.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/seq-dt-10-materializacao-sinais-para-docente.png}
   \caption{Materialização de sinais e dashboards para docentes.}
   \label{fig:dt-10}
 \end{figure}
@@ -1593,7 +1658,7 @@ Sinais derivados (atividade, WIP, presença) são materializados para leitura r�
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-11-compl-pbl-01-aluno-inicia-atividade.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/seq-dt-11-compl-pbl-01-aluno-inicia-atividade.png}
   \caption{Complemento ao PBL‑01 na visão do gêmeo digital.}
   \label{fig:dt-11}
 \end{figure}
@@ -1602,7 +1667,7 @@ O início de atividade gera eventos padronizados e bloqueios de tarefa no CEP, a
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-12-compl-pbl-02-professor-corrige-lanca-nota.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/seq-dt-12-compl-pbl-02-professor-corrige-lanca-nota.png}
   \caption{Complemento ao PBL‑02 na visão do gêmeo digital.}
   \label{fig:dt-12}
 \end{figure}
@@ -1611,7 +1676,7 @@ O lançamento de notas/feedback é coletado como EventoFeedback com rubrica e ti
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-13-compl-pbl-03-revisao-de-nota.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/seq-dt-13-compl-pbl-03-revisao-de-nota.png}
   \caption{Complemento ao PBL‑03 na visão do gêmeo digital.}
   \label{fig:dt-13}
 \end{figure}
@@ -1620,7 +1685,7 @@ Pedidos e decisões de revisão de nota geram EventoGenerico auditável, ligando
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-14-compl-pbl-07-planning-kanban.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/seq-dt-14-compl-pbl-07-planning-kanban.png}
   \caption{Complemento ao PBL‑07 com integração ao Kanban.}
   \label{fig:dt-14}
 \end{figure}
@@ -1629,7 +1694,7 @@ Mudanças no Kanban (criação, estimativa, aprovação) são emitidas como even
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-15-compl-pbl-08-branch-github.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/seq-dt-15-compl-pbl-08-branch-github.png}
   \caption{Complemento ao PBL‑08 com criação de branch no GitHub.}
   \label{fig:dt-15}
 \end{figure}
@@ -1638,7 +1703,7 @@ Webhooks de criação de branch são normalizados no CEP com autor e referência
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-16-compl-pbl-11-presenca.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/seq-dt-16-compl-pbl-11-presenca.png}
   \caption{Complemento ao PBL‑11 para registro de presença.}
   \label{fig:dt-16}
 \end{figure}
@@ -1647,7 +1712,7 @@ Check-in de presença vira EventoPresenca com chaves institucionais e integraç�
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-17-compl-pbl-15-autoestudo.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/seq-dt-17-compl-pbl-15-autoestudo.png}
   \caption{Complemento ao PBL‑15 para autoestudo.}
   \label{fig:dt-17}
 \end{figure}
@@ -1656,7 +1721,7 @@ Entregas de autoestudo tornam-se EventoAutoestudo com vínculo a aluno, tarefa e
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-18-compl-pbl-18-pitch.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/seq-dt-18-compl-pbl-18-pitch.png}
   \caption{Complemento ao PBL‑18 para pitch.}
   \label{fig:dt-18}
 \end{figure}
@@ -1665,7 +1730,7 @@ Pitch e feedback do parceiro são registrados como eventos genéricos ligados a 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-19-compl-pbl-23-encerramento-sprint.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/seq-dt-19-compl-pbl-23-encerramento-sprint.png}
   \caption{Complemento ao PBL‑23 para encerramento de sprint.}
   \label{fig:dt-19}
 \end{figure}
@@ -1674,7 +1739,7 @@ Fechamento de sprint aciona marcações de release/tag para snapshot de encerram
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/seq-dt-20-compl-pbl-25-encerramento-modulo.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/seq-dt-20-compl-pbl-25-encerramento-modulo.png}
   \caption{Complemento ao PBL‑25 para encerramento de módulo.}
   \label{fig:dt-20}
 \end{figure}
@@ -1683,90 +1748,12 @@ Encerramento do módulo gera pacote técnico e eventos finais, assegurando arqui
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/SEQ-B22-coleta-periodica-de-eventos.png}
+  \includegraphics[width=0.60\textwidth]{assets/seq/SEQ-B22-coleta-periodica-de-eventos.png}
   \caption{Coleta periódica de eventos (batch) para atualização do gêmeo.}
   \label{fig:dt-b22}
 \end{figure}
 
 Rotinas agendadas disparam conectores; os lotes são validados e enviados ao CEP.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/SEQ-B23-deteccao-de-anomalia-de-atividade.png}
-  \caption{Detecção de anomalias de atividade a partir de métricas de eventos.}
-  \label{fig:dt-b23}
-\end{figure}
-
-Sinais de anomalia (queda abrupta/atividade atípica) disparam alertas e ações corretivas com o orientador.
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-16.png}
-  \caption{Diagrama de sequência PBL-16 — Feedback de autoestudo.}
-  \label{fig:seq-pbl-16}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-17.png}
-  \caption{Diagrama de sequência PBL-17 — Solicitação de extensão de prazo.}
-  \label{fig:seq-pbl-17}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-18.png}
-  \caption{Diagrama de sequência PBL-18 — Pitch com parceiro.}
-  \label{fig:seq-pbl-18}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-19.png}
-  \caption{Diagrama de sequência PBL-19 — Retrospectiva pós-pitch.}
-  \label{fig:seq-pbl-19}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-20.png}
-  \caption{Diagrama de sequência PBL-20 — Mudança no TAPI.}
-  \label{fig:seq-pbl-20}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-21.png}
-  \caption{Diagrama de sequência PBL-21 — Escalonamento de bloqueio.}
-  \label{fig:seq-pbl-21}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-22.png}
-  \caption{Diagrama de sequência PBL-22 — Mentoria da sprint.}
-  \label{fig:seq-pbl-22}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-23.png}
-  \caption{Diagrama de sequência PBL-23 — Encerramento de sprint.}
-  \label{fig:seq-pbl-23}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-24.png}
-  \caption{Diagrama de sequência PBL-24 — Preparação de demonstração final.}
-  \label{fig:seq-pbl-24}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.98\textwidth]{assets/seq/pbl-25.png}
-  \caption{Diagrama de sequência PBL-25 — Encerramento de módulo.}
-  \label{fig:seq-pbl-25}
-\end{figure}
 
 % (Seção movida para após a Figura PBL-15)
 
