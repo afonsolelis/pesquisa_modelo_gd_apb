@@ -1,0 +1,489 @@
+Arquivo: tese (1)_rev1_Leandro.pdf
+Total de comentários: 73
+============================================================
+Página 1 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Comentário do texto
+Comentário: não pode ter sigla no titulo e geralmente não há mistura de idiomas; a virgula também está sobrando
+Datas: criado=D:20251009094858-03'00' | modificado=D:20251009094941-03'00'
+id: 1.1
+STATUS: Implementado — título sem siglas, sem mistura de idiomas e sem vírgula indevida.
+------------------------------------------------------------
+Página 2 | Tipo: StrikeOut | Autor: Leandro Augusto
+Assunto: Riscado
+Comentário: Esta pesquisa
+Datas: criado=D:20251009095000-03'00' | modificado=D:20251009095008-03'00'
+id: 2.2
+STATUS: Implementado — padronizado para ‘tese’; abertura e referências ajustadas.
+------------------------------------------------------------
+Página 2 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Comentário: de qual ecossistema esta falando? precisa ser específico ou colocar de um ecossistema educacional (algo do tipo)
+Datas: criado=D:20251009095037-03'00' | modificado=D:20251009095136-03'00'
+id: 2.3
+STATUS: Implementado — ecossistema especificado (educacional da disciplina).
+------------------------------------------------------------
+Página 2 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Comentário: quem parte? ficou confuso....esta querendo dizer da premissa da pesquisa?
+Datas: criado=D:20251009095155-03'00' | modificado=D:20251009095241-03'00'
+id: 2.4
+STATUS: Implementado — reformulado para ‘Parte-se da premissa…’, com sujeito claro.
+------------------------------------------------------------
+Página 2 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Comentário: precisa padronizar...pesquisa ou trabalho....e so descrever é insuficiente para uma tese......a pesquisa propõe é algo mais forte
+Datas: criado=D:20251009095304-03'00' | modificado=D:20251009095354-03'00'
+id: 2.5
+STATUS: Implementado — padronização para ‘tese’ e verbo forte (‘propõe e especifica’).
+------------------------------------------------------------
+Página 2 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Comentário: de que? de informações? insumos? atores?
+Datas: criado=D:20251009095403-03'00' | modificado=D:20251009095424-03'00'
+id: 2.6
+STATUS: Implementado — detalhamento do ‘de quê’ (interações, artefatos, registros).
+------------------------------------------------------------
+Página 2 | Tipo: StrikeOut | Autor: Leandro Augusto
+Assunto: Riscado
+Comentário: de
+Datas: criado=D:20251009095439-03'00' | modificado=D:20251009095442-03'00'
+id: 2.7
+STATUS: Implementado — preposição redundante eliminada na reescrita do período.
+------------------------------------------------------------
+Página 2 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Comentário do texto
+Comentário: sempre termos em ingles devem estar em itálico e acompanhado de uma traduação quando possível
+Datas: criado=D:20251009095505-03'00' | modificado=D:20251009095537-03'00'
+id: 2.8
+STATUS: Implementado (parcial) — termos em inglês com itálico + tradução nas primeiras ocorrências (resumo/introdução); revisar demais seções.
+------------------------------------------------------------
+Página 2 | Tipo: Text | Autor: Leandro Augusto
+Assunto: Nota
+Comentário: falta dar mais contexto do pq é importante o trabalho do ponto de vista de aplicação e não fica claro qual a lacuna de pesquisa está tentando ocupar;
+Datas: criado=D:20251009095552-03'00' | modificado=D:20251009095650-03'00'
+id: 2.9
+STATUS: Implementado — adicionado contexto aplicado e lacuna de pesquisa (intro/resumo).
+------------------------------------------------------------
+Página 2 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Comentário: precisa mudar este texto....vc. esta apresentando resultados, mas não são quantitativos, mas sim de outros aspectos como modelagens e etc....melhorar este trecho
+Datas: criado=D:20251009095702-03'00' | modificado=D:20251009095808-03'00'
+id: 2.10
+STATUS: Implementado — retirada menção a ‘resultados’ nesta etapa; foco em especificação/arquitetura.
+------------------------------------------------------------
+Página 5 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Comentário do texto
+Comentário: (do inglês, P.......)
+Datas: criado=D:20251009095825-03'00' | modificado=D:20251009095840-03'00'
+id: 5.11
+STATUS: Implementado — ‘do inglês’ padronizado e completado na 1ª ocorrência.
+------------------------------------------------------------
+Página 5 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Comentário do texto
+Comentário: o que é um problema autentico? talvez dar alguns exemplos
+Datas: criado=D:20251009095901-03'00' | modificado=D:20251009095922-03'00'
+id: 5.12
+STATUS: Implementado — exemplos de ‘problema autêntico’ adicionados.
+------------------------------------------------------------
+Página 5 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Comentário: texto ta truncando, deixar fluido
+Datas: criado=D:20251009095940-03'00' | modificado=D:20251009095951-03'00'
+id: 5.13
+STATUS: Implementado — fluidez melhorada (segmentação e coesão).
+------------------------------------------------------------
+Página 5 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Comentário: quando coloca da/do; essa/esta e etc precisa definir o sujeito/objeto senão fica laconico.......vc. esta querendo dizer de forma genérica, certo...então deveria ficar algo como ...para que uma experiência aplicada em uma aprendizagem PBL seja traduzida em melhoria........
+Datas: criado=D:20251009100014-03'00' | modificado=D:20251009100223-03'00'
+id: 5.14
+STATUS: Implementado — sujeito/objeto explicitados nas referências.
+------------------------------------------------------------
+Página 5 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Comentário do texto
+Comentário: mas qual é o produto final, isto não foi definido.....sinto que falta dar mais contexto do trabalho para que depois consiga cadenciar melhor os seus argumentos de tese
+Datas: criado=D:20251009100251-03'00' | modificado=D:20251009100333-03'00'
+id: 5.15
+STATUS: Implementado — definido produto final com exemplos (protótipo, relatório, apresentação).
+------------------------------------------------------------
+Página 5 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Comentário: tem alguma coisa quebrada neste parágrafo; não apenas de layout, mas de concatenação de ideias também
+Datas: criado=D:20251009100357-03'00' | modificado=D:20251009100430-03'00'
+id: 5.16
+STATUS: Implementado — parágrafo reescrito para fluidez e concatenação; dividido em duas frases e atributos organizados.
+------------------------------------------------------------
+Página 5 | Tipo: StrikeOut | Autor: Leandro Augusto
+Assunto: Riscado
+Datas: criado=D:20251009100448-03'00' | modificado=D:20251009100448-03'00'
+id: 5.17
+STATUS: Implementado — removido ‘porém’ do período ‘Observar processos em PBL …’, conforme trecho riscado.
+------------------------------------------------------------
+Página 5 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Comentário do texto
+Comentário: no geral da para entender....mas o texto não é fluido....falta desenvolver mais a fluidez e concatenação de idias...os parágrafos indicam que vc. tem mais argumentos para desenrolar melhor o texto / sua ideia
+Datas: criado=D:20251009100516-03'00' | modificado=D:20251009100809-03'00'
+id: 5.18
+STATUS: Implementado — ajustes de fluidez (transição ‘Assim’) e melhoria de encadeamento.
+------------------------------------------------------------
+Página 5 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Comentário: de qual processo esta falando? educacional, pbl?
+Datas: criado=D:20251009100838-03'00' | modificado=D:20251009100900-03'00'
+id: 5.19
+STATUS: Implementado — especificado ‘processo de aprendizagem’ e ‘orquestração do processo de aprendizagem’.
+------------------------------------------------------------
+Página 5 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Comentário: qual? não consigo conectar as ideias
+Datas: criado=D:20251009100914-03'00' | modificado=D:20251009100940-03'00'
+id: 5.20
+STATUS: Implementado — removida referência genérica; coesão ancorada no survey já citado.
+------------------------------------------------------------
+Página 5 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Datas: criado=D:20251009100948-03'00' | modificado=D:20251009100948-03'00'
+id: 5.21
+STATUS: Sem alteração textual — realce sem comentário.
+------------------------------------------------------------
+Página 5 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Datas: criado=D:20251009101001-03'00' | modificado=D:20251009101001-03'00'
+id: 5.22
+STATUS: Sem alteração textual — realce sem comentário.
+------------------------------------------------------------
+Página 5 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Datas: criado=D:20251009101008-03'00' | modificado=D:20251009101008-03'00'
+id: 5.23
+STATUS: Sem alteração textual — realce sem comentário.
+------------------------------------------------------------
+Página 5 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Datas: criado=D:20251009101016-03'00' | modificado=D:20251009101016-03'00'
+id: 5.24
+STATUS: Sem alteração textual — realce sem comentário.
+------------------------------------------------------------
+Página 5 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Comentário: dados é muita coisa, precisa ser específico
+Datas: criado=D:20251009101348-03'00' | modificado=D:20251009101401-03'00'
+id: 5.25
+STATUS: Implementado — especificados “dados e eventos” (commits, PRs, issues, presenças, mensageria, builds, avaliações).
+------------------------------------------------------------
+Página 5 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Comentário: vc. falou de outros tipos de simulação?
+Datas: criado=D:20251009102239-03'00' | modificado=D:20251009102253-03'00'
+id: 5.26
+STATUS: Implementado — esclarecido que a comparação restringe-se a simulações estáticas e painéis pontuais (não tratamos outros tipos).
+------------------------------------------------------------
+Página 5 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Comentário: entendi o que quis dizer, mas não que antes estivesse falando de uma outra área de aplicação
+Datas: criado=D:20251009102314-03'00' | modificado=D:20251009102345-03'00'
+id: 5.27
+STATUS: Implementado — reforçado que o foco permanece no contexto educacional (não é outra área de aplicação).
+------------------------------------------------------------
+Página 5 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Datas: criado=D:20251009102354-03'00' | modificado=D:20251009102354-03'00'
+id: 5.28
+STATUS: Sem alteração textual — realce sem comentário.
+------------------------------------------------------------
+Página 5 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Comentário: cade a citação?
+Datas: criado=D:20251009102403-03'00' | modificado=D:20251009102409-03'00'
+id: 5.29
+STATUS: Implementado — adicionadas citações (Romero 2010/2020; Barricelli 2019) para sustentar lacuna e exemplos de iniciativas.
+------------------------------------------------------------
+Página 6 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Comentário: quem disse isto?
+Datas: criado=D:20251009102437-03'00' | modificado=D:20251009102444-03'00'
+id: 6.30
+STATUS: Implementado — adicionada citação \cite{pressman2021} ao enunciado sobre a natureza iterativa/colaborativa do desenvolvimento de software.
+------------------------------------------------------------
+Página 6 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Datas: criado=D:20251009102455-03'00' | modificado=D:20251009102455-03'00'
+id: 6.31
+STATUS: Sem alteração textual — realce sem comentário.
+------------------------------------------------------------
+Página 6 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Comentário: frase esta solta
+Datas: criado=D:20251009102510-03'00' | modificado=D:20251009102522-03'00'
+id: 6.32
+STATUS: Implementado — frase ajustada: removida referência regional solta; ancorado em revisão \cite{barricelli2019}.
+------------------------------------------------------------
+Página 6 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Comentário: por quem? aonde? cade as citações?
+Datas: criado=D:20251009102531-03'00' | modificado=D:20251009102546-03'00'
+id: 6.33
+STATUS: Implementado — adicionadas citações (\cite{romero2020}, \cite{barricelli2019}) para sustentar afirmações.
+------------------------------------------------------------
+Página 6 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Comentário do texto
+Comentário: se são questões tem que escrever como perguntas
+Datas: criado=D:20251009102559-03'00' | modificado=D:20251009102611-03'00'
+id: 6.34
+STATUS: Implementado — questões reescritas em forma interrogativa.
+------------------------------------------------------------
+Página 6 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Comentário: de que? acabou de apresentar perguntas de pesquisa
+Datas: criado=D:20251009102620-03'00' | modificado=D:20251009102638-03'00'
+id: 6.35
+STATUS: Implementado — especificado o “de quê” (requisitos da arquitetura e do pipeline de dados).
+------------------------------------------------------------
+Página 7 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Comentário: pouco para tese....não vai implementar e validar?
+Datas: criado=D:20251009102658-03'00' | modificado=D:20251009102717-03'00'
+id: 7.36
+STATUS: Implementado — Objetivo Geral ampliado: protótipo + exemplo aplicado + avaliação arquitetural/operacional.
+------------------------------------------------------------
+Página 7 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Datas: criado=D:20251009102730-03'00' | modificado=D:20251009102730-03'00'
+id: 7.37
+STATUS: Sem alteração textual — realce sem comentário.
+------------------------------------------------------------
+Página 8 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Comentário: a hipotese é quase uma pergunta....aqui temos uma afirmação
+Datas: criado=D:20251009102756-03'00' | modificado=D:20251009102840-03'00'
+id: 8.38
+STATUS: Implementado — Hipótese principal reformulada no formato condicional (Se… então…).
+------------------------------------------------------------
+Página 8 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Datas: criado=D:20251009102851-03'00' | modificado=D:20251009102851-03'00'
+id: 8.39
+STATUS: Sem alteração textual — realce sem comentário.
+------------------------------------------------------------
+Página 11 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Comentário: só apresentou uma referencia
+Datas: criado=D:20251009103015-03'00' | modificado=D:20251009103026-03'00'
+id: 11.40
+STATUS: Implementado — seção ATAM agora com duas referências (\cite{kazman2000atam} e \cite{10022111}).
+------------------------------------------------------------
+Página 11 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Comentário do texto
+Comentário: não é capítulo novo, mas um item da introduçao
+Datas: criado=D:20251009103100-03'00' | modificado=D:20251009103114-03'00'
+id: 11.41
+STATUS: Implementado — “JUSTIFICATIVA” reclassificada como subseção da Introdução.
+------------------------------------------------------------
+Página 13 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Comentário do texto
+Comentário: em formato de tese, cada capítulo se inicia em uma página própria
+Datas: criado=D:20251009103122-03'00' | modificado=D:20251009103139-03'00'
+id: 13.42
+STATUS: Implementado —
+ewpage inserido antes de “REFERENCIAL TEÓRICO” para iniciar em página própria.
+------------------------------------------------------------
+Página 13 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Datas: criado=D:20251009103156-03'00' | modificado=D:20251009103156-03'00'
+id: 13.43
+STATUS: Sem alteração textual — realce sem comentário.
+------------------------------------------------------------
+Página 13 | Tipo: Ink | Autor: Leandro Augusto
+Assunto: Lápis
+Datas: criado=D:20251009103300-03'00' | modificado=D:20251009103302-03'00'
+id: 13.44
+STATUS: Sem alteração textual — anotação de lápis (sem instrução).
+------------------------------------------------------------
+Página 13 | Tipo: Ink | Autor: Leandro Augusto
+Assunto: Lápis
+Datas: criado=D:20251009103306-03'00' | modificado=D:20251009103306-03'00'
+id: 13.45
+STATUS: Sem alteração textual — anotação de lápis (sem instrução).
+------------------------------------------------------------
+Página 14 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Comentário do texto
+Comentário: em que sentido?
+Datas: criado=D:20251009103211-03'00' | modificado=D:20251009103221-03'00'
+id: 14.46
+STATUS: Implementado — esclarecido o “em que sentido”: relevância ancorada no panorama de adoção emergente (\cite{barricelli2019}).
+------------------------------------------------------------
+Página 14 | Tipo: Ink | Autor: Leandro Augusto
+Assunto: Lápis
+Datas: criado=D:20251009103257-03'00' | modificado=D:20251009103257-03'00'
+id: 14.47
+STATUS: Sem alteração textual — anotação de lápis (sem instrução).
+------------------------------------------------------------
+Página 14 | Tipo: Ink | Autor: Leandro Augusto
+Assunto: Lápis
+Datas: criado=D:20251009103304-03'00' | modificado=D:20251009103304-03'00'
+id: 14.48
+STATUS: Sem alteração textual — anotação de lápis (sem instrução).
+------------------------------------------------------------
+Página 15 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Comentário do texto
+Comentário: onde estao estes estudos?
+Datas: criado=D:20251009103414-03'00' | modificado=D:20251009103422-03'00'
+id: 15.49
+STATUS: Implementado — substituído por citação explícita (\cite{barricelli2019}) ao mencionar estudos.
+------------------------------------------------------------
+Página 15 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Datas: criado=D:20251009103433-03'00' | modificado=D:20251009103433-03'00'
+id: 15.50
+STATUS: Sem alteração textual — realce sem comentário.
+------------------------------------------------------------
+Página 15 | Tipo: StrikeOut | Autor: Leandro Augusto
+Assunto: Riscado
+Datas: criado=D:20251009103453-03'00' | modificado=D:20251009103453-03'00'
+id: 15.51
+STATUS: Implementado — revisada forma de citação textual (\citet) no lugar de autor+\cite.
+------------------------------------------------------------
+Página 15 | Tipo: StrikeOut | Autor: Leandro Augusto
+Assunto: Riscado
+Datas: criado=D:20251009103513-03'00' | modificado=D:20251009103513-03'00'
+id: 15.52
+STATUS: Implementado — revisada forma de citação textual (\citet) no lugar de autor+\cite.
+------------------------------------------------------------
+Página 16 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Comentário do texto
+Comentário: precisa rever a forma de citação direta...no latex é o \citeonline
+Datas: criado=D:20251009103523-03'00' | modificado=D:20251009103548-03'00'
+id: 16.53
+STATUS: Implementado — forma de citação direta ajustada: uso de \citet (Natbib), equivalente ao \citeonline.
+------------------------------------------------------------
+Página 16 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Datas: criado=D:20251009103611-03'00' | modificado=D:20251009103611-03'00'
+id: 16.54
+STATUS: Sem alteração textual — realce sem comentário.
+------------------------------------------------------------
+Página 16 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Datas: criado=D:20251009103620-03'00' | modificado=D:20251009103620-03'00'
+id: 16.55
+STATUS: Sem alteração textual — realce sem comentário.
+------------------------------------------------------------
+Página 17 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Datas: criado=D:20251009103650-03'00' | modificado=D:20251009103650-03'00'
+id: 17.56
+STATUS: Sem alteração textual — realce sem comentário.
+------------------------------------------------------------
+Página 18 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Datas: criado=D:20251009103728-03'00' | modificado=D:20251009103728-03'00'
+id: 18.57
+STATUS: Sem alteração textual — realce sem comentário.
+------------------------------------------------------------
+Página 18 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Datas: criado=D:20251009103730-03'00' | modificado=D:20251009103730-03'00'
+id: 18.58
+STATUS: Sem alteração textual — realce sem comentário.
+------------------------------------------------------------
+Página 18 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Datas: criado=D:20251009103735-03'00' | modificado=D:20251009103735-03'00'
+id: 18.59
+STATUS: Sem alteração textual — realce sem comentário.
+------------------------------------------------------------
+Página 19 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Comentário do texto
+Comentário: esta falando do seu trabalho? pq aqui no texto é sobre referencial teorico
+Datas: criado=D:20251009103755-03'00' | modificado=D:20251009103817-03'00'
+id: 19.60
+STATUS: Implementado — removidas auto-referências na seção de referencial; texto tornado descritivo.
+------------------------------------------------------------
+Página 19 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Datas: criado=D:20251009103830-03'00' | modificado=D:20251009103830-03'00'
+id: 19.61
+STATUS: Sem alteração textual — realce sem comentário.
+------------------------------------------------------------
+Página 19 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Datas: criado=D:20251009103840-03'00' | modificado=D:20251009103840-03'00'
+id: 19.62
+STATUS: Sem alteração textual — realce sem comentário.
+------------------------------------------------------------
+Página 20 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Comentário do texto
+Comentário: não acho que apresentar um case seja referencial teorico....vc pode conceituar e depois dar como exemplo o inteli....alias, precisa minimizar a instituição no seu trabalho sob o ponto de vista de tornar a sua pesquisa genérica
+Datas: criado=D:20251009103944-03'00' | modificado=D:20251009104047-03'00'
+id: 20.63
+STATUS: Implementado — seção de modelo institucional generalizada; minimizada menção à instituição e mantida como exemplo.
+------------------------------------------------------------
+Página 22 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Realce
+Datas: criado=D:20251009104058-03'00' | modificado=D:20251009104058-03'00'
+id: 22.64
+STATUS: Sem alteração textual — realce sem comentário.
+------------------------------------------------------------
+Página 25 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Comentário do texto
+Comentário: precisa desenvolver um texto sobre isto....aqui esta em estilo de ppt
+Datas: criado=D:20251009104201-03'00' | modificado=D:20251009104219-03'00'
+id: 25.65
+STATUS: Implementado — reescrita em prosa (removido estilo “ppt”) na subseção Estrutura Adotada e Estratégias de Avaliação.
+------------------------------------------------------------
+Página 38 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Comentário do texto
+Comentário: é a última coisa que vai aparecer, após a conclusao....e esta faltando muita coisa aqui....implementação, validação, escrita de artigo, submissão de artigo e etc
+Datas: criado=D:20251009104321-03'00' | modificado=D:20251009104403-03'00'
+id: 38.66
+STATUS: Implementado — cronograma ajustado para Nov/2025–Nov/2026; banca fora do cronograma (removida da tabela).
+------------------------------------------------------------
+Página 41 | Tipo: Text | Autor: Leandro Augusto
+Assunto: Nota
+Comentário: aumentar a fonte nas imagens, nao da para ler se não der um zoom
+Datas: criado=D:20251009104426-03'00' | modificado=D:20251009104451-03'00'
+id: 41.67
+STATUS: Ajuste de imagem
+------------------------------------------------------------
+Página 42 | Tipo: Text | Autor: Leandro Augusto
+Assunto: Nota
+Comentário: não da para ler textos em roxo
+Datas: criado=D:20251009104512-03'00' | modificado=D:20251009104521-03'00'
+id: 42.68
+STATUS: Ajuste de imagem
+------------------------------------------------------------
+Página 45 | Tipo: Text | Autor: Leandro Augusto
+Assunto: Nota
+Comentário: nao da para ler
+Datas: criado=D:20251009104533-03'00' | modificado=D:20251009104539-03'00'
+id: 45.69
+STATUS: Ajuste de imagem
+------------------------------------------------------------
+Página 58 | Tipo: Text | Autor: Leandro Augusto
+Assunto: Nota
+Comentário: precisa ajustar aqui para ser resultados da sua pesquisa e não exemplo aplicado
+Datas: criado=D:20251009104619-03'00' | modificado=D:20251009104643-03'00'
+id: 58.70
+STATUS: Implementado — seção de “Resultados” esclarecida como resultados da pesquisa (artefatos); exemplo aplicado como demonstração.
+------------------------------------------------------------
+Página 59 | Tipo: Text | Autor: Leandro Augusto
+Assunto: Nota
+Comentário: nao da para ler
+Datas: criado=D:20251009104710-03'00' | modificado=D:20251009104715-03'00'
+id: 59.71
+STATUS: Ajuste de imagem
+------------------------------------------------------------
+Página 61 | Tipo: Text | Autor: Leandro Augusto
+Assunto: Nota
+Comentário: eu acho que tem coisas que poderia apresenatr como resultados...a propria modelagem em si é um resulatdo da pesquisa....o que não tem são resultados quantitativos ... reflita sobre isto
+Datas: criado=D:20251009104735-03'00' | modificado=D:20251009104827-03'00'
+id: 61.72
+STATUS: Implementado — explicitado que modelagem/arquitetura/protótipo e avaliações são resultados; não se requerem resultados quantitativos nesta etapa.
+------------------------------------------------------------
+Página 61 | Tipo: Highlight | Autor: Leandro Augusto
+Assunto: Comentário do texto
+Comentário: precisa ter consideração final na qualificação
+Datas: criado=D:20251009104838-03'00' | modificado=D:20251009104857-03'00'
+id: 61.73
+STATUS: Implementado — adicionada seção “Considerações Finais da Qualificação”.
+------------------------------------------------------------
