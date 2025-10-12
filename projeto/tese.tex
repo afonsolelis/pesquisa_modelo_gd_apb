@@ -1199,31 +1199,7 @@ Esta subseção sintetiza a modelagem conceitual que estrutura o gêmeo digital 
   \item o metamodelo de eventos no nível de módulo.
 \end{enumerate}
 
-\subsubsection{Modelo de Classes para CEP}
-
-O diagrama a seguir estabelece as relações centrais entre \textit{Aluno}, \textit{Professor/Orientador}, \textit{Projeto} e a entidade \textit{CEP}, incluindo a taxonomia de \textit{Eixos} (Matemática/Física, Computação, Negócios, UX, Liderança) e elementos de contexto (\textit{Cenários}, \textit{Assunto}). Este núcleo fornece as chaves institucionais e de contexto que permitem normalizar e consultar eventos ao longo do tempo.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.98\textwidth]{assets/class-cep.png}
-  \caption{Modelo conceitual de classes — CEP do PBL: relaciona alunos, professores/orientadores, projetos e a entidade CEP, com taxonomias de eixos e cenários/assuntos para contextualização dos eventos.}
-  \label{fig:class-cep}
-\end{figure}
-
-\subsubsection{Modelo de Classes de Eventos}
-
-O metamodelo de eventos organiza a hierarquia \textit{Evento} e especializações (\textit{EventoEntrega}, \textit{EventoFeedback}, \textit{EventoPresenca}, \textit{EventoGenerico}, \textit{EventoAutoestudo}) e conecta atores e artefatos do PBL: \textit{Aluno}, \textit{Grupo}, \textit{Professor}, \textit{Sprint} e \textit{Artefato}. Cada evento:
-
-- conforma uma \textit{VersaoSchema} e pode ser agregado em \textit{LoteIngestao};
-- referencia artefatos e guarda relação de resultado com \textit{Validacao};
-- registra a origem (\textit{SistemaFonte}/LMS e/ou \textit{Infra}).
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.98\textwidth]{assets/class-event.png}
-  \caption{Modelo conceitual de classes — Eventos de Módulo do PBL: hierarquia de Evento, associações com grupo/aluno/artefato/sprint, conformidade de schema e trilhas de ingestão e validação.}
-  \label{fig:class-event}
-\end{figure}
+% (Removido: modelos de classes para CEP e eventos, conforme revisão)
 
 Esses dois modelos compõem o backbone semântico do gêmeo digital, garantindo rastreabilidade entre contexto (CEP) e instâncias de eventos, além de suportar validações, versionamento de schema e linhagem de ingestão.
 
