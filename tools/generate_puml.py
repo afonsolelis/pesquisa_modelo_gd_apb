@@ -307,17 +307,20 @@ MANUAL_FLOWS_DT = {
         ('E','CEP','Conector LMS','Confirma recebimento'),
     ],
     'seq-dt-03-evento-entrega-artefato-rastreabilidade': [
-        ('A','Repositório','Conector Git','Webhook push/tag/release'),
-        ('B','Conector Git','Camada Coleta','Monta EventoEntrega'),
-        ('C','Camada Coleta','CEP','Valida e define vínculos'),
-        ('D','CEP','Silver','Grava ordenado/dedup'),
-        ('E','CEP','Conector Git','Confirma referência Artefato↔Evento'),
+        # Inclusão de participação explícita de Aluno e Grupo conforme revisão
+        ('A','Aluno','Repositório','Commit/push gera webhook de entrega'),
+        ('B','Repositório','Conector Git','Webhook push/tag/release'),
+        ('C','Conector Git','Camada Coleta','Monta EventoEntrega (repo, sha, path)'),
+        ('D','Camada Coleta','CEP','Valida e define vínculos (Sprint/Grupo)'),
+        ('E','CEP','Silver','Grava ordenado/dedup por event_time'),
+        ('F','CEP','Conector Git','Confirma referência Artefato↔Evento'),
+        ('G','CEP','Grupo','Notifica registro de entrega (referendo/ack)'),
     ],
     'seq-dt-04-deduplicacao-idempotencia': [
-        ('A','Conector','Coleta','Envia eventos com ids/checksum'),
-        ('B','Coleta','Deduplicador','Checa idempotência'),
-        ('C','Deduplicador','CEP','Remove duplicados/segue'),
-        ('D','CEP','Bronze/Silver','Persiste novos eventos'),
+        ('A','Conector','Coleta','Envia eventos com id e checksum'),
+        ('B','Coleta','Deduplicador','Checa idempotência (chave id+checksum+origem)'),
+        ('C','Deduplicador','CEP','Elimina duplicados; encaminha únicos'),
+        ('D','CEP','Bronze/Silver','Persiste apenas novos eventos'),
     ],
     'seq-dt-05-eventos-atrasados-watermark': [
         ('A','Conector','Coleta','Evento atrasado chega'),
@@ -348,9 +351,12 @@ MANUAL_FLOWS_DT = {
         ('C','Bronze/Silver/Gold','Materialização','Atualiza materializações'),
     ],
     'seq-dt-10-materializacao-sinais-para-docente': [
+        # Sinais para docentes e visões para grupo/aluno (notificação mínima)
         ('A','CEP (Agregações)','Silver','Calcula agregações'),
         ('B','Silver','Gold (Sinais)','Persiste sinais'),
-        ('C','Gold (Sinais)','Painel Docente','Consulta sinais'),
+        ('C','Gold (Sinais)','Painel Docente','Disponibiliza sinais consolidados'),
+        ('D','Gold (Sinais)','Grupo','Disponibiliza/Notifica sinais por grupo e artefato'),
+        ('E','Gold (Sinais)','Aluno','Disponibiliza/Notifica sinais individuais'),
     ],
     'seq-dt-11-compl-pbl-01-aluno-inicia-atividade': [
         ('A','Aluno','LMS/Adalove','Inicia tarefa'),
@@ -358,16 +364,21 @@ MANUAL_FLOWS_DT = {
         ('C','Conector Git','CEP','Webhook/EventoEntrega'),
         ('D','Aluno','LMS/Adalove','Finaliza/lock'),
         ('E','Conector Git','CEP','Evento de lock/entrega'),
+        ('F','CEP','Grupo','Notifica status de atividade/entrega do grupo'),
+        ('G','CEP','Aluno','Confirma registro de atividade/entrega'),
     ],
     'seq-dt-12-compl-pbl-02-professor-corrige-lanca-nota': [
         ('A','Professor','LMS/Adalove','Lança nota/feedback'),
         ('B','Conector LMS','CEP','EventoFeedback padronizado'),
+        ('C','CEP','Grupo','Emite evento de nota por grupo/artefato'),
+        ('D','CEP','Aluno','Emite evento de nota individual'),
     ],
     'seq-dt-13-compl-pbl-03-revisao-de-nota': [
         ('A','Aluno','LMS/Adalove','Solicita revisão'),
         ('B','LMS/Adalove','Professor','Encaminha pedido'),
         ('C','Conector LMS','CEP','EventoGenerico revisao_nota'),
-        ('D','LMS/Adalove','Aluno','Resultado da revisão'),
+        ('D','CEP','Grupo','Notifica revisão/ajuste de avaliação'),
+        ('E','LMS/Adalove','Aluno','Resultado da revisão'),
     ],
     'seq-dt-14-compl-pbl-07-planning-kanban': [
         ('A','Grupo','Sistema Ágil','Criação/estimativas de cards'),
