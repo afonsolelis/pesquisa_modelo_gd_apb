@@ -1,0 +1,33 @@
+Arquivo: tese_coments_reg.pdf
+Total de comentários: 6
+============================================================
+Página 7 | Tipo: Highlight | Autor: Inteli
+Assunto: Comentário do texto
+Comentário: Sugestão reg:O objetivo geral da pesquisa é projetar e especificar uma arquitetura de um gêmeo digital, capaz de processar eventos cibernéticos de um ambiente com  processos PBL, e subsidiar o corpo docente com dados, informações e predições a respeito de atividades de ensino e aprendizagem.
+Datas: criado=D:20251007073436-03'00' | modificado=D:20251007074150-03'00'
+------------------------------------------------------------
+Página 7 | Tipo: Text | Autor: Inteli
+Assunto: Nota
+Comentário: As vezes confunde-se com método da pesquisa para estabelecer o DT.Acho que como objetivos específicos poderiam ser em termos de consolidação e confirmação de hipóteses como:1 - O ambiente e os processos PBL contém cenários capazes de produzir eventos para avaliação de engajamento de alunos em auto-estudos?2 - Idem para atividades de projetos por grupos de alunos, relacionados aos artefatos?3 - ...
+Datas: criado=D:20251007074241-03'00' | modificado=D:20251007074614-03'00'
+------------------------------------------------------------
+Página 50 | Tipo: Text | Autor: Inteli
+Assunto: Nota
+Comentário: Grupo de projeto deve participar como referendar atividades - no mínimo como notificação
+Datas: criado=D:20251007075343-03'00' | modificado=D:20251007075429-03'00'
+------------------------------------------------------------
+Página 51 | Tipo: Text | Autor: Inteli
+Assunto: Nota
+Comentário: Artefato envolve notas por grupos e alunos.
+Datas: criado=D:20251007075451-03'00' | modificado=D:20251007075513-03'00'
+------------------------------------------------------------
+Página 51 | Tipo: Text | Autor: Inteli
+Assunto: Nota
+Comentário: Oa alunos devem participar
+Datas: criado=D:20251007075531-03'00' | modificado=D:20251007075548-03'00'
+------------------------------------------------------------
+Página 53 | Tipo: Text | Autor: Inteli
+Assunto: Nota
+Comentário: Rever
+Datas: criado=D:20251007075622-03'00' | modificado=D:20251007075627-03'00'
+------------------------------------------------------------
